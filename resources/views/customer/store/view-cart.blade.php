@@ -34,10 +34,10 @@
                         <div class="col-md-2">
                             <label for="">Quantity</label>
                             <div class="input-group text-center mb-3">
-                                <span class="input-group-text decrement-btn">-</span>
+                                <span class="input-group-text updateCartItem decrement-btn">-</span>
                                 <input type="text" name="" value="{{ $cartItem->quantity }}"
                                     class="form-control quantity-input">
-                                <span class="input-group-text increment-btn">+</span>
+                                <span class="input-group-text updateCartItem increment-btn">+</span>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -57,6 +57,7 @@
 
 @section('scripts')
     <script>
+        // updateCartItem
         console.log('xxx');
         $(document).ready(function() {
             $('.deleteFromCartBtn').click(function(e) {
@@ -86,6 +87,37 @@
                     }
                 });
             });
+
+            $('.updateCartItem').click(function(e) {
+                e.preventDefault();
+                var product_quantity = $(this).closest('.product_data').find('.quantity-input').val();
+                var cartItemID = $(this).closest('.product_data').find('.cartItemID').val();
+                console.log(product_quantity);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: "POST",
+                    url: '{{ route('cart.item.update') }}',
+                    data: {
+                        'product_quantity': product_quantity,
+                        'cartItemID'  :cartItemID
+                    },
+                    success: function(response) {
+                        // swal(response.status);
+                        // window.location.reload();
+                        $('.toast').toast('show');
+                    },
+                    error: function(request, status, error) {
+                        var reqError = JSON.parse(request.responseText);
+                        console.log(reqError.message);
+                        swal(reqError.message)
+                    }
+                });
+            });
+
         });
     </script>
 @endsection

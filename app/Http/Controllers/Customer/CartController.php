@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\AddCartItemRequest;
 use App\Http\Requests\Customer\DeleteCartItemRequest;
+use App\Http\Requests\Customer\UpdateCartItemRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\CartItem;
@@ -64,5 +65,14 @@ class CartController extends Controller
             'status' => 'Item Deleted Successfully'
         ]);
         // TODO : In case something went wrong how to just make One Universal message "sth went wrong" ??
+    }
+    public function updateCartItem(UpdateCartItemRequest $request)
+    {
+        CartItem::where('id', $request->cartItemID)->update(['quantity' => $request->product_quantity]);
+        $cartItem = CartItem::find($request->cartItemID);
+        $request->updateTotalOrder($cartItem->order_id);
+        return response()->json([
+            'status' => 'UpDated Quantity '
+        ]);
     }
 }

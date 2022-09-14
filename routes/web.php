@@ -21,6 +21,7 @@ Route::post('/add-to-cart', [CartController::class, 'addCartItem'])->name('cart.
 Route::group(['middleware' => ['auth']], function () {
     Route::get('store/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
     Route::post('store/delete-cart-item', [CartController::class, 'deleteCartItem'])->name('cart.item.delete');
+    Route::post('store/update-cart-item', [CartController::class, 'updateCartItem'])->name('cart.item.update');
 });
 
 
