@@ -29,7 +29,8 @@ class AddCartItemRequest extends FormRequest
             $active_order = $user->orders->where('status', '0')->first();
         } else {
             $newOrder = [
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                'total' => '0'
             ];
             $active_order = Order::create($newOrder);
         }
@@ -37,5 +38,16 @@ class AddCartItemRequest extends FormRequest
         $allRequestData['quantity'] = $this->product_quantity;
         $allRequestData['product_id'] = $this->product_id;
         return $allRequestData;
+    }
+
+    public function updateTotalOrder($order_id)
+    {
+
+        $or = Order::find($order_id);
+        $total = 0;
+        foreach ($or->cartItems->all() as $orderItem) {
+            $total = $total + ($orderItem->product->selling_price * $orderItem->quantity);
+        }
+        Order::where('id', $order_id)->update(['total' => $total]);
     }
 }

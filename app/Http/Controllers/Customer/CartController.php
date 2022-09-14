@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\AddCartItemRequest;
+use App\Http\Requests\Customer\DeleteCartItemRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\CartItem;
@@ -24,6 +25,7 @@ class CartController extends Controller
             } else {
                 $cartItemData = $request->handleRequest();
                 CartItem::create($cartItemData);
+                $request->updateTotalOrder($cartItemData['order_id']);
                 // If there is an Error , Laravel Will send it Automatically to the Ajax , We
                 // Need to handle it from there "From the View "
                 return response()->json([
@@ -42,6 +44,25 @@ class CartController extends Controller
         // Get the User Object Holding User Data  :
         $user = Auth::user();
         $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
-        return view('customer.store.view-cart', compact('currentCartItems'));
+
+        $total = 0;
+        foreach ($currentCartItems as $item) {
+            $total += ($item->quantity * $item->product->selling_price);
+        }
+        return view('customer.store.view-cart', compact(['currentCartItems', 'total']));
+    }
+
+    public function deleteCartItem(DeleteCartItemRequest $request)
+    {
+        $cartItem  = CartItem::find($request->cartItemID);
+        $cartItem->delete();
+        // TOTAL
+        $user = Auth::user();
+        $activeOrder = $user->orders->where('status', '0')->first();
+        $request->updateTotalOrder($activeOrder->id);
+        return response()->json([
+            'status' => 'Item Deleted Successfully'
+        ]);
+        // TODO : In case something went wrong how to just make One Universal message "sth went wrong" ??
     }
 }

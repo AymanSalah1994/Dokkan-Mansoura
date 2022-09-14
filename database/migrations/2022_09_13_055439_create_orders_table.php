@@ -24,7 +24,8 @@ return new class extends Migration
             4 -> Done
             5 -> ReFunded
             */
-            $table->tinyInteger('status')->default('0') ;
+            $table->integer('total');
+            $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });
     }
