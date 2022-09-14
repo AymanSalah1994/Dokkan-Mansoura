@@ -77,35 +77,13 @@
     <script>
         console.log('xxx');
         $(document).ready(function() {
-            $('.increment-btn').click(function(e) {
-                e.preventDefault();
-                var box_value = $('.quantity-input').val();
-                var parsed_box_value = parseInt(box_value, 10);
-                parsed_box_value = isNaN(parsed_box_value) ? 0 : parsed_box_value;
-                if (parsed_box_value < 10) {
-                    ++parsed_box_value;
-                    $('.quantity-input').val(parsed_box_value);
-                }
-            });
-
-            $('.decrement-btn').click(function(e) {
-                e.preventDefault();
-                var box_value = $('.quantity-input').val();
-                var parsed_box_value = parseInt(box_value, 10);
-                console.log(parsed_box_value);
-                parsed_box_value = isNaN(parsed_box_value) ? 0 : parsed_box_value;
-                if (parsed_box_value > 1) {
-                    --parsed_box_value;
-                    $('.quantity-input').val(parsed_box_value);
-                }
-            });
-
             $('.addToCartBtn').click(function(e) {
                 e.preventDefault();
                 var product_id = $(this).closest('.product_data').find('.product_id').val();
                 var product_quantity = $(this).closest('.product_data').find('.quantity-input').val();
                 console.log(product_id);
                 console.log(product_quantity);
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -129,7 +107,6 @@
                     }
                 });
             });
-
         });
     </script>
 @endsection
