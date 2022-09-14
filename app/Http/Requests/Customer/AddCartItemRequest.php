@@ -12,7 +12,6 @@ class AddCartItemRequest extends FormRequest
     {
         return true;
     }
-
     public function rules()
     {
         return [
@@ -21,7 +20,6 @@ class AddCartItemRequest extends FormRequest
             // Order_id , User_id
         ];
     }
-
     public function handleRequest()
     {
         $allRequestData = $this->validated();
@@ -35,10 +33,9 @@ class AddCartItemRequest extends FormRequest
             ];
             $active_order = Order::create($newOrder);
         }
-
-        $allRequestData['order_id'] = $active_order->id  ;
-        $allRequestData['quantity'] = $this->product_quantity  ;
-        $allRequestData['product_id'] = $this->product_id  ;
+        $allRequestData['order_id'] = $active_order->id;
+        $allRequestData['quantity'] = $this->product_quantity;
+        $allRequestData['product_id'] = $this->product_id;
         return $allRequestData;
     }
 }
