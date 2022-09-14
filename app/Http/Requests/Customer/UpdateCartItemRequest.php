@@ -5,6 +5,10 @@ namespace App\Http\Requests\Customer;
 use App\Models\Order;
 use Illuminate\Foundation\Http\FormRequest;
 
+
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+
 class UpdateCartItemRequest extends FormRequest
 {
     /**
@@ -38,5 +42,13 @@ class UpdateCartItemRequest extends FormRequest
             $total = $total + ($orderItem->product->selling_price * $orderItem->quantity);
         }
         Order::where('id', $order_id)->update(['total' => $total]);
+    }
+
+
+    public function messages()
+    {
+        return [
+            '*' => 'A message is required',
+        ];
     }
 }

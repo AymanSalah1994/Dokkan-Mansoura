@@ -113,7 +113,9 @@
                     error: function(request, status, error) {
                         var reqError = JSON.parse(request.responseText);
                         console.log(reqError.message);
-                        swal(reqError.message)
+                        // swal(reqError.message)
+                        // Custom Message if you Want
+                        swal("SomeThing Went Wrong")
                     }
                 });
             });
