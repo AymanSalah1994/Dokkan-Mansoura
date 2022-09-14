@@ -14,7 +14,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Cart</a></li>
+                            <li><a class="dropdown-item" href="{{ route('cart.view') }}">Cart</a></li>
                             <li><a class="dropdown-item" href="#">Orders</a></li>
                             <li><a class="dropdown-item" href="#">Wish List</a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
@@ -27,6 +27,9 @@
                                 </form>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cart.view') }}">Cart</a>
                     </li>
                 @endauth
                 <li class="nav-item">

@@ -30,11 +30,18 @@ class CartController extends Controller
                     'status' => 'I got yourack !'
                 ]);
             }
-        }
-        else {
+        } else {
             return response()->json([
                 'status' => 'Please Log in First'
             ]);
         }
+    }
+
+    public function viewCart()
+    {
+        // Get the User Object Holding User Data  :
+        $user = Auth::user();
+        $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
+        return view('customer.store.view-cart', compact('currentCartItems'));
     }
 }
