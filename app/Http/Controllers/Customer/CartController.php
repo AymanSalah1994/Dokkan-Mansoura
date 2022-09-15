@@ -46,9 +46,18 @@ class CartController extends Controller
         $user = Auth::user();
         $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
 
+        foreach ($currentCartItems as $item) {
+            if($item->product->status == '0') {
+                $outOfStockItem = CartItem::find($item->id) ;
+                $outOfStockItem->delete() ;
+            }
+        }
+        $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
+
         $total = 0;
         foreach ($currentCartItems as $item) {
             $total += ($item->quantity * $item->product->selling_price);
+
         }
         return view('customer.view-cart', compact(['currentCartItems', 'total']));
     }

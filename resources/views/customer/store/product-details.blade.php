@@ -57,9 +57,11 @@
                                 <button type="button" class="btn btn-success me-3 float-start">ِAdd To wishlist
                                     <i class="bi bi-balloon-heart"></i>
                                 </button>
+                                @if ($product->status == "1")
                                 <button type="button" class="btn btn-primary me-3 float-start addToCartBtn">Add to Cart
                                     <i class="bi bi-cart"></i>
                                 </button>
+                                @endif
                             </div>
                         </div>
                         <div>

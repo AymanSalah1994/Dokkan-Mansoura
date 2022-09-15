@@ -11,6 +11,7 @@
             <hr>
             <div class="row gy-5">
                 @foreach ($allCategories as $category)
+                {{-- overflow-auto --}}
                     <div class="col-md-3">
                         @include('layouts.store.storeparts.category-card')
                     </div>

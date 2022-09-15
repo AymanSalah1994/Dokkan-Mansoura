@@ -61,8 +61,11 @@
             {{-- Order Details --}}
             <div class="col-md-7">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-header">
                         <h3>Order Details</h3>
+                    </div>
+                    <div class="card-body">
+
                         {{-- Don't Forget to Put the Order iD --}}
                         <table class="table table-hover">
                             <thead>
@@ -88,6 +91,7 @@
                     <div class="card-footer">
                         <span>Total : {{ $total }}</span>
                         <a href="" class="btn btn-success rounded-pill float-end">Confirm</a>
+                        {{-- Make it a Button for Form , Form to change order status --}}
                     </div>
                 </div>
             </div>
@@ -99,3 +103,5 @@
 @section('scripts')
 
 @endsection
+
+
