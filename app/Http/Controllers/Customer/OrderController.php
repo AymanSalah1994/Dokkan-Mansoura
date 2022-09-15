@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\CartItem;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,5 +30,34 @@ class OrderController extends Controller
         return view('customer.orders.checkout', compact([
             'user', 'cartItems'
         ]));
+    }
+
+    public function confirmOrder(Request $request)
+    {
+        // $order_id = $request->checking_order;
+        // $order = Order::find($order_id);
+        // $order->status = "1";
+        // $order->save();
+        // $order_cart_items = CartItem::where('order_id', $order_id)->get();
+        // foreach ($order_cart_items as $item) {
+        //     $cartItem = CartItem::find($item->id);
+        //     $cartItem->status = "1";
+        //     $cartItem->save();
+        // }
+
+        return redirect()->route('orders.all')->with('status', 'Order and its Items are Updated!');
+    }
+
+
+    public function allOrders() {
+        $user =  Auth::user() ;
+        $orders = $user->orders ;
+        return view('customer.orders.all-orders' , compact('orders')) ;
+    }
+
+    public function orderDetails($id){
+        // get the Order "With Cart items "
+        // Return a View Showing All Details about the Cart item
+        return view('customer.orders.order-details') ; 
     }
 }

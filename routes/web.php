@@ -24,6 +24,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('store/delete-cart-item', [CartController::class, 'deleteCartItem'])->name('cart.item.delete');
     Route::post('store/update-cart-item', [CartController::class, 'updateCartItem'])->name('cart.item.update');
     Route::get('store/cart-checkout', [CustomerOrder::class, 'checkout'])->name('cart.checkout');
+    Route::post('store/order-confirm', [CustomerOrder::class, 'confirmOrder'])->name('order.confirm');
+    Route::get('/store/all-orders', [CustomerOrder::class, 'allOrders'])->name('orders.all');
+    Route::get('/store/order-details/{id}', [CustomerOrder::class, 'orderDetails'])->name('order.details');
 });
 
 

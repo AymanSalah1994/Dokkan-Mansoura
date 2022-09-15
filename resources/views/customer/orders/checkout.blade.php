@@ -75,6 +75,7 @@
                             </thead>
                             @php
                                 $total = 0;
+                                $checking_order = '';
                             @endphp
                             @foreach ($cartItems as $item)
                                 <tr>
@@ -84,6 +85,7 @@
                                 </tr>
                                 @php
                                     $total += (int) $item->quantity * (int) $item->product->selling_price;
+                                    $checking_order = $item->order_id;
                                 @endphp
                             @endforeach
                         </table>
@@ -95,12 +97,19 @@
                     </div>
                     <div class="card-footer">
 
+                        {{-- order.confirm --}}
                         <div class="row">
-                            <a href="" class="btn btn-success rounded-pill float-end">Confirm (Pay on Delivery)</a>
+                            <form action="{{ route('order.confirm') }}" class="row" method="POST">
+                                @csrf
+                                <input type="hidden" name="checking_order" value="{{ $checking_order }}">
+                                <button type="submit" class="btn btn-success rounded-pill float-end">Confirm (Pay on
+                                    Delivery)</button>
+                            </form>
                         </div>
                         <br>
                         <div class="row">
-                            <button class="btn btn-success rounded-pill float-end" disabled>Online (Not Working Currently)</button>
+                            <button class="btn btn-success rounded-pill float-end" disabled>Online (Not Working
+                                Currently)</button>
                         </div>
                         {{-- Make it a Button for Form , Form to change order status --}}
                     </div>
@@ -114,5 +123,3 @@
 @section('scripts')
 
 @endsection
-
-
