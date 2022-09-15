@@ -20,28 +20,34 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="First Name" readonly>
+                                <label for="">First Name</label>
+                                <input class="form-control" type="text" placeholder="{{ $user->name }}" readonly>
                             </div>
                             <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="Last Name" readonly>
+                                <label for="">Last Name</label>
+                                <input class="form-control" type="text" placeholder="{{ $user->last_name }}" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="City" readonly>
+                                <label for="">City</label>
+                                <input class="form-control" type="text" placeholder="{{ $user->city }}" readonly>
                             </div>
                             <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="Phone Number" readonly>
+                                <label for="">Phone</label>
+                                <input class="form-control" type="text" placeholder="{{ $user->phone }}" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <input class="form-control" type="text" placeholder="Address" readonly>
+                                <label for="">Address</label>
+                                <input class="form-control" type="text" placeholder="{{ $user->address }}" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <input class="form-control" type="Email" placeholder="Email" readonly>
+                                <label for="">Email</label>
+                                <input class="form-control" type="Email" placeholder="{{ $user->email }}" readonly>
                             </div>
                         </div>
                         <div class="row">
@@ -57,17 +63,31 @@
                 <div class="card">
                     <div class="card-body">
                         <h3>Order Details</h3>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <input class="form-control" type="text" placeholder="First Name" readonly>
-                            </div>
-                            <div class="col-md-4">
-                                <input class="form-control" type="text" placeholder="Last Name" readonly>
-                            </div>
-                            <div class="col-md-4">
-                                <input class="form-control" type="text" placeholder="Last Name" readonly>
-                            </div>
-                        </div>
+                        {{-- Don't Forget to Put the Order iD --}}
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </thead>
+                            @php
+                                $total = 0;
+                            @endphp
+                            @foreach ($cartItems as $item)
+                                <tr>
+                                    <td>{{ $item->product->name }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
+                                </tr>
+                                @php
+                                    $total += (int) $item->quantity * (int) $item->product->selling_price;
+                                @endphp
+                            @endforeach
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <span>Total : {{ $total }}</span>
+                        <a href="" class="btn btn-success rounded-pill float-end">Confirm</a>
                     </div>
                 </div>
             </div>

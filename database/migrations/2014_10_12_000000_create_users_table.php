@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('city')->default('Mansoura');
             $table->text('address');
+            $table->string('wallet');
+            $table->string('points');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('role_as')->default('0');
