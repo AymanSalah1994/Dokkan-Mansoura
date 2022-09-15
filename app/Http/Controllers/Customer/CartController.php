@@ -50,7 +50,7 @@ class CartController extends Controller
         foreach ($currentCartItems as $item) {
             $total += ($item->quantity * $item->product->selling_price);
         }
-        return view('customer.store.view-cart', compact(['currentCartItems', 'total']));
+        return view('customer.view-cart', compact(['currentCartItems', 'total']));
     }
 
     public function deleteCartItem(DeleteCartItemRequest $request)

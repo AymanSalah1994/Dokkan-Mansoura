@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Customer\CartController;
+use App\Http\Controllers\Customer\OrderController as CustomerOrder;
 use App\Http\Controllers\Customer\Store\StoreController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('store/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
     Route::post('store/delete-cart-item', [CartController::class, 'deleteCartItem'])->name('cart.item.delete');
     Route::post('store/update-cart-item', [CartController::class, 'updateCartItem'])->name('cart.item.update');
+    Route::get('store/cart-checkout', [CustomerOrder::class, 'checkout'])->name('cart.checkout');
 });
 
 

@@ -14,7 +14,7 @@
             <span>TOTAL :{{ $total }} </span>
             <button type="button" class="btn btn-primary">Clear Cart</button>
             <button type="button" class="btn btn-primary">Save Updates</button>
-            <button type="button" class="btn btn-primary">Checkout >></button>
+            <a href="{{ route('cart.checkout') }}" class="btn btn-primary rounded-pill">CheckOut</a>
 
         </nav>
     </div>
