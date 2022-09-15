@@ -14,12 +14,15 @@ class OrderController extends Controller
     {
         // This is Controller to Check Out the Active Order is Exist  ;
         $user = Auth::user();
+
+        // TODO :
+        // Better One : If user Has Order with status 0 Get Items of this Order
         $cartItems  = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
 
         foreach ($cartItems as $item) {
-            if($item->product->status == '0') {
-                $outOfStockItem = CartItem::find($item->id) ;
-                $outOfStockItem->delete() ;
+            if ($item->product->status == '0') {
+                $outOfStockItem = CartItem::find($item->id);
+                $outOfStockItem->delete();
             }
         }
         $cartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();

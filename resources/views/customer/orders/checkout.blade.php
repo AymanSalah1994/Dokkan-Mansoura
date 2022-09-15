@@ -90,7 +90,18 @@
                     </div>
                     <div class="card-footer">
                         <span>Total : {{ $total }}</span>
-                        <a href="" class="btn btn-success rounded-pill float-end">Confirm</a>
+                        {{-- <a href="" class="btn btn-success rounded-pill float-end">Confirm</a> --}}
+                        {{-- Make it a Button for Form , Form to change order status --}}
+                    </div>
+                    <div class="card-footer">
+
+                        <div class="row">
+                            <a href="" class="btn btn-success rounded-pill float-end">Confirm (Pay on Delivery)</a>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <button class="btn btn-success rounded-pill float-end" disabled>Online (Not Working Currently)</button>
+                        </div>
                         {{-- Make it a Button for Form , Form to change order status --}}
                     </div>
                 </div>
