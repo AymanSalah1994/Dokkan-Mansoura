@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\CartItem;
 use App\Models\Order;
+use App\Models\WishListItem;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -40,6 +41,28 @@ class CartController extends Controller
         }
     }
 
+    public function addWishListItem (Request $request) {
+        if (Auth::check()) {
+            // TODO : Put this Checking in a Seperate Place
+            if (WishListItem::where('product_id', $request->product_id)->where('user_id', $request->user()->id)->exists()) {
+                return response()->json([
+                    'status' => 'Item is Already Added'
+                ]);
+            } else {
+                $wishListItem  = new WishListItem() ;
+                $wishListItem->user_id = $request->user()->id ;
+                $wishListItem->product_id = $request->product_id ;
+                $wishListItem->save() ; 
+                return response()->json([
+                    'status' => 'I got yourack !'
+                ]);
+            }
+        } else {
+            return response()->json([
+                'status' => 'Please Log in First'
+            ]);
+        }
+    }
     public function viewCart()
     {
         // Get the User Object Holding User Data  :

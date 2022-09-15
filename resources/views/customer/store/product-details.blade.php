@@ -54,7 +54,7 @@
                             <div class="col-md-10">
                                 <br>
                                 <input type="hidden" value="{{ $product->id }}" class="product_id">
-                                <button type="button" class="btn btn-success me-3 float-start">ِAdd To wishlist
+                                <button type="button" class="btn btn-success me-3 float-start addToWishListBtn">ِAdd To wishlist
                                     <i class="bi bi-balloon-heart"></i>
                                 </button>
                                 @if ($product->status == "1")
@@ -79,6 +79,7 @@
     <script>
         console.log('xxx');
         $(document).ready(function() {
+            //
             $('.addToCartBtn').click(function(e) {
                 e.preventDefault();
                 var product_id = $(this).closest('.product_data').find('.product_id').val();
@@ -97,6 +98,33 @@
                     data: {
                         'product_id': product_id,
                         'product_quantity': product_quantity
+                    },
+                    success: function(response) {
+                        console.log(response.status);
+                        swal(response.status)
+                    },
+                    error: function(request, status, error) {
+                        var reqError = JSON.parse(request.responseText);
+                        console.log(reqError.message);
+                        swal(reqError.message)
+                    }
+                });
+            });
+
+            $('.addToWishListBtn').click(function(e) {
+                e.preventDefault();
+                var product_id = $(this).closest('.product_data').find('.product_id').val();
+                console.log(product_id);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: "POST",
+                    url: '{{ route('wish-list.add') }}',
+                    data: {
+                        'product_id': product_id,
                     },
                     success: function(response) {
                         console.log(response.status);

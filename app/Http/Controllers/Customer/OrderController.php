@@ -49,15 +49,29 @@ class OrderController extends Controller
     }
 
 
-    public function allOrders() {
-        $user =  Auth::user() ;
-        $orders = $user->orders ;
-        return view('customer.orders.all-orders' , compact('orders')) ;
+    public function allOrders()
+    {
+        $user =  Auth::user();
+        $orders = $user->orders;
+        return view('customer.orders.all-orders', compact('orders'));
     }
 
-    public function orderDetails($id){
+    public function orderDetails($id)
+    {
         // get the Order "With Cart items "
+        $order = Order::find($id);
         // Return a View Showing All Details about the Cart item
-        return view('customer.orders.order-details') ; 
+        return view('customer.orders.order-details', compact('order'));
+    }
+
+    public function cancelOrder()
+    {
+        // If he has Made another orders with status 0 Add This Order items on it
+        // And Delete the Old Orders
+
+        // No Orders with 0 status ? RE-turn Old order from 1 to zero and All its
+        //  items
+
+
     }
 }

@@ -17,7 +17,9 @@ Route::get('/store/categories', [StoreController::class, 'categories'])->name('s
 Route::get('/store/products/{id}', [StoreController::class, 'categoryProducts'])->name('category.products');
 Route::get('/store/product/{id}', [StoreController::class, 'productDetails'])->name('product.details');
 // Don't forget to Make a Middleware for this Add-to-Cart Route
+
 Route::post('/add-to-cart', [CartController::class, 'addCartItem'])->name('cart.add');
+Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->name('wish-list.add');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('store/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
