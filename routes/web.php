@@ -29,6 +29,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('store/order-confirm', [CustomerOrder::class, 'confirmOrder'])->name('order.confirm');
     Route::get('/store/all-orders', [CustomerOrder::class, 'allOrders'])->name('orders.all');
     Route::get('/store/order-details/{id}', [CustomerOrder::class, 'orderDetails'])->name('order.details');
+    Route::get('store/view-wish-list', [CartController::class, 'viewWishList'])->name('wish.list.view');
+    Route::post('store/delete-wish-list-item', [CartController::class, 'deleteWishListItem'])->name('wish.list.item.delete');
 });
 
 

@@ -41,7 +41,8 @@ class CartController extends Controller
         }
     }
 
-    public function addWishListItem (Request $request) {
+    public function addWishListItem(Request $request)
+    {
         if (Auth::check()) {
             // TODO : Put this Checking in a Seperate Place
             if (WishListItem::where('product_id', $request->product_id)->where('user_id', $request->user()->id)->exists()) {
@@ -49,10 +50,10 @@ class CartController extends Controller
                     'status' => 'Item is Already Added'
                 ]);
             } else {
-                $wishListItem  = new WishListItem() ;
-                $wishListItem->user_id = $request->user()->id ;
-                $wishListItem->product_id = $request->product_id ;
-                $wishListItem->save() ; 
+                $wishListItem  = new WishListItem();
+                $wishListItem->user_id = $request->user()->id;
+                $wishListItem->product_id = $request->product_id;
+                $wishListItem->save();
                 return response()->json([
                     'status' => 'I got yourack !'
                 ]);
@@ -70,9 +71,9 @@ class CartController extends Controller
         $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
 
         foreach ($currentCartItems as $item) {
-            if($item->product->status == '0') {
-                $outOfStockItem = CartItem::find($item->id) ;
-                $outOfStockItem->delete() ;
+            if ($item->product->status == '0') {
+                $outOfStockItem = CartItem::find($item->id);
+                $outOfStockItem->delete();
             }
         }
         $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
@@ -80,7 +81,6 @@ class CartController extends Controller
         $total = 0;
         foreach ($currentCartItems as $item) {
             $total += ($item->quantity * $item->product->selling_price);
-
         }
         return view('customer.view-cart', compact(['currentCartItems', 'total']));
     }
@@ -105,6 +105,23 @@ class CartController extends Controller
         $request->updateTotalOrder($cartItem->order_id);
         return response()->json([
             'status' => 'UpDated Quantity '
+        ]);
+    }
+
+    public function viewWishList()
+    {
+        $user = Auth::user();
+        $wishListItems = WishListItem::where('user_id', $user->id)->get();
+        return view('customer.wish-list', compact('wishListItems'));
+    }
+
+    public function deleteWishListItem(Request $request)
+    {
+        //
+        $wishListItem = WishListItem::find($request->wishListItemID);
+        $wishListItem->delete();
+        return response()->json([
+            'status' => 'Item Deleted Successfully'
         ]);
     }
 }

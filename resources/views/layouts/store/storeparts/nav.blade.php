@@ -31,6 +31,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('cart.view') }}">Cart</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('wish.list.view') }}">Wish List</a>
+                    </li>
                 @endauth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('store.categories') }}">Categories</a>
