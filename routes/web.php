@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Customer\CartController;
+use App\Http\Controllers\Customer\CountingController;
 use App\Http\Controllers\Customer\OrderController as CustomerOrder;
 use App\Http\Controllers\Customer\Store\StoreController;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +18,14 @@ Route::get('/store/categories', [StoreController::class, 'categories'])->name('s
 Route::get('/store/products/{id}', [StoreController::class, 'categoryProducts'])->name('category.products');
 Route::get('/store/product/{id}', [StoreController::class, 'productDetails'])->name('product.details');
 // Don't forget to Make a Middleware for this Add-to-Cart Route
-
 Route::post('/add-to-cart', [CartController::class, 'addCartItem'])->name('cart.add');
 Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->name('wish-list.add');
+
+
+Route::get('/cart-count' , [CountingController::class , 'cartCount'])->name('cart.counter') ;
+Route::get('/wish-list-count' , [CountingController::class , 'wishListCount'])->name('wish.list.counter') ;
+
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('store/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
