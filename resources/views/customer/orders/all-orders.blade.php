@@ -36,23 +36,23 @@
                                     @break
 
                                     @case(1)
-                                        Checked and Pending
+                                        <td>Checked and Pending</td>
                                     @break
 
                                     @case(2)
-                                        In Preparation
+                                       <td> In Preparation</td>
                                     @break
 
                                     @case(3)
-                                        Done
+                                        <td>Done</td>
                                     @break
 
                                     @case(4)
-                                        Cancelled
+                                        <td>Cancelled</td>
                                     @break
 
                                     @case(4)
-                                        Refunded
+                                        <td>Refunded</td>
                                     @break
 
                                     @default

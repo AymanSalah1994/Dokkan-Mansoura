@@ -4,7 +4,9 @@ namespace App\Http\Requests\Customer;
 
 use App\Models\Order;
 use App\Models\User;
+use Faker\Extension\Helper;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class AddCartItemRequest extends FormRequest
 {
@@ -30,7 +32,8 @@ class AddCartItemRequest extends FormRequest
         } else {
             $newOrder = [
                 'user_id' => $user->id,
-                'total' => '0'
+                'total' => '0' ,
+                'tracking_id' => Str::random(7)
             ];
             $active_order = Order::create($newOrder);
         }

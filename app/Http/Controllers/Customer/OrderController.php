@@ -34,16 +34,16 @@ class OrderController extends Controller
 
     public function confirmOrder(Request $request)
     {
-        // $order_id = $request->checking_order;
-        // $order = Order::find($order_id);
-        // $order->status = "1";
-        // $order->save();
-        // $order_cart_items = CartItem::where('order_id', $order_id)->get();
-        // foreach ($order_cart_items as $item) {
-        //     $cartItem = CartItem::find($item->id);
-        //     $cartItem->status = "1";
-        //     $cartItem->save();
-        // }
+        $order_id = $request->checking_order;
+        $order = Order::find($order_id);
+        $order->status = "1";
+        $order->save();
+        $order_cart_items = CartItem::where('order_id', $order_id)->get();
+        foreach ($order_cart_items as $item) {
+            $cartItem = CartItem::find($item->id);
+            $cartItem->status = "1";
+            $cartItem->save();
+        }
 
         return redirect()->route('orders.all')->with('status', 'Order and its Items are Updated!');
     }
