@@ -22,8 +22,8 @@ Route::post('/add-to-cart', [CartController::class, 'addCartItem'])->name('cart.
 Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->name('wish-list.add');
 
 
-Route::get('/cart-count' , [CountingController::class , 'cartCount'])->name('cart.counter') ;
-Route::get('/wish-list-count' , [CountingController::class , 'wishListCount'])->name('wish.list.counter') ;
+Route::get('/store/cart-count', [CountingController::class, 'cartCount'])->name('cart.counter');
+Route::get('/store/wish-list-count', [CountingController::class, 'wishListCount'])->name('wish.list.counter');
 
 
 

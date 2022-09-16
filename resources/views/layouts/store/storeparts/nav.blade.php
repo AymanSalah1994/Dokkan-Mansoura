@@ -34,12 +34,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('cart.view') }}">
-                            Cart <span class="badge badge-pill bg-danger cart_counter">12</span>
+                            Cart <span class="badge badge-pill bg-danger cart_counter"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('wish.list.view') }}">
-                            Wish List <span class="badge badge-pill bg-primary wish_counter">12</span>
+                            Wish List <span class="badge badge-pill bg-primary wish_list_counter"></span>
                         </a>
                     </li>
                 @endauth
