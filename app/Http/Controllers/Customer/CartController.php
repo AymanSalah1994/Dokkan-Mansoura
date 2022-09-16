@@ -102,6 +102,7 @@ class CartController extends Controller
     public function clearCart() {
         $user = Auth::user() ;
         CartItem::where('user_id',$user->id)->where('status','0')->delete() ;
+        Order::where('user_id',$user->id)->where('status','0')->delete() ;
         return redirect()->route('cart.view')->with('status' , 'Cart Cleared !') ;
     }
     public function updateCartItem(UpdateCartItemRequest $request)
