@@ -30,6 +30,7 @@ Route::get('/store/wish-list-count', [CountingController::class, 'wishListCount'
 Route::group(['middleware' => ['auth']], function () {
     Route::get('store/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
     Route::post('store/delete-cart-item', [CartController::class, 'deleteCartItem'])->name('cart.item.delete');
+    Route::post('store/clear-cart', [CartController::class, 'clearCart'])->name('cart.clear');
     Route::post('store/update-cart-item', [CartController::class, 'updateCartItem'])->name('cart.item.update');
     Route::get('store/cart-checkout', [CustomerOrder::class, 'checkout'])->name('cart.checkout');
     Route::post('store/order-confirm', [CustomerOrder::class, 'confirmOrder'])->name('order.confirm');

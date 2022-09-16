@@ -98,6 +98,12 @@ class CartController extends Controller
         ]);
         // TODO : In case something went wrong how to just make One Universal message "sth went wrong" ??
     }
+
+    public function clearCart() {
+        $user = Auth::user() ;
+        CartItem::where('user_id',$user->id)->where('status','0')->delete() ;
+        return redirect()->route('cart.view')->with('status' , 'Cart Cleared !') ;
+    }
     public function updateCartItem(UpdateCartItemRequest $request)
     {
         CartItem::where('id', $request->cartItemID)->update(['quantity' => $request->product_quantity]);
