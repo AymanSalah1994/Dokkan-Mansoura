@@ -14,9 +14,13 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('cart.view') }}">Cart</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('cart.view') }}">
+                                    Cart
+                                </a>
+                            </li>
                             <li><a class="dropdown-item" href="{{ route('orders.all') }}">Orders</a></li>
-                            <li><a class="dropdown-item" href="{{ route('wish.list.view')}}">Wish List</a></li>
+                            <li><a class="dropdown-item" href="{{ route('wish.list.view') }}">Wish List</a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
@@ -29,10 +33,14 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cart.view') }}">Cart</a>
+                        <a class="nav-link" href="{{ route('cart.view') }}">
+                            Cart <span class="badge badge-pill bg-danger cart_counter">12</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('wish.list.view') }}">Wish List</a>
+                        <a class="nav-link" href="{{ route('wish.list.view') }}">
+                            Wish List <span class="badge badge-pill bg-primary wish_counter">12</span>
+                        </a>
                     </li>
                 @endauth
                 <li class="nav-item">
