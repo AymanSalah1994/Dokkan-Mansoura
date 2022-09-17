@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CountingController;
 use App\Http\Controllers\Customer\OrderController as CustomerOrder;
+use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Customer\Store\StoreController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/store/order-details/{id}', [CustomerOrder::class, 'orderDetails'])->name('order.details');
     Route::get('store/view-wish-list', [CartController::class, 'viewWishList'])->name('wish.list.view');
     Route::post('store/delete-wish-list-item', [CartController::class, 'deleteWishListItem'])->name('wish.list.item.delete');
+
+
+    Route::get('profile/view-profile', [ProfileController::class, 'viewProfile'])->name('profile.view');
 });
 
 
