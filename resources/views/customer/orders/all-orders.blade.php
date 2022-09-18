@@ -32,11 +32,12 @@
                                 @switch($order->status)
                                     @case(0)
                                         <td>Not Checked/In Cart</td>
-                                        <td><a href="">Cancel Order</a></td>
                                     @break
 
                                     @case(1)
                                         <td>Checked and Pending</td>
+                                        <td><a href="">Delete Order Order</a></td>
+                                        <td><a href="">Return Back to Cart To Edit</a></td>
                                     @break
 
                                     @case(2)

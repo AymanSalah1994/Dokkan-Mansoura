@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('store/view-wish-list', [CartController::class, 'viewWishList'])->name('wish.list.view');
     Route::post('store/delete-wish-list-item', [CartController::class, 'deleteWishListItem'])->name('wish.list.item.delete');
 
-
+    
     Route::get('profile/view-profile', [ProfileController::class, 'viewProfile'])->name('profile.view');
 });
 
