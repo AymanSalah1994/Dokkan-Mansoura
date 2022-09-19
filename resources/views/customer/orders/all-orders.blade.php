@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+    <br>
     <div class="container">
         <div class="row">
             <div class="card">
@@ -19,6 +20,7 @@
                             <th>Total</th>
                             <th>Status</th>
                             <th></th>
+                            <th></th>
                         </thead>
                         @foreach ($orders as $order)
                             <tr>
@@ -33,29 +35,35 @@
                                     @case(0)
                                         <td>Not Checked/In Cart</td>
                                     @break
-
                                     @case(1)
                                         <td>Checked and Pending</td>
-                                        <td><a href="">Delete Order Order</a></td>
-                                        <td><a href="">Return Back to Cart To Edit</a></td>
+                                        <td>
+                                            <form action="{{ route('order.cancel') }}" method="post" class="form-inline float-start">
+                                                @csrf
+                                                <input type="hidden" name="order" value="{{ $order->id }}">
+                                                <button href="" class="btn btn-danger">Cancel Order</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('return.order.to.cart') }}" method="post" class="form-inline float-start">
+                                                @csrf
+                                                <input type="hidden" name="order" value="{{ $order->id }}">
+                                                <button href="" class="btn btn-light">Return Order to Cart</button>
+                                            </form>
+                                        </td>
                                     @break
-
                                     @case(2)
-                                       <td> In Preparation</td>
+                                        <td> In Preparation</td>
                                     @break
-
                                     @case(3)
                                         <td>Done</td>
                                     @break
-
                                     @case(4)
                                         <td>Cancelled</td>
                                     @break
-
                                     @case(4)
                                         <td>Refunded</td>
                                     @break
-
                                     @default
                                         <td>""</td>
                                 @endswitch

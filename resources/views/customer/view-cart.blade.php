@@ -26,21 +26,7 @@
     @endsection
 @else
     @section('content')
-        <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('store.index') }}">Home</a></li>
-                    <span> / Cart </span>
-                </ol>
-                <span>TOTAL :{{ $total }} </span>
-                <form action="{{ route('cart.clear') }}" method="post" class="form-inline">
-                    @csrf
-                    <button href="" class="btn btn-primary">Clear Cart</button>
-                </form>
-                <a href="{{ route('cart.checkout') }}" class="btn btn-primary rounded-pill">CheckOut</a>
-            </nav>
-        </div>
-
+        <br>
         <div class="container">
             @foreach ($currentCartItems as $cartItem)
                 <div class="card shadow product_data mb-3">
@@ -73,8 +59,33 @@
                 </div>
             @endforeach
         </div>
-
         <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Total : </th>
+                                <th>{{ $total }}</th>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <form action="{{ route('cart.clear') }}" method="post" class="form-inline float-start">
+                                        @csrf
+                                        <button href="" class="btn btn-danger">Clear Cart</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <a href="{{ route('cart.checkout') }}" class="btn btn-success rounded-pill">CheckOut</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endsection
 @endif
 

@@ -74,14 +74,27 @@ class OrderController extends Controller
         return view('customer.orders.order-details', compact('order'));
     }
 
-    public function cancelOrder()
+    public function cancelOrder(Request $request)
+    {
+        $order = Order::find($request->order);
+        $order_items = CartItem::where('order_id', $order->id)->get();
+        foreach ($order_items as $item) {
+            $cartItem  = CartItem::find($item->id);
+            $cartItem->status = '4';
+            $cartItem->save();
+        }
+        $order->status  = '4';
+        $order->save() ; 
+        return redirect()->route('orders.all')->with('status', 'Order is Cancelled');
+    }
+
+    public function returnOrderToCart()
     {
         // If he has Made another orders with status 0 Add This Order items on it
         // And Delete the Old Orders
 
         // No Orders with 0 status ? RE-turn Old order from 1 to zero and All its
         //  items
-
 
     }
 }
