@@ -84,17 +84,52 @@ class OrderController extends Controller
             $cartItem->save();
         }
         $order->status  = '4';
-        $order->save() ; 
+        $order->save();
         return redirect()->route('orders.all')->with('status', 'Order is Cancelled');
     }
 
-    public function returnOrderToCart()
+    public function returnOrderToCart(Request $request)
     {
-        // If he has Made another orders with status 0 Add This Order items on it
-        // And Delete the Old Orders
+        // How To Check that the User Has This Order ?
+        $returned_order  = Order::where('user_id', Auth::user()->id)->where('id', $request->order)->first();
+        $active_order = Order::where('user_id', Auth::user()->id)->where('status', '0')->first();
 
-        // No Orders with 0 status ? RE-turn Old order from 1 to zero and All its
-        //  items
-
+        if ($active_order) {
+            $returned_items  = $returned_order->cartItems;
+            $active_items  = $active_order->cartItems;
+            foreach ($returned_items as $item) {
+                if ($active_items->contains('product_id', $item->product_id)) {
+                    $item->delete();
+                } else {
+                    $item->status = '0';
+                    $item->order_id = $active_order->id;
+                    $item->save();
+                }
+            }
+            $returned_order->delete();
+            self::updateTotalOrder($active_order->id);
+            return redirect()->route('orders.all')->with('status', 'Order is Returned');
+        } else {
+            $returned_items  = $returned_order->cartItems;
+            foreach ($returned_items as $item) {
+                $item->status = '0';
+                $item->save();
+            }
+            $returned_order->status = '0';
+            $returned_order->save();
+            self::updateTotalOrder($returned_order->id);
+            return redirect()->route('orders.all')->with('status', 'Order is Returned');
+        }
+    }
+    public static function updateTotalOrder($order_id)
+    {
+        // This is a Helper Function For Calculating the Total For Order
+        // WHenver an Update Happens
+        $or = Order::find($order_id);
+        $total = 0;
+        foreach ($or->cartItems->all() as $orderItem) {
+            $total = $total + ($orderItem->product->selling_price * $orderItem->quantity);
+        }
+        Order::where('id', $order_id)->update(['total' => $total]);
     }
 }

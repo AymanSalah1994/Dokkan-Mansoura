@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">First Name</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->name }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{ $user->first_name }}" readonly>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Last Name</label>
