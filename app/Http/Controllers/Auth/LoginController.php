@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Dotenv\Exception\ValidationException;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException as ValidationValidationException;
 
 class LoginController extends Controller
 {
@@ -51,5 +54,28 @@ class LoginController extends Controller
         {
             return redirect('/home')->with('status', 'Logged in successfully');
         }
+    }
+    // THis is for Overring Bwlow Bleow
+
+    public function username()
+    {
+        $login = request()->input('username');
+
+        if (is_numeric($login)) {
+            $field = 'phone';
+        } else {
+            $field = 'email';
+        }
+
+        request()->merge([$field => $login]);
+
+        return $field;
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationValidationException::withMessages([
+            'username' => [trans('auth.failed')],
+        ]);
     }
 }
