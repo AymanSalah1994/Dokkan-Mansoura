@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('store/delete-wish-list-item', [CartController::class, 'deleteWishListItem'])->name('wish.list.item.delete');
 
     Route::get('profile/view-profile', [ProfileController::class, 'viewProfile'])->name('profile.view');
+    Route::post('/profile/update-profile' , [ProfileController::class , 'updateProfile'])->name('profile.update') ;
 
     Route::post('store/cancel-order', [CustomerOrder::class, 'cancelOrder'])->name('order.cancel');
     Route::post('store/return-order-to-cart', [CustomerOrder::class, 'returnOrderToCart'])->name('return.order.to.cart');

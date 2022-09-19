@@ -13,52 +13,63 @@
         <div class="row">
             {{-- User Details --}}
             <div class="col-md-7">
-                <div class="card">
-                    <div class="card-body">
-                        <h3>User Details</h3>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="">First Name</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->first_name }}" readonly>
+                <form action="{{ route('profile.update') }}" method="POST">
+                    @csrf
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>User Details</h3>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">First Name</label>
+                                    <input class="form-control" type="text" name="first_name"
+                                        value="{{ old('first_name', $user->first_name) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Last Name</label>
+                                    <input class="form-control" type="text" name="last_name"
+                                        value="{{ old('last_name', $user->last_name) }}">
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="">Last Name</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->last_name }}" readonly>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">City</label>
+                                    <input class="form-control" type="text" name="city"
+                                        value="{{ old('city', $user->city) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Phone</label>
+                                    <input class="form-control" type="text" name="phone"
+                                        value="{{ old('phone', $user->phone) }}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="">City</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->city }}" readonly>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">Address</label>
+                                    <input class="form-control" type="text" name="address"
+                                        value="{{ old('address', $user->address) }}">
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="">Phone</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->phone }}" readonly>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">Email</label>
+                                    <input class="form-control" type="Email" name="email"
+                                        value="{{ old('email', $user->email) }}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="">Address</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->address }}" readonly>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="">Email</label>
-                                <input class="form-control" type="Email" placeholder="{{ $user->email }}" readonly>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="{{ route('profile.view') }}" class="btn btn-primary">Save Updates</a>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary">
+                                        Save Changes
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-            {{-- Order Details --}}
+
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header">
