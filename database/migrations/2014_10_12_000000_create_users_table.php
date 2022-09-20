@@ -27,6 +27,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('role_as')->default('0');
+            // 0 Customer , 1 Admin  , 2 Merchant  , 3 Dealer 
             $table->rememberToken();
             $table->timestamps();
         });
