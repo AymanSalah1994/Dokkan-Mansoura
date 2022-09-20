@@ -30,12 +30,6 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('status', 'Product Created Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function show(Product $product)
     {
         //
@@ -57,12 +51,6 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('status', 'Product Updated SuccessFully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
         //  {{-- dispay none and still visible inspect --}}

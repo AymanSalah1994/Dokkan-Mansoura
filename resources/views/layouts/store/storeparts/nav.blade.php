@@ -14,13 +14,8 @@
                             {{ Auth::user()->first_name }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="{{ route('cart.view') }}">
-                                    Cart
-                                </a>
-                            </li>
+                            <li><a class="dropdown-item" href="{{ route('profile.view') }}">Profile</a></li>
                             <li><a class="dropdown-item" href="{{ route('orders.all') }}">Orders</a></li>
-                            <li><a class="dropdown-item" href="{{ route('wish.list.view') }}">Wish List</a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
@@ -45,6 +40,15 @@
                 @endauth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('store.categories') }}">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('store.categories') }}">Merchants</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('store.categories') }}">SEARCH </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('store.categories') }}">Services</a>
                 </li>
                 @guest
                     <li class="nav-item">
