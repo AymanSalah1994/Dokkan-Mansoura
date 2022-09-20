@@ -23,12 +23,14 @@
 
 </head>
 
-<body class="bg-light">
+<body class="bg-light" style="margin: 0%">
     @include('layouts.store.storeparts.nav')
     @yield('slider')
     <div class="content">
         @yield('content')
     </div>
+    @include('layouts.store.storeparts.footer')
+
     {{-- @include('layouts.dashboard.dashparts.footer') --}}
     <script src="{{ asset('store_assets/js/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('store_assets/js/owl.carousel.min.js') }}"></script>
