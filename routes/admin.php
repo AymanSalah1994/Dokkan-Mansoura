@@ -35,5 +35,9 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard/all-merchants', [UsersController::class, 'allMerchants'])->name('admin.users.merchants');
     Route::get('/dashboard/all-dealers', [UsersController::class, 'allDealers'])->name('admin.users.dealers');
 
-    
+    Route::post('/dashboard/user/to-merchant/', [UsersController::class, 'toMerchant'])->name('admin.user.to.merchant');
+    Route::post('/dashboard/user/to-dealer/', [UsersController::class, 'toDealer'])->name('admin.user.to.dealer');
+    Route::post('/dashboard/user/revoke/', [UsersController::class, 'revoke'])->name('admin.user.revoke');
+    Route::post('/dashboard/user/delete/', [UsersController::class, 'userDelete'])->name('admin.user.delete');
+    Route::get('/dashboard/user/view/{id}', [UsersController::class, 'userView'])->name('admin.user.view');
 });

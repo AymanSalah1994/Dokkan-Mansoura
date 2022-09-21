@@ -24,17 +24,14 @@
                                 <td>{{ $customer->phone }}</td>
                                 <td>{{ $customer->role_as }}</td>
                                 <td>
-                                    <a href="" class="btn btn-primary">View</a>
-                                    <a href="" class="btn btn-danger"
-                                        onclick="event.preventDefault();document.getElementById('{{ $customer->id }}').submit();">
-                                        Delete
-                                    </a>
+                                    <form action="{{ route('admin.user.delete')}}" class="form form-inline" method="post">
+                                        @csrf
+                                        <input type="hidden" name="identifier" value="{{ $customer->id }}">
+                                        <button type="submit" class="btn">Delete</button>
+                                    </form>
                                 </td>
-                                {{-- dispay none and still visible inspect --}}
-                                <form id="{{ $customer->id }}" action=""
-                                    method="post" style="display: none">
-                                    @csrf
-                                </form>
+                                <td><a href="{{ route('admin.user.view' , $customer->id)}}" class="btn">View</a></td>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

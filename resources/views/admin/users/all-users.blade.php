@@ -24,19 +24,33 @@
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->role_as }}</td>
                                 <td>
-                                    <a href="" class="btn btn-success">TO Merchant</a>
-                                    <a href="" class="btn btn-light">TO Dealer</a>
-                                    <a href="" class="btn btn-primary">View</a>
-                                    <a href="" class="btn btn-danger"
-                                        onclick="event.preventDefault();document.getElementById('{{ $user->id }}').submit();">
-                                        Delete
-                                    </a>
+                                <td>
+                                    <form action="{{ route('admin.user.to.merchant')}}" class="form form-inline" method="post">
+                                        @csrf
+                                        <input type="hidden" name="identifier" value="{{ $user->id }}">
+                                        <button type="submit" class="btn">TO Merchant</button>
+                                    </form>
                                 </td>
-                                {{-- dispay none and still visible inspect --}}
-                                <form id="{{ $user->id }}" action=""
-                                    method="post" style="display: none">
-                                    @csrf
-                                </form>
+
+                                <td>
+                                    <form action="{{ route('admin.user.to.dealer')}}" class="form form-inline" method="post">
+                                        @csrf
+                                        <input type="hidden" name="identifier" value="{{ $user->id }}">
+                                        <button type="submit" class="btn">TO Dealer</button>
+                                    </form>
+                                </td>
+
+                                <td>
+                                    <form action="{{ route('admin.user.delete')}}" class="form form-inline" method="post">
+                                        @csrf
+                                        <input type="hidden" name="identifier" value="{{ $user->id }}">
+                                        <button type="submit" class="btn">Delete</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.user.view', $user->id) }}" class="btn">View</a>
+                                </td>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -24,18 +24,22 @@
                                 <td>{{ $merchant->phone }}</td>
                                 <td>{{ $merchant->role_as }}</td>
                                 <td>
-                                    <a href="" class="btn btn-primary">View</a>
-                                    <a href="" class="btn btn-danger">Revoke</a>
-                                    <a href="" class="btn btn-danger"
-                                        onclick="event.preventDefault();document.getElementById('{{ $merchant->id }}').submit();">
-                                        Delete
-                                    </a>
+                                    <form action="{{ route('admin.user.revoke')}}" class="form form-inline" method="post">
+                                        @csrf
+                                        <input type="hidden" name="identifier" value="{{ $merchant->id }}">
+                                        <button type="submit" class="btn">Revoke</button>
+                                    </form>
                                 </td>
-                                {{-- dispay none and still visible inspect --}}
-                                <form id="{{ $merchant->id }}" action=""
-                                    method="post" style="display: none">
-                                    @csrf
-                                </form>
+
+                                <td>
+                                    <form action="{{ route('admin.user.delete')}}" class="form form-inline" method="post">
+                                        @csrf
+                                        <input type="hidden" name="identifier" value="{{ $merchant->id }}">
+                                        <button type="submit" class="btn">Delete</button>
+                                    </form>
+                                </td>
+
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
