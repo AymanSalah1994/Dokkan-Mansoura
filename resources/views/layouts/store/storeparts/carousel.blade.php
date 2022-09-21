@@ -13,7 +13,7 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('images/caro.jpg') }}" class="d-block w-100" alt="iamge">
+                            <img src="{{ asset('images/caro-logo.png') }}" class="d-block w-100" alt="iamge">
                         </div>
                         <div class="carousel-item">
                             <img src="{{ asset('images/caro.jpg') }}" class="d-block w-100" alt="iamge">
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="container">
                 <div class="card">
                     <div class="card-body">
@@ -56,6 +56,10 @@
                             <li class="list-group-item">
                                 <i class="bi bi-check-circle"></i>
                                 Simple Site , No Links EveryWhere
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-check-circle"></i>
+                                Real Photos . No Fraud
                             </li>
                         </ul>
                     </div>

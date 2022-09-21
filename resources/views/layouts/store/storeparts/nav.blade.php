@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('store.index') }}">Mansoura Shop</a>
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('images/logo.png')}}" width="30" height="30" alt="">
+          </a>
+        <a class="navbar-brand" href="{{ route('store.index') }}">Dokkan ELMansoura</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

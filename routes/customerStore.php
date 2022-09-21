@@ -7,7 +7,6 @@ use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Customer\Store\StoreController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::group(['middleware' => ['auth']], function () {
     Route::get('store/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
     Route::post('store/delete-cart-item', [CartController::class, 'deleteCartItem'])->name('cart.item.delete');
