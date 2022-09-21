@@ -2,6 +2,8 @@
 @section('title', $product->name)
 
 @section('content')
+    <div class="divider" style="height: 50px">
+    </div>
     <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -54,13 +56,14 @@
                             <div class="col-md-10">
                                 <br>
                                 <input type="hidden" value="{{ $product->id }}" class="product_id">
-                                <button type="button" class="btn btn-success me-3 float-start addToWishListBtn">ِAdd To wishlist
+                                <button type="button" class="btn btn-success me-3 float-start addToWishListBtn">ِAdd To
+                                    wishlist
                                     <i class="bi bi-balloon-heart"></i>
                                 </button>
-                                @if ($product->status == "1")
-                                <button type="button" class="btn btn-primary me-3 float-start addToCartBtn">Add to Cart
-                                    <i class="bi bi-cart"></i>
-                                </button>
+                                @if ($product->status == '1')
+                                    <button type="button" class="btn btn-primary me-3 float-start addToCartBtn">Add to Cart
+                                        <i class="bi bi-cart"></i>
+                                    </button>
                                 @endif
                             </div>
                         </div>
@@ -76,6 +79,5 @@
 @endsection
 
 @section('scripts')
-    <script>
-    </script>
+    <script></script>
 @endsection

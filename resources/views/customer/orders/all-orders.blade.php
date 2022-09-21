@@ -4,6 +4,11 @@
 @endsection
 
 @section('content')
+<div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top" style="margin-top: 70px">
+    <nav aria-label="breadcrumb">
+        <span>All Orders  :</span>
+    </nav>
+</div>
     <br>
     <div class="container">
         <div class="row">

@@ -7,6 +7,8 @@
 
 @if ($currentCartItems->count() == 0)
     @section('content')
+    <div class="divider" style="height: 50px">
+    </div>
         <div>
             <div class="container py-5">
                 <div class="card shadow product_data mb-3">
@@ -26,6 +28,8 @@
     @endsection
 @else
     @section('content')
+    <div class="divider" style="height: 50px">
+    </div>
         <br>
         <div class="container">
             @foreach ($currentCartItems as $cartItem)

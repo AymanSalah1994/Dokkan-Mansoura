@@ -4,8 +4,8 @@
             <div class="container p-5" style="margin-top: 25px;">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
@@ -52,6 +52,10 @@
                             <li class="list-group-item">
                                 <i class="bi bi-check-circle"></i>
                                 Online With Low Cost
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-check-circle"></i>
+                                Simple Site , No Links EveryWhere
                             </li>
                         </ul>
                     </div>

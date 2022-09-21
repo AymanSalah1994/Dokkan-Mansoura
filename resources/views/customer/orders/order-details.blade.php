@@ -4,6 +4,8 @@
 @section('slider')
 @endsection
 @section('content')
+<div class="divider" style="height: 50px">
+</div>
     <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
         <nav aria-label="breadcrumb">
             <span>TOTAL :{{ $order->total }} </span>
