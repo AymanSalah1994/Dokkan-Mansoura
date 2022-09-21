@@ -61,10 +61,10 @@
                                         <td> In Preparation</td>
                                     @break
                                     @case(3)
-                                        <td>Done</td>
+                                        <td>Cancelld</td>
                                     @break
                                     @case(4)
-                                        <td>Cancelled</td>
+                                        <td>Done</td>
                                     @break
                                     @case(4)
                                         <td>Refunded</td>

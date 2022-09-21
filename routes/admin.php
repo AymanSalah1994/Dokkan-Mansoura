@@ -23,7 +23,11 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::resource('dashboard/products', ProductController::class);
 
     Route::get('/dashboard/all-orders', [OrderController::class, 'allOrders'])->name('admin.orders.all');
+    Route::get('/dashboard/view-order/{id}', [OrderController::class, 'viewOrder'])->name('admin.order.view');
+    Route::post('/dashboard/delete-order/{id}', [OrderController::class, 'deleteOrder'])->name('admin.order.delete');
     Route::get('/dashboard/checked-orders', [OrderController::class, 'checkedOrders'])->name('admin.orders.checked');
+    Route::post('/dashboard/mark-order-prepared/{id}', [OrderController::class, 'prepareOrder'])->name('admin.order.prepare');
+    Route::post('/dashboard/mark-order-done/{id}', [OrderController::class, 'doneOrder'])->name('admin.order.done');
     Route::get('/dashboard/in-preparation-orders', [OrderController::class, 'preparedOrders'])->name('admin.orders.prepared');
 
     Route::get('/dashboard/all-users', [UsersController::class, 'allUsers'])->name('admin.users.all');
@@ -31,4 +35,5 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard/all-merchants', [UsersController::class, 'allMerchants'])->name('admin.users.merchants');
     Route::get('/dashboard/all-dealers', [UsersController::class, 'allDealers'])->name('admin.users.dealers');
 
+    
 });

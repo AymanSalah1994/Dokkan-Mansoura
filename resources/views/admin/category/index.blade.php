@@ -58,18 +58,19 @@
                                 <td>{{ $category->name }} </td>
                                 <td>{{ Str::limit($category->description , 25) }}</td>
                                 <td>
-                                    <img src="{{ Storage::url($category->category_picture) }}" class="w-25">
-                                </td>
-                                <td>
                                 <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Edit</a>
                                 <a href="" class="btn btn-danger"
                                         onclick="event.preventDefault();document.getElementById('{{ $category->id }}').submit();">
                                         Delete</a>
                                 </td>
                                 <form id="{{ $category->id }}" action="{{ route('categories.delete', $category->id) }}"
-                                    {{-- dispay none and still visible inspect --}} method="post" style="display: none">
+                                    {{-- dispay none and still visible inspect --}} method="post" style="display: none" class="">
                                     @csrf
                                 </form>
+                                <td><img src="{{ Storage::url($category->category_picture) }}" style="width: 100%;
+                                    height: 15vw;
+                                    object-fit: cover;"></td>
+
                             </tr>
                         @endforeach
                     </tbody>

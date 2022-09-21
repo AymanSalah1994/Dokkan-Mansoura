@@ -59,12 +59,10 @@
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->selling_price }}</td>
-                                <td >
-                                    <img src="{{ Storage::url($product->product_picture) }}" class="w-25">
-                                </td>
+
                                 <td>
                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary" >Edit</a>
-                            <a href="" class="btn btn-danger" 
+                            <a href="" class="btn btn-danger"
                                     onclick="event.preventDefault();document.getElementById('{{$product->id}}').submit();">
                                     Delete</a>
                                 </td>
@@ -73,6 +71,11 @@
                                     @csrf
                                     @method('DELETE')
                                 </form>
+                                <td >
+                                    <img src="{{ Storage::url($product->product_picture) }}" style="width: 100%;
+                                    height: 15vw;
+                                    object-fit: cover;">
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

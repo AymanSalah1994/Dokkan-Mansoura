@@ -24,12 +24,12 @@
                                 <td>{{ $order->total }}</td>
                                 <td>{{ $order->status }}</td>
                                 <td>
-                                <a href="{{ route('categories.edit', $order->id) }}" class="btn btn-primary">View</a>
+                                <a href="{{ route('admin.order.view', $order->id) }}" class="btn btn-primary">View</a>
                                 <a href="" class="btn btn-danger"
                                         onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
                                         Delete</a>
                                 </td>
-                                <form id="{{ $order->id }}" action="{{ route('categories.delete', $order->id) }}"
+                                <form id="{{ $order->id }}" action="{{ route('admin.order.delete', $order->id) }}"
                                     {{-- dispay none and still visible inspect --}} method="post" style="display: none">
                                     @csrf
                                 </form>

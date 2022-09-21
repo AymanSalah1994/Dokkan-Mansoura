@@ -80,10 +80,10 @@ class OrderController extends Controller
         $order_items = CartItem::where('order_id', $order->id)->get();
         foreach ($order_items as $item) {
             $cartItem  = CartItem::find($item->id);
-            $cartItem->status = '4';
+            $cartItem->status = '3';
             $cartItem->save();
         }
-        $order->status  = '4';
+        $order->status  = '3';
         $order->save();
         return redirect()->route('orders.all')->with('status', 'Order is Cancelled');
     }
