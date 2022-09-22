@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function index(){
+        // TODO : 
+        // Order Them By Newest/Lates First  ;
         $allProducts = Product::all() ;
         return view('customer.store.search' , compact('allProducts')) ;
     }

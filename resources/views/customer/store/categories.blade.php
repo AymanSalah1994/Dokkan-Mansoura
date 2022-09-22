@@ -4,8 +4,8 @@
 @endsection
 
 @section('content')
-<div class="divider" style="height: 50px">
-</div>
+    <div class="divider" style="height: 50px">
+    </div>
     <div class="py-5">
         <div class="container">
             <br>
@@ -13,7 +13,7 @@
             <hr>
             <div class="row gy-5">
                 @foreach ($allCategories as $category)
-                {{-- overflow-auto --}}
+                    {{-- overflow-auto --}}
                     <div class="col-md-3">
                         @include('layouts.store.storeparts.category-card')
                     </div>

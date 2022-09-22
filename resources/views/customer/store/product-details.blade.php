@@ -33,6 +33,14 @@
                         <hr>
                         <label for="" class="me-5">Original Price : <s>{{ $product->original_price }}</s></label>
                         <label for="" class="fw-bold">Selling price :{{ $product->selling_price }}</label>
+                        <div class="rating">
+                        <span>5 Ratings :</span>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                        </div>
                         <br>
                         <p>
                             {{ $product->description }}
@@ -70,6 +78,20 @@
                         <div>
                             <h3>Buyer: </h3>
                         </div>
+                    </div>
+                </div>
+                <div class="rating-css">
+                    <div class="star-icon ">
+                        <input type="radio" value="1" name="product_rating" checked id="rating1">
+                        <label for="rating1" class="fa fa-star"></label>
+                        <input type="radio" value="2" name="product_rating" id="rating2">
+                        <label for="rating2" class="fa fa-star"></label>
+                        <input type="radio" value="3" name="product_rating" id="rating3">
+                        <label for="rating3" class="fa fa-star"></label>
+                        <input type="radio" value="4" name="product_rating" id="rating4">
+                        <label for="rating4" class="fa fa-star"></label>
+                        <input type="radio" value="5" name="product_rating" id="rating5">
+                        <label for="rating5" class="fa fa-star"></label>
                     </div>
                 </div>
             </div>
