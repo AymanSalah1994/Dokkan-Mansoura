@@ -26,7 +26,11 @@ class CartController extends Controller
                 ]);
             } else {
                 $cartItemData = $request->handleRequest();
-                CartItem::create($cartItemData);
+
+                $cartItem = CartItem::create($cartItemData);
+                $cartItem->owner_id  = $cartItem->product->user_id ;
+                $cartItem->save() ;
+
                 $request->updateTotalOrder($cartItemData['order_id']);
                 // If there is an Error , Laravel Will send it Automatically to the Ajax , We
                 // Need to handle it from there "From the View "

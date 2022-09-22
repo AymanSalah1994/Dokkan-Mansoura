@@ -4,6 +4,7 @@ use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CountingController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\ProfileController;
+use App\Http\Controllers\Customer\Store\SearchController;
 use App\Http\Controllers\Customer\Store\StoreController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +37,5 @@ Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->na
 // This Cart Count is For Counting in the NavBar  ;
 Route::get('/store/cart-count', [CountingController::class, 'cartCount'])->name('cart.counter');
 Route::get('/store/wish-list-count', [CountingController::class, 'wishListCount'])->name('wish.list.counter');
+
+Route::get('/store/search' , [SearchController::class , 'index'])->name('store.search');

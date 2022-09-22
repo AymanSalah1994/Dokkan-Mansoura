@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
     protected $table = "products";
     protected $fillable = [
-        'category_id' , 'user_id' , 
+        'category_id' , 'user_id' ,
         'name', 'small_description', 'description', 'original_price',
         'selling_price', 'product_picture', 'quantity', 'tax', 'status',
         'trending', 'meta_title', 'meta_description', 'meta_keywords'
@@ -18,6 +18,7 @@ class Product extends Model
 
     public function user()
     {
+        // user_id = Owner_id 
         return $this->belongsTo(User::class);
     }
 

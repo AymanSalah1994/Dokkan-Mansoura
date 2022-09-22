@@ -19,6 +19,9 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->onDelete('cascade') ;
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            
+            $table->foreign('owner_id')->references('user_id')->on('prodcuts');
+            // $table->bigInteger('owner_id') ;
         /*
             0 -> Unckecked
             1 -> Checked

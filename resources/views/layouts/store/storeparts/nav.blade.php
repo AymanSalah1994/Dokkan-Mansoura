@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="{{ asset('images/logo.png')}}" width="30" height="30" alt="">
-          </a>
+            <img src="{{ asset('images/logo.png') }}" width="30" height="30" alt="">
+        </a>
         <a class="navbar-brand" href="{{ route('store.index') }}">Dokkan ELMansoura</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
                     <a class="nav-link" href="{{ route('store.categories') }}">Merchants</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.categories') }}">SEARCH </a>
+                    <a class="nav-link" href="{{ route('store.search') }}">SEARCH</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('store.categories') }}">Services</a>

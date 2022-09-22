@@ -14,7 +14,10 @@ class CartItem extends Model
         'quantity',
         'status',
         'product_id',
-        'order_id'
+        'order_id' ,
+        
+        'owner_id'
+        // Owner_id = $cartItem->product->user_id
     ];
     public function order()
     {
