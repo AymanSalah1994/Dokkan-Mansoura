@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Customer\Store;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Review;
+use Illuminate\Support\Facades\Request;
 
 class StoreController extends Controller
 {
@@ -35,7 +37,17 @@ class StoreController extends Controller
 
     public function productDetails($id)
     {
+        $user = Request::user() ;
+        $average_rating = Review::avg('rating_stars') ;
+        $average_rating = round($average_rating) ;
+        if($user) {
+            $user_review = Review::where('product_id' ,$id )->where('user_id',$user->id)->first() ;
+        }
+        else {
+            $user_review = false  ; 
+        }
         $product = Product::findOrFail($id);
-        return view('customer.store.product-details' , compact('product'));
+        // dd($user_review) ;
+        return view('customer.store.product-details' , compact(['product','average_rating','user_review']));
     }
 }

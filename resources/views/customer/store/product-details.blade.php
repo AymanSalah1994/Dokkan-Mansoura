@@ -15,21 +15,45 @@
                     @csrf
                     <input type="hidden" value="{{ $product->id }}" name="review_product_id">
                     <div class="modal-body">
-                        <div class="rating-css">
-                            <div class="star-icon ">
-                                <input type="radio" value="1" name="product_rating" id="rating1">
-                                <label for="rating1" class="fa fa-star"></label>
-                                <input type="radio" value="2" name="product_rating" id="rating2">
-                                <label for="rating2" class="fa fa-star"></label>
-                                <input type="radio" value="3" name="product_rating" id="rating3">
-                                <label for="rating3" class="fa fa-star"></label>
-                                <input type="radio" value="4" name="product_rating" id="rating4">
-                                <label for="rating4" class="fa fa-star"></label>
-                                <input type="radio" value="5" name="product_rating" checked id="rating5">
-                                <label for="rating5" class="fa fa-star"></label>
+                        {{-- $user_review --}}
+                        @if ($user_review)
+                            <div class="rating-css">
+                                <div class="star-icon ">
+                                    <input type="radio" value="1" name="product_rating" id="rating1"
+                                        {{ $user_review->rating_stars == 1 ? 'checked' : '' }}>
+                                    <label for="rating1" class="fa fa-star"></label>
+                                    <input type="radio" value="2" name="product_rating" id="rating2"
+                                        {{ $user_review->rating_stars == 2 ? 'checked' : '' }}>
+                                    <label for="rating2" class="fa fa-star"></label>
+                                    <input type="radio" value="3" name="product_rating" id="rating3"
+                                        {{ $user_review->rating_stars == 3 ? 'checked' : '' }}>
+                                    <label for="rating3" class="fa fa-star"></label>
+                                    <input type="radio" value="4" name="product_rating" id="rating4"
+                                        {{ $user_review->rating_stars == 4 ? 'checked' : '' }}>
+                                    <label for="rating4" class="fa fa-star"></label>
+                                    <input type="radio" value="5" name="product_rating" id="rating5"
+                                        {{ $user_review->rating_stars == 5 ? 'checked' : '' }}>
+                                    <label for="rating5" class="fa fa-star"></label>
+                                </div>
                             </div>
-                        </div>
-                        <textarea name="rating_text" style="min-width: 100%" rows="7"></textarea>
+                            <textarea name="rating_text" style="min-width: 100%" rows="7">{{ $user_review->rating_text }}</textarea>
+                        @else
+                            <div class="rating-css">
+                                <div class="star-icon ">
+                                    <input type="radio" value="1" name="product_rating" id="rating1">
+                                    <label for="rating1" class="fa fa-star"></label>
+                                    <input type="radio" value="2" name="product_rating" id="rating2">
+                                    <label for="rating2" class="fa fa-star"></label>
+                                    <input type="radio" value="3" name="product_rating" id="rating3">
+                                    <label for="rating3" class="fa fa-star"></label>
+                                    <input type="radio" value="4" name="product_rating" id="rating4">
+                                    <label for="rating4" class="fa fa-star"></label>
+                                    <input type="radio" value="5" name="product_rating" checked id="rating5">
+                                    <label for="rating5" class="fa fa-star"></label>
+                                </div>
+                            </div>
+                            <textarea name="rating_text" style="min-width: 100%" rows="7"></textarea>
+                        @endif
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -70,15 +94,17 @@
                             class="float-end badge bg-danger badge-info">{{ $product->trending == '1' ? 'Trending' : '' }}</label>
                         <br>
                         <hr>
-                        <label for="" class="me-5">Original Price : <s>{{ $product->original_price }}</s></label>
+                        <label for="" class="me-5">Original Price :
+                            <s>{{ $product->original_price }}</s></label>
                         <label for="" class="fw-bold">Selling price :{{ $product->selling_price }}</label>
                         <div class="rating">
-                            <span>5 Ratings :</span>
-                            <i class="fa fa-star checked"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                            <span>{{ $product->reviews()->count() }} Ratings :</span>
+                            <i class="fa fa-star {{ $average_rating >= 1 ? 'checked' : '' }}"></i>
+                            <i class="fa fa-star {{ $average_rating >= 2 ? 'checked' : '' }}"></i>
+                            <i class="fa fa-star {{ $average_rating >= 3 ? 'checked' : '' }}"></i>
+                            <i class="fa fa-star {{ $average_rating >= 4 ? 'checked' : '' }}"></i>
+                            <i class="fa fa-star {{ $average_rating >= 5 ? 'checked' : '' }}"></i>
+                            <span>{{ $average_rating }} of 5 </span>
                         </div>
                         <br>
                         <p>
@@ -129,7 +155,38 @@
         </div>
     </div>
     <br>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/m4-lfUHe1vk"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="col-md-7">
+                <h4>-----Reviews-------</h4>
+                @foreach ($product->reviews as $review)
+                    <div class="container">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $review->user->first_name }}</h5>
+                                <div class="rating">
+                                    <i class="fa fa-star {{ $review->rating_stars >= 1 ? 'checked' : '' }}"></i>
+                                    <i class="fa fa-star {{ $review->rating_stars >= 2 ? 'checked' : '' }}"></i>
+                                    <i class="fa fa-star {{ $review->rating_stars >= 3 ? 'checked' : '' }}"></i>
+                                    <i class="fa fa-star {{ $review->rating_stars >= 4 ? 'checked' : '' }}"></i>
+                                    <i class="fa fa-star {{ $review->rating_stars >= 5 ? 'checked' : '' }}"></i>
+                                </div>
+                                <p class="card-text">{{ $review->rating_text }}</p>
+                                <p class="card-text"><small class="text-muted">{{ $review->updated_at }}</small></p>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -144,11 +201,11 @@
         </script>
     @endif
     @if ($message = session('status'))
-    <script>
-        Swal.fire({
-            text: '{{ $message }}',
-            footer: '<a href="">Why do I have this issue?</a>'
-        })
-    </script>
-@endif
+        <script>
+            Swal.fire({
+                text: '{{ $message }}',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+        </script>
+    @endif
 @endsection
