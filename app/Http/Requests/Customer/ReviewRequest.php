@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Customer;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -15,14 +15,16 @@ class ReviewRequest extends FormRequest
     {
         return [
             // user_id
+            // Below are Names For HTML elements in the Form and Their Validation RUles
             'product_id' => 'required|exists:products,id',
-            'rating_stars' => 'required|max:5,min:1|',
+            'product_rating' => 'required|max:5,min:1|', // Radio ? 
             'rating_text' => 'nullable|string|max:255'
         ];
     }
 
     public function handleReuqest() {
         $all_data = $this->validated() ;
-        
+        $user = $this->user() ; // This Means the Reuqest Instanciated
+
     }
 }

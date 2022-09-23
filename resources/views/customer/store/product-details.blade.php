@@ -13,6 +13,7 @@
                 </div>
                 <form action="{{ route('review.submit') }}" method="post">
                     @csrf
+                    <input type="hidden" name="review_product_id" vlaue={{ $product->id }}>
                     <div class="modal-body">
                         <div class="rating-css">
                             <div class="star-icon ">
@@ -28,7 +29,7 @@
                                 <label for="rating5" class="fa fa-star"></label>
                             </div>
                         </div>
-                        <textarea name="" id="" style="min-width: 100%" rows="7"></textarea>
+                        <textarea name="rating_text" id="" style="min-width: 100%" rows="7"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -133,6 +134,16 @@
 
 @section('scripts')
     @if ($message = session('status-error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '{{ $message }}',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+        </script>
+    @endif
+    @if ($message = session('status'))
         <script>
             Swal.fire({
                 icon: 'error',
