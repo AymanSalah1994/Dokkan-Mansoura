@@ -11,9 +11,9 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('review.submit') }}" method="post">
+                <form action="{{ route('review.submit') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="review_product_id" vlaue={{ $product->id }}>
+                    <input type="hidden" value="{{ $product->id }}" name="review_product_id">
                     <div class="modal-body">
                         <div class="rating-css">
                             <div class="star-icon ">
@@ -25,11 +25,11 @@
                                 <label for="rating3" class="fa fa-star"></label>
                                 <input type="radio" value="4" name="product_rating" id="rating4">
                                 <label for="rating4" class="fa fa-star"></label>
-                                <input type="radio" value="5" name="product_rating" id="rating5">
+                                <input type="radio" value="5" name="product_rating" checked id="rating5">
                                 <label for="rating5" class="fa fa-star"></label>
                             </div>
                         </div>
-                        <textarea name="rating_text" id="" style="min-width: 100%" rows="7"></textarea>
+                        <textarea name="rating_text" style="min-width: 100%" rows="7"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -144,13 +144,11 @@
         </script>
     @endif
     @if ($message = session('status'))
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: '{{ $message }}',
-                footer: '<a href="">Why do I have this issue?</a>'
-            })
-        </script>
-    @endif
+    <script>
+        Swal.fire({
+            text: '{{ $message }}',
+            footer: '<a href="">Why do I have this issue?</a>'
+        })
+    </script>
+@endif
 @endsection
