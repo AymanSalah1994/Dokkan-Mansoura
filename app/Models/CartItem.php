@@ -15,7 +15,7 @@ class CartItem extends Model
         'status',
         'product_id',
         'order_id' ,
-        
+
         'owner_id'
         // Owner_id = $cartItem->product->user_id
     ];
@@ -26,5 +26,8 @@ class CartItem extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+    public function user() {
+        return $this->belongsTo(User::class) ; 
     }
 }

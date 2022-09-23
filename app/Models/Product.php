@@ -18,12 +18,16 @@ class Product extends Model
 
     public function user()
     {
-        // user_id = Owner_id 
+        // user_id = Owner_id
         return $this->belongsTo(User::class);
     }
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function reviews(){
+        return $this->hasMany(Review::class) ; 
     }
 }

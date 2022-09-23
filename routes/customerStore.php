@@ -6,6 +6,7 @@ use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Customer\Store\SearchController;
 use App\Http\Controllers\Customer\Store\StoreController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth']], function () {
@@ -25,6 +26,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('store/cancel-order', [OrderController::class, 'cancelOrder'])->name('order.cancel');
     Route::post('store/return-order-to-cart', [OrderController::class, 'returnOrderToCart'])->name('return.order.to.cart');
+
+
 });
 
 Route::get('/', [StoreController::class, 'index'])->name('store.index');
@@ -38,4 +41,5 @@ Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->na
 Route::get('/store/cart-count', [CountingController::class, 'cartCount'])->name('cart.counter');
 Route::get('/store/wish-list-count', [CountingController::class, 'wishListCount'])->name('wish.list.counter');
 
-Route::get('/store/search' , [SearchController::class , 'index'])->name('store.search');
+Route::get('/store/search', [SearchController::class, 'index'])->name('store.search');
+Route::post('/store/review/submit', [ReviewController::class, 'submitReview'])->name('review.submit');
