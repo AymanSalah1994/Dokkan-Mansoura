@@ -8,40 +8,54 @@
     @include('layouts.dividers.divider-medium')
     <section class="search-sec">
         <div class="container">
-            <form action="#" method="post" novalidate="novalidate">
+            <form action="" method="GET">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                                <input type="text" class="form-control search-slt" placeholder="Enter Drop City">
+                                <input type="text" class="form-control search-slt" name="search_word"
+                                    value="{{ request('search_word') }}">
+
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+                                <input type="number" class="form-control search-slt" placeholder="minimum"
+                                    name="minimum_price" value="{{ request('minimum_price') }}">
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+                                <input type="number" class="form-control search-slt" placeholder="maximum"
+                                    name="maximum_price" value="{{ request('maximum_price') }}">
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                                <input type="text" class="form-control search-slt" placeholder="Enter Drop City">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <select class="search-slt" id="exampleFormControlSelect1">
-                                    <option>Select Drop City</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <select class="search-slt" id="exampleFormControlSelect1">
-                                    <option>Select Vehicle</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
-                                    <option>Example one</option>
+                                <select class="search-slt" id="exampleFormControlSelect1" name="order_by">
+                                    <option value="">Order By </option>
+                                    <option value="LtoH" {{ request('order_by') == 'LtoH' ? 'selected' : '' }}>
+                                        Lowest to Highest</option>
+                                    <option value="HtoL" {{ request('order_by') == 'HtoL' ? 'selected' : '' }}>
+                                        Highest To lowest</option>
                                 </select>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                                <button type="button" class="btn btn-primary wrn-btn">Search</button>
+                                <select class="search-slt" id="exampleFormControlSelect1" name="category">
+                                    <option value="">Select Category</option>
+                                    @foreach ($all_categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ request('category') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                                <select class="search-slt" id="exampleFormControlSelect1" name="merchant">
+                                    <option value="">Select Merchant</option>
+                                    @foreach ($all_merchants as $merchant)
+                                        <option value="{{ $merchant->id }}"
+                                            {{ request('merchant') == $merchant->id ? 'selected' : '' }}>
+                                            {{ $merchant->first_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                                <button type="submit" class="btn btn-primary wrn-btn">Search</button>
                             </div>
                         </div>
                     </div>
@@ -67,15 +81,18 @@
                                     <a href="{{ route('product.details', $product->id) }}">
                                         <h5 class="card-title">{{ $product->name }}</h5>
                                     </a>
-                                    <p class="card-text">{{ Str::limit($product->description , $limit=50,$end="...") }}</p>
+                                    <p class="card-text">{{ Str::limit($product->description, $limit = 50, $end = '...') }}
+                                    </p>
                                     <p class="card-text">
                                         <small class="text-muted">
                                             Price : {{ $product->selling_price }}
-                                        </small></p>
-                                        <p class="card-text">
-                                            <small class="text-muted">
-                                                Buyer : {{ $product->user_id }}
-                                            </small></p>
+                                        </small>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            Buyer : {{ $product->user_id }}
+                                        </small>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -88,5 +105,7 @@
 @endsection
 
 @section('scripts')
-    <script></script>
+    <script>
+        // Here we will Make it Refresh Once Search Criteria Changes  ;
+    </script>
 @endsection
