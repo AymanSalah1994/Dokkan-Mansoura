@@ -3,13 +3,23 @@
         <a class="navbar-brand" href="#">
             <img src="{{ asset('images/logo.png') }}" width="30" height="30" alt="">
         </a>
-        <a class="navbar-brand" href="{{ route('store.index') }}">Dokkan ELMansoura</a>
+        <a class="navbar-brand" href="{{ route('store.index') }}">{{ __('Dokkan ELMansoura') }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="true">
+                        Lang/اللغة
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('set.locale','ar') }}">العربية</a></li>
+                        <li><a class="dropdown-item" href="{{ route('set.locale','en') }}">English</a></li>
+                    </ul>
+                </li>
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
