@@ -26,8 +26,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('store/cancel-order', [OrderController::class, 'cancelOrder'])->name('order.cancel');
     Route::post('store/return-order-to-cart', [OrderController::class, 'returnOrderToCart'])->name('return.order.to.cart');
-
-
 });
 
 Route::get('/', [StoreController::class, 'index'])->name('store.index');
@@ -43,3 +41,8 @@ Route::get('/store/wish-list-count', [CountingController::class, 'wishListCount'
 
 Route::get('/store/search', [SearchController::class, 'index'])->name('store.search');
 Route::post('/store/review/submit', [ReviewController::class, 'submitReview'])->name('review.submit');
+
+
+Route::get('/store/merchants/all', [StoreController::class, 'allMerchants'])->name('merchants.all');
+Route::get('/store/merchant/info/{id}', [StoreController::class, 'merchantDetails'])->name('merchant.details');
+Route::get('/store/merchant/products/{id}', [StoreController::class, 'merchantProducts'])->name('merchant.products');

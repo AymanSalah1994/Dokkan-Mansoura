@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- CSS only -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -28,6 +29,7 @@
     <link href="{{ asset('store_assets/css/owly.css') }}" rel="stylesheet" />
     <link href="{{ asset('store_assets/css/search.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('store_assets/css/start-rating.css') }}">
+    <link rel="stylesheet" href="{{ asset('store_assets/css/merchant-card.css') }}">
 
 </head>
 

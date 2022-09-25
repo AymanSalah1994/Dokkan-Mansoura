@@ -45,7 +45,7 @@
                     <a class="nav-link" href="{{ route('store.categories') }}">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.categories') }}">Merchants</a>
+                    <a class="nav-link" href="{{ route('merchants.all') }}">Merchants</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('store.search') }}">SEARCH</a>

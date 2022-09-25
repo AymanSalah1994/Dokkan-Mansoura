@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Support\Facades\Request;
 
 class StoreController extends Controller
@@ -38,16 +39,27 @@ class StoreController extends Controller
     public function productDetails($id)
     {
         $user = Request::user() ;
-        $average_rating = Review::avg('rating_stars') ;
+        $average_rating = Review::where('product_id',$id)->avg('rating_stars') ;
         $average_rating = round($average_rating) ;
         if($user) {
             $user_review = Review::where('product_id' ,$id )->where('user_id',$user->id)->first() ;
         }
         else {
-            $user_review = false  ; 
+            $user_review = false  ;
         }
         $product = Product::findOrFail($id);
         // dd($user_review) ;
         return view('customer.store.product-details' , compact(['product','average_rating','user_review']));
+    }
+
+    public function allMerchants(){
+        $all_merchants = User::where('role_as' , '2')->get() ;
+        return view('customer.store.all-merchants' , compact('all_merchants')) ;
+    }
+    public function merchantDetails($id){
+        return view('customer.store.merchant-details') ;
+    }
+    public function merchantProducts($id){
+        return view('customer.store.merchant-products') ;
     }
 }
