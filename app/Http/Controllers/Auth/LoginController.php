@@ -101,6 +101,7 @@ class LoginController extends Controller
             $newUser = new User;
             $newUser->first_name = $user->name;
             $newUser->email = $user->email;
+            // $newUser->phone = $user->phone ;
             $newUser->password = $user->id;
             $newUser->google_id = $user->id;
             $newUser->save();
@@ -108,4 +109,5 @@ class LoginController extends Controller
         }
         return redirect()->to('/');
     }
+
 }

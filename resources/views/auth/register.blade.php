@@ -111,12 +111,6 @@
                                 <button class="btn btn-primary btn-block" type="submit">Register</button>
                             </div>
                             <hr>
-                            <div class="row">
-                                <a href="" class="btn btn-primary btn-block">
-                                    <i class="bi bi-facebook"></i>
-                                    Register With Facebook
-                                </a>
-                            </div>
                             <br>
                             <div class="row">
                                 <a href="{{ route('redirect.google') }}" class="btn btn-danger btn-block">

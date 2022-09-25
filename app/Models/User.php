@@ -22,7 +22,7 @@ class User extends Authenticatable
         'points',
         'password',
         'google_id',
-        'facebook_id'
+        
 
     ];
 

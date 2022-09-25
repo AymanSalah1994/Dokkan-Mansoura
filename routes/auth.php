@@ -11,3 +11,5 @@ Route::get('/auth/google/redirect', [LoginController::class, 'redirectToGoogle']
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('callback.google');
 
 
+Route::get('/auth/facebook/redirect', [LoginController::class, 'redirectToFacebook'])->name('redirect.facebook');
+Route::get('/auth/facebook/callback', [LoginController::class, 'handleFacebookCallback'])->name('callback.facebook');
