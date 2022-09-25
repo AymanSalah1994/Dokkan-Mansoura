@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\RefundOrderController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,4 +41,15 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::post('/dashboard/user/revoke/', [UsersController::class, 'revoke'])->name('admin.user.revoke');
     Route::post('/dashboard/user/delete/', [UsersController::class, 'userDelete'])->name('admin.user.delete');
     Route::get('/dashboard/user/view/{id}', [UsersController::class, 'userView'])->name('admin.user.view');
+
+
+    Route::get('/dashboard/all-done-orders', [RefundOrderController::class, 'allDoneOrders'])->name('orders.done');
+
+    Route::get('/dashboard/all-refunded-orders', [RefundOrderController::class, 'allRefundedOrders'])->name('orders.refunded');
+
+    Route::get('/dashboard/refund-order-details/{id}', [RefundOrderController::class, 'refundOrderDetails'])->name('refund.order.details');
+
+    Route::post('/dashboard/refund-whole-order/{id}', [RefundOrderController::class, 'refundOrder'])->name('refund.whole.order');
+    // In Post Methods you Don't need to pass Data to URLs in you want  ;
+    Route::post('/dashboard/refund-order-item/', [RefundOrderController::class, 'refundItem'])->name('refund.order.item');
 });

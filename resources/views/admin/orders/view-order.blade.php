@@ -56,11 +56,11 @@
                             @break
 
                             @case(3)
-                                Done
+                                Cancelld
                             @break
 
                             @case(4)
-                                Cancelled
+                                Done
                             @break
 
                             @case(4)

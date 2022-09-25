@@ -66,7 +66,7 @@
                                     @case(4)
                                         <td>Done</td>
                                     @break
-                                    @case(4)
+                                    @case(5)
                                         <td>Refunded</td>
                                     @break
                                     @default

@@ -1,20 +1,14 @@
-@extends('layouts.store.main_page')
-@section('title', 'Order Details')
-
-@section('slider')
-@endsection
+@extends('layouts.dashboard.main_panel')
 @section('content')
-    <div class="divider" style="height: 50px">
-    </div>
-    <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
-        <nav aria-label="breadcrumb">
-            <span>TOTAL :{{ $order->total }} </span>
-        </nav>
+    <div class="card">
+        <div class="card-body">
+            <h1> Order : {{ $order->tracking_id }} </h1>
+        </div>
     </div>
     <div class="container">
         <div class="row">
             {{-- Order Details --}}
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         <h3>Order Details</h3>
@@ -36,6 +30,14 @@
                                     <td>{{ $item->product->name }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
+                                    <td>
+                                        <form action="{{ route('refund.order.item') }}" method="POST" style="">
+                                            @csrf
+                                            <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                            <input type="hidden" name="item_id" value="{{ $item->id }}">
+                                            <button type="submit" class="btn btn-warning">Refund this Only</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @php
                                     $total += (int) $item->quantity * (int) $item->product->selling_price;
@@ -69,7 +71,7 @@
                                 Done
                             @break
 
-                            @case(5)
+                            @case(4)
                                 Refunded
                             @break
 
@@ -79,18 +81,27 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                @if ($order->status == '1')
-                    <div class="row">
-                        <a href="">Return TO Cart to Edit</a>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{ route('refund.whole.order', $order->id) }}" method="post" style="">
+                                @csrf
+                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                <button type="submit" class="btn btn-danger">Return the Whole Order</button>
+                            </form>
+                        </div>
                     </div>
-                @endif
+                </div>
             </div>
         </div>
     </div>
-    <br>
 @endsection
 
 @section('scripts')
-
+    @if ($status = session('status'))
+        <script>
+            swal("Done !", "{{ $status }}", "success");
+        </script>
+    @endif
 @endsection
