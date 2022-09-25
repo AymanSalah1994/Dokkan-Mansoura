@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('google_id')->nullable();
+            $table->string('facebook_id')->nullable() ; 
             // $table->string('first_name');
             $table->string('first_name');
             $table->string('last_name')->nullable();
@@ -27,7 +29,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('role_as')->default('0');
-            // 0 Customer , 1 Admin  , 2 Merchant  , 3 Dealer 
+            // 0 Customer , 1 Admin  , 2 Merchant  , 3 Dealer
             $table->rememberToken();
             $table->timestamps();
         });

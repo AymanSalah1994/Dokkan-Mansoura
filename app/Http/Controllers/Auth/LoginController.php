@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException as ValidationValidationException;
+use Socialite as Socialite;
 
 class LoginController extends Controller
 {
@@ -77,5 +79,33 @@ class LoginController extends Controller
         throw ValidationValidationException::withMessages([
             'username' => [trans('auth.failed')],
         ]);
+    }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (\Exception $e) {
+            return redirect('/login');
+        }
+
+        // check if they're an existing user
+        $existingUser = User::where('email', $user->email)->first();
+        if ($existingUser) {
+            auth()->login($existingUser, true);
+        } else {
+            $newUser = new User;
+            $newUser->first_name = $user->name;
+            $newUser->email = $user->email;
+            $newUser->password = $user->id;
+            $newUser->google_id = $user->id;
+            $newUser->save();
+            auth()->login($newUser, true);
+        }
+        return redirect()->to('/');
     }
 }

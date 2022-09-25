@@ -119,7 +119,7 @@
                             </div>
                             <br>
                             <div class="row">
-                                <a href="" class="btn btn-danger btn-block">
+                                <a href="{{ route('redirect.google') }}" class="btn btn-danger btn-block">
                                     <i class="bi bi-google"></i>
                                     Register With Google
                                 </a>
