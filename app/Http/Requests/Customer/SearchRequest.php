@@ -20,7 +20,6 @@ class SearchRequest extends FormRequest
             // 'category' =>'' ,
             // 'merchant' =>'' ,
             // ''
-
         ];
     }
 }
