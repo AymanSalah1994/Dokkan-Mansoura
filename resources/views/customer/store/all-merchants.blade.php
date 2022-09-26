@@ -1,6 +1,6 @@
 {{-- categoryProducts --}}
 @extends('layouts.store.main_page')
-@section('title', 'All Mercjants')
+@section('title', 'All Merchants')
 @section('content')
     <div class="divider" style="height: 50px">
     </div>

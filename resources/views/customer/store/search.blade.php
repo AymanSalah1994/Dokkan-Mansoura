@@ -90,7 +90,7 @@
                                     </p>
                                     <p class="card-text">
                                         <small class="text-muted">
-                                            Buyer : {{ $product->user_id }}
+                                            Buyer : {{ $product->user->first_name }}
                                         </small>
                                     </p>
                                 </div>

@@ -18,17 +18,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             // WHen Showing the Wish list Check the Status of the Product and If it is not Deleted From store
-            //
-            // $table->unsignedInteger('product_id') ;
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('wishlistitems');

@@ -48,9 +48,10 @@
                         <th>ID</th>
                         <th>Category</th>
                         <th>Name</th>
+                        <th>Seller</th>
                         <th>Selling Price</th>
-                        <th>Image</th>
                         <th>Action</th>
+                        <th>Image</th>
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
@@ -58,21 +59,22 @@
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->name }}</td>
+                                <td>{{ $product->user->first_name }}</td>
                                 <td>{{ $product->selling_price }}</td>
-
                                 <td>
-                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary" >Edit</a>
-                            <a href="" class="btn btn-danger"
-                                    onclick="event.preventDefault();document.getElementById('{{$product->id}}').submit();">
-                                    Delete</a>
+                                    <a href="{{ route('products.edit', $product->slug) }}" class="btn btn-primary">Edit</a>
+                                    <a href="" class="btn btn-danger"
+                                        onclick="event.preventDefault();document.getElementById('{{ $product->id }}').submit();">
+                                        Delete</a>
                                 </td>
-                                <form id="{{$product->id}}" action="{{ route('products.destroy', $product->id) }}"
-                                    {{-- dispay none and still visible inspect --}} method="post" style="display: none">
+                                <form id="{{ $product->id }}" action="{{ route('products.destroy', $product->slug) }}"
+                                    method="post" style="display: none">
                                     @csrf
                                     @method('DELETE')
                                 </form>
-                                <td >
-                                    <img src="{{ Storage::url($product->product_picture) }}" style="width: 100%;
+                                <td>
+                                    <img src="{{ Storage::url($product->product_picture) }}"
+                                        style="width: 100%;
                                     height: 15vw;
                                     object-fit: cover;">
                                 </td>

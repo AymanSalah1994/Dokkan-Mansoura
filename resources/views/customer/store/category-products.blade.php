@@ -10,7 +10,7 @@
             <li class="breadcrumb-item"><a href="{{ route('store.index') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('store.categories') }}">Categories</a></li>
             <li class="breadcrumb-item">
-                <a href="{{ route('category.products', $category->id) }}">{{$category->name }}</a>
+                <a href="{{ route('category.products', $category->slug) }}">{{$category->name }}</a>
             </li>
         </ol>
     </nav>

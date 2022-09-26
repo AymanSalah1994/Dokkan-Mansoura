@@ -8,21 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductUpdateRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
         return [
@@ -31,21 +21,19 @@ class ProductUpdateRequest extends FormRequest
             'description' => 'required|string',
             'original_price' => 'required|numeric',
             'selling_price' => 'required|numeric',
-            'tax' => 'nullable|numeric',
-            'quantity' => 'required|numeric',
+            'quantity' => 'nullable|numeric',
             'status' => 'nullable',
             'trending' => 'nullable',
-            'meta_title' => 'required|string|max:255',
-            'meta_description' => 'required|string|max:255',
-            'meta_keywords' => 'required|string|max:255',
+            'keywords' => 'nullable|string|max:255',
             'product_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
+            'secondary_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
             'category_id' => 'required|exists:categories,id'
         ];
     }
 
-    public function handleRequest($product_id)
+    public function handleRequest()
     {
-        $product = Product::find($product_id);
+        $product = Product::find($this->product->id);
         $allRequestData = $this->validated();
         if ($this->hasFile('product_picture')) {
             if ($product['product_picture']) {
@@ -54,6 +42,14 @@ class ProductUpdateRequest extends FormRequest
             $picture = $this->product_picture;
             $fileName = Storage::putFile('product', $picture);
             $allRequestData['product_picture'] = $fileName;
+        }
+        if ($this->hasFile('secondary_picture')) {
+            if ($product['secondary_picture']) {
+                Storage::delete($product['secondary_picture']);
+            }
+            $sec_picture = $this->product_picture;
+            $fileName = Storage::putFile('product', $sec_picture);
+            $allRequestData['secondary_picture'] = $fileName;
         }
         $allRequestData['status'] = ($this->status == 'on' ? '1' : '0');
         $allRequestData['trending'] = ($this->trending == 'on' ? '1' : '0');

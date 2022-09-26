@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
@@ -24,18 +20,13 @@ return new class extends Migration
             4 -> Done
             5 -> ReFunded
             */
-            $table->string('tracking_id' , 7);
-            $table->integer('total');
             $table->tinyInteger('status')->default('0');
+            $table->integer('total');
+            $table->string('tracking_id', 7);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('orders');

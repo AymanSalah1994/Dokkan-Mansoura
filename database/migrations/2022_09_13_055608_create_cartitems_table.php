@@ -6,23 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('cartitems', function (Blueprint $table) {
             $table->id();
-            $table->string('quantity')->default('1');
-            $table->foreignId('product_id')->constrained()->onDelete('cascade') ;
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
-            
-            $table->foreign('owner_id')->references('user_id')->on('prodcuts');
-            // $table->bigInteger('owner_id') ;
-        /*
+            $table->integer('quantity')->default('1');
+            /*
             0 -> Unckecked
             1 -> Checked
             2 -> InPreparation
@@ -30,16 +22,11 @@ return new class extends Migration
             4 -> Done
             5 -> ReFunded
         */
-            $table->tinyInteger('status')->default('0') ;
+            $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('cartitems');

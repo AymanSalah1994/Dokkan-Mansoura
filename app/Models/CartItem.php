@@ -11,13 +11,10 @@ class CartItem extends Model
     protected $table = "cartitems";
     protected $fillable = [
         'user_id',
+        'product_id',
+        'order_id',
         'quantity',
         'status',
-        'product_id',
-        'order_id' ,
-
-        'owner_id'
-        // Owner_id = $cartItem->product->user_id
     ];
     public function order()
     {
@@ -27,7 +24,8 @@ class CartItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
-    public function user() {
-        return $this->belongsTo(User::class) ; 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

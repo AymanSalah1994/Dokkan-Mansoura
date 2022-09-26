@@ -7,37 +7,25 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
         return [
             'name' => 'required|string|max:255',
             'small_description' => 'nullable|string|max:255',
             'description' => 'required|string',
-            'original_price' =>'required|numeric' ,
-            'selling_price' =>'required|numeric' ,
-            'tax' =>'nullable|numeric' ,
-            'quantity' =>'required|numeric' ,
+            'original_price' => 'required|numeric',
+            'selling_price' => 'required|numeric',
+            'quantity' => 'nullable|numeric',
             'status' => 'nullable',
             'trending' => 'nullable',
-            'meta_title' => 'required|string|max:255',
-            'meta_description' => 'required|string|max:255',
-            'meta_keywords' => 'required|string|max:255',
-            'product_picture' => 'nullable|mimes:png,jpeg,bmp,jpg' ,
+            'keywords' => 'nullable|string|max:255',
+            'product_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
+            'secondary_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
             'category_id' => 'required|exists:categories,id'
         ];
     }
@@ -48,12 +36,15 @@ class ProductRequest extends FormRequest
         if ($this->hasFile('product_picture')) {
             $picture = $this->product_picture;
             $fileName = Storage::putFile('product', $picture);
-            // TODO : Change the File RE-Naming
             $allRequestData['product_picture'] = $fileName;
         }
-        $allRequestData['status'] = ($this->status == 'on' ? '1' : '0') ;
-        $allRequestData['trending'] = ($this->trending == 'on' ? '1' : '0')   ;
-        // $allRequestData['category_id'] = '11' ;
+        if ($this->hasFile('secondary_picture')) {
+            $sec_picture = $this->secondary_picture;
+            $fileName = Storage::putFile('product', $sec_picture);
+            $allRequestData['secondary_picture'] = $fileName;
+        }
+        $allRequestData['status'] = ($this->status == 'on' ? '1' : '0');
+        $allRequestData['trending'] = ($this->trending == 'on' ? '1' : '0');
         $allRequestData['user_id'] = $this->user()->id;
         return $allRequestData;
     }

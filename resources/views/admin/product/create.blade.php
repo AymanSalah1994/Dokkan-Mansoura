@@ -2,16 +2,19 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h6>Add new Product</h6>
+            <h3>Create new Product</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="bmd-label-floating">Name</label>
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                            @error('name')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -25,62 +28,67 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Description , SEPERATE WITH comma !!</label>
+                            <label>Description</label>
                             <div class="form-group">
                                 <textarea class="form-control" rows="5" name="description">{{ old('description') }}</textarea>
+                                @error('description')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="bmd-label-floating">original price</label>
                             <input type="number" class="form-control" name="original_price"
                                 value="{{ old('original_price') }}">
+                                @error('original_price')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="bmd-label-floating">selling price</label>
                             <input type="number" class="form-control" name="selling_price"
                                 value="{{ old('selling_price') }}">
+                                @error('selling_price')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="bmd-label-floating">quantity</label>
                             <input type="number" class="form-control" name="quantity" value="{{ old('quantity') }}">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">tax</label>
-                            <input type="number" class="form-control" name="tax" value="{{ old('tax') }}">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">meta_title</label>
-                            <input type="text" class="form-control" name="meta_title" value="{{ old('meta_title') }}">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">meta_keywords</label>
-                            <input type="text" class="form-control" name="meta_keywords"
-                                value="{{ old('meta_keywords') }}">
+                            @error('quantity')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Meta Description</label>
+                            <label class="bmd-label-floating">YouTube URL :</label>
+                            <input type="text" class="form-control" name="" value="">
+                            @error('name')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>keywords,Tags</label>
                             <div class="form-group">
-                                <textarea class="form-control" rows="5" name="meta_description">{{ old('meta_description') }}</textarea>
+                                <textarea class="form-control" rows="5" name="keywords">{{ old('keywords') }}</textarea>
+                                @error('keywords')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
                             </div>
                         </div>
                     </div>
@@ -100,7 +108,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <select name="category_id" id="" class="form-select form-control">
+                            <select name="category_id" class="form-select form-control">
                                 <option value="">Select Category</option>
                                 @foreach ($allCategories as $category)
                                     <option value="{{ $category->id }}"
@@ -109,12 +117,16 @@
                                     </option>
                                 @endforeach
                             </select>
+                            @error('category_id')
+                                <span style="color: red">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class="col-md-12">
                     <input type="file" class="form-group" name="product_picture">
+                    <input type="file" class="form-group" name="secondary_picture">
                 </div>
                 <button type="submit" class="btn btn-primary pull-right">Create Product</button>
             </form>
@@ -123,7 +135,6 @@
 @endsection
 
 @section('scripts')
-    {{-- Error Directives --}}
     @error('name')
         <script>
             swal("!", "{{ $message }}", "warning");

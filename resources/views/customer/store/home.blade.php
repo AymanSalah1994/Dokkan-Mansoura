@@ -10,7 +10,6 @@
             <h2>Featured Products</h2>
             <br>
             <div class="row">
-
                 <div class="owl-carousel owl-theme">
                     @foreach ($featured_products as $product)
                         <div class="item">

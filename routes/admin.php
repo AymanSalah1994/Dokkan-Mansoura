@@ -13,15 +13,51 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
         return view('admin.index');
     })->name('admin.dashboard');
 
-    Route::get('dashboard/categories', [CategoryController::class, 'index'])->name('categories.index');
-    Route::get('dashboard/add-category', [CategoryController::class, 'create'])->name('categories.create');
-    Route::post('dashboard/add-category', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('dashboard/edit-category/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
-    Route::post('dashboard/update-category/{id}', [CategoryController::class, 'update'])->name('categories.update');
-    // TODO : Make the PUT instead of post ?
+    // CATEGORY  - START
+    Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('/dashboard/add-category', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('/dashboard/add-category', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('/dashboard/edit-category/{id}/{slug}', [CategoryController::class, 'edit'])->name('categories.edit');
+    Route::post('/dashboard/update-category/', [CategoryController::class, 'update'])->name('categories.update');
     Route::post('dashboard/delete-category/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
+    // CATEGORY  - END
 
+    // PRODUCT  - START
     Route::resource('dashboard/products', ProductController::class);
+    // PRODUCT  - END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     Route::get('/dashboard/all-orders', [OrderController::class, 'allOrders'])->name('admin.orders.all');
     Route::get('/dashboard/view-order/{id}', [OrderController::class, 'viewOrder'])->name('admin.order.view');
@@ -50,6 +86,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard/refund-order-details/{id}', [RefundOrderController::class, 'refundOrderDetails'])->name('refund.order.details');
 
     Route::post('/dashboard/refund-whole-order/{id}', [RefundOrderController::class, 'refundOrder'])->name('refund.whole.order');
-    // In Post Methods you Don't need to pass Data to URLs in you want  ;
+    // In Post Methods you Don't need to pass Data to URLs if you want  ;
     Route::post('/dashboard/refund-order-item/', [RefundOrderController::class, 'refundItem'])->name('refund.order.item');
 });

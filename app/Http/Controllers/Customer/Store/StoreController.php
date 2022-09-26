@@ -13,8 +13,6 @@ class StoreController extends Controller
 {
     public function index()
     {
-        // TODO : Changing this Main Page
-        // Make a New Folder Outside Layouts and Exntend the Main Page
         $featured_products = Product::where('trending', '1')->take(5)->get();
         $featured_categories = Category::where('popular', '1')->take(5)->get();
         return view('customer.store.home', compact(['featured_products', 'featured_categories']));
@@ -23,43 +21,46 @@ class StoreController extends Controller
     public function categories()
     {
         $allCategories = Category::where('status', '1')->get();
-        // This is to make Sure Only active Category NOT all !
         return view('customer.store.categories', compact('allCategories'));
     }
 
-    public function categoryProducts($id)
+    public function categoryProducts($slug)
     {
-        $category = Category::findOrFail($id);
-
-        // Get Products ONLY that are Availiable
+        $category = Category::where('slug', $slug)->first();
         $categoryProducts = $category->products()->where('status', '1')->get();
         return view('customer.store.category-products', compact(['categoryProducts', 'category']));
     }
 
-    public function productDetails($id)
+    public function productDetails($slug)
     {
-        $user = Request::user() ;
-        $average_rating = Review::where('product_id',$id)->avg('rating_stars') ;
-        $average_rating = round($average_rating) ;
-        if($user) {
-            $user_review = Review::where('product_id' ,$id )->where('user_id',$user->id)->first() ;
+        $user = Request::user();
+        $product = Product::where('slug', $slug)->first();
+        $average_rating = Review::where('product_id', $product->id)->avg('rating_stars');
+        $average_rating = round($average_rating);
+        if ($user) {
+            $user_review = Review::where('product_id', $product->id)->where('user_id', $user->id)->first();
+        } else {
+            $user_review = false;
         }
-        else {
-            $user_review = false  ;
-        }
-        $product = Product::findOrFail($id);
-        // dd($user_review) ;
-        return view('customer.store.product-details' , compact(['product','average_rating','user_review']));
+        return view('customer.store.product-details', compact(['product', 'average_rating', 'user_review']));
     }
 
-    public function allMerchants(){
-        $all_merchants = User::where('role_as' , '2')->get() ;
-        return view('customer.store.all-merchants' , compact('all_merchants')) ;
+    public function allMerchants()
+    {
+        $all_merchants = User::where('role_as', '2')->get();
+        return view('customer.store.all-merchants', compact('all_merchants'));
     }
-    public function merchantDetails($id){
-        return view('customer.store.merchant-details') ;
+
+    public function merchantDetails($slug)
+    {
+        $merchant = User::where('slug', $slug)->first();
+        return view('customer.store.merchant-details', compact('merchant'));
     }
-    public function merchantProducts($id){
-        return view('customer.store.merchant-products') ;
+
+    public function merchantProducts($slug)
+    {
+        $merchant = User::where('slug', $slug)->first();
+        $merchant_products  = Product::where('user_id', $merchant->id)->get();
+        return view('customer.store.merchant-products', compact('merchant_products'));
     }
 }

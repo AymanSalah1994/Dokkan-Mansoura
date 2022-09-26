@@ -17,11 +17,8 @@ class SearchController extends Controller
         $all_merchants   = User::where('role_as', '2')->get();
         $allProducts = Product::LowHigh()->SelectCategory()->SelectMerchant()->SearchWord()->MiniPrice()->MaxPrice()->get();
         $sent_data = ['allProducts', 'all_categories', 'all_merchants'];
-
         // TODO :
         // Order Them By Newest/Lates First  ;
-        // On Product Model we will Make 1 Scope for cats , 1 scope for Merchants , 1 For min price
-        // 1 Scope for Max Price , 1 Scope for cheapers First , 1 scope for Highest first
         return view('customer.store.search', compact($sent_data));
     }
 }

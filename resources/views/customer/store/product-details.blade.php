@@ -2,7 +2,6 @@
 @section('title', $product->name)
 
 
-
 @section('content')
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -13,9 +12,8 @@
                 </div>
                 <form action="{{ route('review.submit') }}" method="POST">
                     @csrf
-                    <input type="hidden" value="{{ $product->id }}" name="review_product_id">
+                    <input type="hidden" value="{{ $product->slug }}" name="review_product_id">
                     <div class="modal-body">
-                        {{-- $user_review --}}
                         @if ($user_review)
                             <div class="rating-css">
                                 <div class="star-icon ">
@@ -60,7 +58,6 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -73,12 +70,14 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('store.index') }}">Home</a></li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('category.products', $product->category->id) }}">{{ $product->category->name }}</a>
+                    <a
+                        href="{{ route('category.products', $product->category->slug) }}">{{ $product->category->name }}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
             </ol>
         </nav>
     </div>
+
     <div class="container">
         <div class="card shadow product_data">
             <div class="card-body">
@@ -95,7 +94,8 @@
                         <br>
                         <hr>
                         <label for="" class="me-5">Original Price :
-                            <s>{{ $product->original_price }}</s></label>
+                            <s>{{ $product->original_price }}</s>
+                        </label>
                         <label for="" class="fw-bold">Selling price :{{ $product->selling_price }}</label>
                         <div class="rating">
                             <span>{{ $product->reviews()->count() }} Ratings :</span>
@@ -107,11 +107,8 @@
                             <span>{{ $average_rating }} of 5 </span>
                         </div>
                         <br>
-                        <p>
-                            {{ $product->description }}
-                        </p>
+                        <p>{{ $product->description }}</p>
                         <hr>
-                        {{-- $procut->quantity > 0 --}}
                         @if ($product->status == '1')
                             <label for="" class="badge bg-success">Available</label>
                         @else
@@ -143,7 +140,7 @@
                             </div>
                         </div>
                         <div>
-                            <h3>Buyer: </h3>
+                            <h3>Buyer: {{ $product->user->first_name }} </h3>
                         </div>
                         <button type="button" class="btn btn-warning float-end rounded-pill" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
@@ -190,7 +187,7 @@
 @endsection
 
 @section('scripts')
-    @if ($message = session('status-error'))
+    @if ($message = session('status-review-error'))
         <script>
             Swal.fire({
                 icon: 'error',

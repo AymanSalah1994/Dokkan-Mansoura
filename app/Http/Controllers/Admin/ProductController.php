@@ -32,20 +32,19 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        //
         //TODO : Remove it From REsource
     }
 
     public function edit(Product $product)
     {
         $allCategories = Category::all();
-        $theProduct = Product::findOrFail($product->id);
+        $theProduct = Product::where('id', $product->id)->where('slug', $product->slug)->first();
         return view('admin.product.edit', compact('theProduct', 'allCategories'));
     }
 
     public function update(ProductUpdateRequest $request, Product $product)
     {
-        $allReuestData  = $request->handleRequest($product->id);
+        $allReuestData  = $request->handleRequest();
         $theProduct  = Product::find($product->id);
         $theProduct->update($allReuestData);
         return redirect()->route('products.index')->with('status', 'Product Updated SuccessFully!');
@@ -53,8 +52,6 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        //  {{-- dispay none and still visible inspect --}}
-        // TODO : Delete Protection
         if ($product['product_picture']) {
             // In Case it Has a Photo
             // Because Photo is Nullable & Can Be Empty

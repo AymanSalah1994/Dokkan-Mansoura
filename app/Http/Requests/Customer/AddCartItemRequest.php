@@ -18,8 +18,7 @@ class AddCartItemRequest extends FormRequest
     {
         return [
             'product_id' => 'required|exists:products,id',
-            'product_quantity' => 'required|numeric'
-            // Order_id , User_id
+            'product_quantity' => 'required|numeric|max:10'
         ];
     }
     public function handleRequest()
@@ -45,7 +44,6 @@ class AddCartItemRequest extends FormRequest
 
     public function updateTotalOrder($order_id)
     {
-
         $or = Order::find($order_id);
         $total = 0;
         foreach ($or->cartItems->all() as $orderItem) {

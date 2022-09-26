@@ -7,32 +7,20 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
+
     public function rules()
     {
         return [
             'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
             'description' => 'required|string',
             'status' => 'nullable',
             'popular' => 'nullable',
-            'meta_title' => 'required|string|max:255',
-            'meta_description' => 'required|string|max:255',
-            'meta_keywords' => 'required|string|max:255',
+            'keywords' => 'string|max:255',
             'category_picture' => 'nullable|mimes:png,jpeg,bmp'
         ];
     }
@@ -45,9 +33,8 @@ class CategoryRequest extends FormRequest
             $fileName = Storage::putFile('category', $picture);
             $allRequestData['category_picture'] = $fileName;
         }
-        $allRequestData['status'] = ($this->status == 'on' ? '1' : '0') ;
-        $allRequestData['popular'] = ($this->popular == 'on' ? '1' : '0')   ;
-
+        $allRequestData['status'] = ($this->status == 'on' ? '1' : '0');
+        $allRequestData['popular'] = ($this->popular == 'on' ? '1' : '0');
         return $allRequestData;
     }
 
@@ -60,12 +47,12 @@ class CategoryRequest extends FormRequest
     //         // 'email' => 'email address'
     //     ] ;
     // }
-     public function messages()
-     {
-         return [
-             // field.validation_Rule => 'msg '
-//             'email.email' =>'The Email you Entered is NOT valid!' ,
-             '*.required' => 'This :attribute Field Can Not be Empty !'
-         ] ;
-     }
+    public function messages()
+    {
+        return [
+            // field.validation_Rule => 'msg '
+            //             'email.email' =>'The Email you Entered is NOT valid!' ,
+            '*.required' => 'This :attribute Field Can Not be Empty !'
+        ];
+    }
 }

@@ -10,6 +10,12 @@ use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth']], function () {
+    // PROFILE
+    Route::get('/profile/view-profile', [ProfileController::class, 'viewProfile'])->name('profile.view');
+    Route::post('/profile/update-profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    // PROFILE _END
+
+
     Route::get('store/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
     Route::post('store/delete-cart-item', [CartController::class, 'deleteCartItem'])->name('cart.item.delete');
     Route::post('store/clear-cart', [CartController::class, 'clearCart'])->name('cart.clear');
@@ -20,29 +26,26 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('store/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order.details');
     Route::get('store/view-wish-list', [CartController::class, 'viewWishList'])->name('wish.list.view');
     Route::post('store/delete-wish-list-item', [CartController::class, 'deleteWishListItem'])->name('wish.list.item.delete');
-
-    Route::get('profile/view-profile', [ProfileController::class, 'viewProfile'])->name('profile.view');
-    Route::post('/profile/update-profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
-
     Route::post('store/cancel-order', [OrderController::class, 'cancelOrder'])->name('order.cancel');
     Route::post('store/return-order-to-cart', [OrderController::class, 'returnOrderToCart'])->name('return.order.to.cart');
 });
 
+// GENERAL ROUTES : StoreController
 Route::get('/', [StoreController::class, 'index'])->name('store.index');
 Route::get('/store/categories', [StoreController::class, 'categories'])->name('store.categories');
-Route::get('/store/products/{id}', [StoreController::class, 'categoryProducts'])->name('category.products');
-Route::get('/store/product/{id}', [StoreController::class, 'productDetails'])->name('product.details');
-// Don't forget to Make a Middleware for this Add-to-Cart Route
-Route::post('/add-to-cart', [CartController::class, 'addCartItem'])->name('cart.add');
-Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->name('wish-list.add');
-// This Cart Count is For Counting in the NavBar  ;
+Route::get('/store/{slug}/products', [StoreController::class, 'categoryProducts'])->name('category.products');
+Route::get('/store/product/{slug}', [StoreController::class, 'productDetails'])->name('product.details');
+Route::get('/store/merchants/all', [StoreController::class, 'allMerchants'])->name('merchants.all');
+Route::get('/store/merchant/info/{slug}', [StoreController::class, 'merchantDetails'])->name('merchant.details');
+Route::get('/store/merchant/{slug}/products', [StoreController::class, 'merchantProducts'])->name('merchant.products');
+// GENERAL ROUTES : StoreController END
+
+// GENERAL ROUTES :
+Route::get('/store/search', [SearchController::class, 'index'])->name('store.search');
 Route::get('/store/cart-count', [CountingController::class, 'cartCount'])->name('cart.counter');
 Route::get('/store/wish-list-count', [CountingController::class, 'wishListCount'])->name('wish.list.counter');
-
-Route::get('/store/search', [SearchController::class, 'index'])->name('store.search');
+Route::post('/add-to-cart', [CartController::class, 'addCartItem'])->name('cart.add');
+Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->name('wish-list.add');
 Route::post('/store/review/submit', [ReviewController::class, 'submitReview'])->name('review.submit');
+// GENERAL ROUTES :END 
 
-
-Route::get('/store/merchants/all', [StoreController::class, 'allMerchants'])->name('merchants.all');
-Route::get('/store/merchant/info/{id}', [StoreController::class, 'merchantDetails'])->name('merchant.details');
-Route::get('/store/merchant/products/{id}', [StoreController::class, 'merchantProducts'])->name('merchant.products');

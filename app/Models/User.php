@@ -7,36 +7,43 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class User extends Authenticatable
 {
+    use Sluggable;
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'first_name',
         'last_name',
-        'phone',
+        'slug',
         'email',
+        'phone',
+        'city',
         'address',
         'wallet',
         'points',
         'password',
         'google_id',
-        
-
+        'facebook_id',
     ];
 
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'first_name'
+            ]
+        ];
+    }
 
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

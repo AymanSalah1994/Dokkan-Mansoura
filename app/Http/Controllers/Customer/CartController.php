@@ -15,27 +15,20 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    //
     public function addCartItem(AddCartItemRequest $request)
     {
         if (Auth::check()) {
-            // TODO : Put this Checking in a Seperate Place
             if (CartItem::where('product_id', $request->product_id)->where('user_id', $request->user()->id)->where('status', '0')->exists()) {
                 return response()->json([
                     'status' => 'Item is Already Added'
                 ]);
             } else {
                 $cartItemData = $request->handleRequest();
-
                 $cartItem = CartItem::create($cartItemData);
-                $cartItem->owner_id  = $cartItem->product->user_id ;
-                $cartItem->save() ;
-
+                $cartItem->save();
                 $request->updateTotalOrder($cartItemData['order_id']);
-                // If there is an Error , Laravel Will send it Automatically to the Ajax , We
-                // Need to handle it from there "From the View "
                 return response()->json([
-                    'status' => 'I got yourack !'
+                    'status' => 'Item is Added !'
                 ]);
             }
         } else {
@@ -48,7 +41,6 @@ class CartController extends Controller
     public function addWishListItem(Request $request)
     {
         if (Auth::check()) {
-            // TODO : Put this Checking in a Seperate Place
             if (WishListItem::where('product_id', $request->product_id)->where('user_id', $request->user()->id)->exists()) {
                 return response()->json([
                     'status' => 'Item is Already Added'
@@ -59,15 +51,17 @@ class CartController extends Controller
                 $wishListItem->product_id = $request->product_id;
                 $wishListItem->save();
                 return response()->json([
-                    'status' => 'I got yourack !'
+                    'status' => 'Item is Added!'
                 ]);
             }
         } else {
             return response()->json([
-                'status' => 'Please Log in First'
+                'status' => 'Please Log in First !'
             ]);
         }
     }
+
+    
     public function viewCart()
     {
         // Get the User Object Holding User Data  :
@@ -103,11 +97,12 @@ class CartController extends Controller
         // TODO : In case something went wrong how to just make One Universal message "sth went wrong" ??
     }
 
-    public function clearCart() {
-        $user = Auth::user() ;
-        CartItem::where('user_id',$user->id)->where('status','0')->delete() ;
-        Order::where('user_id',$user->id)->where('status','0')->delete() ;
-        return redirect()->route('cart.view')->with('status' , 'Cart Cleared !') ;
+    public function clearCart()
+    {
+        $user = Auth::user();
+        CartItem::where('user_id', $user->id)->where('status', '0')->delete();
+        Order::where('user_id', $user->id)->where('status', '0')->delete();
+        return redirect()->route('cart.view')->with('status', 'Cart Cleared !');
     }
     public function updateCartItem(UpdateCartItemRequest $request)
     {

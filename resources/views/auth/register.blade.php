@@ -64,7 +64,7 @@
                                 <div class="col-md-6">
                                     <label for="">City</label>
                                     <input class="form-control  @error('city') is-invalid @enderror" type="text"
-                                        placeholder="" name="city" value="{{ old('city') }}">
+                                        placeholder="" name="city" value="{{ old('city', 'Mansoura') }}">
                                     @error('city')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

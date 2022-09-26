@@ -11,7 +11,6 @@
     </div>
     <div class="container">
         <div class="row">
-            {{-- User Details --}}
             <div class="col-md-7">
                 <form action="{{ route('profile.update') }}" method="POST">
                     @csrf
@@ -24,6 +23,9 @@
                                     <label for="">First Name</label>
                                     <input class="form-control" type="text" name="first_name"
                                         value="{{ old('first_name', $user->first_name) }}">
+                                    @error('first_name')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Last Name</label>
@@ -41,13 +43,15 @@
                                     <label for="">Phone</label>
                                     <input class="form-control" type="text" name="phone"
                                         value="{{ old('phone', $user->phone) }}">
+                                    @error('phone')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="">Address</label>
-                                    <input class="form-control" type="text" name="address"
-                                        value="{{ old('address', $user->address) }}">
+                                    <textarea name="address" class="form-control" width="100%">{{ old('address', $user->address) }}</textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -55,6 +59,9 @@
                                     <label for="">Email</label>
                                     <input class="form-control" type="Email" name="email"
                                         value="{{ old('email', $user->email) }}">
+                                    @error('email')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <br>
@@ -90,5 +97,9 @@
 @endsection
 
 @section('scripts')
-
+    @if ($status = session('status'))
+        <script>
+            swal('{{ $status }}');
+        </script>
+    @endif
 @endsection

@@ -6,7 +6,8 @@
                 <div class="img">
                     <img src="">
                 </div>
-                <h2><a href="{{ route('merchant.details',$merchant->id) }}">{{ $merchant->first_name}} </a><br><span>Laptops</span></h2>
+                <h2><a href="{{ route('merchant.details', $merchant->slug) }}">{{ $merchant->first_name }}
+                    </a><br><span>Laptops</span></h2>
                 <p>Mansoura Company </p>
                 <span>
                     <ul>

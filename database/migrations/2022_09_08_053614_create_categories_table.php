@@ -6,35 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
-            // Custom URL , For SEO Purpose
+            $table->string('slug')->nullable();
             $table->longText('description');
             $table->tinyInteger('status')->default('0');
-            // Status For Either Hidden Or shown in the Site  
             $table->tinyInteger('popular')->default('0');
-            $table->string('meta_title');
-            $table->string('meta_description');
-            $table->string('meta_keywords');
-            $table->string('category_picture')->nullable() ;
+            $table->string('keywords');
+            $table->string('category_picture')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('categories');

@@ -26,7 +26,7 @@
                         <p>Bio : Lorem ipsum dolor sit amet consectetur adipisicing.</p>
                         <p>Address : Lorem ipsum dolor sit amet consectetur adipisicing.</p>
                         <p>Telephone : 01210127127</p>
-                        <p><a href="{{ route('merchant.products',34) }}">All Products</a></p>
+                        <p><a href="{{ route('merchant.products', $merchant->slug) }}">All Products</a></p>
                         <br>
                         <hr>
                         <span> <i class="fa fa-facebook"></i></span>
