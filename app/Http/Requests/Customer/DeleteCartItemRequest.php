@@ -31,7 +31,6 @@ class DeleteCartItemRequest extends FormRequest
 
     public function updateTotalOrder($order_id)
     {
-
         $or = Order::find($order_id);
         $total = 0;
         foreach ($or->cartItems->all() as $orderItem) {

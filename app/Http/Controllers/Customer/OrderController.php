@@ -10,28 +10,18 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    //
     public function checkout()
     {
-        // This is Controller to Check Out the Active Order is Exist  ;
         $user = Auth::user();
-        // TODO :
-        // Better One : If user Has Order with status 0 Get Items of this Order
         $cartItems  = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
-
-        // Delete Out of Stock "Products with status 0  "
         foreach ($cartItems as $item) {
             if ($item->product->status == '0') {
                 $outOfStockItem = CartItem::find($item->id);
                 $outOfStockItem->delete();
             }
         }
-
-
         $cartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
-        return view('customer.orders.checkout', compact([
-            'user', 'cartItems'
-        ]));
+        return view('customer.orders.checkout', compact(['cartItems']));
     }
 
     public function confirmOrder(Request $request)
@@ -39,25 +29,23 @@ class OrderController extends Controller
         $user = Auth::user();
         $order_id = $request->checking_order;
         $order = Order::find($order_id);
-        // //  Check If he Has previous Order with status 1 ?
-        // If so then Alert Him  , Else , Continue to Making the Status 1
         if ($user->orders->where('status', '1')->first()) {
-            return redirect()->route('orders.all')->with('status', 'No you Cant!!!!!!');
-            // Now you are supposed to add a Functionality for "Checked and Pinding
-            // So that a user Can Cancel it Or Add Items to it !
+            return redirect()->route('orders.all')->with('status', 'You already have an Order in Progresess');
         }
-        $order->status = "1";
-        $order->save();
-        $order_cart_items = CartItem::where('order_id', $order_id)->get();
-        foreach ($order_cart_items as $item) {
-            $cartItem = CartItem::find($item->id);
-            $cartItem->status = "1";
-            $cartItem->save();
+        if ($order) {
+            $order->status = "1";
+            $order->save();
+            $order_cart_items = CartItem::where('order_id', $order_id)->get();
+            foreach ($order_cart_items as $item) {
+                $item->status = "1";
+                $item->save();
+            }
+            return redirect()->route('orders.all')->with('status', 'Order and its Items are Updated!');
         }
-
-        return redirect()->route('orders.all')->with('status', 'Order and its Items are Updated!');
+        else {
+            return redirect()->route('orders.all')->with('status', 'SomeThing Wrong , Stop inspecting');
+        }
     }
-
 
     public function allOrders()
     {
@@ -66,17 +54,17 @@ class OrderController extends Controller
         return view('customer.orders.all-orders', compact('orders'));
     }
 
-    public function orderDetails($id)
+    public function orderDetails($tracking_id)
     {
-        // get the Order "With Cart items "
-        $order = Order::find($id);
-        // Return a View Showing All Details about the Cart item
+        $user = Auth::user() ;
+        $order = Order::where('user_id' ,$user->id)->where('tracking_id',$tracking_id)->first();
         return view('customer.orders.order-details', compact('order'));
     }
 
     public function cancelOrder(Request $request)
     {
-        $order = Order::find($request->order);
+        $user = Auth::user() ;
+        $order = Order::where('user_id' ,$user->id)->where('tracking_id',$request->tracking_id)->first();
         $order_items = CartItem::where('order_id', $order->id)->get();
         foreach ($order_items as $item) {
             $cartItem  = CartItem::find($item->id);
@@ -90,9 +78,9 @@ class OrderController extends Controller
 
     public function returnOrderToCart(Request $request)
     {
-        // How To Check that the User Has This Order ?
-        $returned_order  = Order::where('user_id', Auth::user()->id)->where('id', $request->order)->first();
-        $active_order = Order::where('user_id', Auth::user()->id)->where('status', '0')->first();
+        $user = Auth::user() ;
+        $returned_order  = Order::where('user_id', $user->id)->where('tracking_id', $request->tracking_id)->first();
+        $active_order = Order::where('user_id', $user->id)->where('status', '0')->first();
 
         if ($active_order) {
             $returned_items  = $returned_order->cartItems;
@@ -100,6 +88,7 @@ class OrderController extends Controller
             foreach ($returned_items as $item) {
                 if ($active_items->contains('product_id', $item->product_id)) {
                     $item->delete();
+                    // So , we Keep same Items But FROM the new Cart
                 } else {
                     $item->status = '0';
                     $item->order_id = $active_order->id;
@@ -108,7 +97,7 @@ class OrderController extends Controller
             }
             $returned_order->delete();
             self::updateTotalOrder($active_order->id);
-            return redirect()->route('orders.all')->with('status', 'Order is Returned');
+            return redirect()->route('orders.all')->with('status', 'Order is Returned to Cart');
         } else {
             $returned_items  = $returned_order->cartItems;
             foreach ($returned_items as $item) {
@@ -121,10 +110,9 @@ class OrderController extends Controller
             return redirect()->route('orders.all')->with('status', 'Order is Returned');
         }
     }
+    
     public static function updateTotalOrder($order_id)
     {
-        // This is a Helper Function For Calculating the Total For Order
-        // WHenver an Update Happens
         $or = Order::find($order_id);
         $total = 0;
         foreach ($or->cartItems->all() as $orderItem) {

@@ -5,14 +5,9 @@
     @include('customer.store.toast')
 @endsection
 @section('content')
-    <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
-        <nav aria-label="breadcrumb">
-            <span>TOTAL : </span>
-        </nav>
-    </div>
+    @include('layouts.dividers.divider-medium')
     <div class="container">
         <div class="row">
-            {{-- User Details --}}
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-body">
@@ -21,33 +16,39 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">First Name</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->first_name }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{ request()->user()->first_name }}"
+                                    readonly>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Last Name</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->last_name }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{ request()->user()->last_name }}"
+                                    readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">City</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->city }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{ request()->user()->city }}"
+                                    readonly>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Phone</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->phone }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{ request()->user()->phone }}"
+                                    readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="">Address</label>
-                                <input class="form-control" type="text" placeholder="{{ $user->address }}" readonly>
+                                <input class="form-control" type="text" placeholder="{{ request()->user()->address }}"
+                                    readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="">Email</label>
-                                <input class="form-control" type="Email" placeholder="{{ $user->email }}" readonly>
+                                <input class="form-control" type="Email" placeholder="{{ request()->user()->email }}"
+                                    readonly>
                             </div>
                         </div>
                         <br>
@@ -66,7 +67,6 @@
                         <h3>Order Details</h3>
                     </div>
                     <div class="card-body">
-
                         {{-- Don't Forget to Put the Order iD --}}
                         <table class="table table-hover">
                             <thead>
@@ -97,7 +97,6 @@
                         {{-- Make it a Button for Form , Form to change order status --}}
                     </div>
                     <div class="card-footer">
-
                         {{-- order.confirm --}}
                         <div class="row">
                             <form action="{{ route('order.confirm') }}" class="row" method="POST">

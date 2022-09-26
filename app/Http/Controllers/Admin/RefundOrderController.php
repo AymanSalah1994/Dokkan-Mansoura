@@ -9,17 +9,6 @@ use Illuminate\Http\Request;
 
 class RefundOrderController extends Controller
 {
-    public function allDoneOrders()
-    {
-        $alldoneOrders = Order::where('status', '4')->orderBy('updated_at', 'DESC')->get();
-        return view('admin.orders.all-done-orders', compact('alldoneOrders'));
-    }
-    public function allRefundedOrders()
-    {
-        $allRefundedOrders = Order::where('status', '5')->orderBy('updated_at', 'DESC')->get();
-        return view('admin.orders.all-refunded-orders', compact('allRefundedOrders'));
-    }
-
     public function refundOrderDetails($id)
     {
         $order = Order::find($id);
@@ -43,8 +32,8 @@ class RefundOrderController extends Controller
         $order = Order::find($request->order_id);
         $item  = CartItem::find($request->item_id);
         $item->status = '5';
-        $new_Total =  $order->total - (int) $item->product->selling_price;
         $item->save();
+        $new_Total =  $order->total - ((int) $item->product->selling_price * $item->quantity );
         $order->total = $new_Total;
         $order->save();
         return redirect()->route('orders.done')->with('status', 'Item is Returned Back !');

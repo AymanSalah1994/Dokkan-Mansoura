@@ -1,6 +1,6 @@
 <div class="sidebar" data-color="purple" data-background-color="white" data-image="">
     <div class="logo">
-        <a href="#" class="simple-text logo-normal">
+        <a href="{{ route('store.index') }}" class="simple-text logo-normal">
             Mansoura Shop
         </a>
     </div>
@@ -46,6 +46,18 @@
                             <p>In Preparation Orders</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ Request::is('dashboard/all-done-orders') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('orders.done') }}">
+                            <i class="material-icons">favorite</i>
+                            <p>All Done Orders</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::is('dashboard/all-refunded-orders') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('orders.refunded') }}">
+                            <i class="material-icons">favorite</i>
+                            <p>Refunded Orders</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
 
@@ -76,30 +88,6 @@
                     </li>
                 </ul>
             </li>
-
-
-            {{-- Element 6 --}}
-            <li class="nav-item {{ Request::is('dashboard/all-done-orders') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('orders.done') }}">
-                    <i class="material-icons">favorite</i>
-                    <p>All Done Orders</p>
-                </a>
-                <ul style="list-style-type: none; ">
-                    <li class="nav-item {{ Request::is('dashboard/all-refunded-orders') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('orders.refunded') }}">
-                            <i class="material-icons">favorite</i>
-                            <p>Refunded Orders</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons">favorite</i>
-                            <p>Extra URL </p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
         </ul>
     </div>
 </div>

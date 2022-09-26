@@ -25,27 +25,15 @@ Route::group(['middleware' => ['auth']], function () {
     //CART & WISH LIST : CART CONTROLLER END
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    // ORDER : ORDER CONTROLLER :
     Route::get('store/cart-checkout', [OrderController::class, 'checkout'])->name('cart.checkout');
     Route::post('store/order-confirm', [OrderController::class, 'confirmOrder'])->name('order.confirm');
     Route::get('store/all-orders', [OrderController::class, 'allOrders'])->name('orders.all');
-    Route::get('store/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order.details');
-
+    Route::get('store/order-details/{tracking_id}', [OrderController::class, 'orderDetails'])->name('order.details');
     Route::post('store/cancel-order', [OrderController::class, 'cancelOrder'])->name('order.cancel');
     Route::post('store/return-order-to-cart', [OrderController::class, 'returnOrderToCart'])->name('return.order.to.cart');
+    // ORDER :ORDER CONTROLLER END  ;
 });
-
 
 
 

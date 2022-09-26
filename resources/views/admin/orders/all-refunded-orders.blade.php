@@ -14,7 +14,6 @@
                         <th>tracking number</th>
                         <th>total</th>
                         <th>status</th>
-                        <th>Action</th>
                     </thead>
                     <tbody>
                         @foreach ($allRefundedOrders as $order)
@@ -22,7 +21,7 @@
                                 <td>{{ $order->id }} </td>
                                 <td>{{ $order->tracking_id }} </td>
                                 <td>{{ $order->total }}</td>
-                                <td>{{ $order->status }}</td>
+                                <td>REfunded</td>
                             </tr>
                         @endforeach
                     </tbody>

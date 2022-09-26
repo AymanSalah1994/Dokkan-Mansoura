@@ -102,7 +102,7 @@ class CartController extends Controller
         return redirect()->route('cart.view')->with('status', 'Cart Cleared !');
     }
 
-    
+
     public function updateCartItem(UpdateCartItemRequest $request)
     {
         CartItem::where('id', $request->cartItemID)->update(['quantity' => $request->product_quantity]);
@@ -122,7 +122,6 @@ class CartController extends Controller
 
     public function deleteWishListItem(Request $request)
     {
-        //
         $wishListItem = WishListItem::find($request->wishListItemID);
         $wishListItem->delete();
         return response()->json([

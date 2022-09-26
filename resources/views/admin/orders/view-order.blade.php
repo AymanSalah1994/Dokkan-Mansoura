@@ -7,39 +7,29 @@
     </div>
     <div class="container">
         <div class="row">
-            {{-- Order Details --}}
-            <div class="col-md-7">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
                         <h3>Order Details</h3>
                     </div>
                     <div class="card-body">
-                        {{-- Don't Forget to Put the Order iD --}}
                         <table class="table table-hover">
                             <thead>
                                 <th>Product Name</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
                             </thead>
-                            @php
-                                $total = 0;
-                                $checking_order = '';
-                            @endphp
                             @foreach ($order->cartItems as $item)
                                 <tr>
                                     <td>{{ $item->product->name }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
                                 </tr>
-                                @php
-                                    $total += (int) $item->quantity * (int) $item->product->selling_price;
-                                    $checking_order = $item->order_id;
-                                @endphp
                             @endforeach
                         </table>
                     </div>
                     <div class="card-footer">
-                        <span>Total : {{ $total }}</span>
+                        <span>Total : {{ $order->total }}</span>
                     </div>
                     <div class="card-footer">
                         @switch($order->status)
@@ -72,13 +62,6 @@
                         @endswitch
                     </div>
                 </div>
-            </div>
-            <div class="col-md-5">
-                @if ($order->status == '1')
-                    <div class="row">
-                        <a href="">Return TO Cart to Edit</a>
-                    </div>
-                @endif
             </div>
         </div>
     </div>

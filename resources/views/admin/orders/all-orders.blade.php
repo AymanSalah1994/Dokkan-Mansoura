@@ -22,15 +22,43 @@
                                 <td>{{ $order->id }} </td>
                                 <td>{{ $order->tracking_id }} </td>
                                 <td>{{ $order->total }}</td>
-                                <td>{{ $order->status }}</td>
+                                @switch($order->status)
+                                    @case(0)
+                                        <td>Not Checked/In Cart</td>
+                                    @break
+
+                                    @case(1)
+                                        <td>Checked and Pending</td>
+                                    @break
+
+                                    @case(2)
+                                        <td> In Preparation</td>
+                                    @break
+
+                                    @case(3)
+                                        <td>Cancelld</td>
+                                    @break
+
+                                    @case(4)
+                                        <td>Done</td>
+                                    @break
+
+                                    @case(5)
+                                        <td>Refunded</td>
+                                    @break
+
+                                    @default
+                                        <td>""</td>
+                                @endswitch
                                 <td>
                                 <a href="{{ route('admin.order.view', $order->id) }}" class="btn btn-primary">View</a>
-                                <a href="" class="btn btn-danger"
+                                    <a href="" class="btn btn-danger"
                                         onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
-                                        Delete</a>
+                                        Delete
+                                    </a>
                                 </td>
                                 <form id="{{ $order->id }}" action="{{ route('admin.order.delete', $order->id) }}"
-                                    {{-- dispay none and still visible inspect --}} method="post" style="display: none">
+                                    method="post" style="display: none">
                                     @csrf
                                 </form>
                             </tr>

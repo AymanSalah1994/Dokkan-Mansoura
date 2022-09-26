@@ -22,7 +22,7 @@
                                 <td>{{ $order->id }} </td>
                                 <td>{{ $order->tracking_id }} </td>
                                 <td>{{ $order->total }}</td>
-                                <td>{{ $order->status }}</td>
+                                <td>Done</td>
                                 <td>
                                     <a href="{{ route('refund.order.details', $order->id) }}"
                                         class="btn btn-danger">REfund</a>

@@ -22,7 +22,7 @@
                                 <td>{{ $order->id }} </td>
                                 <td>{{ $order->tracking_id }} </td>
                                 <td>{{ $order->total }}</td>
-                                <td>{{ $order->status }}</td>
+                                <td>Checked and Pending</td>
                                 <td>
                                     <a href="" class="btn btn-primary"
                                         onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
