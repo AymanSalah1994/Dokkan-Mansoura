@@ -5,8 +5,9 @@
             <h3>Edit new Product</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('products.update',$theProduct->slug) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

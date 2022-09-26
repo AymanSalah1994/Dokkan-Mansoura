@@ -5,8 +5,8 @@
 
 @endsection
 @section('content')
-<div class="divider" style="height: 75px">
-</div>
+    <div class="divider" style="height: 75px">
+    </div>
     <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
     </div>
 
@@ -20,10 +20,12 @@
                                 width="25%" alt="">
                         </div>
                         <div class="col-md-4">
-                            <h3>{{ $wish_list_item->product->name }}</h3>
+                            <a href="{{ route('product.details', $wish_list_item->product->slug) }}">
+                                <h3>{{ $wish_list_item->product->name }}</h3>
+                            </a>
                         </div>
                         <div class="col-md-2">
-
+                            {{ $wish_list_item->product->selling_price }} EGP
                         </div>
                         <div class="col-md-2">
                             <input type="hidden" value="{{ $wish_list_item->id }}" class="wishListItemID">
@@ -42,13 +44,10 @@
 
 @section('scripts')
     <script>
-        // updateCartItem
-        console.log('xxx');
         $(document).ready(function() {
             $('.deleteFromWishListBtn').click(function(e) {
                 e.preventDefault();
                 var wishListItemID = $(this).closest('.product_data').find('.wishListItemID').val();
-                console.log(wishListItemID);
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -67,7 +66,6 @@
                     },
                     error: function(request, status, error) {
                         var reqError = JSON.parse(request.responseText);
-                        console.log(reqError.message);
                         swal(reqError.message)
                     }
                 });

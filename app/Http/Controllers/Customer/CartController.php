@@ -61,13 +61,11 @@ class CartController extends Controller
         }
     }
 
-    
+
     public function viewCart()
     {
-        // Get the User Object Holding User Data  :
         $user = Auth::user();
         $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
-
         foreach ($currentCartItems as $item) {
             if ($item->product->status == '0') {
                 $outOfStockItem = CartItem::find($item->id);
@@ -75,10 +73,12 @@ class CartController extends Controller
             }
         }
         $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
-
-        $total = 0;
-        foreach ($currentCartItems as $item) {
-            $total += ($item->quantity * $item->product->selling_price);
+        $currentOrder = Order::where('user_id', $user->id)->where('status', '0')->first();
+        if ($currentOrder) {
+            // If he Clears the Cart then this Order will be Null
+            $total  = $currentOrder->total;
+        } else {
+            $total = 0;
         }
         return view('customer.view-cart', compact(['currentCartItems', 'total']));
     }
@@ -87,23 +87,22 @@ class CartController extends Controller
     {
         $cartItem  = CartItem::find($request->cartItemID);
         $cartItem->delete();
-        // TOTAL
         $user = Auth::user();
         $activeOrder = $user->orders->where('status', '0')->first();
         $request->updateTotalOrder($activeOrder->id);
         return response()->json([
             'status' => 'Item Deleted Successfully'
         ]);
-        // TODO : In case something went wrong how to just make One Universal message "sth went wrong" ??
     }
 
     public function clearCart()
     {
         $user = Auth::user();
-        CartItem::where('user_id', $user->id)->where('status', '0')->delete();
         Order::where('user_id', $user->id)->where('status', '0')->delete();
         return redirect()->route('cart.view')->with('status', 'Cart Cleared !');
     }
+
+    
     public function updateCartItem(UpdateCartItemRequest $request)
     {
         CartItem::where('id', $request->cartItemID)->update(['quantity' => $request->product_quantity]);

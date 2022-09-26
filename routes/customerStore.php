@@ -15,20 +15,40 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/profile/update-profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
     // PROFILE _END
 
-
+    //CART & WISH LIST : CART CONTROLLER
     Route::get('store/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
-    Route::post('store/delete-cart-item', [CartController::class, 'deleteCartItem'])->name('cart.item.delete');
     Route::post('store/clear-cart', [CartController::class, 'clearCart'])->name('cart.clear');
+    Route::post('store/delete-cart-item', [CartController::class, 'deleteCartItem'])->name('cart.item.delete');
     Route::post('store/update-cart-item', [CartController::class, 'updateCartItem'])->name('cart.item.update');
+    Route::get('store/view-wish-list', [CartController::class, 'viewWishList'])->name('wish.list.view');
+    Route::post('store/delete-wish-list-item', [CartController::class, 'deleteWishListItem'])->name('wish.list.item.delete');
+    //CART & WISH LIST : CART CONTROLLER END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Route::get('store/cart-checkout', [OrderController::class, 'checkout'])->name('cart.checkout');
     Route::post('store/order-confirm', [OrderController::class, 'confirmOrder'])->name('order.confirm');
     Route::get('store/all-orders', [OrderController::class, 'allOrders'])->name('orders.all');
     Route::get('store/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order.details');
-    Route::get('store/view-wish-list', [CartController::class, 'viewWishList'])->name('wish.list.view');
-    Route::post('store/delete-wish-list-item', [CartController::class, 'deleteWishListItem'])->name('wish.list.item.delete');
+
     Route::post('store/cancel-order', [OrderController::class, 'cancelOrder'])->name('order.cancel');
     Route::post('store/return-order-to-cart', [OrderController::class, 'returnOrderToCart'])->name('return.order.to.cart');
 });
+
+
+
+
 
 // GENERAL ROUTES : StoreController
 Route::get('/', [StoreController::class, 'index'])->name('store.index');
@@ -47,5 +67,4 @@ Route::get('/store/wish-list-count', [CountingController::class, 'wishListCount'
 Route::post('/add-to-cart', [CartController::class, 'addCartItem'])->name('cart.add');
 Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->name('wish-list.add');
 Route::post('/store/review/submit', [ReviewController::class, 'submitReview'])->name('review.submit');
-// GENERAL ROUTES :END 
-
+// GENERAL ROUTES :END

@@ -7,8 +7,8 @@
 
 @if ($currentCartItems->count() == 0)
     @section('content')
-    <div class="divider" style="height: 50px">
-    </div>
+        <div class="divider" style="height: 50px">
+        </div>
         <div>
             <div class="container py-5">
                 <div class="card shadow product_data mb-3">
@@ -28,8 +28,8 @@
     @endsection
 @else
     @section('content')
-    <div class="divider" style="height: 50px">
-    </div>
+        <div class="divider" style="height: 50px">
+        </div>
         <br>
         <div class="container">
             @foreach ($currentCartItems as $cartItem)
@@ -95,13 +95,10 @@
 
 @section('scripts')
     <script>
-        // updateCartItem
-        console.log('xxx');
         $(document).ready(function() {
             $('.deleteFromCartBtn').click(function(e) {
                 e.preventDefault();
                 var cartItemID = $(this).closest('.product_data').find('.cartItemID').val();
-                console.log(cartItemID);
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -116,11 +113,9 @@
                     success: function(response) {
                         swal(response.status);
                         window.location.reload();
-                        // $('.toast').toast('show');
                     },
                     error: function(request, status, error) {
                         var reqError = JSON.parse(request.responseText);
-                        console.log(reqError.message);
                         swal(reqError.message)
                     }
                 });
@@ -130,7 +125,6 @@
                 e.preventDefault();
                 var product_quantity = $(this).closest('.product_data').find('.quantity-input').val();
                 var cartItemID = $(this).closest('.product_data').find('.cartItemID').val();
-                console.log(product_quantity);
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -162,4 +156,10 @@
 
         });
     </script>
+
+    @if ($message = session('status'))
+        <script>
+            swal('{{ $message }}');
+        </script>
+    @endif
 @endsection
