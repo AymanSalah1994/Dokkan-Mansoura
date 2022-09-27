@@ -90,30 +90,31 @@
                             class="float-end badge bg-danger badge-info">{{ $product->trending == '1' ? 'Trending' : '' }}</label>
                         <br>
                         <hr>
-                        <label for="" class="me-5">Original Price :
+                        <label for="" class="me-5">{{__('Original Price')}} :
                             <s>{{ $product->original_price }}</s>
                         </label>
-                        <label for="" class="fw-bold">Selling price :{{ $product->selling_price }}</label>
+                        <label for="" class="fw-bold">{{ __('Selling Price') }}
+                            :{{ $product->selling_price }}</label>
                         <div class="rating">
-                            <span>{{ $product->reviews()->count() }} Ratings :</span>
+                            <span>{{ $product->reviews()->count() }} {{__('Ratings')}} :</span>
                             <i class="fa fa-star {{ $average_rating >= 1 ? 'checked' : '' }}"></i>
                             <i class="fa fa-star {{ $average_rating >= 2 ? 'checked' : '' }}"></i>
                             <i class="fa fa-star {{ $average_rating >= 3 ? 'checked' : '' }}"></i>
                             <i class="fa fa-star {{ $average_rating >= 4 ? 'checked' : '' }}"></i>
                             <i class="fa fa-star {{ $average_rating >= 5 ? 'checked' : '' }}"></i>
-                            <span>{{ $average_rating }} of 5 </span>
+                            <span>{{ $average_rating }} {{__('of')}} 5 </span>
                         </div>
                         <br>
                         <p>{{ $product->description }}</p>
                         <hr>
                         @if ($product->status == '1')
-                            <label for="" class="badge bg-success">Available</label>
+                            <label for="" class="badge bg-success">{{__('Available')}}</label>
                         @else
-                            <label for="" class="badge bg-danger">Out of Stock</label>
+                            <label for="" class="badge bg-danger">{{__('Out of Stock')}}</label>
                         @endif
                         <div class="row mt-5">
                             <div class="col-md-2">
-                                <label for="">Quantity</label>
+                                <label for="">{{__("Quantity")}}</label>
                                 <div class="input-group text-center mb-3">
                                     <span class="input-group-text decrement-btn">-</span>
                                     <input type="text" name="" value="1"
@@ -124,13 +125,11 @@
                             <div class="col-md-10">
                                 <br>
                                 <input type="hidden" value="{{ $product->id }}" class="product_id">
-                                <button type="button" class="btn btn-success me-3 float-start addToWishListBtn">ِAdd To
-                                    wishlist
+                                <button type="button" class="btn btn-success me-3 float-start addToWishListBtn">{{__('Add To Wish List')}}
                                     <i class="bi bi-balloon-heart"></i>
                                 </button>
                                 @if ($product->status == '1')
-                                    <button type="button" class="btn btn-primary me-3 float-start addToCartBtn">Add to
-                                        Cart
+                                    <button type="button" class="btn btn-primary me-3 float-start addToCartBtn">{{__('Add To Cart')}}
                                         <i class="bi bi-cart"></i>
                                     </button>
                                 @endif
@@ -141,7 +140,7 @@
                         </div>
                         <button type="button" class="btn btn-warning float-end rounded-pill" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
-                            Write a Review <i class="fa-solid fa-pen"></i>
+                            {{__('Write a Review')}} <i class="fa-solid fa-pen"></i>
                         </button>
                     </div>
                 </div>
@@ -158,7 +157,7 @@
                     allowfullscreen></iframe>
             </div>
             <div class="col-md-7">
-                <h4>-----Reviews-------</h4>
+                <h4>-----{{__('Reviews')}}-------</h4>
                 @foreach ($product->reviews as $review)
                     <div class="container">
                         <div class="card shadow">

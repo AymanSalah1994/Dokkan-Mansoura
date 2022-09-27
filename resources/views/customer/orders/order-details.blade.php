@@ -12,14 +12,14 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Order Details</h3>
+                            <h3>{{ __('Order Details') }}</h3>
                         </div>
                         <div class="card-body">
                             <table class="table table-hover">
                                 <thead class="">
-                                    <th>Product Name</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
+                                    <th>{{ __('Product Name') }}</th>
+                                    <th>{{ __('Quantity') }}</th>
+                                    <th>{{ __('Price') }}</th>
                                 </thead>
                                 @php
                                     $total = 0;
@@ -39,36 +39,36 @@
                             </table>
                         </div>
                         <div class="card-footer">
-                            <span>Total : {{ $total }}</span>
+                            <span>{{ __('Total') }} : {{ $total }}</span>
                         </div>
                         <div class="card-footer">
-                            <span>* Total Changes Based on Prices Changes</span>
+                            <span>{{ __('* Total Changes Based on Prices Changes') }}</span>
                         </div>
                         <div class="card-footer">
                             @switch($order->status)
                                 @case(0)
-                                    Not Checked/In Cart
+                                    {{ __('Not Checked/In Cart') }}
                                     <a href="{{ route('cart.checkout') }}">Check Out >> </a>
                                 @break
 
                                 @case(1)
-                                    Checked and Pending
+                                    {{ __(' Checked and Pending') }}
                                 @break
 
                                 @case(2)
-                                    In Preparation
+                                    {{ __('In Preparation') }}
                                 @break
 
                                 @case(3)
-                                    Cancelled
+                                    {{ __('Cancelled') }}
                                 @break
 
                                 @case(4)
-                                    Done
+                                    {{ __('Done') }}
                                 @break
 
                                 @case(5)
-                                    Refunded
+                                    {{ __('Refunded') }}
                                 @break
 
                                 @default
@@ -85,7 +85,7 @@
                                 class="form-inline float-start">
                                 @csrf
                                 <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
-                                <button href="" class="btn btn-info">Return Order to Cart</button>
+                                <button href="" class="btn btn-info">{{ __('Return Order to Cart') }}</button>
                             </form>
                         </div>
                         <div class="row">
@@ -96,7 +96,7 @@
                                 <form action="{{ route('order.cancel') }}" method="post" class="form-inline">
                                     @csrf
                                     <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
-                                    <button href="" class="btn btn-danger">Cancel Order</button>
+                                    <button href="" class="btn btn-danger">{{ __('Cancel Order') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
             </div>
         </div>
     @else
-        <h1>ERROR </h1>
+        <h1>ERROR</h1>
     @endif
     <br>
 @endsection

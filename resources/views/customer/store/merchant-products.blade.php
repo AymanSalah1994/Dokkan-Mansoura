@@ -1,5 +1,5 @@
 @extends('layouts.store.main_page')
-@section('title', 'All Products')
+@section('title', __('All Products'))
 @section('content')
     <div class="py-5">
         <div class="container">

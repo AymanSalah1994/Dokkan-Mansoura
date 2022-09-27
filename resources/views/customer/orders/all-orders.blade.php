@@ -14,16 +14,16 @@
         <div class="row">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="text-center">Orders</h3>
+                    <h3 class="text-center">{{ __('Orders') }}</h3>
                 </div>
                 <div class="card-body">
                     {{-- Don't Forget to Put the Order iD --}}
                     <table class="table table-hover">
                         <thead>
-                            <th>Order Date</th>
-                            <th>Tracking Number</th>
-                            <th>Total</th>
-                            <th>Status</th>
+                            <th>{{ __('Order Date') }}</th>
+                            <th>{{ __('Tracking Number') }}</th>
+                            <th>{{ __('Total') }}</th>
+                            <th>{{ __('Status') }}</th>
                             <th></th>
                             <th></th>
                         </thead>
@@ -38,17 +38,17 @@
                                 <td>{{ $order->total }}</td>
                                 @switch($order->status)
                                     @case(0)
-                                        <td>Not Checked/In Cart</td>
+                                        <td>{{ __('Not Checked/In Cart') }}</td>
                                     @break
 
                                     @case(1)
-                                        <td>Checked and Pending</td>
+                                        <td>{{ __('Checked and Pending') }}</td>
                                         <td>
                                             <form action="{{ route('order.cancel') }}" method="post"
                                                 class="form-inline float-start">
                                                 @csrf
                                                 <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
-                                                <button href="" class="btn btn-danger">Cancel Order</button>
+                                                <button href="" class="btn btn-danger">{{ __('Cancel Order') }}</button>
                                             </form>
                                         </td>
                                         <td>
@@ -56,25 +56,25 @@
                                                 class="form-inline float-start">
                                                 @csrf
                                                 <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
-                                                <button href="" class="btn btn-light">Return Order to Cart</button>
+                                                <button href="" class="btn btn-light">{{__('Return Order to Cart')}}</button>
                                             </form>
                                         </td>
                                     @break
 
                                     @case(2)
-                                        <td> In Preparation</td>
+                                        <td>{{__('In Preparation')}}</td>
                                     @break
 
                                     @case(3)
-                                        <td>Cancelld</td>
+                                        <td>{{__('Cancelld')}}</td>
                                     @break
 
                                     @case(4)
-                                        <td>Done</td>
+                                        <td>{{__('Done')}}</td>
                                     @break
 
                                     @case(5)
-                                        <td>Refunded</td>
+                                        <td>{{__('Refunded')}}</td>
                                     @break
 
                                     @default

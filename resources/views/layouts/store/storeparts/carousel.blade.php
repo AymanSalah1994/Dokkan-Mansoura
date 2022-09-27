@@ -40,23 +40,23 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <i class="bi bi-check-circle"></i>
-                            Fast Delivery
+                            {{ __('Fast Delivery') }}
                         </li>
                         <li class="list-group-item">
                             <i class="bi bi-check-circle"></i>
-                            Trusted Places
+                            {{ __('Trusted Places') }}
                         </li>
                         <li class="list-group-item">
                             <i class="bi bi-check-circle"></i>
-                            Online With Low Cost
+                            {{ __('Online With Low Cost') }}
                         </li>
                         <li class="list-group-item">
                             <i class="bi bi-check-circle"></i>
-                            Simple Site , No Links EveryWhere
+                            {{ __('Simple Site , No Links EveryWhere') }}
                         </li>
                         <li class="list-group-item">
                             <i class="bi bi-check-circle"></i>
-                            Real Photos . No Fraud
+                            {{ __('Real Photos . No Fraud') }}
                         </li>
                     </ul>
                 </div>

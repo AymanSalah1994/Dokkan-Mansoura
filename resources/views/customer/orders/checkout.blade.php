@@ -63,15 +63,14 @@
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Order Details</h3>
+                        <h3>{{ __('Order Details') }}</h3>
                     </div>
                     <div class="card-body">
-                        {{-- Don't Forget to Put the Order iD --}}
                         <table class="table table-hover">
                             <thead>
-                                <th>Product Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
+                                <th>{{ __('Product Name') }}</th>
+                                <th>{{ __('Quantity') }}</th>
+                                <th>{{ __('Price') }}</th>
                             </thead>
                             @php
                                 $total = 0;
@@ -91,7 +90,7 @@
                         </table>
                     </div>
                     <div class="card-footer">
-                        <span>Total : {{ $total }}</span>
+                        <span>{{ __('Total') }} : {{ $total }}</span>
                         {{-- <a href="" class="btn btn-success rounded-pill float-end">Confirm</a> --}}
                         {{-- Make it a Button for Form , Form to change order status --}}
                     </div>
@@ -101,14 +100,14 @@
                             <form action="{{ route('order.confirm') }}" class="row" method="POST">
                                 @csrf
                                 <input type="hidden" name="checking_order" value="{{ $checking_order }}">
-                                <button type="submit" class="btn btn-success rounded-pill float-end">Confirm (Pay on
-                                    Delivery)</button>
+                                <button type="submit"
+                                    class="btn btn-success rounded-pill float-end">{{ __('Confirm (Pay on Delivery)') }}</button>
                             </form>
                         </div>
                         <br>
                         <div class="row">
-                            <button class="btn btn-success rounded-pill float-end" disabled>Online (Not Working
-                                Currently)</button>
+                            <button class="btn btn-success rounded-pill float-end"
+                                disabled>{{ __('Online (Not Working Currently)') }}</button>
                         </div>
                         {{-- Make it a Button for Form , Form to change order status --}}
                     </div>

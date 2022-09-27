@@ -16,11 +16,11 @@
                     @csrf
                     <div class="card">
                         <div class="card-body">
-                            <h3>User Details</h3>
+                            <h3>{{ __('User Details') }}</h3>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="">First Name</label>
+                                    <label for="">{{ __('First Name') }}</label>
                                     <input class="form-control" type="text" name="first_name"
                                         value="{{ old('first_name', $user->first_name) }}">
                                     @error('first_name')
@@ -28,7 +28,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="">Last Name</label>
+                                    <label for="">{{ __('Last Name') }}</label>
                                     <input class="form-control" type="text" name="last_name"
                                         value="{{ old('last_name', $user->last_name) }}">
                                 </div>
@@ -40,7 +40,7 @@
                                         value="{{ old('city', $user->city) }}">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="">Phone</label>
+                                    <label for="">{{ __('Phone') }}</label>
                                     <input class="form-control" type="text" name="phone"
                                         value="{{ old('phone', $user->phone) }}">
                                     @error('phone')
@@ -50,13 +50,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="">Address</label>
+                                    <label for="">{{ __('Address') }}</label>
                                     <textarea name="address" class="form-control" width="100%">{{ old('address', $user->address) }}</textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="">Email</label>
+                                    <label for="">{{ __('Email') }}</label>
                                     <input class="form-control" type="Email" name="email"
                                         value="{{ old('email', $user->email) }}">
                                     @error('email')
@@ -68,7 +68,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary">
-                                        Save Changes
+                                        {{ __('Save Changes') }}
                                     </button>
                                 </div>
                             </div>
@@ -80,12 +80,12 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Actions</h3>
+                        <h3>{{__('Actions')}}</h3>
                     </div>
                     <div class="card-footer">
                         <br>
                         <div class="row">
-                            <button class="btn btn-success rounded-pill float-end" disabled>Delete your Profile </button>
+                            <button class="btn btn-success rounded-pill float-end" disabled>{{__('Delete your Profile')}} </button>
                         </div>
                         <br>
                     </div>

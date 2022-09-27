@@ -1,5 +1,5 @@
 @extends('layouts.store.main_page')
-@section('title', 'Merchant Details')
+@section('title', __('Merchant Details'))
 
 @section('content')
     <div class="container">

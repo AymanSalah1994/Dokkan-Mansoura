@@ -19,7 +19,7 @@
                                 <img src="{{ asset('images/some_asset/cart.png') }}" alt="" width="30%">
                             </div>
                             <div class="col-md-3">
-                                Your Wish List is Empty !
+                               {{__(' Your Wish List is Empty !')}}
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <div class="col-md-2">
                                 <input type="hidden" value="{{ $wish_list_item->id }}" class="wishListItemID">
                                 <button type="button" class="btn btn-danger deleteFromWishListBtn">
-                                    Delete <i class="bi bi-trash3"></i>
+                                    {{__('Delete')}} <i class="bi bi-trash3"></i>
                                 </button>
                             </div>
                         </div>

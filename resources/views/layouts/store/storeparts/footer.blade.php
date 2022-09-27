@@ -13,35 +13,35 @@
             </div>
 
             <div class="col-2">
-                <h5>Useful links</h5>
+                <h5>{{__('Useful Links')}}</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="{{ route('store.index') }}"
-                            class="nav-link p-0 text-white">Home</a></li>
+                            class="nav-link p-0 text-white">{{__('Home')}}</a></li>
                     <li class="nav-item mb-2"><a href="{{ route('footer.features') }}"
-                            class="nav-link p-0 text-white">Features</a>
+                            class="nav-link p-0 text-white">{{__('Features')}}</a>
                     </li>
                     <li class="nav-item mb-2"><a href="{{ route('footer.pricing') }}"
-                            class="nav-link p-0 text-white">Pricing</a>
+                            class="nav-link p-0 text-white">{{__('Pricing')}}</a>
                     </li>
                     <li class="nav-item mb-2"><a href="{{ route('footer.faqs') }}"
-                            class="nav-link p-0 text-white">FAQs</a>
+                            class="nav-link p-0 text-white">{{__('FAQs')}}</a>
                     </li>
                     <li class="nav-item mb-2"><a href="{{ route('footer.about') }}"
-                            class="nav-link p-0 text-white">About</a>
+                            class="nav-link p-0 text-white">{{__('About')}}</a>
                     </li>
                 </ul>
             </div>
 
             <div class="col-2">
-                <h5>Merchatns</h5>
+                <h5>{{__('Merchants')}}</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="{{ route('footer.merchant.apply') }}"
-                            class="nav-link p-0 text-white">How to Apply</a></li>
+                            class="nav-link p-0 text-white">{{__('How to Apply')}}</a></li>
                 </ul>
             </div>
 
             <div class="col-4 offset-1">
-                <h5>Thanks for your Trust</h5>
+                <h5>{{__('Thanks for your Trust')}}</h5>
                 <p>© 2021 Dokkan ELMansoura . All rights reserved.</p>
             </div>
         </div>

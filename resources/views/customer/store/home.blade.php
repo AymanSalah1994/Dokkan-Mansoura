@@ -7,7 +7,7 @@
 @section('content')
     <div class="py-5">
         <div class="container">
-            <h2>Featured Products</h2>
+            <h2>{{__('Featured Products')}}</h2>
             <br>
             <div class="row">
                 <div class="owl-carousel owl-theme">
@@ -23,7 +23,7 @@
 
     <div class="py-5">
         <div class="container">
-            <h2>Featured Categories</h2>
+            <h2>{{__('Featured Categories')}}</h2>
             <br>
             <div class="row">
                 <div class="owl-carousel owl-theme">

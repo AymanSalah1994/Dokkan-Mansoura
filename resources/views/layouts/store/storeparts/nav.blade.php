@@ -18,8 +18,8 @@
                             {{ Auth::user()->first_name }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('profile.view') }}">Profile</a></li>
-                            <li><a class="dropdown-item" href="{{ route('orders.all') }}">Orders</a></li>
+                            <li><a class="dropdown-item" href="{{ route('profile.view') }}">{{__('Profile')}}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('orders.all') }}">{{__('Orders')}}</a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
@@ -33,26 +33,26 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('cart.view') }}">
-                            Cart <span class="badge badge-pill bg-danger cart_counter"></span>
+                            {{__('Cart')}} <span class="badge badge-pill bg-danger cart_counter"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('wish.list.view') }}">
-                            Wish List <span class="badge badge-pill bg-primary wish_list_counter"></span>
+                            {{__('Wish List')}} <span class="badge badge-pill bg-primary wish_list_counter"></span>
                         </a>
                     </li>
                 @endauth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.categories') }}">Categories</a>
+                    <a class="nav-link" href="{{ route('store.categories') }}">{{__('Categories')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('merchants.all') }}">Merchants</a>
+                    <a class="nav-link" href="{{ route('merchants.all') }}">{{__('Merchants')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.search') }}">SEARCH</a>
+                    <a class="nav-link" href="{{ route('store.search') }}">{{__('SEARCH')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.categories') }}">Services</a>
+                    <a class="nav-link" href="{{ route('store.categories') }}">{{__('Services')}}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -66,10 +66,10 @@
                 </li>
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">{{__('Login')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('register') }}">Register</a>
+                        <a class="nav-link active" href="{{ route('register') }}">{{__('Register')}}</a>
                     </li>
                 @endguest
 

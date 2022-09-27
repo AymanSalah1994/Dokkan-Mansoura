@@ -15,7 +15,7 @@
                             <img src="{{ asset('images/some_asset/cart.png') }}" alt="" width="30%">
                         </div>
                         <div class="col-md-3">
-                            Your Cart is Empty !
+                            {{__('Your Cart is Empty !')}}
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                             <div class="col-md-2">
                                 <input type="hidden" value="{{ $cartItem->id }}" class="cartItemID">
                                 <button type="button" class="btn btn-danger deleteFromCartBtn">
-                                    Delete <i class="bi bi-trash3"></i>
+                                    {{__('Delete')}} <i class="bi bi-trash3"></i>
                                 </button>
                             </div>
                         </div>
@@ -65,18 +65,18 @@
                     <div class="card">
                         <table class="table table-hover">
                             <thead>
-                                <th>Total : </th>
+                                <th>{{__('Total')}} : </th>
                                 <th>{{ $total }}</th>
                             </thead>
                             <tr>
                                 <td>
                                     <form action="{{ route('cart.clear') }}" method="post" class="form-inline float-start">
                                         @csrf
-                                        <button href="" class="btn btn-danger">Clear Cart</button>
+                                        <button href="" class="btn btn-danger">{{__('Clear Cart')}}</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <a href="{{ route('cart.checkout') }}" class="btn btn-success rounded-pill">CheckOut</a>
+                                    <a href="{{ route('cart.checkout') }}" class="btn btn-success rounded-pill">{{__('CheckOut')}}</a>
                                 </td>
                             </tr>
                         </table>
