@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Merchant;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Merchant\CreateProductRequest;
+use App\Http\Requests\Merchant\ProfileRequest;
+use App\Http\Requests\Merchant\UpdateProductRequest;
 use App\Models\CartItem;
 use App\Models\Category;
 use App\Models\Product;
@@ -36,15 +39,11 @@ class MerchantController extends Controller
         return view('merchant.create-product', compact('categories'));
     }
 
-    public function updateProduct(Request $request)
-    {
-    }
-
     public function relatedOrders()
     {
         $user = Auth::user();
         $userProducts = $user->products->pluck('id')->toArray();
-        $relatedCartItems = CartItem::where('status', '0')->whereIn('product_id', $userProducts)->get();
+        $relatedCartItems = CartItem::where('status', '1')->whereIn('product_id', $userProducts)->get();
         return view('merchant.related-orders', compact('relatedCartItems'));
     }
 
@@ -52,9 +51,26 @@ class MerchantController extends Controller
     {
         $user = Auth::user();
         $userProducts = $user->products->pluck('id')->toArray();
-        $relatedCartItems = CartItem::where('status', '0')->whereIn('product_id', $userProducts)->get();
-
+        $relatedCartItems = CartItem::where('status', '1')->whereIn('product_id', $userProducts)->get();
         $relatedCount = $relatedCartItems->count();
         return response()->json(['relatedCount' => $relatedCount]);
+    }
+
+    public function updateMerchantProfile(ProfileRequest $request)
+    {
+        $user = $request->user();
+        $allData = $request->handleRequest();
+        $user->update($allData);
+        return redirect()->route('merchant.index')->with('status', 'Profile Updated');
+    }
+    public function updateProduct(UpdateProductRequest $request)
+    {
+        $request->handleRequest();
+        return redirect()->route('merchant.products')->with('status', 'Product Updated');
+    }
+    public function storeProduct(CreateProductRequest $request)
+    {
+        $request->handleRequest();
+        return redirect()->route('merchant.products')->with('status', 'Product Created');
     }
 }

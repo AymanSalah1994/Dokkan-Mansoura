@@ -45,7 +45,7 @@ Route::get('/store/{slug}/products', [StoreController::class, 'categoryProducts'
 Route::get('/store/product/{slug}', [StoreController::class, 'productDetails'])->name('product.details');
 Route::get('/store/merchants/all', [StoreController::class, 'allMerchants'])->name('merchants.all');
 Route::get('/store/merchant/info/{slug}', [StoreController::class, 'merchantDetails'])->name('merchant.details');
-Route::get('/store/merchant/{slug}/products', [StoreController::class, 'merchantProducts'])->name('merchant.products');
+Route::get('/store/merchant/{slug}/products', [StoreController::class, 'merchantProducts'])->name('merchant.store.products');
 // GENERAL ROUTES : StoreController END
 
 // GENERAL ROUTES :

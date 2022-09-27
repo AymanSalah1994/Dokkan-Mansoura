@@ -43,4 +43,9 @@
 @endsection
 
 @section('scripts')
+    @if ($status = session('status'))
+        <script>
+            swal("Done !", "{{ $status }}", "success");
+        </script>
+    @endif
 @endsection

@@ -24,7 +24,7 @@
                         <p>Address : Lorem ipsum dolor sit amet consectetur adipisicing.</p>
                         <p>Telephone : 01210127127</p>
                         <p>
-                            <a href="{{ route('merchant.products', $merchant->slug) }}" class="btn btn-primary">
+                            <a href="{{ route('merchant.store.products', $merchant->slug) }}" class="btn btn-primary">
                                 All Products
                             </a>
                         </p>

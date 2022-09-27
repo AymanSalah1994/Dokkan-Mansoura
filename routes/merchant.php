@@ -14,8 +14,12 @@ Route::group(['middleware' => ['isMerchant']], function () {
 
 
 
-    Route::post('/merchant/product/update', [MerchantController::class, 'updateProduct'])->name('update.merchant');
+    Route::post('/merchant/product/update', [MerchantController::class, 'updateProduct'])->name('merchant.panel.update.product');
+
+    Route::post('/merchant/profile/update', [MerchantController::class, 'updateMerchantProfile'])->name('update.profile.merchant');
+
     Route::post('/merchant/product/store', [MerchantController::class, 'storeProduct'])->name('merchant.product.store');
     Route::get('/merchant/related-orders', [MerchantController::class, 'relatedOrders'])->name('merchant.related.order');
     Route::get('/merchant/related-items-counter', [MerchantController::class, 'relatedItemsCounter'])->name('merchant.related.items.counter');
 });
+// merchant.panel ...etc

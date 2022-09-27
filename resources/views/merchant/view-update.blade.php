@@ -5,8 +5,9 @@
             <h3>Product</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('update.merchant') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('merchant.panel.update.product') }}" method="post" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="product_id" value="{{ $product->slug }}">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -71,17 +72,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">YouTube URL :</label>
-                            <input type="text" class="form-control" name="" value="">
-                            @error('name')
-                                <span style="color: red">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -104,11 +94,6 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        {{-- <div class="form-group">
-                            <label class="bmd-label-floating">trending</label>
-                            <input type="checkbox" class="form-control" name="trending"
-                                {{ $product->trending == '1' ? 'checked' : '' }}>
-                        </div> --}}
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
