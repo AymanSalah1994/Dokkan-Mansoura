@@ -4,7 +4,6 @@
 @section('slider')
     @include('customer.store.toast')
 @endsection
-
 @if ($currentCartItems->count() == 0)
     @section('content')
         <div class="divider" style="height: 50px">

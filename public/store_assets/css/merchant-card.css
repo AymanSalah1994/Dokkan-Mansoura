@@ -71,3 +71,23 @@ body {
     color: #e91e63;
     transform: rotateY(360deg);
 }
+
+.merchant_data ul li {
+    list-style: none;
+    float: left;
+
+}
+
+.merchant_data ul li a {
+    display: block;
+    color: #aaa;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: 0.5s;
+    text-align: center;
+}
+
+.merchant_data  ul li:hover a {
+    color: #e91e63;
+    transform: rotateY(360deg);
+}

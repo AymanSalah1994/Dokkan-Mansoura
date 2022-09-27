@@ -4,22 +4,17 @@
         <div class="card merchant">
             <div class="box">
                 <div class="img">
-                    <img src="">
+                    <img src="{{ asset('images/some_asset/3.jpg') }}">
                 </div>
                 <h2><a href="{{ route('merchant.details', $merchant->slug) }}">{{ $merchant->first_name }}
                     </a><br><span>Laptops</span></h2>
-                <p>Mansoura Company </p>
+                <p>{{ $merchant->first_name }}</p>
                 <span>
                     <ul>
                         <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                     </ul>
                 </span>
             </div>
         </div>
-
     </div>
 @endisset

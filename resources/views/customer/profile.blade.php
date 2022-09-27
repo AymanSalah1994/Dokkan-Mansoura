@@ -4,7 +4,7 @@
 @section('slider')
 @endsection
 @section('content')
-    <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top" style="margin-top: 45px">
+    <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top" style="">
         <nav aria-label="breadcrumb">
             <span>This is Your Profile !</span>
         </nav>

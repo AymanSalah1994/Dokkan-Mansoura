@@ -4,8 +4,6 @@
 @endsection
 
 @section('content')
-    <div class="divider" style="height: 50px">
-    </div>
     <div class="py-5">
         <div class="container">
             <br>

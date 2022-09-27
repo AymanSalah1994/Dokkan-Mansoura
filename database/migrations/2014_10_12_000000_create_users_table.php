@@ -23,6 +23,9 @@ return new class extends Migration
             $table->tinyInteger('role_as')->default('0');
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
+            $table->string('bio')->nullable();
+            $table->string('fb_link')->nullable();
+            $table->string('youtube_vid')->nullable();
             // 0 Customer , 1 Admin  , 2 Merchant  , 3 Dealer
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

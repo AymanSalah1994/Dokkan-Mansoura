@@ -17,13 +17,14 @@ class Product extends Model
         'name', 'small_description', 'description', 'original_price',
         'selling_price', 'quantity',  'status', 'trending', 'keywords',
         'product_picture', 'secondary_picture', 'category_id', 'user_id', 'slug',
+        'youtube_vid'
     ];
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
-    
+
     public function sluggable(): array
     {
         return [

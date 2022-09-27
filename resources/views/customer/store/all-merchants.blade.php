@@ -2,8 +2,6 @@
 @extends('layouts.store.main_page')
 @section('title', 'All Merchants')
 @section('content')
-    <div class="divider" style="height: 50px">
-    </div>
 
     <div class="py-5">
         <div class="container">

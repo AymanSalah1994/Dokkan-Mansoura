@@ -60,7 +60,7 @@ class StoreController extends Controller
     public function merchantProducts($slug)
     {
         $merchant = User::where('slug', $slug)->first();
-        $merchant_products  = Product::where('user_id', $merchant->id)->get();
-        return view('customer.store.merchant-products', compact('merchant_products'));
+        // $merchant_products  = Product::where('user_id', $merchant->id)->get();
+        return view('customer.store.merchant-products', compact('merchant'));
     }
 }

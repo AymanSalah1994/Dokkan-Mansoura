@@ -5,41 +5,58 @@
 
 @endsection
 @section('content')
-    <div class="divider" style="height: 75px">
-    </div>
     <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
     </div>
-
-    <div class="container">
-        @foreach ($wishListItems as $wish_list_item)
-            <div class="card shadow product_data mb-3">
-                <div class="card-body">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-md-4">
-                            <img src="{{ Storage::url($wish_list_item->product->product_picture) }}" class="image-responsive"
-                                width="25%" alt="">
-                        </div>
-                        <div class="col-md-4">
-                            <a href="{{ route('product.details', $wish_list_item->product->slug) }}">
-                                <h3>{{ $wish_list_item->product->name }}</h3>
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-                            {{ $wish_list_item->product->selling_price }} EGP
-                        </div>
-                        <div class="col-md-2">
-                            <input type="hidden" value="{{ $wish_list_item->id }}" class="wishListItemID">
-                            <button type="button" class="btn btn-danger deleteFromWishListBtn">
-                                Delete <i class="bi bi-trash3"></i>
-                            </button>
+    @if ($wishListItems->count() == 0)
+        <div class="divider" style="height: 50px">
+        </div>
+        <div>
+            <div class="container py-5">
+                <div class="card shadow product_data mb-3">
+                    <div class="card-body">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-md-6">
+                                <img src="{{ asset('images/some_asset/cart.png') }}" alt="" width="30%">
+                            </div>
+                            <div class="col-md-3">
+                                Your Wish List is Empty !
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
-    </div>
-
-    <br>
+        </div>
+    @else
+        <div class="container">
+            @foreach ($wishListItems as $wish_list_item)
+                <div class="card shadow product_data mb-3">
+                    <div class="card-body">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-md-4">
+                                <img src="{{ Storage::url($wish_list_item->product->product_picture) }}"
+                                    class="image-responsive" width="25%" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{{ route('product.details', $wish_list_item->product->slug) }}">
+                                    <h3>{{ $wish_list_item->product->name }}</h3>
+                                </a>
+                            </div>
+                            <div class="col-md-2">
+                                {{ $wish_list_item->product->selling_price }} EGP
+                            </div>
+                            <div class="col-md-2">
+                                <input type="hidden" value="{{ $wish_list_item->id }}" class="wishListItemID">
+                                <button type="button" class="btn btn-danger deleteFromWishListBtn">
+                                    Delete <i class="bi bi-trash3"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <br>
+    @endif
 @endsection
 
 @section('scripts')

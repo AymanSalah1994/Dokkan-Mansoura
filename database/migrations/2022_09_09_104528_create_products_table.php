@@ -31,6 +31,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default('0')->nullable();
             $table->tinyInteger('trending')->default('0')->nullable();
             $table->mediumText('keywords')->nullable();
+            $table->string('youtube_vid')->nullable() ; 
             $table->timestamps();
         });
     }
