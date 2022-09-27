@@ -48,11 +48,12 @@
                             @switch($order->status)
                                 @case(0)
                                     {{ __('Not Checked/In Cart') }}
-                                    <a href="{{ route('cart.checkout') }}">Check Out >> </a>
+                                    <br>
+                                    <a href="{{ route('cart.checkout') }}">{{__('Checkout')}} >> </a>
                                 @break
 
                                 @case(1)
-                                    {{ __(' Checked and Pending') }}
+                                    {{ __('Checked and Pending') }}
                                 @break
 
                                 @case(2)
@@ -98,6 +99,14 @@
                                     <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
                                     <button href="" class="btn btn-danger">{{ __('Cancel Order') }}</button>
                                 </form>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    {{__('The Order is checked and Pending,you will be contaced Soon')}}
+                                </div>
                             </div>
                         </div>
                     @endif

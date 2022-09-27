@@ -76,7 +76,7 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <a href="{{ route('cart.checkout') }}" class="btn btn-success rounded-pill">{{__('CheckOut')}}</a>
+                                    <a href="{{ route('cart.checkout') }}" class="btn btn-success rounded-pill">{{__('Checkout')}}</a>
                                 </td>
                             </tr>
                         </table>

@@ -19,7 +19,7 @@
                                 <img src="{{ asset('images/some_asset/cart.png') }}" alt="" width="30%">
                             </div>
                             <div class="col-md-3">
-                               {{__(' Your Wish List is Empty !')}}
+                               {{__('Your Wish List is Empty !')}}
                             </div>
                         </div>
                     </div>

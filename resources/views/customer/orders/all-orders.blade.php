@@ -1,12 +1,12 @@
 @extends('layouts.store.main_page')
-@section('title', 'Check Out')
+@section('title', __('All Orders'))
 @section('slider')
 @endsection
 
 @section('content')
     <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top" style="">
         <nav aria-label="breadcrumb">
-            <span>All Orders :</span>
+            <span>{{__('All Orders')}} :</span>
         </nav>
     </div>
     <br>
@@ -17,7 +17,6 @@
                     <h3 class="text-center">{{ __('Orders') }}</h3>
                 </div>
                 <div class="card-body">
-                    {{-- Don't Forget to Put the Order iD --}}
                     <table class="table table-hover">
                         <thead>
                             <th>{{ __('Order Date') }}</th>
@@ -66,7 +65,7 @@
                                     @break
 
                                     @case(3)
-                                        <td>{{__('Cancelld')}}</td>
+                                        <td>{{__('Cancelled')}}</td>
                                     @break
 
                                     @case(4)

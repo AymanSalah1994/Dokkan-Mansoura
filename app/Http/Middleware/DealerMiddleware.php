@@ -6,13 +6,12 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class DealerMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-
         if (Auth::check()) {
-            if (Auth::user()->role_as == '1') {
+            if (Auth::user()->role_as == '3') {
                 return $next($request);
             } else {
                 return redirect('/');

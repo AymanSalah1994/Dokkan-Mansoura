@@ -9,7 +9,7 @@ use App\Http\Controllers\Customer\Store\StoreController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'isCustomer']], function () {
     // PROFILE
     Route::get('/profile/view-profile', [ProfileController::class, 'viewProfile'])->name('profile.view');
     Route::post('/profile/update-profile', [ProfileController::class, 'updateProfile'])->name('profile.update');

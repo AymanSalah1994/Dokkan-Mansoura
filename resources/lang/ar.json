@@ -70,9 +70,28 @@
     "Filter" :"فلترة النتائج" ,
     "Reset" :"" ,
     "Cancel Order" : "الغاء الطلب" ,
+    "Cancelled" : "ملغي" ,
     "of" : "من" ,
     "Category Products" : "منتجات القسم" ,
-    "Cart Has Been Updated !": "تم تحديث الطلب"
-
-
+    "Cart Has Been Updated !": "تم تحديث الطلب" ,
+    "Note :" : "مهم" ,
+    "You Can Only Sign Up with Email , But for Orders Completion you need to Write Phone Number" : "يمكنك التسجيل بالايميل فقط لكن لا يمكن استكمال الطلب بدون رقم الموبايل"  ,
+    "Password" : "كلمة السر" ,
+    "Confirm Password" : "تأكيد كلمة السر" ,
+    "Register With Google" : "التسجيل بحساب جوجل" ,
+    "Checkout" : "مراجعة وتأكيد الطلب"  ,
+    "Edit Your Profile" : "تعديل البيانات" ,
+    "Clear Cart" : "حذف المنتجات من السلة" ,
+    "Confirm (Pay on Delivery)" : "تأكيد (دفع عند الاستلام)"  ,
+    "Online (Not Working Currently)" : "دفع اونلاين (غير متاح حاليا)"  ,
+    "Please Add a Phone Number To Proceed" : "برجاء اضافة رقم الموبايل للتمكن من تأكيد الطلب" ,
+    "All Orders" : "كل الطلبات" ,
+    "Order Date" : "تاريح الطلب" ,
+    "Tracking Number" : "رقم التتبع" ,
+    "Total" : "الاجمالي" ,
+    "Status" : "الحالة" ,
+    "The Order is checked and Pending,you will be contaced Soon" : "الأوردر قيد الانتظار , سيتم التواصل معك قريبا" ,
+    "Not Checked/In Cart" : "الطلب في السلة" ,
+    "All rights reserved" : "جميع الحقوق محفوظة" ,
+    "In Preparation" : "يتم تجهيزه"
 }

@@ -26,20 +26,6 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    // protected $redirectTo = RouteServiceProvider::HOME;
-
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
 
@@ -52,7 +38,10 @@ class LoginController extends Controller
         {
             // TODO : Change Routes To route(NAME)
             return redirect('/dashboard')->with('status', 'Welcome to your dashboard');
-        } elseif (Auth::user()->role_as == '0') // Normal or Default User Login
+        }
+        //  elseif (Auth::user()->role_as == '0')
+         // Normal or Default User Login
+         else
         {
             return redirect('/');
         }

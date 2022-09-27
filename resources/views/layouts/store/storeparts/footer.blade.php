@@ -42,11 +42,11 @@
 
             <div class="col-4 offset-1">
                 <h5>{{__('Thanks for your Trust')}}</h5>
-                <p>© 2021 Dokkan ELMansoura . All rights reserved.</p>
+                <p>© 2021 Dokkan ELMansoura . {{__('All rights reserved')}}.</p>
             </div>
         </div>
         <div class="d-flex justify-content-between py-4 my-4 border-top">
-            <p>© 2021 Dokkan ELMansoura . All rights reserved.</p>
+            <p>© 2021 Dokkan ELMansoura . {{__('All rights reserved')}}.</p>
         </div>
     </footer>
 </div>

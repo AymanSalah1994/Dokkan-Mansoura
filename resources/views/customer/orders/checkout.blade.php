@@ -11,42 +11,42 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-body">
-                        <h3>User Details</h3>
+                        <h3>{{ __('User Details') }}</h3>
                         <hr>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="">First Name</label>
+                                <label for="">{{ __('First Name') }}</label>
                                 <input class="form-control" type="text" placeholder="{{ request()->user()->first_name }}"
                                     readonly>
                             </div>
                             <div class="col-md-6">
-                                <label for="">Last Name</label>
+                                <label for="">{{ __('Last Name') }}</label>
                                 <input class="form-control" type="text" placeholder="{{ request()->user()->last_name }}"
                                     readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="">City</label>
+                                <label for="">{{ __('City') }}</label>
                                 <input class="form-control" type="text" placeholder="{{ request()->user()->city }}"
                                     readonly>
                             </div>
                             <div class="col-md-6">
-                                <label for="">Phone</label>
+                                <label for="">{{ __('Phone') }}</label>
                                 <input class="form-control" type="text" placeholder="{{ request()->user()->phone }}"
                                     readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="">Address</label>
+                                <label for="">{{ __('Address') }}</label>
                                 <input class="form-control" type="text" placeholder="{{ request()->user()->address }}"
                                     readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="">Email</label>
+                                <label for="">{{ __('Email') }}</label>
                                 <input class="form-control" type="Email" placeholder="{{ request()->user()->email }}"
                                     readonly>
                             </div>
@@ -54,7 +54,8 @@
                         <br>
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{{ route('profile.view') }}" class="btn btn-primary">Edit Your Profile</a>
+                                <a href="{{ route('profile.view') }}"
+                                    class="btn btn-primary">{{ __('Edit Your Profile') }}</a>
                             </div>
                         </div>
                     </div>
@@ -91,18 +92,26 @@
                     </div>
                     <div class="card-footer">
                         <span>{{ __('Total') }} : {{ $total }}</span>
-                        {{-- <a href="" class="btn btn-success rounded-pill float-end">Confirm</a> --}}
-                        {{-- Make it a Button for Form , Form to change order status --}}
                     </div>
                     <div class="card-footer">
-                        {{-- order.confirm --}}
                         <div class="row">
-                            <form action="{{ route('order.confirm') }}" class="row" method="POST">
-                                @csrf
-                                <input type="hidden" name="checking_order" value="{{ $checking_order }}">
-                                <button type="submit"
-                                    class="btn btn-success rounded-pill float-end">{{ __('Confirm (Pay on Delivery)') }}</button>
-                            </form>
+                            @if (request()->user()->phone)
+                                <form action="{{ route('order.confirm') }}" class="row" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="checking_order" value="{{ $checking_order }}">
+                                    <button type="submit"
+                                        class="btn btn-success rounded-pill float-end">{{ __('Confirm (Pay on Delivery)') }}</button>
+                                </form>
+                            @else
+                                <div class="card bg-danger">
+                                    <div class="card-header">
+                                        {{ __('Note :') }}
+                                    </div>
+                                    <div class="card-body">
+                                        {{ __('Please Add a Phone Number To Proceed') }}
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                         <br>
                         <div class="row">
