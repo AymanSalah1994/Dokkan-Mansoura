@@ -10,7 +10,7 @@
                 <span class="float-end"><s>{{ $product->original_price }}</s></span>
                 <br>
                 <p class="card-text">{{ Str::limit($product->description , $limit=20,$end="...") }}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="{{ route('product.details', $product->slug) }}" class="btn btn-primary">More Details</a>
             </div>
         </div>
     </div>

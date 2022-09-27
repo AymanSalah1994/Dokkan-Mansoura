@@ -78,7 +78,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <a href="{{ route('product.details', $product->id) }}">
+                                    <a href="{{ route('product.details', $product->slug) }}">
                                         <h5 class="card-title">{{ $product->name }}</h5>
                                     </a>
                                     <p class="card-text">{{ Str::limit($product->description, $limit = 50, $end = '...') }}

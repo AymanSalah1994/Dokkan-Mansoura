@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="{{ asset('images/logo.png') }}" width="30" height="30" alt="">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ route('store.index') }}">
+            <img src="{{ asset('images/logo.png') }}" width="45" height="45" alt="">
         </a>
         <a class="navbar-brand" href="{{ route('store.index') }}">{{ __('Dokkan ELMansoura') }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -10,16 +10,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="true">
-                        Lang/اللغة
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('set.locale','ar') }}">العربية</a></li>
-                        <li><a class="dropdown-item" href="{{ route('set.locale','en') }}">English</a></li>
-                    </ul>
-                </li>
+
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -63,12 +54,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('store.categories') }}">Services</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="true">
+                        Lang/اللغة
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('set.locale', 'ar') }}">العربية</a></li>
+                        <li><a class="dropdown-item" href="{{ route('set.locale', 'en') }}">English</a></li>
+                    </ul>
+                </li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <a class="nav-link active" href="{{ route('register') }}">Register</a>
                     </li>
                 @endguest
 

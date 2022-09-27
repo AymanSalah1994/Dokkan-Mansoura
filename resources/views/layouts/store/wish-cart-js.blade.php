@@ -8,7 +8,7 @@
 
         loadCart();
         loadWishList();
-        // Once the Document is Ready Call Them
+
         function loadCart() {
             $.ajax({
                 type: "GET",

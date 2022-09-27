@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="purple" data-background-color="white" data-image="">
+<div class="sidebar" data-color="green" data-background-color="white" data-image="">
     <div class="logo">
         <a href="{{ route('store.index') }}" class="simple-text logo-normal">
             Mansoura Shop
@@ -30,31 +30,31 @@
             {{-- Element 4 --}}
             <li class="nav-item {{ Request::is('dashboard/all-orders') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.orders.all') }}">
-                    <i class="material-icons">favorite</i>
+                    <i class="material-icons">add_shopping_cart</i>
                     <p>All Orders</p>
                 </a>
                 <ul style="list-style-type: none; ">
                     <li class="nav-item {{ Request::is('dashboard/checked-orders') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.orders.checked') }}">
-                            <i class="material-icons">favorite</i>
+                            <i class="material-icons">add_shopping_cart</i>
                             <p>Checked Orders</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('dashboard/in-preparation-orders') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.orders.prepared') }}">
-                            <i class="material-icons">favorite</i>
+                            <i class="material-icons">add_shopping_cart</i>
                             <p>In Preparation Orders</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('dashboard/all-done-orders') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('orders.done') }}">
-                            <i class="material-icons">favorite</i>
+                            <i class="material-icons">add_shopping_cart</i>
                             <p>All Done Orders</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('dashboard/all-refunded-orders') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('orders.refunded') }}">
-                            <i class="material-icons">favorite</i>
+                            <i class="material-icons">add_shopping_cart</i>
                             <p>Refunded Orders</p>
                         </a>
                     </li>
@@ -64,25 +64,25 @@
             {{-- Element 5 --}}
             <li class="nav-item {{ Request::is('dashboard/all-users') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.users.all') }}">
-                    <i class="material-icons">favorite</i>
+                    <i class="material-icons">child_care</i>
                     <p>All Users</p>
                 </a>
                 <ul style="list-style-type: none; ">
                     <li class="nav-item {{ Request::is('dashboard/all-customers') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.users.customers') }}">
-                            <i class="material-icons">favorite</i>
+                            <i class="material-icons">child_care</i>
                             <p>All Customers</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('dashboard/all-merchants') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.users.merchants') }}">
-                            <i class="material-icons">favorite</i>
+                            <i class="material-icons">child_care</i>
                             <p>All Merchants</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('dashboard/all-dealers') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.users.dealers') }}">
-                            <i class="material-icons">favorite</i>
+                            <i class="material-icons">child_care</i>
                             <p>All Dealers</p>
                         </a>
                     </li>
