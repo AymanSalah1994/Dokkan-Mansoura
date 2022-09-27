@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Customer\Store;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Customer\SearchRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
