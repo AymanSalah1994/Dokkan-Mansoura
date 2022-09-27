@@ -105,7 +105,8 @@
                         'cartItemID': cartItemID,
                     },
                     success: function(response) {
-                        swal(response.status);
+                        // swal(response.status);
+                        $.notify(response.status, "success");
                         window.location.reload();
                     },
                     error: function(request, status, error) {
@@ -153,7 +154,8 @@
 
     @if ($message = session('status'))
         <script>
-            swal('{{ $message }}');
+            // swal('{{ $message }}');
+            $.notify("{{ $message }}", "success");
         </script>
     @endif
 @endsection
