@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password',
         'google_id',
         'facebook_id',
-        'bio' ,'fb_link' ,'youtube_vid'
+        'bio', 'fb_link', 'youtube_vid', 'profile_picture'
     ];
 
     public function sluggable(): array

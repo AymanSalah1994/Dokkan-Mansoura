@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('bio')->nullable();
             $table->string('fb_link')->nullable();
             $table->string('youtube_vid')->nullable();
+            $table->string('profile_picture')->nullable();
             // 0 Customer , 1 Admin  , 2 Merchant  , 3 Dealer
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
