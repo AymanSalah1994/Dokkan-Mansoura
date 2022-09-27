@@ -7,7 +7,6 @@
     <div class="divider" style="height: 50px">
     </div>
     @if ($order)
-        @include('layouts.dividers.divider-medium')
         <div class="container">
             <div class="row">
                 <div class="col-md-7">

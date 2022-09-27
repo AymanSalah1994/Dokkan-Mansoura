@@ -6,19 +6,16 @@
 @endsection
 @if ($currentCartItems->count() == 0)
     @section('content')
-        <div class="divider" style="height: 50px">
-        </div>
-        <div>
-            <div class="container py-5">
-                <div class="card shadow product_data mb-3">
-                    <div class="card-body">
-                        <div class="row align-items-center justify-content-center">
-                            <div class="col-md-6">
-                                <img src="{{ asset('images/some_asset/cart.png') }}" alt="" width="30%">
-                            </div>
-                            <div class="col-md-3">
-                                Your Cart is Empty !
-                            </div>
+    @include('layouts.dividers.divider-small')
+        <div class="container">
+            <div class="card shadow product_data mb-3">
+                <div class="card-body">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-6">
+                            <img src="{{ asset('images/some_asset/cart.png') }}" alt="" width="30%">
+                        </div>
+                        <div class="col-md-3">
+                            Your Cart is Empty !
                         </div>
                     </div>
                 </div>
@@ -27,8 +24,6 @@
     @endsection
 @else
     @section('content')
-        <div class="divider" style="height: 50px">
-        </div>
         <br>
         <div class="container">
             @foreach ($currentCartItems as $cartItem)

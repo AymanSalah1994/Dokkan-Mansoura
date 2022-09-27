@@ -1,71 +1,52 @@
-
 <div class="divider" style="height: 200px">
 </div>
 <hr>
-<div class="container-fluid bg-indigo-600 text-white" style="background-color: gray;">
+<div class="container-fluid bg-indigo-600 text-white" style="background-color: rgba(8, 8, 8, 0.818);">
     <footer class="py-5">
         <div class="row">
             <div class="col-2">
-                <h5>Section</h5>
+                <h5>Social Media</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Facebook</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">YouTube</a></li>
                 </ul>
             </div>
 
             <div class="col-2">
-                <h5>Section</h5>
+                <h5>Useful links</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+                    <li class="nav-item mb-2"><a href="{{ route('store.index') }}"
+                            class="nav-link p-0 text-white">Home</a></li>
+                    <li class="nav-item mb-2"><a href="{{ route('footer.features') }}"
+                            class="nav-link p-0 text-white">Features</a>
+                    </li>
+                    <li class="nav-item mb-2"><a href="{{ route('footer.pricing') }}"
+                            class="nav-link p-0 text-white">Pricing</a>
+                    </li>
+                    <li class="nav-item mb-2"><a href="{{ route('footer.faqs') }}"
+                            class="nav-link p-0 text-white">FAQs</a>
+                    </li>
+                    <li class="nav-item mb-2"><a href="{{ route('footer.about') }}"
+                            class="nav-link p-0 text-white">About</a>
+                    </li>
                 </ul>
             </div>
 
             <div class="col-2">
-                <h5>Section</h5>
+                <h5>Merchatns</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+                    <li class="nav-item mb-2"><a href="{{ route('footer.merchant.apply') }}"
+                            class="nav-link p-0 text-white">How to Apply</a></li>
                 </ul>
             </div>
 
             <div class="col-4 offset-1">
-                <form>
-                    <h5>Subscribe to our newsletter</h5>
-                    <p>Monthly digest of whats new and exciting from us.</p>
-                    <div class="d-flex w-100 gap-2">
-                        <label for="newsletter1" class="visually-hidden">Email address</label>
-                        <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                        <button class="btn btn-primary" type="button">Subscribe</button>
-                    </div>
-                </form>
+                <h5>Thanks for your Trust</h5>
+                <p>© 2021 Dokkan ELMansoura . All rights reserved.</p>
             </div>
         </div>
         <div class="d-flex justify-content-between py-4 my-4 border-top">
-            <p>© 2021 Company, Inc. All rights reserved.</p>
-            <ul class="list-unstyled d-flex">
-                <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24"
-                            height="24">
-                            <use xlink:href="#twitter"></use>
-                        </svg></a></li>
-                <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24"
-                            height="24">
-                            <use xlink:href="#instagram"></use>
-                        </svg></a></li>
-                <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24"
-                            height="24">
-                            <use xlink:href="#facebook"></use>
-                        </svg></a></li>
-            </ul>
+            <p>© 2021 Dokkan ELMansoura . All rights reserved.</p>
         </div>
     </footer>
 </div>

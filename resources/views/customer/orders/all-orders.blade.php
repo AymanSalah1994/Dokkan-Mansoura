@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top" style="margin-top: 70px">
+    <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top" style="">
         <nav aria-label="breadcrumb">
             <span>All Orders :</span>
         </nav>
@@ -14,7 +14,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-header">
-                    <h3>Orders</h3>
+                    <h3 class="text-center">Orders</h3>
                 </div>
                 <div class="card-body">
                     {{-- Don't Forget to Put the Order iD --}}

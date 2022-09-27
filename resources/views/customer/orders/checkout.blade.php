@@ -5,7 +5,7 @@
     @include('customer.store.toast')
 @endsection
 @section('content')
-    @include('layouts.dividers.divider-medium')
+    @include('layouts.dividers.divider-small')
     <div class="container">
         <div class="row">
             <div class="col-md-5">
@@ -60,7 +60,6 @@
                     </div>
                 </div>
             </div>
-            {{-- Order Details --}}
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-header">

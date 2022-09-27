@@ -33,7 +33,8 @@
                             value="{{ request('maximum_price') }}">
                     </div>
                     <div class="row">
-                        <input type="number" class="form-control search-slt" placeholder="minimum">
+                        <input type="number" class="form-control search-slt" placeholder="minimum" name="minimum_price"
+                            value="{{ request('minimum_price') }}">
                     </div>
                     <div class="row">
                         <select class="search-slt" id="exampleFormControlSelect1" name="order_by">
@@ -105,8 +106,18 @@
                     @endforeach
                 </div>
             </div>
+            {{-- {{ $allProducts->appends(request()->only(['company_id','search']))->links() }} --}}
+            {{-- {{ $allProducts->links() }} --}}
         </div>
     </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                {{ $allProducts->appends(request()->only(['maximum_price', 'minimum_price', 'order_by', 'category', 'merchant']))->links() }}
+            </div>
+        </div>
+    </div>
 
 @endsection
 
