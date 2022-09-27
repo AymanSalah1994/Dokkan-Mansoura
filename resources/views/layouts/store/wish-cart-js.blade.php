@@ -46,14 +46,14 @@
                     'product_quantity': product_quantity
                 },
                 success: function(response) {
-                    $.notify(response.status,"success");
+                    $.notify(response.status, "success");
                     // swal(response.status)
                     loadCart();
                 },
                 error: function(request, status, error) {
                     var reqError = JSON.parse(request.responseText);
                     // swal("Soemthing Wrongyy , 10 Items are max")
-                    $.notify("Error !","error");
+                    $.notify("Error !", "error");
                 }
             });
         });
@@ -75,16 +75,14 @@
                 },
                 success: function(response) {
                     console.log(response.status);
-                    $.notify(response.status,"success");
-                    // swal(response.status)
+                    // $msg = response.status ;
+                    // {{trans('$msg')}}
+                    $.notify(trans(response.status), "success");
                     loadWishList();
                 },
                 error: function(request, status, error) {
                     var reqError = JSON.parse(request.responseText);
-                    // console.log(reqError.message);
-                    // swal(reqError.message)
-                    $.notify(reqError.message,"error");
-
+                    $.notify(trans(reqError.message), "error");
                 }
             });
         });

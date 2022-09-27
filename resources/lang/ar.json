@@ -93,5 +93,6 @@
     "The Order is checked and Pending,you will be contaced Soon" : "الأوردر قيد الانتظار , سيتم التواصل معك قريبا" ,
     "Not Checked/In Cart" : "الطلب في السلة" ,
     "All rights reserved" : "جميع الحقوق محفوظة" ,
-    "In Preparation" : "يتم تجهيزه"
+    "In Preparation" : "يتم تجهيزه" ,
+    "Item is Added !" : "تم اضافة المنتج"
 }

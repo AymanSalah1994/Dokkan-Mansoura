@@ -28,7 +28,7 @@ class CartController extends Controller
                 $cartItem->save();
                 $request->updateTotalOrder($cartItemData['order_id']);
                 return response()->json([
-                    'status' => 'Item is Added !'
+                    'status' => trans('Item is Added !')
                 ]);
             }
         } else {
