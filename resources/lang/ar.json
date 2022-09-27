@@ -70,7 +70,9 @@
     "Filter" :"فلترة النتائج" ,
     "Reset" :"" ,
     "Cancel Order" : "الغاء الطلب" ,
-    "of" : "من"
+    "of" : "من" ,
+    "Category Products" : "منتجات القسم" ,
+    "Cart Has Been Updated !": "تم تحديث الطلب"
 
 
 }

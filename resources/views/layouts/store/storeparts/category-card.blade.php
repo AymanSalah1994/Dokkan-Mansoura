@@ -7,7 +7,7 @@
                     <h5 class="card-title">{{ $category->name }}</h5>
                 </a>
                 <p class="card-text">{{ Str::limit($category->description, $limit = 20, $end = '...') }}</p>
-                <a href="{{ route('category.products', $category->slug) }}" class="btn btn-primary">{{__('More Details')}}</a>
+                <a href="{{ route('category.products', $category->slug) }}" class="btn btn-primary">{{__('Category Products')}}</a>
             </div>
         </div>
     </div>
