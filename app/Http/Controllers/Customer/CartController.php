@@ -20,7 +20,7 @@ class CartController extends Controller
         if (Auth::check()) {
             if (CartItem::where('product_id', $request->product_id)->where('user_id', $request->user()->id)->where('status', '0')->exists()) {
                 return response()->json([
-                    'status' => 'Item is Already Added'
+                    'status' => trans('Item is Already Added')
                 ]);
             } else {
                 $cartItemData = $request->handleRequest();
@@ -33,7 +33,7 @@ class CartController extends Controller
             }
         } else {
             return response()->json([
-                'status' => 'Please Log in First'
+                'status' => trans('Please Log in First')
             ]);
         }
     }
@@ -43,7 +43,7 @@ class CartController extends Controller
         if (Auth::check()) {
             if (WishListItem::where('product_id', $request->product_id)->where('user_id', $request->user()->id)->exists()) {
                 return response()->json([
-                    'status' => 'Item is Already Added'
+                    'status' => trans('Item is Already Added')
                 ]);
             } else {
                 $wishListItem  = new WishListItem();
@@ -51,12 +51,12 @@ class CartController extends Controller
                 $wishListItem->product_id = $request->product_id;
                 $wishListItem->save();
                 return response()->json([
-                    'status' => 'Item is Added!'
+                    'status' => trans('Item is Added!')
                 ]);
             }
         } else {
             return response()->json([
-                'status' => 'Please Log in First !'
+                'status' => trans('Please Log in First')
             ]);
         }
     }
@@ -91,7 +91,7 @@ class CartController extends Controller
         $activeOrder = $user->orders->where('status', '0')->first();
         $request->updateTotalOrder($activeOrder->id);
         return response()->json([
-            'status' => 'Item Deleted Successfully'
+            'status' => trans('Item Deleted Successfully')
         ]);
     }
 
@@ -109,7 +109,7 @@ class CartController extends Controller
         $cartItem = CartItem::find($request->cartItemID);
         $request->updateTotalOrder($cartItem->order_id);
         return response()->json([
-            'status' => 'UpDated Quantity '
+            'status' => 'Updated Quantity'
         ]);
     }
 
@@ -125,7 +125,7 @@ class CartController extends Controller
         $wishListItem = WishListItem::find($request->wishListItemID);
         $wishListItem->delete();
         return response()->json([
-            'status' => 'Item Deleted Successfully'
+            'status' => trans('Item Deleted Successfully')
         ]);
     }
 }

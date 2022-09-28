@@ -5,7 +5,7 @@
             <h1> {{ __('User') }} : {{ request()->user()->first_name }} </h1>
         </div>
     </div>
-    <form action="{{ route('update.profile.merchant') }}" method="post">
+    <form action="{{ route('update.profile.merchant') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -59,8 +59,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label for="">Facebook Link</label>
-                        <input class="form-control" name="facebook_link"
-                            value="{{ old('faceook_link', request()->user()->fb_link) }}">
+                        <input class="form-control" name="fb_link"
+                            value="{{ old('fb_link', request()->user()->fb_link) }}">
                     </div>
                 </div>
                 <div class="row">
@@ -73,7 +73,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <img src="{{ asset('images/some_asset/2.jpg') }}" alt="">
+                        <img src="{{ Storage::url(request()->user()->profile_picture) }}" alt="">
                     </div>
                 </div>
                 <div class="row">

@@ -71,11 +71,11 @@
                     <div class="row">
                         <button type="reset" class="btn btn-primary wrn-btn" id="btn-clear">{{ __('Reset') }}</button>
                     </div>
+                    <br>
                 </div>
                 <div class="col-md-8">
-                    {{-- max-width: 540px;" --}}
                     @foreach ($allProducts as $product)
-                        <div class="card mb-3" style="">
+                        <div class="card mb-3 gy-5" style="">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
                                     <img src="{{ Storage::url($product->product_picture) }}" class="card-img card-img-top"
@@ -91,12 +91,12 @@
                                         </p>
                                         <p class="card-text">
                                             <small class="text-muted">
-                                                Price : {{ $product->selling_price }}
+                                                {{__('Price')}} : {{ $product->selling_price }}
                                             </small>
                                         </p>
                                         <p class="card-text">
                                             <small class="text-muted">
-                                                Buyer : {{ $product->user->first_name }}
+                                                {{__('Buyer')}} : {{ $product->user->first_name }}
                                             </small>
                                         </p>
                                     </div>
@@ -106,8 +106,6 @@
                     @endforeach
                 </div>
             </div>
-            {{-- {{ $allProducts->appends(request()->only(['company_id','search']))->links() }} --}}
-            {{-- {{ $allProducts->links() }} --}}
         </div>
     </form>
     <div class="container">

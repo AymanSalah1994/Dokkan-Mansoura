@@ -23,7 +23,7 @@ class ProfileRequest extends FormRequest
             'phone' => 'nullable|string|max:15|unique:users,phone,' . $this->user()->id,
             'email' => "required|email|unique:users,email," . $this->user()->id,
             'bio' => 'nullable|string|max:255',
-            'facebook_link' => 'nullable|url|max:255',
+            'fb_link' => 'nullable|url|max:255',
             'youtube_vid' => 'nullable|url|max:255',
             'profile_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
         ];
@@ -35,7 +35,7 @@ class ProfileRequest extends FormRequest
         $allRequestData = $this->validated();
         if ($this->hasFile('profile_picture')) {
             if ($user['profile_picture']) {
-                Storage::delete($user['product_picture']);
+                Storage::delete($user['profile_picture']);
             }
             $picture = $this->profile_picture;
             $fileName = Storage::putFile('merchantsProfiles', $picture);

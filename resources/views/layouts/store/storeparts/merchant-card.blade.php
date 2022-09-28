@@ -1,19 +1,25 @@
 @isset($merchant)
     {{-- {{ Storage::url($merchant->merchant_picture) }} --}}
-    <div class="col-md-3">
+    <div class="col-md-3 gy-3 d-flex justify-content-center">
         <div class="card merchant">
             <div class="box">
                 <div class="img">
-                    <img src="{{ asset('images/some_asset/3.jpg') }}">
+                    @if ($merchant->profile_picture)
+                        <img src="{{ Storage::url($merchant->profile_picture) }}">
+                    @else
+                        <img src="{{ asset('images/150x150.png') }}">
+                    @endif
                 </div>
                 <h2><a href="{{ route('merchant.details', $merchant->slug) }}">{{ $merchant->first_name }}
-                    </a><br><span>Laptops</span></h2>
+                    </a><br><span>--</span></h2>
                 <p>{{ $merchant->first_name }}</p>
-                <span>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    </ul>
-                </span>
+                @if ($merchant->fb_link)
+                    <span>
+                        <ul>
+                            <li><a href="{{ $merchant->fb_link }}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </span>
+                @endif
             </div>
         </div>
     </div>

@@ -17,11 +17,9 @@
             <br>
             <h2 class="text-center">{{ $category->name }}</h2>
             <hr>
-            <div class="row gy-5">
+            <div class="row">
                 @foreach ($categoryProducts as $product)
-                    <div class="col-md-3">
                         @include('layouts.store.storeparts.product-card')
-                    </div>
                 @endforeach
             </div>
         </div>

@@ -1,5 +1,5 @@
 @isset($product)
-    <div class="col-md-3 gy-3 d-flex justify-content-center">
+    <div class="col-md-3">
         <div class="card " style="width: 18rem;">
             <img src="{{ Storage::url($product->product_picture) }}" class="card-img-top" alt="...">
             <div class="card-body">

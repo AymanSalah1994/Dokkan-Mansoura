@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center">Merchant Name</h1>
+        <h1 class="text-center">{{ $merchant->first_name }}</h1>
     </div>
     <hr>
     <div class="container">
@@ -17,26 +17,28 @@
                             allowfullscreen></iframe>
                     </div>
                     <div class="col-md-8">
-                        <h2 class="mb-0"> Merchant Name</h2>
+                        <h2 class="mb-0">{{ $merchant->first_name }}</h2>
                         <br>
                         <hr>
-                        <p>Bio : Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                        <p>Address : Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                        <p>Telephone : 01210127127</p>
+                        <p>{{__('Bio')}} :{{ $merchant->bio }}</p>
+                        <p>{{__('Address')}} : {{ $merchant->address }}</p>
+                        <p>{{__('Phone')}} : {{ $merchant->phone }}</p>
                         <p>
                             <a href="{{ route('merchant.store.products', $merchant->slug) }}" class="btn btn-primary">
-                                All Products
+                                {{ __('All Products') }}
                             </a>
                         </p>
                         <br>
                         <hr>
-                        <span>
-                            <ul>
-                                <li style=""><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </span>
+                        @if ($merchant->fb_link)
+                            <span>
+                                <ul>
+                                    <li style=""><a href="{{ $merchant->fb_link }}"><i class="fa fa-facebook"
+                                                aria-hidden="true"></i></a>
+                                    </li>
+                                </ul>
+                            </span>
+                        @endif
                     </div>
                 </div>
             </div>

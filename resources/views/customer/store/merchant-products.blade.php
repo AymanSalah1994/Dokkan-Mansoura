@@ -6,13 +6,14 @@
             <br>
             <h2 class="text-center">{{ $merchant->first_name }}</h2>
             <hr>
-            <div class="row gy-5">
-                @foreach ($merchant->products as $product)
-                    <div class="col-md-3">
+            <div class="row">
+                @foreach ($products as $product)
                         @include('layouts.store.storeparts.product-card')
-                    </div>
                 @endforeach
             </div>
         </div>
+    </div>
+    <div class="row">
+        {{$products->links()}}
     </div>
 @endsection

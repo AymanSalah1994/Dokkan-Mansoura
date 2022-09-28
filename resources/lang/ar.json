@@ -68,7 +68,7 @@
     "Your Cart is Empty !" : "السلة فارغة"  ,
     "Search" : "بحث" ,
     "Filter" :"فلترة النتائج" ,
-    "Reset" :"" ,
+    "Reset" :"الغاء الفلاتر" ,
     "Cancel Order" : "الغاء الطلب" ,
     "Cancelled" : "ملغي" ,
     "of" : "من" ,
@@ -94,5 +94,23 @@
     "Not Checked/In Cart" : "الطلب في السلة" ,
     "All rights reserved" : "جميع الحقوق محفوظة" ,
     "In Preparation" : "يتم تجهيزه" ,
-    "Item is Added !" : "تم اضافة المنتج"
+    "Item is Added !" : "تم اضافة المنتج" ,
+    "EGP" : "ج.م" ,
+    "Delete" : "مسح"  ,
+    "Please Log in First" : "برجاء تسجيل الدخول أولا" ,
+    "Item is Already Added" : "العنصر مضاف مسبقا" ,
+    "Item Deleted Successfully" : "تم حذف العنصر" ,
+    "You Did NOT buy this Product !" :"تقييم المنتج متاح بعد الشراء" ,
+    "Review is Added" : "تم اضافة التقييم" ,
+    "All Merchants" : "كل التجار" ,
+    "All Products" : "كل المنتجات" ,
+    "Merchant Details" : " بيانات التاجر"  ,
+    "Bio" : "نبذة" ,
+    "Buyer" :"البائع" ,
+    "What is This Site about ?" : "عن الموقع ؟"  ,
+    "This site is a Bridge for Real Shops to be online , it is not a standalone Ecommerce Site .":"الموقع هو حلقة وصل بين تجار فعليين وبين الزبائن على شبكة الانترنت" ,
+    "What is the Differnce Between this Site and other sites ?" : "ما الفرق بينكم وبين المواقع الأخرى؟" ,
+    "The Difference is in the prices , most online shops tend to be more expensive Also this Site Only deals with Trusted shops with good reputation ." : "الفرق في الاسعار , تجربة الشراء الاونلاين صعبة ونحن نحاول جعلها تجربة ممتعة بدون غش" ,
+    "Email Address or Phone Number" : "رقم الموبايل أو الايميل"
+
 }

@@ -12,8 +12,8 @@
             <div class="row">
                 <div class="owl-carousel owl-theme">
                     @foreach ($featured_products as $product)
-                        <div class="item">
-                            @include('layouts.store.storeparts.product-card')
+                        <div class="item row">
+                            @include('layouts.store.storeparts.featured-product-card')
                         </div>
                     @endforeach
                 </div>
@@ -29,7 +29,7 @@
                 <div class="owl-carousel owl-theme">
                     @foreach ($featured_categories as $category)
                         <div class="item">
-                            @include('layouts.store.storeparts.category-card')
+                            @include('layouts.store.storeparts.featured-category-card')
                         </div>
                     @endforeach
                 </div>

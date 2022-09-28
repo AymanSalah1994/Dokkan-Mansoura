@@ -20,7 +20,7 @@ class StoreController extends Controller
 
     public function categories()
     {
-        $allCategories = Category::where('status', '1')->get();
+        $allCategories = Category::where('status', '1')->paginate(7);
         return view('customer.store.categories', compact('allCategories'));
     }
 
@@ -47,7 +47,7 @@ class StoreController extends Controller
 
     public function allMerchants()
     {
-        $all_merchants = User::where('role_as', '2')->get();
+        $all_merchants = User::where('role_as', '2')->paginate(8);
         return view('customer.store.all-merchants', compact('all_merchants'));
     }
 
@@ -61,6 +61,7 @@ class StoreController extends Controller
     {
         $merchant = User::where('slug', $slug)->first();
         // $merchant_products  = Product::where('user_id', $merchant->id)->get();
-        return view('customer.store.merchant-products', compact('merchant'));
+        $products = $merchant->products()->paginate(8) ;
+        return view('customer.store.merchant-products', compact('products','merchant'));
     }
 }

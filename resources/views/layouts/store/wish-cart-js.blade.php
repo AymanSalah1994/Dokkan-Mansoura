@@ -5,7 +5,6 @@
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
         });
-
         loadCart();
         loadWishList();
 
@@ -74,19 +73,14 @@
                     'product_id': product_id,
                 },
                 success: function(response) {
-                    console.log(response.status);
-                    // $msg = response.status ;
-                    // {{trans('$msg')}}
-                    $.notify(trans(response.status), "success");
+                    $.notify(response.status, "success");
                     loadWishList();
                 },
                 error: function(request, status, error) {
                     var reqError = JSON.parse(request.responseText);
-                    $.notify(trans(reqError.message), "error");
+                    $.notify(reqError.message, "error");
                 }
             });
         });
-
-
     });
 </script>

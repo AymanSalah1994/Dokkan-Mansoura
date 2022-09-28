@@ -35,7 +35,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="">City</label>
+                                    <label for="">{{__('City')}}</label>
                                     <input class="form-control" type="text" name="city"
                                         value="{{ old('city', $user->city) }}">
                                 </div>
@@ -99,7 +99,8 @@
 @section('scripts')
     @if ($status = session('status'))
         <script>
-            swal('{{ $status }}');
+            // swal('{{ $status }}');
+            $.notify('{{ $status }}', "success");
         </script>
     @endif
 @endsection

@@ -7,14 +7,20 @@
     <div class="py-5">
         <div class="container">
             <br>
-            <h2 class="text-center">{{__('All Categories')}}</h2>
+            <h2 class="text-center">{{ __('All Categories') }}</h2>
             <hr>
-            <div class="row gy-5">
+            <div class="row">
                 @foreach ($allCategories as $category)
-                    <div class="col-md-3">
-                        @include('layouts.store.storeparts.category-card')
-                    </div>
+                    @include('layouts.store.storeparts.category-card')
                 @endforeach
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="py-5">
+        <div class="container">
+            <div class="">
+                {{ $allCategories->links() }}
             </div>
         </div>
     </div>

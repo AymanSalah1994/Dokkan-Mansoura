@@ -42,7 +42,7 @@
                                 </a>
                             </div>
                             <div class="col-md-2">
-                                {{ $wish_list_item->product->selling_price }} EGP
+                                {{ $wish_list_item->product->selling_price }} {{__('EGP')}}
                             </div>
                             <div class="col-md-2">
                                 <input type="hidden" value="{{ $wish_list_item->id }}" class="wishListItemID">
@@ -80,12 +80,11 @@
                         window.location.reload();
                         $.notify(response.status, "success");
                         // swal(response.status);
-
                         // $('.toast').toast('show');
                     },
                     error: function(request, status, error) {
                         var reqError = JSON.parse(request.responseText);
-                        swal(reqError.message)
+                        // swal(reqError.message)
                         $.notify(reqError.message, "error");
                     }
                 });
