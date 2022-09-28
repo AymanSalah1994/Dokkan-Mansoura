@@ -61,16 +61,25 @@ class MerchantController extends Controller
         $user = $request->user();
         $allData = $request->handleRequest();
         $user->update($allData);
-        return redirect()->route('merchant.index')->with('status', 'Profile Updated');
+        return redirect()->route('merchant.panel.index')->with('status', 'Profile Updated');
     }
     public function updateProduct(UpdateProductRequest $request)
     {
         $request->handleRequest();
-        return redirect()->route('merchant.products')->with('status', 'Product Updated');
+        return redirect()->route('merchant.panel.products')->with('status', 'Product Updated');
     }
     public function storeProduct(CreateProductRequest $request)
     {
         $request->handleRequest();
-        return redirect()->route('merchant.products')->with('status', 'Product Created');
+        return redirect()->route('merchant.panel.products')->with('status', 'Product Created');
+    }
+
+    public function completedItems()
+    {
+        $user = Auth::user();
+        $userProducts = $user->products->pluck('id')->toArray();
+        $completedItems = CartItem::where('status', '4')->whereIn('product_id', $userProducts)->get();
+        return view('merchant.completed-orders', compact('completedItems'));
+
     }
 }

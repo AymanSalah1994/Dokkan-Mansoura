@@ -11,7 +11,7 @@
         function loadMerchantPanel() {
             $.ajax({
                 type: "GET",
-                url: '{{ route('merchant.related.items.counter') }}',
+                url: '{{ route('merchant.panel.related.items.counter') }}',
                 success: function(response) {
                     $('.related_count').html(response.relatedCount);
                 },

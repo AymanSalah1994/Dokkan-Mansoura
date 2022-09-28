@@ -7,7 +7,7 @@
         @foreach ($products as $product)
             <div class="row justify-content-end align-items-center">
                 <div class="col-md-4">
-                    <a href="{{ route('merchant.product.view', $product->slug) }}" class="btn btn-primary">View</a>
+                    <a href="{{ route('merchant.panel.product.view', $product->slug) }}" class="btn btn-primary">View</a>
                 </div>
                 <div class="col-md-8">
                     <div class="card mb-2" style="">

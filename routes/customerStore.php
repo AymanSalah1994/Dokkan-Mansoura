@@ -33,6 +33,9 @@ Route::group(['middleware' => ['auth', 'isCustomer']], function () {
     Route::post('store/cancel-order', [OrderController::class, 'cancelOrder'])->name('order.cancel');
     Route::post('store/return-order-to-cart', [OrderController::class, 'returnOrderToCart'])->name('return.order.to.cart');
     // ORDER :ORDER CONTROLLER END  ;
+
+    Route::get('/store/cart-count', [CountingController::class, 'cartCount'])->name('cart.counter');
+    Route::get('/store/wish-list-count', [CountingController::class, 'wishListCount'])->name('wish.list.counter');
 });
 
 
@@ -50,8 +53,7 @@ Route::get('/store/merchant/{slug}/products', [StoreController::class, 'merchant
 
 // GENERAL ROUTES :
 Route::get('/store/search', [SearchController::class, 'index'])->name('store.search');
-Route::get('/store/cart-count', [CountingController::class, 'cartCount'])->name('cart.counter');
-Route::get('/store/wish-list-count', [CountingController::class, 'wishListCount'])->name('wish.list.counter');
+
 Route::post('/add-to-cart', [CartController::class, 'addCartItem'])->name('cart.add');
 Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->name('wish-list.add');
 Route::post('/store/review/submit', [ReviewController::class, 'submitReview'])->name('review.submit');

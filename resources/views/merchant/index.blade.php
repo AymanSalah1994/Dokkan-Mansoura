@@ -5,7 +5,7 @@
             <h1> {{ __('User') }} : {{ request()->user()->first_name }} </h1>
         </div>
     </div>
-    <form action="{{ route('update.profile.merchant') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('merchant.panel.profile.update') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -71,16 +71,34 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <img src="{{ Storage::url(request()->user()->profile_picture) }}" alt="">
+
+                <div class="row ">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new img-thumbnail" style="width: 150px; height: 150px;">
+                            <img src=
+                            "{{ request()->user()->profile_picture ? Storage::url(request()->user()->profile_picture) : asset('images/150x150.png') }}"
+                                alt="...">
+                        </div>
+                        <div class="fileinput-preview fileinput-exists img-thumbnail "
+                            style="max-width: 150px; max-height: 150px;"></div>
+                        <div class="">
+                            <span class="btn btn-outline-secondary btn-file">
+                                <span class="fileinput-new">Select image</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input type="file" name="profile_picture" accept="image/*">
+                            </span>
+                            <a href="#" class="btn btn-outline-secondary fileinput-exists"
+                                data-dismiss="fileinput">Remove</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <input type="file" name="profile_picture" id="">
-                    </div>
-                </div>
+
+
+
+
+
+
+
                 <div class="row">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-warning float-right">Update</button>
