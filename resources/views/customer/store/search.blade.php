@@ -37,17 +37,17 @@
                             value="{{ request('minimum_price') }}">
                     </div>
                     <div class="row">
-                        <select class="search-slt" id="exampleFormControlSelect1" name="order_by">
-                            <option value="">{{__('Order By')}} </option>
+                        <select class="search-slt" id="filter_by_pricing" name="order_by">
+                            <option value="">{{ __('Order By') }} </option>
                             <option value="LtoH" {{ request('order_by') == 'LtoH' ? 'selected' : '' }}>
-                                {{__('Lowest to Highest')}}</option>
+                                {{ __('Lowest to Highest') }}</option>
                             <option value="HtoL" {{ request('order_by') == 'HtoL' ? 'selected' : '' }}>
-                               {{__(' Highest To lowest')}}</option>
+                                {{ __(' Highest To lowest') }}</option>
                         </select>
                     </div>
                     <div class="row">
-                        <select class="search-slt" id="exampleFormControlSelect1" name="category">
-                            <option value="">{{__('Select Category')}}</option>
+                        <select class="search-slt" id="filter_by_category" name="category">
+                            <option value="">{{ __('Select Category') }}</option>
                             @foreach ($all_categories as $category)
                                 <option value="{{ $category->id }}"
                                     {{ request('category') == $category->id ? 'selected' : '' }}>
@@ -56,8 +56,8 @@
                         </select>
                     </div>
                     <div class="row">
-                        <select class="search-slt" id="exampleFormControlSelect1" name="merchant">
-                            <option value="">{{__('Select Merchant')}}</option>
+                        <select class="search-slt" id="filter_by_merchant" name="merchant">
+                            <option value="">{{ __('Select Merchant') }}</option>
                             @foreach ($all_merchants as $merchant)
                                 <option value="{{ $merchant->id }}"
                                     {{ request('merchant') == $merchant->id ? 'selected' : '' }}>
@@ -66,10 +66,10 @@
                         </select>
                     </div>
                     <div class="row">
-                        <button type="submit" class="btn btn-warning wrn-btn">{{__('Filter')}}</button>
+                        <button type="submit" class="btn btn-warning wrn-btn">{{ __('Filter') }}</button>
                     </div>
                     <div class="row">
-                        <button type="reset" class="btn btn-primary wrn-btn">{{__('Reset')}}</button>
+                        <button type="reset" class="btn btn-primary wrn-btn" id="btn-clear">{{ __('Reset') }}</button>
                     </div>
                 </div>
                 <div class="col-md-8">

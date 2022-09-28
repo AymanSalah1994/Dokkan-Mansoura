@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('store.index') }}">
             <img src="{{ asset('images/logo.png') }}" width="45" height="45" alt="">
@@ -9,8 +10,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <form class="form-inline my-2 my-lg-0" id="search-form-nav" action="{{ route('store.search')}}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_word" >
+            </form>
             <ul class="navbar-nav ms-auto">
-
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -18,8 +21,8 @@
                             {{ Auth::user()->first_name }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('profile.view') }}">{{__('Profile')}}</a></li>
-                            <li><a class="dropdown-item" href="{{ route('orders.all') }}">{{__('Orders')}}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('profile.view') }}">{{ __('Profile') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('orders.all') }}">{{ __('Orders') }}</a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
@@ -33,26 +36,26 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('cart.view') }}">
-                            {{__('Cart')}} <span class="badge badge-pill bg-danger cart_counter"></span>
+                            {{ __('Cart') }} <span class="badge badge-pill bg-danger cart_counter"></span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('wish.list.view') }}">
-                            {{__('Wish List')}} <span class="badge badge-pill bg-primary wish_list_counter"></span>
+                            {{ __('Wish List') }} <span class="badge badge-pill bg-primary wish_list_counter"></span>
                         </a>
                     </li>
                 @endauth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.categories') }}">{{__('Categories')}}</a>
+                    <a class="nav-link" href="{{ route('store.categories') }}">{{ __('Categories') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('merchants.all') }}">{{__('Merchants')}}</a>
+                    <a class="nav-link" href="{{ route('merchants.all') }}">{{ __('Merchants') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.search') }}">{{__('SEARCH')}}</a>
+                    <a class="nav-link" href="{{ route('store.search') }}">{{ __('SEARCH') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.categories') }}">{{__('Services')}}</a>
+                    <a class="nav-link" href="{{ route('store.categories') }}">{{ __('Services') }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -66,10 +69,10 @@
                 </li>
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">{{__('Login')}}</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('register') }}">{{__('Register')}}</a>
+                        <a class="nav-link active" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                 @endguest
 
