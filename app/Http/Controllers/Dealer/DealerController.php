@@ -69,29 +69,6 @@ class DealerController extends Controller
         return view('dealer.view-order-to-refund', compact('order'));
     }
 
-
-
-
-
-
-
-
-
-
-    public function CANCELdeleteOrder($id)
-    {
-        $order = Order::find($id);
-        $order->delete();
-        return redirect()->route('admin.orders.all')->with('status', 'Order is Deleted');
-    }
-
-
-
-
-
-
-
-    
     public function refundOrder(Request $request)
     {
         $order = Order::find($request->order_id);
@@ -101,8 +78,9 @@ class DealerController extends Controller
             $item->status = '5';
             $item->save();
         }
-        return redirect()->route('orders.refunded')->with('status', 'DOOOONEEE!');
+        return redirect()->route('dealer.panel.view.done.orders')->with('status', 'DOOOONEEE!');
     }
+
 
     public function refundItem(Request $request)
     {
@@ -111,11 +89,23 @@ class DealerController extends Controller
         $item  = CartItem::find($request->item_id);
         $item->status = '5';
         $item->save();
-        $new_Total =  $order->total - ((int) $item->product->selling_price * $item->quantity);
+        $new_Total =  $order->total - ($item->product->selling_price * $item->quantity);
         $order->total = $new_Total;
-        // TODO
-        // If all Items REfunded Mark Order As Refunded
         $order->save();
-        return redirect()->route('orders.done')->with('status', 'Item is Returned Back !');
+        if ($order->cartItems->where('status', '4')->count() == 0) {
+            $order->status = '5';
+            $order->save();
+        }
+        return redirect()->route('dealer.panel.view.done.orders')->with('status', 'Item is Returned Back !');
+    }
+
+
+
+    // For Item and Order , After Preparation Since the End User Can't
+    public function CANCELdeleteOrder($id)
+    {
+        $order = Order::find($id);
+        $order->delete();
+        return redirect()->route('admin.orders.all')->with('status', 'Order is Deleted');
     }
 }

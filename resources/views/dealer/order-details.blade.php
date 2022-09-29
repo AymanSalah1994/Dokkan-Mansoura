@@ -7,7 +7,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
                         <h3>Order Details</h3>
@@ -67,6 +67,37 @@
                     </div>
                 </div>
             </div>
+            @if ($order->status == '1')
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="{{ route('dealer.panel.mark.order.prepared', $order->id) }}" method="post"
+                                    style="">
+                                    @csrf
+                                    <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                    <button type="submit" class="btn btn-danger">Mark As Prepared</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @elseif($order->status == '2')
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="{{ route('dealer.panel.mark.order.done', $order->id) }}" method="post"
+                                    style="">
+                                    @csrf
+                                    <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                    <button type="submit" class="btn btn-danger">Mark As Done</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <div class="container">

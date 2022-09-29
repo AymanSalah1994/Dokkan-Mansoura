@@ -13,6 +13,10 @@ Route::group(['middleware' => ['isDealer']], function () {
     Route::get('/dealer/view/order-to-refund/{id}/{tracking_id}' , [DealerController::class, 'viewToRefund'])->name('dealer.panel.view.to.refund') ;
     Route::post('/dealer/order/mark-prepared/{id}',[DealerController::class, 'markPrepared'])->name('dealer.panel.mark.order.prepared');
     Route::post('/dealer/order/mark-done/{id}',[DealerController::class, 'markDone'])->name('dealer.panel.mark.order.done');
+    Route::post('/dealer/order/refund-order/',[DealerController::class, 'refundOrder'])->name('dealer.panel.mark.order.refunded');
+    Route::post('/dealer/order/refund-order-item/',[DealerController::class, 'refundItem'])->name('dealer.panel.mark.item.refunded');
+
+    
 
 
 
