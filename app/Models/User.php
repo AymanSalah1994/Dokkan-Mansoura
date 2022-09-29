@@ -71,4 +71,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+
+    public function scopeSearchWord($query)
+    {
+        if ($search_word = request('search_word')) {
+            return $query->where('first_name', 'LIKE', "%{$search_word}%")->orWhere('phone', 'LIKE', "%{$search_word}%")->orWhere('email', 'LIKE', "%{$search_word}%");
+        }
+    }
 }

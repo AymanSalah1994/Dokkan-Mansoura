@@ -1,5 +1,17 @@
 @extends('layouts.dashboard.main_panel')
 @section('content')
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Search :</h4>
+                    <form action="" class="form-inline" style="width:100%">
+                        <input type="search" name="search_word" class="input-group-text" style="width:100%">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="card">
         <div class="card-body">
             <h1> Users </h1>
@@ -25,31 +37,34 @@
                                 <td>{{ $user->role_as }}</td>
                                 <td>
                                 <td>
-                                    <form action="{{ route('admin.user.to.merchant')}}" class="form form-inline" method="post">
+                                    <a href="{{ route('admin.user.view', $user->id) }}" class="btn btn-primary">View</a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.user.to.merchant') }}" class="form form-inline"
+                                        method="post">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $user->id }}">
-                                        <button type="submit" class="btn">TO Merchant</button>
+                                        <button type="submit" class="btn btn-warning">TO Merchant</button>
                                     </form>
                                 </td>
 
                                 <td>
-                                    <form action="{{ route('admin.user.to.dealer')}}" class="form form-inline" method="post">
+                                    <form action="{{ route('admin.user.to.dealer') }}" class="form form-inline"
+                                        method="post">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $user->id }}">
-                                        <button type="submit" class="btn">TO Dealer</button>
+                                        <button type="submit" class="btn btn-info">TO Dealer</button>
                                     </form>
                                 </td>
 
                                 <td>
-                                    <form action="{{ route('admin.user.delete')}}" class="form form-inline" method="post">
+                                    <form action="{{ route('admin.user.delete') }}" class="form form-inline" method="post">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $user->id }}">
-                                        <button type="submit" class="btn">Delete</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
-                                <td>
-                                    <a href="{{ route('admin.user.view', $user->id) }}" class="btn">View</a>
-                                </td>
+
                                 </td>
                             </tr>
                         @endforeach
@@ -58,6 +73,7 @@
             </div>
         </div>
     </div>
+    {{ $users->appends(request()->only(['search_word']))->links() }}
 @endsection
 
 @section('scripts')

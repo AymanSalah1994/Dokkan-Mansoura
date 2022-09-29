@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
     public function allUsers()
     {
-        $users = User::all();
+        $users = User::SearchWord()->paginate(7);
         return view('admin.users.all-users', compact('users'));
     }
     public function allCustomers()

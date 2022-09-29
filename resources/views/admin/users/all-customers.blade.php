@@ -23,14 +23,15 @@
                                 <td>{{ $customer->first_name }} </td>
                                 <td>{{ $customer->phone }}</td>
                                 <td>{{ $customer->role_as }}</td>
+
+                                <td><a href="{{ route('admin.user.view' , $customer->id)}}" class="btn btn-primary">View</a></td>
+                                </td>
                                 <td>
                                     <form action="{{ route('admin.user.delete')}}" class="form form-inline" method="post">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $customer->id }}">
-                                        <button type="submit" class="btn">Delete</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
-                                </td>
-                                <td><a href="{{ route('admin.user.view' , $customer->id)}}" class="btn">View</a></td>
                                 </td>
                             </tr>
                         @endforeach
