@@ -26,6 +26,14 @@ class CartController extends Controller
                 $cartItemData = $request->handleRequest();
                 $cartItem = CartItem::create($cartItemData);
                 $cartItem->save();
+                ///
+                ////
+                $cartItem->cart_total_price = $cartItem->product->selling_price * $cartItem->quantity ;
+                $cartItem->save() ;
+
+
+
+                ///
                 $request->updateTotalOrder($cartItemData['order_id']);
                 return response()->json([
                     'status' => trans('Item is Added !')
@@ -107,6 +115,8 @@ class CartController extends Controller
     {
         CartItem::where('id', $request->cartItemID)->update(['quantity' => $request->product_quantity]);
         $cartItem = CartItem::find($request->cartItemID);
+        $cartItem->cart_total_price = $cartItem->product->selling_price * $cartItem->quantity ;
+        $cartItem->save() ; 
         $request->updateTotalOrder($cartItem->order_id);
         return response()->json([
             'status' => 'Updated Quantity'

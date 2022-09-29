@@ -6,3 +6,4 @@
 <script src="{{ asset('store_assets/js/inc-dec.js') }}"></script>
 <script src="{{ asset('store_assets/js/notify.min.js') }}"></script>
 <script src="{{ asset('store_assets/js/search-scripts.js') }}"></script>
+<script src="{{ asset('store_assets/js/back-to-top.js') }}"></script>

@@ -14,6 +14,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->integer('quantity')->default('1');
+            $table->integer('cart_total_price')->default('0');
             /*
             0 -> Unckecked
             1 -> Checked

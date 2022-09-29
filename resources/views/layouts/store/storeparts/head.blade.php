@@ -23,4 +23,5 @@
     <link rel="stylesheet" href="{{ asset('store_assets/css/search.css') }}" />
     <link rel="stylesheet" href="{{ asset('store_assets/css/start-rating.css') }}">
     <link rel="stylesheet" href="{{ asset('store_assets/css/merchant-card.css') }}">
+    <link rel="stylesheet" href="{{ asset('store_assets/css/back-to-top.css') }}">
 </head>

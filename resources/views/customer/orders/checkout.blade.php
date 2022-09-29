@@ -81,10 +81,11 @@
                                 <tr>
                                     <td>{{ $item->product->name }}</td>
                                     <td>{{ $item->quantity }}</td>
-                                    <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
+                                    <td>{{  $item->cart_total_price }}</td>
+                                    {{-- <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td> --}}
                                 </tr>
                                 @php
-                                    $total += (int) $item->quantity * (int) $item->product->selling_price;
+                                    $total += $item->cart_total_price;
                                     $checking_order = $item->order_id;
                                 @endphp
                             @endforeach

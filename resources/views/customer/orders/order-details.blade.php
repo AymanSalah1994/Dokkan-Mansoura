@@ -29,10 +29,10 @@
                                     <tr class="{{ $item->status == '5' ? 'table-danger' : 'table-success' }}">
                                         <td>{{ $item->product->name }}</td>
                                         <td>{{ $item->quantity }}</td>
-                                        <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
+                                        <td>{{ $item->cart_total_price }}</td>
                                     </tr>
                                     @php
-                                        $total += (int) $item->quantity * (int) $item->product->selling_price;
+                                        $total += $item->cart_total_price;
                                         $checking_order = $item->order_id;
                                     @endphp
                                 @endforeach
@@ -49,7 +49,7 @@
                                 @case(0)
                                     {{ __('Not Checked/In Cart') }}
                                     <br>
-                                    <a href="{{ route('cart.checkout') }}">{{__('Checkout')}} >> </a>
+                                    <a href="{{ route('cart.checkout') }}">{{ __('Checkout') }} >> </a>
                                 @break
 
                                 @case(1)
@@ -105,7 +105,7 @@
                         <div class="row">
                             <div class="card">
                                 <div class="card-body">
-                                    {{__('The Order is checked and Pending,you will be contaced Soon')}}
+                                    {{ __('The Order is checked and Pending,you will be contaced Soon') }}
                                 </div>
                             </div>
                         </div>

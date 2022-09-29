@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Models\CartItem;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Storage;
@@ -54,5 +56,31 @@ class ProductUpdateRequest extends FormRequest
         $allRequestData['status'] = ($this->status == 'on' ? '1' : '0');
         $allRequestData['trending'] = ($this->trending == 'on' ? '1' : '0');
         return $allRequestData;
+        // Save Data Here Then Send Product to Below MEthod
+    }
+
+
+
+    // Search in CartItems With status 0 & Update
+    // Search in Orders For those Cart Items and Update Total For Order
+
+    public function updateCartOrders($product_id)
+    {
+        $cartItems = CartItem::where('product_id',$product_id)->where('status','0')->get() ;
+        foreach ($cartItems as $item) {
+            $item->cart_total_price = $item->product->selling_price * $item->quantity  ;
+            $item->save() ;
+            $this->updateTotalOrder($item->order->id) ;
+        }
+    }
+
+    public function updateTotalOrder($order_id)
+    {
+        $or = Order::find($order_id);
+        $total = 0;
+        foreach ($or->cartItems as $orderItem) {
+            $total = $total + ($orderItem->product->selling_price * $orderItem->quantity);
+        }
+        Order::where('id', $order_id)->update(['total' => $total]);
     }
 }

@@ -14,7 +14,7 @@ class CartItem extends Model
         'product_id',
         'order_id',
         'quantity',
-        'status',
+        'status','cart_total_price'
     ];
     public function order()
     {

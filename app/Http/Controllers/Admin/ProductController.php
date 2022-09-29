@@ -22,7 +22,6 @@ class ProductController extends Controller
         $allCategories = Category::all();
         return view('admin.product.create', compact('allCategories'));
     }
-
     public function store(ProductRequest $request)
     {
         $allRequestData = $request->handleRequest();
@@ -30,11 +29,12 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('status', 'Product Created Successfully');
     }
 
+
+
     public function show(Product $product)
     {
         //TODO : Remove it From REsource
     }
-
     public function edit(Product $product)
     {
         $allCategories = Category::all();
@@ -47,6 +47,8 @@ class ProductController extends Controller
         $allReuestData  = $request->handleRequest();
         $theProduct  = Product::find($product->id);
         $theProduct->update($allReuestData);
+
+        $request->updateCartOrders($theProduct->id) ;
         return redirect()->route('products.index')->with('status', 'Product Updated SuccessFully!');
     }
 

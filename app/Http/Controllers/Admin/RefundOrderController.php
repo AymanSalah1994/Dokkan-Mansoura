@@ -33,7 +33,7 @@ class RefundOrderController extends Controller
         $item  = CartItem::find($request->item_id);
         $item->status = '5';
         $item->save();
-        $new_Total =  $order->total - ((int) $item->product->selling_price * $item->quantity );
+        $new_Total =  $order->total - $item->cart_total_price;
         $order->total = $new_Total;
         $order->save();
         return redirect()->route('orders.done')->with('status', 'Item is Returned Back !');
