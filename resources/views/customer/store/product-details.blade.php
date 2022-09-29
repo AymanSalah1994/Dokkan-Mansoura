@@ -93,7 +93,7 @@
                                         alt="iamge">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ Storage::url($product->secondary_picture) }}" class="d-block w-100"
+                                    <img src="{{ Storage::url($product->secondary_picture) }}" class="d-block w-100 h-100"
                                         alt="iamge">
                                 </div>
                             </div>

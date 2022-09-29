@@ -11,10 +11,10 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('images/caro-logo.png') }}" class="d-block w-100" alt="iamge">
+                        <img src="{{ asset('images/caro-logo-3.png') }}" class="d-block w-100" alt="iamge">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('images/Caro-logo-3.png') }}" class="d-block w-100" alt="iamge">
+                        <img src="{{ asset('images/Caro-logo.png') }}" class="d-block w-100" alt="iamge">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

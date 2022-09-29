@@ -1,6 +1,31 @@
 <?php
 
+use App\Http\Controllers\Dealer\DealerController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['isDealer']], function () {
+    Route::get('/dealer/home', [DealerController::class, 'index'])->name('dealer.panel.home');
+
+    Route::get('/dealer/view/checked-orders' , [DealerController::class, 'viewCheckedOrders'])->name('dealer.panel.view.checked.orders') ;
+    Route::get('/dealer/view/prepared-orders' , [DealerController::class, 'viewPreparedOrders'])->name('dealer.panel.view.prepared.orders') ;
+    Route::get('/dealer/view/done-orders' , [DealerController::class, 'viewDoneOrders'])->name('dealer.panel.view.done.orders') ;
+    Route::get('/dealer/view/order-details/{id}/{tracking_id}' , [DealerController::class, 'orderDetails'])->name('dealer.panel.view.order.details') ;
+    Route::get('/dealer/view/order-to-refund/{id}/{tracking_id}' , [DealerController::class, 'viewToRefund'])->name('dealer.panel.view.to.refund') ;
+    Route::post('/dealer/order/mark-prepared/{id}',[DealerController::class, 'markPrepared'])->name('dealer.panel.mark.order.prepared');
+    Route::post('/dealer/order/mark-done/{id}',[DealerController::class, 'markDone'])->name('dealer.panel.mark.order.done');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });

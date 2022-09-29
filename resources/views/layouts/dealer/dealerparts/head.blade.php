@@ -3,10 +3,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>
-        Main Panel
+        @yield('title',"Home")
     </title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard_assets/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link href="{{ asset('dashboard_assets/css/material-dashboard.css') }}" rel="stylesheet" />
+    <link href="{{ asset('dashboard_assets/css/jasny-bootstrap.min.css') }}" rel="stylesheet" />
 </head>
