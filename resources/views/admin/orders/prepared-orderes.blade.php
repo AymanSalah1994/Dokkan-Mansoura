@@ -20,7 +20,11 @@
                         @foreach ($orders as $order)
                             <tr>
                                 <td>{{ $order->id }} </td>
-                                <td>{{ $order->tracking_id }} </td>
+                                <td>
+                                    <a href="{{ route('admin.order.view', $order->id) }}">
+                                        {{ $order->tracking_id }}
+                                    </a>
+                                </td>
                                 <td>{{ $order->total }}</td>
                                 <td>{{ $order->status }}</td>
                                 <td>
@@ -28,9 +32,8 @@
                                         onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
                                         Mark as Done</a>
                                 </td>
-                                <form id="{{ $order->id }}"
-                                    action="{{ route('admin.order.done', $order->id) }}" method="post"
-                                    style="display: none">
+                                <form id="{{ $order->id }}" action="{{ route('admin.order.done', $order->id) }}"
+                                    method="post" style="display: none">
                                     @csrf
                                 </form>
                             </tr>

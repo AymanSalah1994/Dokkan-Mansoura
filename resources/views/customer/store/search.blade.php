@@ -112,7 +112,7 @@
         <div class="row">
             <div class="col-md-8"></div>
             <div class="col-md-4">
-                {{ $allProducts->appends(request()->only(['maximum_price', 'minimum_price', 'order_by', 'category', 'merchant']))->links() }}
+                {{ $allProducts->appends(request()->only(['maximum_price', 'minimum_price', 'order_by', 'category', 'merchant','search_word']))->links() }}
             </div>
         </div>
     </div>

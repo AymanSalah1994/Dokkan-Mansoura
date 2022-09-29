@@ -20,7 +20,9 @@
                         @foreach ($orders as $order)
                             <tr>
                                 <td>{{ $order->id }} </td>
-                                <td>{{ $order->tracking_id }} </td>
+                                <td><a href="{{ route('admin.order.view',$order->id)}}">
+                                    {{ $order->tracking_id }}
+                                </a> </td>
                                 <td>{{ $order->total }}</td>
                                 <td>Checked and Pending</td>
                                 <td>

@@ -100,7 +100,7 @@ class DealerController extends Controller
     }
 
 
-
+    // TODO 
     // For Item and Order , After Preparation Since the End User Can't
     public function CANCELdeleteOrder($id)
     {

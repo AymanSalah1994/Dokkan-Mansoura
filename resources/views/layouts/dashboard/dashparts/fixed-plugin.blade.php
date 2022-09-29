@@ -5,23 +5,12 @@
         </a>
         <ul class="dropdown-menu">
             <li class="header-title"> Sidebar Filters</li>
-            <li class="adjustments-line">
-                <a href="javascript:void(0)" class="switch-trigger active-color">
-                    <div class="badge-colors ml-auto mr-auto">
-                        <span class="badge filter badge-purple" data-color="purple"></span>
-                        <span class="badge filter badge-azure" data-color="azure"></span>
-                        <span class="badge filter badge-green" data-color="green"></span>
-                        <span class="badge filter badge-warning" data-color="orange"></span>
-                        <span class="badge filter badge-danger" data-color="danger"></span>
-                        <span class="badge filter badge-rose active" data-color="rose"></span>
-                    </div>
-                    <div class="clearfix"></div>
-                </a>
-            </li>
-            <li class="header-title">Images</li>
+
             <li class="button-container">
-                <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank"
-                    class="btn btn-primary btn-block">Free Download</a>
+                <a href="{{ route('set.locale', 'ar') }}" class="btn btn-primary btn-block">العربية</a>
+            </li>
+            <li class="button-container">
+                <a href="{{ route('set.locale', 'en') }}" class="btn btn-primary btn-block">English</a>
             </li>
         </ul>
     </div>

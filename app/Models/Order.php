@@ -24,4 +24,11 @@ class Order extends Model
     {
         return $this->hasMany(CartItem::class);
     }
+
+    public function scopeSearchWord($query)
+    {
+        if ($search_word = request('search_word')) {
+            return $query->where('tracking_id', 'LIKE', "%{$search_word}%");
+        }
+    }
 }

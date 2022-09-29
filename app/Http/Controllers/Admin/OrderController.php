@@ -10,7 +10,8 @@ class OrderController extends Controller
 {
     public function allOrders()
     {
-        $orders = Order::orderBy('updated_at', 'DESC')->get();
+
+        $orders = Order::orderBy('updated_at', 'DESC')->SearchWord()->paginate(7);
         return view('admin.orders.all-orders', compact('orders'));
     }
 
@@ -60,7 +61,7 @@ class OrderController extends Controller
     }
 
     public function allDoneOrders(){
-        $alldoneOrders = Order::where('status', '4')->orderBy('updated_at', 'DESC')->get();
+        $alldoneOrders = Order::where('status', '4')->orderBy('updated_at', 'DESC')->SearchWord()->paginate(7);
         return view('admin.orders.all-done-orders', compact('alldoneOrders'));
     }
 

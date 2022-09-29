@@ -7,7 +7,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
                         <h3>Order Details</h3>
@@ -60,6 +60,53 @@
                             @default
                                 <td>""</td>
                         @endswitch
+                    </div>
+                </div>
+            </div>
+            @if ($order->status == '1')
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="{{ route('admin.order.prepare', $order->id) }}" method="post"
+                                    style="">
+                                    @csrf
+                                    <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                    <button type="submit" class="btn btn-danger">Mark As Prepared</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @elseif($order->status == '2')
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="{{ route('admin.order.done', $order->id) }}" method="post"
+                                    style="">
+                                    @csrf
+                                    <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                    <button type="submit" class="btn btn-danger">Mark As Done</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>{{ __('Customer Name') }}:</h3>
+                        <p> {{ $order->user->first_name }} {{ $order->user->last_name }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3> {{ __('phone') }}: </h3>
+                        <p>{{ $order->user->phone }}</p>
                     </div>
                 </div>
             </div>

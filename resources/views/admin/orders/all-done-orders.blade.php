@@ -1,8 +1,20 @@
 @extends('layouts.dashboard.main_panel')
 @section('content')
     <div class="card">
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Search :</h4>
+                    <form action="" class="form-inline" style="width:100%">
+                        <input type="search" name="search_word" class="input-group-text" style="width:100%">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
         <div class="card-body">
-            <h1> Orders </h1>
+            <h1> Orders {{ $alldoneOrders->count() }} </h1>
         </div>
     </div>
     <div class="card">
@@ -34,6 +46,7 @@
             </div>
         </div>
     </div>
+    {{ $alldoneOrders->appends(request()->only(['search_word']))->links() }}
 @endsection
 
 @section('scripts')

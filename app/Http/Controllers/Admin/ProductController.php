@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products  = Product::all();
+        $products = Product::SearchWord()->paginate(7);
         return view('admin.product.index', compact('products'));
     }
 

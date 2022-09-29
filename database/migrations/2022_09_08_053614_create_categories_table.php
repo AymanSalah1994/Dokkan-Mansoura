@@ -15,7 +15,7 @@ return new class extends Migration
             $table->longText('description');
             $table->tinyInteger('status')->default('0');
             $table->tinyInteger('popular')->default('0');
-            $table->string('keywords');
+            $table->string('keywords')->nullable();
             $table->string('category_picture')->nullable();
             $table->timestamps();
         });

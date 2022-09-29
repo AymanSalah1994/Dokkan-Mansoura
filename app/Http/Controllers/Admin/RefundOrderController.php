@@ -29,13 +29,18 @@ class RefundOrderController extends Controller
     public function refundItem(Request $request)
     {
         // TODO : Refund and Quantity in mind
+        // TODO : Refund and Quantity in mind
         $order = Order::find($request->order_id);
         $item  = CartItem::find($request->item_id);
         $item->status = '5';
         $item->save();
-        $new_Total =  $order->total - $item->cart_total_price;
+        $new_Total =  $order->total - ($item->product->selling_price * $item->quantity);
         $order->total = $new_Total;
         $order->save();
+        if ($order->cartItems->where('status', '4')->count() == 0) {
+            $order->status = '5';
+            $order->save();
+        }
         return redirect()->route('admin.orders.done')->with('status', 'Item is Returned Back !');
     }
 }

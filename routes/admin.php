@@ -25,7 +25,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::resource('dashboard/products', ProductController::class);
     // PRODUCT  - END
 
-
     // MANAGING ORDERS : START
     Route::get('/dashboard/all-orders', [OrderController::class, 'allOrders'])->name('admin.orders.all');
     Route::get('/dashboard/view-order/{id}', [OrderController::class, 'viewOrder'])->name('admin.order.view');
@@ -38,13 +37,11 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard/all-refunded-orders', [OrderController::class, 'allRefundedOrders'])->name('admin.orders.refunded');
     // MANAGING ORDERS : END
 
-
     // REFUNDING - START
     Route::get('/dashboard/refund-order-details/{id}', [RefundOrderController::class, 'refundOrderDetails'])->name('admin.refund.order.details');
     Route::post('/dashboard/refund-order-item/', [RefundOrderController::class, 'refundItem'])->name('admin.refund.order.item');
     Route::post('/dashboard/refund-whole-order/', [RefundOrderController::class, 'refundOrder'])->name('admin.refund.whole.order');
     // REFUNDING - END
-
 
     // USERS - START  :
     Route::get('/dashboard/all-users', [UsersController::class, 'allUsers'])->name('admin.users.all');

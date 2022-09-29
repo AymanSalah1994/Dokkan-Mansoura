@@ -12,32 +12,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-chart">
+        <div class="col-md-7">
+            <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Create</h4>
-                    <a href="{{ route('products.create') }}">
-                        <i class="material-icons">add_circle</i>
-                        <span>Create new Category</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-chart">
-                <div class="card-body">
-                    <h4 class="card-title">Create</h4>
-                    <a href="{{ route('products.create') }}">
-                        <i class="material-icons">add_circle</i>
-                        <span>Create new Category</span>
-                    </a>
+                    <h4 class="card-title">Search :</h4>
+                    <form action="" class="form-inline" style="width:100%">
+                        <input type="search" name="search_word" class="input-group-text" style="width:100%">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <div class="card">
         <div class="card-body">
-            <h1> Products </h1>
+            <h1> Products : {{$products->count()}} </h1>
         </div>
     </div>
     <div class="card">

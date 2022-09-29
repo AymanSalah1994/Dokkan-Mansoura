@@ -1,8 +1,20 @@
 @extends('layouts.dashboard.main_panel')
 @section('content')
     <div class="card">
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Search :</h4>
+                    <form action="" class="form-inline" style="width:100%">
+                        <input type="search" name="search_word" class="input-group-text" style="width:100%">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
         <div class="card-body">
-            <h1> Orders </h1>
+            <h1> Orders :{{ $orders->count() }} </h1>
         </div>
     </div>
     <div class="card">
@@ -51,7 +63,7 @@
                                         <td>""</td>
                                 @endswitch
                                 <td>
-                                <a href="{{ route('admin.order.view', $order->id) }}" class="btn btn-primary">View</a>
+                                    <a href="{{ route('admin.order.view', $order->id) }}" class="btn btn-primary">View</a>
                                     <a href="" class="btn btn-danger"
                                         onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
                                         Delete
@@ -68,6 +80,7 @@
             </div>
         </div>
     </div>
+    {{ $orders->appends(request()->only(['search_word']))->links() }}
 @endsection
 
 @section('scripts')

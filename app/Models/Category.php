@@ -29,4 +29,10 @@ class Category extends Model
             ]
         ];
     }
+    public function scopeSearchWord($query)
+    {
+        if ($search_word = request('search_word')) {
+            return $query->where('name', 'LIKE', "%{$search_word}%")->orWhere('description', 'LIKE', "%{$search_word}%")->orWhere('keywords', 'LIKE', "%{$search_word}%");
+        }
+    }
 }

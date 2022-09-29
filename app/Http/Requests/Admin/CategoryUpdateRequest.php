@@ -20,7 +20,7 @@ class CategoryUpdateRequest extends FormRequest
             'description' => 'required|string',
             'status' => 'nullable',
             'popular' => 'nullable',
-            'keywords' => 'string|max:255',
+            'keywords' => 'nullable|string|max:255',
             'category_picture' => 'nullable|mimes:png,jpeg,bmp'
         ];
     }
@@ -29,7 +29,7 @@ class CategoryUpdateRequest extends FormRequest
     public function handleRequest()
     {
         $allRequestData = $this->validated();
-        $category = Category::find($this->category_)->where('slug', $this->slug);
+        $category = Category::find($this->category_);
         if ($this->hasFile('category_picture')) {
             if ($category['category_picture']) {
                 // In Case it Had Old Photo

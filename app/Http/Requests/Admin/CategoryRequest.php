@@ -20,7 +20,7 @@ class CategoryRequest extends FormRequest
             'description' => 'required|string',
             'status' => 'nullable',
             'popular' => 'nullable',
-            'keywords' => 'string|max:255',
+            'keywords' => 'nullable|string|max:255',
             'category_picture' => 'nullable|mimes:png,jpeg,bmp'
         ];
     }

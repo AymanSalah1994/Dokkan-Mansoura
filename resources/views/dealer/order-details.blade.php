@@ -109,7 +109,8 @@
                         <p> {{ $order->user->first_name }} {{ $order->user->last_name }}</p>
                     </div>
                     <div class="col-md-6">
-                        <h3> {{ __('phone') }}:{{ $order->user->phone }} </h3>
+                        <h3> {{ __('phone') }}: </h3>
+                        <p>{{ $order->user->phone }}</p>
                     </div>
                 </div>
             </div>
