@@ -5,7 +5,7 @@
             <h4>Add new Category</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">

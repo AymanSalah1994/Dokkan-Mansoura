@@ -15,7 +15,7 @@
             </li>
             {{-- ELELMENT 2 --}}
             <li class="nav-item {{ Request::is('dashboard/categories') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('categories.index') }}">
+                <a class="nav-link" href="{{ route('admin.categories.index') }}">
                     <i class="material-icons">add_circle</i>
                     <p>Categories</p>
                 </a>
@@ -47,13 +47,13 @@
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('dashboard/all-done-orders') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('orders.done') }}">
+                        <a class="nav-link" href="{{ route('admin.orders.done') }}">
                             <i class="material-icons">add_shopping_cart</i>
                             <p>All Done Orders</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('dashboard/all-refunded-orders') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('orders.refunded') }}">
+                        <a class="nav-link" href="{{ route('admin.orders.refunded') }}">
                             <i class="material-icons">add_shopping_cart</i>
                             <p>Refunded Orders</p>
                         </a>

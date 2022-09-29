@@ -23,7 +23,7 @@ class RefundOrderController extends Controller
             $item->status = '5';
             $item->save();
         }
-        return redirect()->route('orders.refunded')->with('status', 'DOOOONEEE!');
+        return redirect()->route('admin.orders.refunded')->with('status', 'DOOOONEEE!');
     }
 
     public function refundItem(Request $request)
@@ -36,6 +36,6 @@ class RefundOrderController extends Controller
         $new_Total =  $order->total - $item->cart_total_price;
         $order->total = $new_Total;
         $order->save();
-        return redirect()->route('orders.done')->with('status', 'Item is Returned Back !');
+        return redirect()->route('admin.orders.done')->with('status', 'Item is Returned Back !');
     }
 }

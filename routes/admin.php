@@ -1,6 +1,7 @@
 <?php
 // Routes for the Admin
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\indexController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\RefundOrderController;
@@ -9,17 +10,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => ['auth', 'isAdmin']], function () {
-    Route::get('/dashboard', function () {
-        return view('admin.index');
-    })->name('admin.dashboard');
+    Route::get('/dashboard', [indexController::class, 'index'])->name('admin.dashboard');
 
     // CATEGORY  - START
-    Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('categories.index');
-    Route::get('/dashboard/add-category', [CategoryController::class, 'create'])->name('categories.create');
-    Route::post('/dashboard/add-category', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('/dashboard/edit-category/{id}/{slug}', [CategoryController::class, 'edit'])->name('categories.edit');
-    Route::post('/dashboard/update-category/', [CategoryController::class, 'update'])->name('categories.update');
-    Route::post('dashboard/delete-category/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
+    Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+    Route::get('/dashboard/add-category', [CategoryController::class, 'create'])->name('admin.categories.create');
+    Route::post('/dashboard/add-category', [CategoryController::class, 'store'])->name('admin.categories.store');
+    Route::get('/dashboard/edit-category/{id}/{slug}', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+    Route::post('/dashboard/update-category/', [CategoryController::class, 'update'])->name('admin.categories.update');
+    Route::post('dashboard/delete-category/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.delete');
     // CATEGORY  - END
 
     // PRODUCT  - START
@@ -35,15 +34,15 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::post('/dashboard/mark-order-prepared/{id}', [OrderController::class, 'prepareOrder'])->name('admin.order.prepare');
     Route::get('/dashboard/in-preparation-orders', [OrderController::class, 'preparedOrders'])->name('admin.orders.prepared');
     Route::post('/dashboard/mark-order-done/{id}', [OrderController::class, 'doneOrder'])->name('admin.order.done');
-    Route::get('/dashboard/all-done-orders', [OrderController::class, 'allDoneOrders'])->name('orders.done');
-    Route::get('/dashboard/all-refunded-orders', [OrderController::class, 'allRefundedOrders'])->name('orders.refunded');
+    Route::get('/dashboard/all-done-orders', [OrderController::class, 'allDoneOrders'])->name('admin.orders.done');
+    Route::get('/dashboard/all-refunded-orders', [OrderController::class, 'allRefundedOrders'])->name('admin.orders.refunded');
     // MANAGING ORDERS : END
 
 
     // REFUNDING - START
-    Route::get('/dashboard/refund-order-details/{id}', [RefundOrderController::class, 'refundOrderDetails'])->name('refund.order.details');
-    Route::post('/dashboard/refund-order-item/', [RefundOrderController::class, 'refundItem'])->name('refund.order.item');
-    Route::post('/dashboard/refund-whole-order/', [RefundOrderController::class, 'refundOrder'])->name('refund.whole.order');
+    Route::get('/dashboard/refund-order-details/{id}', [RefundOrderController::class, 'refundOrderDetails'])->name('admin.refund.order.details');
+    Route::post('/dashboard/refund-order-item/', [RefundOrderController::class, 'refundItem'])->name('admin.refund.order.item');
+    Route::post('/dashboard/refund-whole-order/', [RefundOrderController::class, 'refundOrder'])->name('admin.refund.whole.order');
     // REFUNDING - END
 
 

@@ -25,7 +25,7 @@ class CategoryController extends Controller
     {
         $allRequestData = $request->handleRequest();
         Category::create($allRequestData);
-        return redirect()->route('categories.index')->with('status', 'Category is Created');
+        return redirect()->route('admin.categories.index')->with('status', 'Category is Created');
     }
 
     public function edit($id, $slug)
@@ -39,7 +39,7 @@ class CategoryController extends Controller
         $allRequestedData = $request->handleRequest();
         $category = Category::find($request->category_)->where('slug', $request->slug);
         $category->update($allRequestedData);
-        return redirect()->route('categories.index')->with('status', 'Category Updated Successfully');
+        return redirect()->route('admin.categories.index')->with('status', 'Category Updated Successfully');
     }
 
     public function destroy($id)
@@ -51,6 +51,6 @@ class CategoryController extends Controller
             Storage::delete($category['category_picture']);
         }
         $category->delete();
-        return redirect()->route('categories.index')->with('status', 'Category Deleted Successfully');
+        return redirect()->route('admin.categories.index')->with('status', 'Category Deleted Successfully');
     }
 }

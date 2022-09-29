@@ -56,7 +56,7 @@ class OrderController extends Controller
             $item->status = '4' ;
             $item->save() ;
         }
-        return redirect()->route('orders.done')->with('status', 'Order is Marked Done !');
+        return redirect()->route('admin.orders.done')->with('status', 'Order is Marked Done !');
     }
 
     public function allDoneOrders(){

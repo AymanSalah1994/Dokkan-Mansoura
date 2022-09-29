@@ -26,7 +26,7 @@
                                     <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
                                     <td>
                                         @if ($item->status != '5')
-                                            <form action="{{ route('refund.order.item') }}" method="POST" style="">
+                                            <form action="{{ route('admin.refund.order.item') }}" method="POST" style="">
                                                 @csrf
                                                 <input type="hidden" name="order_id" value="{{ $order->id }}">
                                                 <input type="hidden" name="item_id" value="{{ $item->id }}">
@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('refund.whole.order', $order->id) }}" method="post" style="">
+                            <form action="{{ route('admin.refund.whole.order', $order->id) }}" method="post" style="">
                                 @csrf
                                 <input type="hidden" name="order_id" value="{{ $order->id }}">
                                 <button type="submit" class="btn btn-danger">Return the Whole Order</button>

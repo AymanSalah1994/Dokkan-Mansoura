@@ -24,7 +24,7 @@
                                 <td>{{ $order->total }}</td>
                                 <td>Done</td>
                                 <td>
-                                    <a href="{{ route('refund.order.details', $order->id) }}"
+                                    <a href="{{ route('admin.refund.order.details', $order->id) }}"
                                         class="btn btn-danger">REfund</a>
                                 </td>
                             </tr>

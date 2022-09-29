@@ -5,7 +5,7 @@
             <div class="card card-chart">
                 <div class="card-body">
                     <h4 class="card-title">Create</h4>
-                    <a href="{{ route('categories.create') }}">
+                    <a href="{{ route('admin.categories.create') }}">
                         <i class="material-icons">add_circle</i>
                         <span>Create new Category</span>
                     </a>
@@ -16,7 +16,7 @@
             <div class="card card-chart">
                 <div class="card-body">
                     <h4 class="card-title">Create</h4>
-                    <a href="{{ route('categories.create') }}">
+                    <a href="{{ route('admin.categories.create') }}">
                         <i class="material-icons">add_circle</i>
                         <span>Create new Category</span>
                     </a>
@@ -27,7 +27,7 @@
             <div class="card card-chart">
                 <div class="card-body">
                     <h4 class="card-title">Create</h4>
-                    <a href="{{ route('categories.create') }}">
+                    <a href="{{ route('admin.categories.create') }}">
                         <i class="material-icons">add_circle</i>
                         <span>Create new Category</span>
                     </a>
@@ -58,13 +58,13 @@
                                 <td>{{ $category->name }} </td>
                                 <td>{{ Str::limit($category->description, 25) }}</td>
                                 <td>
-                                    <a href="{{ route('categories.edit', [$category->id, $category->slug]) }}"
+                                    <a href="{{ route('admin.categories.edit', [$category->id, $category->slug]) }}"
                                         class="btn btn-primary">Edit</a>
                                     <a href="" class="btn btn-danger"
                                         onclick="event.preventDefault();document.getElementById('{{ $category->id }}').submit();">
                                         Delete</a>
                                 </td>
-                                <form id="{{ $category->id }}" action="{{ route('categories.delete', $category->id) }}"
+                                <form id="{{ $category->id }}" action="{{ route('admin.categories.delete', $category->id) }}"
                                     method="POST" style="display: hidden">
                                     @csrf
                                 </form>`
