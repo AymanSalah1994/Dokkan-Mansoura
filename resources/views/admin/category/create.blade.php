@@ -5,7 +5,7 @@
             <h4>Add new Category</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.categories.store') }}" onsubmit="myButton.disabled = true; return true;" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
@@ -62,7 +62,7 @@
                 <div class="col-md-12">
                     <input type="file" class="form-group" name="category_picture">
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Create Category</button>
+                <button type="submit" name="myButton" class="btn btn-primary pull-right">Create Category</button>
             </form>
         </div>
     </div>

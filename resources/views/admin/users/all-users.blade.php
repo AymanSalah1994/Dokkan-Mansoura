@@ -41,27 +41,27 @@
                                 </td>
                                 <td>
                                     <form action="{{ route('admin.user.to.merchant') }}" class="form form-inline"
-                                        method="post">
+                                        method="post" onsubmit="myButton.disabled = true; return true;">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $user->id }}">
-                                        <button type="submit" class="btn btn-warning">TO Merchant</button>
+                                        <button type="submit" name="myButton" class="btn btn-warning">TO Merchant</button>
                                     </form>
                                 </td>
 
                                 <td>
                                     <form action="{{ route('admin.user.to.dealer') }}" class="form form-inline"
-                                        method="post">
+                                        method="post" onsubmit="myButton.disabled = true; return true;">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $user->id }}">
-                                        <button type="submit" class="btn btn-info">TO Dealer</button>
+                                        <button type="submit" name="myButton" class="btn btn-info">TO Dealer</button>
                                     </form>
                                 </td>
 
                                 <td>
-                                    <form action="{{ route('admin.user.delete') }}" class="form form-inline" method="post">
+                                    <form action="{{ route('admin.user.delete') }}" class="form form-inline" onsubmit="myButton.disabled = true; return true;" method="post">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $user->id }}">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" name="myButton" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
 

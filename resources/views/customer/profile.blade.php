@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <form action="{{ route('profile.update') }}" method="POST">
+                <form action="{{ route('profile.update') }}" onsubmit="myButton.disabled = true; return true;" method="POST">
                     @csrf
                     <div class="card">
                         <div class="card-body">
@@ -67,7 +67,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" name="myButton" class="btn btn-primary">
                                         {{ __('Save Changes') }}
                                     </button>
                                 </div>

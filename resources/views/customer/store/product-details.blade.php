@@ -10,7 +10,7 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('review.submit') }}" method="POST">
+                <form action="{{ route('review.submit') }}" onsubmit="myButton.disabled = true; return true;" method="POST">
                     @csrf
                     <input type="hidden" value="{{ $product->slug }}" name="review_product_id">
                     <div class="modal-body">
@@ -55,7 +55,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="myButton" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>
@@ -89,12 +89,24 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{ Storage::url($product->product_picture) }}" class="d-block w-100"
-                                        alt="iamge">
+                                    @if ($product->product_picture != '')
+                                        <img src="{{ Storage::url($product->product_picture) }}" class="d-block w-100"
+                                            alt="iamge">
+                                    @else
+                                        <img src="{{ asset('images/thumb.jpg') }}" class="d-block w-100"
+                                            alt="iamge">
+                                    @endif
+
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ Storage::url($product->secondary_picture) }}" class="d-block w-100 h-100"
-                                        alt="iamge">
+                                    @if ($product->secondary_picture != '')
+                                        <img src="{{ Storage::url($product->secondary_picture) }}"
+                                            class="d-block w-100 h-100" alt="iamge">
+                                    @else
+                                        <img src="{{ asset('images/thumb.jpg') }}" class="d-block w-100 h-100"
+                                            alt="iamge">
+                                    @endif
+
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button"

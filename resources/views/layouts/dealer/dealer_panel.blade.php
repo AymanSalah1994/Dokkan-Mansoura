@@ -14,7 +14,7 @@
     </div>
     @include('layouts.dealer.dealerparts.fixed-plugin')
     @include('layouts.dealer.dealerparts.js-dash-files')
-    {{-- @include('layouts.dealer.L-orders-counter-js') --}}
+    @include('layouts.dealer.checked-orders-counter-js')
     @yield('scripts')
 </body>
 

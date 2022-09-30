@@ -5,7 +5,7 @@
             <h6>Edit Category</h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.categories.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.categories.update') }}" onsubmit="myButton.disabled = true; return true;" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="category_" value="{{ $category->id }}">
                 <input type="hidden" name="slug" value="{{ $category->slug }}">
@@ -72,7 +72,7 @@
                 <div class="col-md-12">
                     <input type="file" class="form-group" name="category_picture">
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Update Category</button>
+                <button type="submit" name="myButton" class="btn btn-primary pull-right">Update Category</button>
             </form>
         </div>
     </div>

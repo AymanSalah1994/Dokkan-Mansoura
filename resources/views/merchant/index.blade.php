@@ -5,7 +5,7 @@
             <h1> {{ __('User') }} : {{ request()->user()->first_name }} </h1>
         </div>
     </div>
-    <form action="{{ route('merchant.panel.profile.update') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('merchant.panel.profile.update') }}" onsubmit="myButton.disabled = true; return true;" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -101,7 +101,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-warning float-right">Update</button>
+                        <button type="submit" name="myButton" class="btn btn-warning float-right">Update</button>
                     </div>
                 </div>
                 <br>

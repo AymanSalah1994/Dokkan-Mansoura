@@ -70,7 +70,7 @@
                             </thead>
                             <tr>
                                 <td>
-                                    <form action="{{ route('cart.clear') }}" method="post" class="form-inline float-start">
+                                    <form action="{{ route('cart.clear') }}" onsubmit="myButton.disabled = true; return true;" method="post" class="form-inline float-start">
                                         @csrf
                                         <button href="" class="btn btn-danger">{{__('Clear Cart')}}</button>
                                     </form>

@@ -42,18 +42,19 @@
                                 @case(1)
                                     <td>{{ __('Checked and Pending') }}</td>
                                     <td>
-                                        <form action="{{ route('order.cancel') }}" method="post" class="form-inline float-start" >
+                                        <form action="{{ route('order.cancel') }}" onsubmit="myButton.disabled = true; return true;" method="post" class="form-inline float-start"
+                                            onsubmit="myButton.disabled = true; return true;">
                                             @csrf
                                             <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
-                                            <button href="" class="btn btn-danger">{{ __('Cancel Order') }}</button>
+                                            <button name="myButton" class="btn btn-danger">{{ __('Cancel Order') }}</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="{{ route('return.order.to.cart') }}" method="post"
-                                            class="form-inline float-start">
+                                        <form action="{{ route('return.order.to.cart') }}" onsubmit="myButton.disabled = true; return true;" method="post"
+                                            class="form-inline float-start" onsubmit="myButton.disabled = true; return true;">
                                             @csrf
                                             <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
-                                            <button href="" class="btn btn-light">{{ __('Return Order to Cart') }}</button>
+                                            <button name="myButton" class="btn btn-light">{{ __('Return Order to Cart') }}</button>
                                         </form>
                                     </td>
                                 @break

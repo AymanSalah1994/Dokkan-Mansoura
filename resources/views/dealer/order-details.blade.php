@@ -27,7 +27,15 @@
                                     <td>{{ $item->quantity }}</td>
                                     <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
                                     <td>{{ $item->product->user->first_name }}</td>
-                                    <td><a href="">Delete if Not FOuund</a></td>
+                                    <td>
+                                        <form action="{{ route('dealer.panel.delete.not.found') }}" onsubmit="myButton.disabled = true; return true;" method="post"
+                                            onsubmit="myButton.disabled = true; return true;">
+                                            @csrf
+                                            <input type="hidden" name="item_" value="{{ $item->id }}">
+                                            <button type="submit" name="myButton" class="btn btn-danger">Delete "Not
+                                                Found"</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>
@@ -72,11 +80,11 @@
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('dealer.panel.mark.order.prepared', $order->id) }}" method="post"
+                                <form action="{{ route('dealer.panel.mark.order.prepared', $order->id) }}" onsubmit="myButton.disabled = true; return true;" method="post"
                                     style="">
                                     @csrf
                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                    <button type="submit" class="btn btn-danger">Mark As Prepared</button>
+                                    <button type="submit" name="myButton" class="btn btn-primary">Mark As Prepared</button>
                                 </form>
                             </div>
                         </div>
@@ -87,11 +95,11 @@
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('dealer.panel.mark.order.done', $order->id) }}" method="post"
+                                <form action="{{ route('dealer.panel.mark.order.done', $order->id) }}" onsubmit="myButton.disabled = true; return true;" method="post"
                                     style="">
                                     @csrf
                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                    <button type="submit" class="btn btn-danger">Mark As Done</button>
+                                    <button type="submit" name="myButton" class="btn btn-danger">Mark As Done</button>
                                 </form>
                             </div>
                         </div>

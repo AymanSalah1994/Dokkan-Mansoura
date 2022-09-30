@@ -5,7 +5,7 @@
             <h3>Product</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('merchant.panel.update.product') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('merchant.panel.update.product') }}" onsubmit="myButton.disabled = true; return true;" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $product->slug }}">
                 <div class="row">
@@ -129,7 +129,7 @@
                     <input type="file" class="form-group" name="product_picture">
                     <input type="file" class="form-group" name="secondary_picture">
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Edit Product</button>
+                <button type="submit" name="myButton" class="btn btn-primary pull-right">Edit Product</button>
             </form>
         </div>
     </div>

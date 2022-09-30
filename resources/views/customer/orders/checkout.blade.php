@@ -97,10 +97,10 @@
                     <div class="card-footer">
                         <div class="row">
                             @if (request()->user()->phone)
-                                <form action="{{ route('order.confirm') }}" class="row" method="POST">
+                                <form action="{{ route('order.confirm') }}" class="row" onsubmit="myButton.disabled = true; return true;" method="POST">
                                     @csrf
                                     <input type="hidden" name="checking_order" value="{{ $checking_order }}">
-                                    <button type="submit"
+                                    <button type="submit" name="myButton"
                                         class="btn btn-success rounded-pill float-end">{{ __('Confirm (Pay on Delivery)') }}</button>
                                 </form>
                             @else

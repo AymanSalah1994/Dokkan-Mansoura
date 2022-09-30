@@ -68,11 +68,11 @@
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.order.prepare', $order->id) }}" method="post"
+                                <form action="{{ route('admin.order.prepare', $order->id) }}" onsubmit="myButton.disabled = true; return true;" method="post"
                                     style="">
                                     @csrf
                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                    <button type="submit" class="btn btn-danger">Mark As Prepared</button>
+                                    <button type="submit" name="myButton" class="btn btn-danger">Mark As Prepared</button>
                                 </form>
                             </div>
                         </div>
@@ -83,11 +83,11 @@
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.order.done', $order->id) }}" method="post"
+                                <form action="{{ route('admin.order.done', $order->id) }}" onsubmit="myButton.disabled = true; return true;" method="post"
                                     style="">
                                     @csrf
                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                    <button type="submit" class="btn btn-danger">Mark As Done</button>
+                                    <button type="submit" name="myButton" class="btn btn-danger">Mark As Done</button>
                                 </form>
                             </div>
                         </div>

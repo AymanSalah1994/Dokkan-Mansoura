@@ -59,7 +59,7 @@
                                     action="{{ route('admin.categories.delete', $category->id) }}" method="POST"
                                     style="display: hidden">
                                     @csrf
-                                </form>`
+                                </form>
                                 <td><img src="{{ Storage::url($category->category_picture) }}"
                                         style="width: 100%;
                                     height: 15vw;

@@ -27,12 +27,13 @@
                                         <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
                                         <td>
                                             @if ($item->status != '5')
-                                                <form action="{{ route('dealer.panel.mark.item.refunded') }}" method="POST"
-                                                    style="">
+                                                <form action="{{ route('dealer.panel.mark.item.refunded') }}" onsubmit="myButton.disabled = true; return true;" method="POST"
+                                                    onsubmit="myButton.disabled = true; return true;">
                                                     @csrf
                                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
                                                     <input type="hidden" name="item_id" value="{{ $item->id }}">
-                                                    <button type="submit" class="btn btn-warning">Refund this Only</button>
+                                                    <button type="submit" name="myButton" class="btn btn-warning">Refund
+                                                        this Only</button>
                                                 </form>
                                             @endif
                                         </td>
@@ -80,11 +81,11 @@
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('dealer.panel.mark.order.refunded', $order->id) }}" method="post"
+                                <form action="{{ route('dealer.panel.mark.order.refunded', $order->id) }}" onsubmit="myButton.disabled = true; return true;" method="post"
                                     style="">
                                     @csrf
                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                    <button type="submit" class="btn btn-danger">Return the Whole Order</button>
+                                    <button type="submit" name="myButton" class="btn btn-danger">Return the Whole Order</button>
                                 </form>
                             </div>
                         </div>

@@ -11,9 +11,9 @@
         function loadMerchantPanel() {
             $.ajax({
                 type: "GET",
-                url: '{{ route('merchant.panel.related.items.counter') }}',
+                url: '{{ route('dealer.panel.checked.orders.counter') }}',
                 success: function(response) {
-                    $('.related_count').html(response.relatedCount);
+                    $('.checked_cound').html(response.checkedOrdersCount);
                 },
             });
         }

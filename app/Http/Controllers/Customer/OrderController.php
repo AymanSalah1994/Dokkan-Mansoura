@@ -30,7 +30,7 @@ class OrderController extends Controller
         $order_id = $request->checking_order;
         $order = Order::find($order_id);
         if ($user->orders->where('status', '1')->first()) {
-            return redirect()->route('orders.all')->with('status', 'You already have an Order in Progresess');
+            return redirect()->route('orders.all')->with('status', 'You already have an Order in Progresess, You Can Return the Old Order to Cart and Check out again');
         }
         if ($order) {
             $order->status = "1";
@@ -110,7 +110,7 @@ class OrderController extends Controller
             return redirect()->route('orders.all')->with('status', 'Order is Returned');
         }
     }
-    
+
     public static function updateTotalOrder($order_id)
     {
         $or = Order::find($order_id);

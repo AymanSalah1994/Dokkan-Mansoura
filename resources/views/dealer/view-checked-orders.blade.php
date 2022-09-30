@@ -35,7 +35,7 @@
                                         Mark as Prepared</a>
                                 </td>
                                 <form id="{{ $order->id }}" action="{{ route('dealer.panel.mark.order.prepared', $order->id) }}"
-                                    method="post" style="display: none">
+                                    method="post"  onsubmit="myButton.disabled = true; return true;" style="display: none">
                                     @csrf
                                 </form>
                             </tr>

@@ -10,8 +10,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <form class="form-inline my-2 my-lg-0" id="search-form-nav" action="{{ route('store.search')}}">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_word" >
+            <form class="form-inline my-2 my-lg-0" id="search-form-nav" action="{{ route('store.search') }}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    name="search_word">
             </form>
             <ul class="navbar-nav ms-auto">
                 @auth
@@ -51,8 +52,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('merchants.all') }}">{{ __('Merchants') }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('store.search') }}">{{ __('SEARCH') }}</a>
+                <li class="nav-item  position-relative">
+                    <a class="nav-link text-decoration-underline fw-bold" href="{{ route('store.search') }}">{{ __('All Products') }}
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
+                            <span class="visually-hidden">New alerts</span>
+                        </span>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('store.categories') }}">{{ __('Services') }}</a>

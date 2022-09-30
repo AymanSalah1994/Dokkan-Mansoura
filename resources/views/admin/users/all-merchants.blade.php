@@ -2,7 +2,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h1> merchants </h1>
+            <h1>All Merchants</h1>
         </div>
     </div>
     <div class="card">
@@ -11,10 +11,10 @@
                 <table class="table">
                     <thead class=" text-primary">
                         <th>ID</th>
-                        <th>Merchant Name</th>
-                        <th>Phone</th>
-                        <th>Role</th>
-                        <th>Action</th>
+                        <th>{{ __('Merchant Name') }}</th>
+                        <th>{{ __('Phone') }}</th>
+                        <th>{{ __('Role') }}</th>
+                        <th>{{ __('Action') }}</th>
                     </thead>
                     <tbody>
                         @foreach ($merchants as $merchant)
@@ -24,17 +24,18 @@
                                 <td>{{ $merchant->phone }}</td>
                                 <td>{{ $merchant->role_as }}</td>
                                 <td>
-                                    <form action="{{ route('admin.user.revoke') }}" class="form form-inline" method="post">
+                                    <form action="{{ route('admin.user.revoke') }}" class="form form-inline" onsubmit="myButton.disabled = true; return true;" method="post">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $merchant->id }}">
-                                        <button type="submit" class="btn btn-warning">Revoke</button>
+                                        <button type="submit" name="myButton" class="btn btn-warning">Revoke</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.user.delete') }}" class="form form-inline" method="post">
+                                    <form action="{{ route('admin.user.delete') }}" class="form form-inline"
+                                        method="post" onsubmit="myButton.disabled = true; return true;">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $merchant->id }}">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" name="myButton" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
                                 </td>

@@ -15,7 +15,7 @@
                                     value="{{ request('search_word') }}">
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-                                <button type="submit" class="btn btn-primary wrn-btn">{{ __('Search') }}</button>
+                                <button type="submit" name="myButton" class="btn btn-primary wrn-btn">{{ __('Search') }}</button>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                         </select>
                     </div>
                     <div class="row">
-                        <button type="submit" class="btn btn-warning wrn-btn">{{ __('Filter') }}</button>
+                        <button type="submit" name="myButton" class="btn btn-warning wrn-btn">{{ __('Filter') }}</button>
                     </div>
                     <div class="row">
                         <button type="reset" class="btn btn-primary wrn-btn" id="btn-clear">{{ __('Reset') }}</button>
@@ -78,8 +78,13 @@
                         <div class="card mb-3 gy-5" style="">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url($product->product_picture) }}" class="card-img card-img-top"
-                                        alt="...">
+                                    @if ($product->product_picture != '')
+                                        <img src="{{ Storage::url($product->product_picture) }}"
+                                            class="card-img card-img-top" alt="...">
+                                    @else
+                                        <img src="{{ asset('images/thumb.jpg') }}" class="card-img card-img-top"
+                                            alt="...">
+                                    @endif
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -91,12 +96,12 @@
                                         </p>
                                         <p class="card-text">
                                             <small class="text-muted">
-                                                {{__('Price')}} : {{ $product->selling_price }}
+                                                {{ __('Price') }} : {{ $product->selling_price }}
                                             </small>
                                         </p>
                                         <p class="card-text">
                                             <small class="text-muted">
-                                                {{__('Buyer')}} : {{ $product->user->first_name }}
+                                                {{ __('Buyer') }} : {{ $product->user->first_name }}
                                             </small>
                                         </p>
                                     </div>
@@ -112,7 +117,7 @@
         <div class="row">
             <div class="col-md-8"></div>
             <div class="col-md-4">
-                {{ $allProducts->appends(request()->only(['maximum_price', 'minimum_price', 'order_by', 'category', 'merchant','search_word']))->links() }}
+                {{ $allProducts->appends(request()->only(['maximum_price', 'minimum_price', 'order_by', 'category', 'merchant', 'search_word']))->links() }}
             </div>
         </div>
     </div>

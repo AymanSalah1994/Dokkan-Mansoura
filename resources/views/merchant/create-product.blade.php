@@ -5,7 +5,7 @@
             <h3>Create new Product</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('merchant.panel.product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('merchant.panel.product.store') }}" onsubmit="myButton.disabled = true; return true;"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -128,7 +128,7 @@
                     <input type="file" class="form-group" name="product_picture">
                     <input type="file" class="form-group" name="secondary_picture">
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Create Product</button>
+                <button type="submit" name="myButton" class="btn btn-primary pull-right">Create Product</button>
             </form>
         </div>
     </div>

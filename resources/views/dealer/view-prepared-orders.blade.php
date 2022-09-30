@@ -34,7 +34,7 @@
                                         Mark as Done</a>
                                 </td>
                                 <form id="{{ $order->id }}"
-                                    action="{{ route('dealer.panel.mark.order.done', $order->id) }}" method="post"
+                                    action="{{ route('dealer.panel.mark.order.done', $order->id) }}" onsubmit="myButton.disabled = true; return true;" method="post"
                                     style="display: none">
                                     @csrf
                                 </form>

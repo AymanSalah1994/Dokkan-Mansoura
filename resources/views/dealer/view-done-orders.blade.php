@@ -1,5 +1,15 @@
 @extends('layouts.dealer.dealer_panel')
 @section('content')
+    <div class="container">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="card-title">Search :</h4>
+                <form action="" class="form-inline" style="width:100%">
+                    <input type="search" name="search_word" class="input-group-text" style="width:100%">
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="card">
         <div class="card-body">
             <h1> {{ __('Done Orders') }} </h1>
@@ -35,6 +45,7 @@
             </div>
         </div>
     </div>
+    {{ $alldoneOrders->appends(request()->only(['search_word']))->links() }}
 @endsection
 
 @section('scripts')

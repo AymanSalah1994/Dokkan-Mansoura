@@ -82,7 +82,7 @@
                 <div class="col-md-5">
                     @if ($order->status == '1')
                         <div class="row">
-                            <form action="{{ route('return.order.to.cart') }}" method="post"
+                            <form action="{{ route('return.order.to.cart') }}" onsubmit="myButton.disabled = true; return true;" method="post"
                                 class="form-inline float-start">
                                 @csrf
                                 <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
@@ -94,7 +94,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="{{ route('order.cancel') }}" method="post" class="form-inline">
+                                <form action="{{ route('order.cancel') }}" onsubmit="myButton.disabled = true; return true;" method="post" class="form-inline">
                                     @csrf
                                     <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
                                     <button href="" class="btn btn-danger">{{ __('Cancel Order') }}</button>

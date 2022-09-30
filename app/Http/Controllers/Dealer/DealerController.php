@@ -58,7 +58,7 @@ class DealerController extends Controller
 
     public function viewDoneOrders()
     {
-        $alldoneOrders = Order::where('status', '4')->orderBy('updated_at', 'DESC')->get();
+        $alldoneOrders = Order::where('status', '4')->orderBy('updated_at', 'DESC')->SearchWord()->paginate(7);
         return view('dealer.view-done-orders', compact('alldoneOrders'));
     }
 
@@ -100,12 +100,31 @@ class DealerController extends Controller
     }
 
 
-    // TODO 
-    // For Item and Order , After Preparation Since the End User Can't
-    public function CANCELdeleteOrder($id)
+
+    public function checkedOrdersCounter()
     {
-        $order = Order::find($id);
-        $order->delete();
-        return redirect()->route('admin.orders.all')->with('status', 'Order is Deleted');
+        $checkedOrdersCount = Order::where('status', '1')->count();
+        return response()->json(['checkedOrdersCount' => $checkedOrdersCount]);
+    }
+
+
+
+    // TODO
+    // For Item and Order , After Preparation Since the End User Can't
+    public function deleteItemIfNotFound(Request $request)
+    {
+        $cartItem = CartItem::find($request->item_);
+        $order = Order::find($cartItem->order->id);
+        $cartItem->delete();
+
+        if ($order->cartItems->count() == 0) {
+            $order->delete();
+            return redirect()->route('dealer.panel.view.checked.orders')->with('status', 'Item AND order Deleted');
+        } else {
+            return redirect()->route('dealer.panel.view.order.details', [
+                'id' =>  $order->id,
+                'tracking_id' => $order->tracking_id
+            ])->with('status', 'item Removed');
+        }
     }
 }

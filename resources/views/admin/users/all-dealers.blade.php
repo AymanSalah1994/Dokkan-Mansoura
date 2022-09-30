@@ -25,17 +25,17 @@
                                 <td>{{ $dealer->role_as }}</td>
                                 <td>
                                 <td>
-                                    <form action="{{ route('admin.user.revoke') }}" class="form form-inline" method="post">
+                                    <form action="{{ route('admin.user.revoke') }}" class="form form-inline" onsubmit="myButton.disabled = true; return true;" method="post">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $dealer->id }}">
-                                        <button type="submit" class="btn btn-warning">Revoke</button>
+                                        <button type="submit" name="myButton" class="btn btn-warning">Revoke</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.user.delete') }}" class="form form-inline" method="post">
+                                    <form action="{{ route('admin.user.delete') }}" class="form form-inline" onsubmit="myButton.disabled = true; return true;" method="post">
                                         @csrf
                                         <input type="hidden" name="identifier" value="{{ $dealer->id }}">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" name="myButton" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
                                 </td>
