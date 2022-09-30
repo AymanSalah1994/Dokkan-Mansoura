@@ -19,7 +19,6 @@
             </div>
         </div>
         @foreach ($completedItems as $item)
-            <div class="row">
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="row">
@@ -29,7 +28,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         @endforeach
     </div>
 @endsection

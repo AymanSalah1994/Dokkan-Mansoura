@@ -40,7 +40,7 @@
                                     </p>
                                     <p class="card-text">
                                         <small class="text-muted">
-                                            Buyer : {{ $product->user->first_name }}
+                                            One Of your Products
                                         </small>
                                     </p>
                                 </div>

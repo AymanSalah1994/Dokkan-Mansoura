@@ -19,14 +19,16 @@
             </div>
         </div>
         @foreach ($relatedCartItems as $item)
-            <div class="row">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">{{ $item->product->name }}</div>
-                            <div class="col-md-4">{{ $item->quantity }}</div>
-                            <div class="col-md-4">{{ $item->updated_at }}</div>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="{{ route('merchant.panel.product.view', $item->product->slug) }}">
+                                {{ $item->product->name }}
+                            </a>
                         </div>
+                        <div class="col-md-4">{{ $item->quantity }}</div>
+                        <div class="col-md-4">{{ $item->updated_at }}</div>
                     </div>
                 </div>
             </div>

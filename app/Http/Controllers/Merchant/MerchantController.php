@@ -43,7 +43,7 @@ class MerchantController extends Controller
     {
         $user = Auth::user();
         $userProducts = $user->products->pluck('id')->toArray();
-        $relatedCartItems = CartItem::where('status', '1')->whereIn('product_id', $userProducts)->get();
+        $relatedCartItems = CartItem::where('status', '1')->whereIn('product_id', $userProducts)->with('product')->get();
         return view('merchant.related-orders', compact('relatedCartItems'));
     }
 
@@ -78,8 +78,7 @@ class MerchantController extends Controller
     {
         $user = Auth::user();
         $userProducts = $user->products->pluck('id')->toArray();
-        $completedItems = CartItem::where('status', '4')->whereIn('product_id', $userProducts)->get();
+        $completedItems = CartItem::where('status', '4')->whereIn('product_id', $userProducts)->with('product')->get();
         return view('merchant.completed-orders', compact('completedItems'));
-
     }
 }
