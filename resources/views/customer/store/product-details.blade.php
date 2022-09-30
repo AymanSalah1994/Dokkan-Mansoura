@@ -135,7 +135,7 @@
                         <label for="" class="fw-bold">{{ __('Selling Price') }}
                             :{{ $product->selling_price }}</label>
                         <div class="rating">
-                            <span> {{ __('Ratings') }} : {{ $product->reviews()->count() }}</span>
+                            <span> {{ __('Ratings') }} : {{ $product->reviews->count() }}</span>
                             <i class="fa fa-star {{ $average_rating >= 1 ? 'checked' : '' }}"></i>
                             <i class="fa fa-star {{ $average_rating >= 2 ? 'checked' : '' }}"></i>
                             <i class="fa fa-star {{ $average_rating >= 3 ? 'checked' : '' }}"></i>
@@ -205,7 +205,7 @@
             @endif
             <div class="col-md-7">
                 <h4>-----{{ __('Reviews') }}-------</h4>
-                @foreach ($product->reviews as $review)
+                @foreach ($reviews as $review)
                     <div class="container">
                         <div class="card shadow">
                             <div class="card-body">

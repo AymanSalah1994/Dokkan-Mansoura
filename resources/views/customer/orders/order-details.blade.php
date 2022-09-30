@@ -25,7 +25,7 @@
                                     $total = 0;
                                     $checking_order = '';
                                 @endphp
-                                @foreach ($order->cartItems as $item)
+                                @foreach ($cartItems as $item)
                                     <tr class="{{ $item->status == '5' ? 'table-danger' : 'table-success' }}">
                                         <td>{{ $item->product->name }}</td>
                                         <td>{{ $item->quantity }}</td>
@@ -82,7 +82,8 @@
                 <div class="col-md-5">
                     @if ($order->status == '1')
                         <div class="row">
-                            <form action="{{ route('return.order.to.cart') }}" onsubmit="myButton.disabled = true; return true;" method="post"
+                            <form action="{{ route('return.order.to.cart') }}"
+                                onsubmit="myButton.disabled = true; return true;" method="post"
                                 class="form-inline float-start">
                                 @csrf
                                 <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
@@ -94,7 +95,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="{{ route('order.cancel') }}" onsubmit="myButton.disabled = true; return true;" method="post" class="form-inline">
+                                <form action="{{ route('order.cancel') }}"
+                                    onsubmit="myButton.disabled = true; return true;" method="post" class="form-inline">
                                     @csrf
                                     <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
                                     <button href="" class="btn btn-danger">{{ __('Cancel Order') }}</button>
@@ -114,7 +116,7 @@
             </div>
         </div>
     @else
-        <h1>ERROR</h1>
+        {{ Redirect::to('/') }}
     @endif
     <br>
 @endsection

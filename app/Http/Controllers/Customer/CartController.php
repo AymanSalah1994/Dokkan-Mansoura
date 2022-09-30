@@ -73,14 +73,14 @@ class CartController extends Controller
     public function viewCart()
     {
         $user = Auth::user();
-        $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
+        $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->with('product')->get();
         foreach ($currentCartItems as $item) {
             if ($item->product->status == '0') {
                 $outOfStockItem = CartItem::find($item->id);
                 $outOfStockItem->delete();
             }
         }
-        $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
+        $currentCartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->with('product')->get();
         $currentOrder = Order::where('user_id', $user->id)->where('status', '0')->first();
         if ($currentOrder) {
             // If he Clears the Cart then this Order will be Null
@@ -116,7 +116,7 @@ class CartController extends Controller
         CartItem::where('id', $request->cartItemID)->update(['quantity' => $request->product_quantity]);
         $cartItem = CartItem::find($request->cartItemID);
         $cartItem->cart_total_price = $cartItem->product->selling_price * $cartItem->quantity ;
-        $cartItem->save() ; 
+        $cartItem->save() ;
         $request->updateTotalOrder($cartItem->order_id);
         return response()->json([
             'status' => 'Updated Quantity'

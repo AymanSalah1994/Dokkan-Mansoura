@@ -13,14 +13,14 @@ class OrderController extends Controller
     public function checkout()
     {
         $user = Auth::user();
-        $cartItems  = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
+        $cartItems  = CartItem::Where('user_id', $user->id)->where('status', '0')->with('product')->get();
         foreach ($cartItems as $item) {
             if ($item->product->status == '0') {
                 $outOfStockItem = CartItem::find($item->id);
                 $outOfStockItem->delete();
             }
         }
-        $cartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->get();
+        $cartItems = CartItem::Where('user_id', $user->id)->where('status', '0')->with('product')->get();
         return view('customer.orders.checkout', compact(['cartItems']));
     }
 
@@ -41,8 +41,7 @@ class OrderController extends Controller
                 $item->save();
             }
             return redirect()->route('orders.all')->with('status', 'Order and its Items are Updated!');
-        }
-        else {
+        } else {
             return redirect()->route('orders.all')->with('status', 'SomeThing Wrong , Stop inspecting');
         }
     }
@@ -56,15 +55,16 @@ class OrderController extends Controller
 
     public function orderDetails($tracking_id)
     {
-        $user = Auth::user() ;
-        $order = Order::where('user_id' ,$user->id)->where('tracking_id',$tracking_id)->first();
-        return view('customer.orders.order-details', compact('order'));
+        $user = Auth::user();
+        $order = Order::where('user_id', $user->id)->where('tracking_id', $tracking_id)->first();
+        $cartItems = CartItem::where('order_id', $order->id)->with('product')->get();
+        return view('customer.orders.order-details', compact(['order', 'cartItems']));
     }
 
     public function cancelOrder(Request $request)
     {
-        $user = Auth::user() ;
-        $order = Order::where('user_id' ,$user->id)->where('tracking_id',$request->tracking_id)->first();
+        $user = Auth::user();
+        $order = Order::where('user_id', $user->id)->where('tracking_id', $request->tracking_id)->first();
         $order_items = CartItem::where('order_id', $order->id)->get();
         foreach ($order_items as $item) {
             $cartItem  = CartItem::find($item->id);
@@ -78,7 +78,7 @@ class OrderController extends Controller
 
     public function returnOrderToCart(Request $request)
     {
-        $user = Auth::user() ;
+        $user = Auth::user();
         $returned_order  = Order::where('user_id', $user->id)->where('tracking_id', $request->tracking_id)->first();
         $active_order = Order::where('user_id', $user->id)->where('status', '0')->first();
 

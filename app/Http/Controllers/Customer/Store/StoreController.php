@@ -34,7 +34,8 @@ class StoreController extends Controller
     public function productDetails($slug)
     {
         $user = Request::user();
-        $product = Product::where('slug', $slug)->first();
+        $product = Product::where('slug', $slug)->with('user')->first();
+        $reviews = Review::where('product_id', $product->id)->with('user')->get();
         $average_rating = Review::where('product_id', $product->id)->avg('rating_stars');
         $average_rating = round($average_rating);
         if ($user) {
@@ -42,7 +43,7 @@ class StoreController extends Controller
         } else {
             $user_review = false;
         }
-        return view('customer.store.product-details', compact(['product', 'average_rating', 'user_review']));
+        return view('customer.store.product-details', compact(['product', 'average_rating', 'user_review', 'reviews']));
     }
 
     public function allMerchants()
@@ -60,8 +61,7 @@ class StoreController extends Controller
     public function merchantProducts($slug)
     {
         $merchant = User::where('slug', $slug)->first();
-        // $merchant_products  = Product::where('user_id', $merchant->id)->get();
-        $products = $merchant->products()->paginate(8) ;
-        return view('customer.store.merchant-products', compact('products','merchant'));
+        $products = $merchant->products()->paginate(8);
+        return view('customer.store.merchant-products', compact('products', 'merchant'));
     }
 }
