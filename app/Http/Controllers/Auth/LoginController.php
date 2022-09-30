@@ -34,16 +34,14 @@ class LoginController extends Controller
 
     protected function authenticated()
     {
-        if (Auth::user()->role_as == '1') //1 = Admin Login
-        {
-            // TODO : Change Routes To route(NAME)
-            return redirect('/dashboard')->with('status', 'Welcome to your dashboard');
-        }
-        //  elseif (Auth::user()->role_as == '0')
-         // Normal or Default User Login
-         else
-        {
-            return redirect('/');
+        if (Auth::user()->role_as == '1') {
+            return redirect()->route('admin.dashboard');
+        } elseif (Auth::user()->role_as == '2') {
+            return redirect()->route('merchant.panel.index');
+        } elseif (Auth::user()->role_as == '3') {
+            return redirect()->route('dealer.panel.home');
+        } elseif (Auth::user()->role_as == '0') {
+            return redirect()->route('store.index');
         }
     }
     // THis is for Overring Bwlow Bleow
@@ -98,5 +96,4 @@ class LoginController extends Controller
         }
         return redirect()->to('/');
     }
-
 }
