@@ -6,14 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        // TODO : Multiple Photos Upload ;
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
@@ -31,7 +25,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default('0')->nullable();
             $table->tinyInteger('trending')->default('0')->nullable();
             $table->mediumText('keywords')->nullable();
-            $table->string('youtube_vid')->nullable() ; 
+            $table->string('youtube_vid')->nullable();
             $table->timestamps();
         });
     }

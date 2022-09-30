@@ -89,7 +89,6 @@ class DealerController extends Controller
 
     public function refundItem(Request $request)
     {
-        // TODO : Refund and Quantity in mind
         $order = Order::find($request->order_id);
         $item  = CartItem::find($request->item_id);
         $item->status = '5';
@@ -118,8 +117,6 @@ class DealerController extends Controller
 
 
 
-    // TODO
-    // For Item and Order , After Preparation Since the End User Can't
     public function deleteItemIfNotFound(Request $request)
     {
         $cartItem = CartItem::find($request->item_);

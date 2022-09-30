@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category','user')->SearchWord()->orderBy('updated_at','DESC')->paginate(7);
+        $products = Product::with('category', 'user')->SearchWord()->orderBy('updated_at', 'DESC')->paginate(7);
         return view('admin.product.index', compact('products'));
     }
 
@@ -33,7 +33,6 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        //TODO : Remove it From REsource
     }
     public function edit(Product $product)
     {
@@ -48,7 +47,7 @@ class ProductController extends Controller
         $theProduct  = Product::find($product->id);
         $theProduct->update($allReuestData);
 
-        $request->updateCartOrders($theProduct->id) ;
+        $request->updateCartOrders($theProduct->id);
         return redirect()->route('products.index')->with('status', 'Product Updated SuccessFully!');
     }
 

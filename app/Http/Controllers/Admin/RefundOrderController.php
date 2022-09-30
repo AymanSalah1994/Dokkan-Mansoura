@@ -29,8 +29,6 @@ class RefundOrderController extends Controller
 
     public function refundItem(Request $request)
     {
-        // TODO : Refund and Quantity in mind
-        // TODO : Refund and Quantity in mind
         $order = Order::find($request->order_id);
         $item  = CartItem::find($request->item_id);
         $item->status = '5';
