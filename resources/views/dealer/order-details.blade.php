@@ -21,7 +21,7 @@
                                 <th>{{ __('Buyer') }}</th>
                                 <th>{{ __('Remove this Item') }}</th>
                             </thead>
-                            @foreach ($order->cartItems as $item)
+                            @foreach ($orderItems as $item)
                                 <tr>
                                     <td>{{ $item->product->name }}</td>
                                     <td>{{ $item->quantity }}</td>
@@ -99,7 +99,7 @@
                                     style="">
                                     @csrf
                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                    <button type="submit" name="myButton" class="btn btn-danger">Mark As Done</button>
+                                    <button type="submit" name="myButton" class="btn btn-success">Mark As Done</button>
                                 </form>
                             </div>
                         </div>
@@ -114,11 +114,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h3>{{ __('Customer Name') }}:</h3>
-                        <p> {{ $order->user->first_name }} {{ $order->user->last_name }}</p>
+                        <p> {{ $orderUser->user->first_name }} {{ $orderUser->user->last_name }}</p>
                     </div>
                     <div class="col-md-6">
                         <h3> {{ __('phone') }}: </h3>
-                        <p>{{ $order->user->phone }}</p>
+                        <p>{{ $orderUser->user->phone }}</p>
                     </div>
                 </div>
             </div>

@@ -23,7 +23,11 @@ class DealerController extends Controller
     public function orderDetails($id, $tracking_id)
     {
         $order = Order::find($id);
-        return view('dealer.order-details', compact('order'));
+        $orderItems = CartItem::where('order_id', $order->id)->with(['product', 'product.user'])->get();
+        $orderUser = $order->with('user')->first();
+        return view('dealer.order-details', compact([
+            'order', 'orderItems', 'orderUser'
+        ]));
     }
 
     public function markPrepared($id)
@@ -66,7 +70,8 @@ class DealerController extends Controller
     public function viewToRefund($id, $tracking_id)
     {
         $order = Order::find($id);
-        return view('dealer.view-order-to-refund', compact('order'));
+        $orderItems = CartItem::where('order_id',$order->id)->with('product')->get() ;
+        return view('dealer.view-order-to-refund', compact(['order','orderItems']));
     }
 
     public function refundOrder(Request $request)
@@ -96,6 +101,10 @@ class DealerController extends Controller
             $order->status = '5';
             $order->save();
         }
+        if($order->cartItems->where('status','4')->count() >= 1) {
+            return redirect()->back()->with('status', 'Item is Returned Back !');
+        }
+
         return redirect()->route('dealer.panel.view.done.orders')->with('status', 'Item is Returned Back !');
     }
 
@@ -121,6 +130,8 @@ class DealerController extends Controller
             $order->delete();
             return redirect()->route('dealer.panel.view.checked.orders')->with('status', 'Item AND order Deleted');
         } else {
+            $order->total = $order->total - $cartItem->cart_total_price ;
+            $order->save() ;
             return redirect()->route('dealer.panel.view.order.details', [
                 'id' =>  $order->id,
                 'tracking_id' => $order->tracking_id

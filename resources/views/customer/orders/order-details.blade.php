@@ -42,6 +42,9 @@
                             <span>{{ __('Total') }} : {{ $total }}</span>
                         </div>
                         <div class="card-footer">
+                            <span>{{ __('Order Total') }} : {{ $order->total }}</span>
+                        </div>
+                        <div class="card-footer">
                             <span>{{ __('* Total Changes Based on Prices Changes') }}</span>
                         </div>
                         <div class="card-footer">
