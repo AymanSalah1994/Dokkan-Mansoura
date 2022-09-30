@@ -10,7 +10,8 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('review.submit') }}" onsubmit="myButton.disabled = true; return true;" method="POST">
+                <form action="{{ route('review.submit') }}" onsubmit="myButton.disabled = true; return true;"
+                    method="POST">
                     @csrf
                     <input type="hidden" value="{{ $product->slug }}" name="review_product_id">
                     <div class="modal-body">
@@ -93,8 +94,7 @@
                                         <img src="{{ Storage::url($product->product_picture) }}" class="d-block w-100"
                                             alt="iamge">
                                     @else
-                                        <img src="{{ asset('images/thumb.jpg') }}" class="d-block w-100"
-                                            alt="iamge">
+                                        <img src="{{ asset('images/thumb.jpg') }}" class="d-block w-100" alt="iamge">
                                     @endif
 
                                 </div>
@@ -191,12 +191,18 @@
     <br>
     <div class="container">
         <div class="row">
-            <div class="col-md-5">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/m4-lfUHe1vk"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
+            @if ($product->youtube_vid)
+                <div class="col-md-5">
+                    <iframe width="100%" height="315" src="{{ Storage::url($prodcut->youtube_vid) }}"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            @else
+                <div class="col-md-5">
+                    <img src="{{ asset('images/No-video.png') }}" alt="" width="" height="315">
+                </div>
+            @endif
             <div class="col-md-7">
                 <h4>-----{{ __('Reviews') }}-------</h4>
                 @foreach ($product->reviews as $review)

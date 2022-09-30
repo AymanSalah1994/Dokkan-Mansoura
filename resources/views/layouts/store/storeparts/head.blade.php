@@ -24,4 +24,10 @@
     <link rel="stylesheet" href="{{ asset('store_assets/css/start-rating.css') }}">
     <link rel="stylesheet" href="{{ asset('store_assets/css/merchant-card.css') }}">
     <link rel="stylesheet" href="{{ asset('store_assets/css/back-to-top.css') }}">
+
+
+
+    {{-- Log in  --}}
+    <link rel="stylesheet" href="{{asset('store_assets/css/login.css')}}">
+    {{-- Log in  --}}
 </head>
