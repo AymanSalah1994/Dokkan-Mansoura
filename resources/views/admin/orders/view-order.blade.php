@@ -18,12 +18,22 @@
                                 <th>Product Name</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
+                                <th>Action</th>
                             </thead>
-                            @foreach ($order->cartItems as $item)
+                            @foreach ($orderItems as $item)
                                 <tr>
                                     <td>{{ $item->product->name }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
+                                    <td>
+                                        <form action="{{ route('admin.order.delete.not.found') }}" onsubmit="myButton.disabled = true; return true;" method="post"
+                                            onsubmit="myButton.disabled = true; return true;">
+                                            @csrf
+                                            <input type="hidden" name="item_" value="{{ $item->id }}">
+                                            <button type="submit" name="myButton" class="btn btn-danger">Delete "Not
+                                                Found"</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

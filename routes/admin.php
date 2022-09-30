@@ -57,4 +57,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::post('/dashboard/user/revoke/', [UsersController::class, 'revoke'])->name('admin.user.revoke');
     Route::post('/dashboard/user/delete/', [UsersController::class, 'userDelete'])->name('admin.user.delete');
     // USERS - CONVERT - END
+
+
+    Route::post('/dashboard/delete-ifnot-found', [OrderController::class, 'deleteItemIfNotFound'])->name('admin.order.delete.not.found');
 });

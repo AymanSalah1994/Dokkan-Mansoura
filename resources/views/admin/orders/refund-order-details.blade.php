@@ -19,7 +19,7 @@
                                 <th>Quantity</th>
                                 <th>Price</th>
                             </thead>
-                            @foreach ($order->cartItems as $item)
+                            @foreach ($orderItems as $item)
                                 <tr>
                                     <td>{{ $item->product->name }}</td>
                                     <td>{{ $item->quantity }}</td>

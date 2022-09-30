@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::SearchWord()->paginate(7);
+        $products = Product::with('category','user')->SearchWord()->orderBy('updated_at','DESC')->paginate(7);
         return view('admin.product.index', compact('products'));
     }
 

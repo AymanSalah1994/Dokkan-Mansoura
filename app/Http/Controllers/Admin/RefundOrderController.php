@@ -12,7 +12,8 @@ class RefundOrderController extends Controller
     public function refundOrderDetails($id)
     {
         $order = Order::find($id);
-        return view('admin.orders.refund-order-details', compact('order'));
+        $orderItems = CartItem::where('order_id' ,$order->id)->with('product')->get() ;
+        return view('admin.orders.refund-order-details', compact(['order','orderItems']));
     }
     public function refundOrder(Request $request)
     {
