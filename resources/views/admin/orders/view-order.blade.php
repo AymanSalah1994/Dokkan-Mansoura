@@ -72,7 +72,7 @@
                                     style="">
                                     @csrf
                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                    <button type="submit" name="myButton" class="btn btn-danger">Mark As Prepared</button>
+                                    <button type="submit" name="myButton" class="btn btn-info">Mark As Prepared</button>
                                 </form>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                     style="">
                                     @csrf
                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
-                                    <button type="submit" name="myButton" class="btn btn-danger">Mark As Done</button>
+                                    <button type="submit" name="myButton" class="btn btn-success">Mark As Done</button>
                                 </form>
                             </div>
                         </div>

@@ -25,7 +25,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <h1> Products : {{$products->count()}} </h1>
+            <h1> Products : {{ $products->count() }} </h1>
         </div>
     </div>
     <div class="card">
@@ -39,6 +39,7 @@
                         <th>Seller</th>
                         <th>Selling Price</th>
                         <th>Action</th>
+                        <th>Action</th>
                         <th>Image</th>
                     </thead>
                     <tbody>
@@ -49,17 +50,16 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->user->first_name }}</td>
                                 <td>{{ $product->selling_price }}</td>
-                                <td>
-                                    <a href="{{ route('products.edit', $product->slug) }}" class="btn btn-primary">Edit</a>
-                                    <a href="" class="btn btn-danger"
-                                        onclick="event.preventDefault();document.getElementById('{{ $product->id }}').submit();">
-                                        Delete</a>
+                                <td><a href="{{ route('products.edit', $product) }}" class="btn btn-primary">View & Edit</a>
                                 </td>
-                                <form id="{{ $product->id }}" action="{{ route('products.destroy', $product->slug) }}"
-                                    method="post" style="display: none">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
+                                <td>
+                                    <form id="{{ $product->id }}" action="{{ route('products.destroy', $product->slug) }}"
+                                        method="post" onsubmit="myButton.disabled = true; return true;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" name="myButton" class="btn btn-warning">Delete</button>
+                                    </form>
+                                </td>
                                 <td>
                                     <img src="{{ Storage::url($product->product_picture) }}"
                                         style="width: 100%;

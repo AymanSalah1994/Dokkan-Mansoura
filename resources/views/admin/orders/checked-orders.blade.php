@@ -26,14 +26,12 @@
                                 <td>{{ $order->total }}</td>
                                 <td>Checked and Pending</td>
                                 <td>
-                                    <a href="" class="btn btn-primary"
-                                        onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
-                                        Mark as Prepared</a>
-                                </td>
-                                <form id="{{ $order->id }}" action="{{ route('admin.order.prepare', $order->id) }}"
+                                <form id="{{ $order->id }}" onsubmit="myButton.disabled = true; return true;" action="{{ route('admin.order.prepare', $order->id) }}"
                                     method="post" style="display: none">
                                     @csrf
+                                    <button type="submit" name="myButton" class="btn btn-warning">Delete</button>
                                 </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

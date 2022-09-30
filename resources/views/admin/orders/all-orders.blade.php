@@ -32,7 +32,11 @@
                         @foreach ($orders as $order)
                             <tr>
                                 <td>{{ $order->id }} </td>
-                                <td>{{ $order->tracking_id }} </td>
+                                <td>
+                                    <a href="{{route('admin.order.view',$order->id)}}" class="">
+                                        {{ $order->tracking_id }}
+                                    </a>
+                                </td>
                                 <td>{{ $order->total }}</td>
                                 @switch($order->status)
                                     @case(0)
@@ -63,16 +67,14 @@
                                         <td>""</td>
                                 @endswitch
                                 <td>
-                                    <a href="{{ route('admin.order.view', $order->id) }}" class="btn btn-primary">View</a>
-                                    <a href="" class="btn btn-danger"
-                                        onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
-                                        Delete
-                                    </a>
+                                    <form id="{{ $order->id }}" onsubmit="myButton.disabled = true; return true;"
+                                        action="{{ route('admin.order.delete', $order->id) }}" method="post">
+                                        @csrf
+                                        <button type="submit" name="myButton" class="btn btn-danger">Delete</button>
+                                    </form>
+
+
                                 </td>
-                                <form id="{{ $order->id }}" action="{{ route('admin.order.delete', $order->id) }}"
-                                    method="post" style="display: none">
-                                    @csrf
-                                </form>
                             </tr>
                         @endforeach
                     </tbody>

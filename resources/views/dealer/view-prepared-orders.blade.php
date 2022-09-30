@@ -29,15 +29,13 @@
                                 <td>{{ $order->total }}</td>
                                 <td>{{ __('In Preparation') }}</td>
                                 <td>
-                                    <a href="" class="btn btn-success"
-                                        onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
-                                        Mark as Done</a>
-                                </td>
                                 <form id="{{ $order->id }}"
                                     action="{{ route('dealer.panel.mark.order.done', $order->id) }}" onsubmit="myButton.disabled = true; return true;" method="post"
                                     style="display: none">
                                     @csrf
+                                    <button type="submit" name="myButton" class="btn btn-success">Mark as Done</button>
                                 </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

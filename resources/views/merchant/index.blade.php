@@ -1,11 +1,13 @@
 @extends('layouts.merchant.merchant_panel')
 @section('content')
+    
     <div class="card">
         <div class="card-body">
             <h1> {{ __('User') }} : {{ request()->user()->first_name }} </h1>
         </div>
     </div>
-    <form action="{{ route('merchant.panel.profile.update') }}" onsubmit="myButton.disabled = true; return true;" method="post" enctype="multipart/form-data">
+    <form action="{{ route('merchant.panel.profile.update') }}" onsubmit="myButton.disabled = true; return true;"
+        method="post" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-body">
@@ -75,8 +77,7 @@
                 <div class="row ">
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-new img-thumbnail" style="width: 150px; height: 150px;">
-                            <img src=
-                            "{{ request()->user()->profile_picture ? Storage::url(request()->user()->profile_picture) : asset('images/150x150.png') }}"
+                            <img src="{{ request()->user()->profile_picture ? Storage::url(request()->user()->profile_picture) : asset('images/150x150.png') }}"
                                 alt="...">
                         </div>
                         <div class="fileinput-preview fileinput-exists img-thumbnail "

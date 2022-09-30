@@ -21,7 +21,7 @@ class MerchantController extends Controller
 
     public function allProducts()
     {
-        $products = request()->user()->products()->get();
+        $products = request()->user()->products()->SearchWord()->paginate(10);
         return view('merchant.products', compact('products'));
     }
 

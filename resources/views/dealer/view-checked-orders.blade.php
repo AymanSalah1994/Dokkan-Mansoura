@@ -30,14 +30,14 @@
                                 <td>{{ $order->total }}</td>
                                 <td>Checked and Pending</td>
                                 <td>
-                                    <a href="" class="btn btn-primary"
-                                        onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
-                                        Mark as Prepared</a>
-                                </td>
-                                <form id="{{ $order->id }}" action="{{ route('dealer.panel.mark.order.prepared', $order->id) }}"
+
+
+                                <form id="{{ $order->id }}" onsubmit="myButton.disabled = true; return true;" action="{{ route('dealer.panel.mark.order.prepared', $order->id) }}"
                                     method="post"  onsubmit="myButton.disabled = true; return true;" style="display: none">
                                     @csrf
+                                    <button type="submit" name="myButton" class="btn btn-warning">Mark as Prepared</button>
                                 </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -28,14 +28,12 @@
                                 <td>{{ $order->total }}</td>
                                 <td>{{ $order->status }}</td>
                                 <td>
-                                    <a href="" class="btn btn-success"
-                                        onclick="event.preventDefault();document.getElementById('{{ $order->id }}').submit();">
-                                        Mark as Done</a>
-                                </td>
-                                <form id="{{ $order->id }}" action="{{ route('admin.order.done', $order->id) }}"
-                                    method="post" style="display: none">
+                                <form id="{{ $order->id }}" onsubmit="myButton.disabled = true; return true;" action="{{ route('admin.order.done', $order->id) }}"
+                                    method="post"  >
                                     @csrf
+                                    <button type="submit" name="myButton" class="btn btn-warning">Mark Done</button>
                                 </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

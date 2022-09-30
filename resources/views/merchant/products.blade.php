@@ -1,7 +1,18 @@
 @extends('layouts.merchant.merchant_panel')
 @section('content')
     <div class="card">
-        <h1>Here is A search Form</h1>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Search :</h4>
+                        <form action="" class="form-inline" style="width:100%">
+                            <input type="search" name="search_word" class="input-group-text" style="width:100%">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container">
         @foreach ($products as $product)
@@ -40,6 +51,7 @@
             </div>
         @endforeach
     </div>
+    {{ $products->appends(request()->only(['search_word']))->links() }}
 @endsection
 
 @section('scripts')

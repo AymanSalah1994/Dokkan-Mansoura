@@ -39,8 +39,10 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Image</th>
                         <th>Action</th>
+                        <th>Action</th>
+                        <th>Image</th>
+
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
@@ -48,20 +50,19 @@
                                 <td>{{ $category->id }} </td>
                                 <td>{{ $category->name }} </td>
                                 <td>{{ Str::limit($category->description, 25) }}</td>
+                                <td><a href="{{ route('admin.categories.edit', [$category->id, $category->slug]) }}"
+                                        class="btn btn-primary">View & Edit</a></td>
                                 <td>
-                                    <a href="{{ route('admin.categories.edit', [$category->id, $category->slug]) }}"
-                                        class="btn btn-primary">Edit</a>
-                                    <a href="" class="btn btn-danger"
-                                        onclick="event.preventDefault();document.getElementById('{{ $category->id }}').submit();">
-                                        Delete</a>
+                                    <form id="{{ $category->id }}"
+                                        action="{{ route('admin.categories.delete', $category->id) }}" method="POST"
+                                        style="display: hidden" onsubmit="myButton.disabled = true; return true;"
+                                        class="form-inline">
+                                        @csrf
+                                        <button type="submit" name="myButton" class="btn btn-warning">Delete</button>
+                                    </form>
                                 </td>
-                                <form id="{{ $category->id }}"
-                                    action="{{ route('admin.categories.delete', $category->id) }}" method="POST"
-                                    style="display: hidden">
-                                    @csrf
-                                </form>
                                 <td><img src="{{ Storage::url($category->category_picture) }}"
-                                        style="width: 100%;
+                                        style="width: 75%;
                                     height: 15vw;
                                     object-fit: cover;">
                                 </td>

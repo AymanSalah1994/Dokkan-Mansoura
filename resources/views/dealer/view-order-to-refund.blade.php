@@ -27,7 +27,7 @@
                                         <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td>
                                         <td>
                                             @if ($item->status != '5')
-                                                <form action="{{ route('dealer.panel.mark.item.refunded') }}" onsubmit="myButton.disabled = true; return true;" method="POST"
+                                                <form action="{{ route('dealer.panel.mark.item.refunded') }}"  method="POST"
                                                     onsubmit="myButton.disabled = true; return true;">
                                                     @csrf
                                                     <input type="hidden" name="order_id" value="{{ $order->id }}">
