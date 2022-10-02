@@ -126,7 +126,7 @@ class CartController extends Controller
     public function viewWishList()
     {
         $user = Auth::user();
-        $wishListItems = WishListItem::where('user_id', $user->id)->get();
+        $wishListItems = WishListItem::where('user_id', $user->id)->with('product')->get();
         return view('customer.wish-list', compact('wishListItems'));
     }
 

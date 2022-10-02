@@ -42,11 +42,12 @@
                                 </a>
                             </div>
                             <div class="col-md-2">
-                                {{ $wish_list_item->product->selling_price }} {{__('EGP')}}
+                                {{ $wish_list_item->product->selling_price }} {{ __('EGP') }}
                             </div>
                             <div class="col-md-2">
                                 <input type="hidden" value="{{ $wish_list_item->id }}" class="wishListItemID">
-                                <button type="button" class="btn btn-danger deleteFromWishListBtn">
+                                <button type="button"
+                                    class="btn btn-danger deleteFromWishListBtn from-prevent-multiple-submits">
                                     {{ __('Delete') }} <i class="bi bi-trash3"></i>
                                 </button>
                             </div>
@@ -64,6 +65,7 @@
         $(document).ready(function() {
             $('.deleteFromWishListBtn').click(function(e) {
                 e.preventDefault();
+                $(".from-prevent-multiple-submits").attr("disabled", "true");
                 var wishListItemID = $(this).closest('.product_data').find('.wishListItemID').val();
                 $.ajaxSetup({
                     headers: {

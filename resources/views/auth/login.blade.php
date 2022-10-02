@@ -30,7 +30,7 @@
                             </ul>
                             <div class="form-data">
                                 <label for="username">{{ __('Email Address or Phone Number') }}</label>
-                                <input type="email" class="form-control w-100 @error('username') is-invalid @enderror "
+                                <input  class="form-control w-100 @error('username') is-invalid @enderror "
                                     id="email" name="username" value="{{ old('username') }}" required
                                     autocomplete="email" autofocus>
                                 @error('username')

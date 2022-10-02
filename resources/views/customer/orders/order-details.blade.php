@@ -90,7 +90,8 @@
                                 class="form-inline float-start">
                                 @csrf
                                 <input type="hidden" name="tracking_id" value="{{ $order->tracking_id }}">
-                                <button href="" class="btn btn-info">{{ __('Return Order to Cart') }}</button>
+                                <button href="" class="btn btn-info from-prevent-multiple-submits"
+                                    name="myButton">{{ __('Return Order to Cart') }}</button>
                             </form>
                         </div>
                         <div class="row">

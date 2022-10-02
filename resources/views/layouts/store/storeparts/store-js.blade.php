@@ -7,3 +7,4 @@
 <script src="{{ asset('store_assets/js/notify.min.js') }}"></script>
 <script src="{{ asset('store_assets/js/search-scripts.js') }}"></script>
 <script src="{{ asset('store_assets/js/back-to-top.js') }}"></script>
+<script src="{{ asset('store_assets/js/prevent-multi-submit.js') }}"></script>

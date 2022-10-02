@@ -6,7 +6,7 @@
 @endsection
 @if ($currentCartItems->count() == 0)
     @section('content')
-    @include('layouts.dividers.divider-small')
+        @include('layouts.dividers.divider-small')
         <div class="container">
             <div class="card shadow product_data mb-3">
                 <div class="card-body">
@@ -15,7 +15,7 @@
                             <img src="{{ asset('images/some_asset/cart.png') }}" alt="" width="30%">
                         </div>
                         <div class="col-md-3">
-                            {{__('Your Cart is Empty !')}}
+                            {{ __('Your Cart is Empty !') }}
                         </div>
                     </div>
                 </div>
@@ -48,8 +48,9 @@
                             </div>
                             <div class="col-md-2">
                                 <input type="hidden" value="{{ $cartItem->id }}" class="cartItemID">
-                                <button type="button" class="btn btn-danger deleteFromCartBtn">
-                                    {{__('Delete')}} <i class="bi bi-trash3"></i>
+                                <button type="submit"
+                                    class="btn btn-danger deleteFromCartBtn from-prevent-multiple-submits">
+                                    {{ __('Delete') }} <i class="bi bi-trash3"></i>
                                 </button>
                             </div>
                         </div>
@@ -65,18 +66,21 @@
                     <div class="card">
                         <table class="table table-hover">
                             <thead>
-                                <th>{{__('Total')}} : </th>
+                                <th>{{ __('Total') }} : </th>
                                 <th>{{ $total }}</th>
                             </thead>
                             <tr>
                                 <td>
-                                    <form action="{{ route('cart.clear') }}" onsubmit="myButton.disabled = true; return true;" method="post" class="form-inline float-start">
+                                    <form action="{{ route('cart.clear') }}"
+                                        onsubmit="myButton.disabled = true; return true;" method="post"
+                                        class="form-inline float-start">
                                         @csrf
-                                        <button href="" class="btn btn-danger">{{__('Clear Cart')}}</button>
+                                        <button href="" class="btn btn-danger">{{ __('Clear Cart') }}</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <a href="{{ route('cart.checkout') }}" class="btn btn-success rounded-pill">{{__('Checkout')}}</a>
+                                    <a href="{{ route('cart.checkout') }}"
+                                        class="btn btn-success rounded-pill">{{ __('Checkout') }}</a>
                                 </td>
                             </tr>
                         </table>
@@ -92,6 +96,7 @@
         $(document).ready(function() {
             $('.deleteFromCartBtn').click(function(e) {
                 e.preventDefault();
+                $(".from-prevent-multiple-submits").attr("disabled", "true");
                 var cartItemID = $(this).closest('.product_data').find('.cartItemID').val();
                 $.ajaxSetup({
                     headers: {
