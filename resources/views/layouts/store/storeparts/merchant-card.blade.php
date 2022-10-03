@@ -1,5 +1,4 @@
 @isset($merchant)
-    {{-- {{ Storage::url($merchant->merchant_picture) }} --}}
     <div class="col-md-3 gy-3 d-flex justify-content-center">
         <div class="card merchant">
             <div class="box">
@@ -11,8 +10,9 @@
                     @endif
                 </div>
                 <h2><a href="{{ route('merchant.details', $merchant->slug) }}">{{ $merchant->first_name }}
-                    </a><br><span>--</span></h2>
-                <p>{{ $merchant->first_name }}</p>
+                    </a>
+                    <br><span>{{ $merchant->products->count() }} {{__('Products')}}</span>
+                </h2>
                 @if ($merchant->fb_link)
                     <span>
                         <ul>

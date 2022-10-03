@@ -5,8 +5,7 @@
 
 @endsection
 @section('content')
-    <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
-    </div>
+@include('layouts.dividers.divider-small')
     @if ($wishListItems->count() == 0)
         <div class="divider" style="height: 50px">
         </div>

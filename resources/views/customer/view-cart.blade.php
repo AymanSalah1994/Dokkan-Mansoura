@@ -75,7 +75,9 @@
                                         onsubmit="myButton.disabled = true; return true;" method="post"
                                         class="form-inline float-start">
                                         @csrf
-                                        <button href="" class="btn btn-danger">{{ __('Clear Cart') }}</button>
+                                        <button href="" class="btn btn-danger">{{ __('Clear Cart') }}
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
                                     </form>
                                 </td>
                                 <td>

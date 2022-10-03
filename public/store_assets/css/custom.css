@@ -10,6 +10,9 @@ body {
 .carousel-control-prev-icon   {background-color: red;}
 .carousel-control-next-icon  {background-color: red;}
 
+
+.increment-btn , .decrement-btn{ cursor: pointer; }
+
 /* Bread Crumb STATR */
 .breadcrumb{
     display: inline-block;

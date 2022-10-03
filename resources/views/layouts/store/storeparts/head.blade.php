@@ -29,9 +29,9 @@
 
 
     {{-- Log in  --}}
-    <link rel="stylesheet" href="{{asset('store_assets/css/login.css')}}">
+    <link rel="stylesheet" href="{{ asset('store_assets/css/login.css') }}">
     {{-- Log in  --}}
-    <link rel="stylesheet" href="{{asset('store_assets/css/funda-nav.css')}}">
-    <link rel="stylesheet" href="{{asset('store_assets/css/marquee.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('store_assets/css/funda-nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('store_assets/css/marquee.css') }}">
+    @yield('specifyStyle')
 </head>

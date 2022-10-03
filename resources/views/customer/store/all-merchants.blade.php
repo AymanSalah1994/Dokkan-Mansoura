@@ -1,4 +1,3 @@
-{{-- categoryProducts --}}
 @extends('layouts.store.main_page')
 @section('title', __('All Merchants'))
 @section('content')

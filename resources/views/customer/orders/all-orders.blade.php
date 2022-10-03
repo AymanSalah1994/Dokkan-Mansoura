@@ -4,9 +4,9 @@
 @endsection
 
 @section('content')
-    <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top" style="">
+    <div class="py-3 px-5 mb-2 shadow-sm  border-top" style="">
         <nav aria-label="breadcrumb">
-            <span>{{ __('All Orders') }} :</span>
+            <h3>{{ __('All Orders') }} :</h3>
         </nav>
     </div>
     <br>

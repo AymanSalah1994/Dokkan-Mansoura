@@ -87,8 +87,6 @@
         </ol>
     </div>
 
-
-
     <div class="container">
         <div class="card shadow product_data">
             <div class="card-body">
@@ -103,20 +101,21 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    @if ($product->product_picture != '')
+                                    @if ($product->product_picture != null)
                                         <img src="{{ Storage::url($product->product_picture) }}" class="d-block w-100"
                                             alt="iamge">
                                     @else
-                                        <img src="{{ asset('images/thumb.jpg') }}" class="d-block w-100" alt="iamge">
+                                        <img src="{{ asset('images/240x320.png') }}" class="d-block w-100"
+                                            alt="iamge">
                                     @endif
 
                                 </div>
                                 <div class="carousel-item">
-                                    @if ($product->secondary_picture != '')
+                                    @if ($product->secondary_picture != null)
                                         <img src="{{ Storage::url($product->secondary_picture) }}"
                                             class="d-block w-100 h-100" alt="iamge">
                                     @else
-                                        <img src="{{ asset('images/thumb.jpg') }}" class="d-block w-100 h-100"
+                                        <img src="{{ asset('images/240x320.png') }}" class="d-block w-100 h-100"
                                             alt="iamge">
                                     @endif
 
@@ -164,9 +163,10 @@
                         @else
                             <label for="" class="badge bg-danger">{{ __('Out of Stock') }}</label>
                         @endif
-                        <div class="row mt-5">
-                            <div class="col-md-2">
-                                <label for="">{{ __('Quantity') }}</label>
+                        {{-- FF --}}
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2  justify-content-center">
                                 <div class="input-group text-center mb-3">
                                     <span class="input-group-text decrement-btn">-</span>
                                     <input type="text" name="" value="1"
@@ -174,28 +174,35 @@
                                     <span class="input-group-text increment-btn">+</span>
                                 </div>
                             </div>
-                            <div class="col-md-10">
-                                <br>
-                                <input type="hidden" value="{{ $product->id }}" class="product_id">
-                                <button type="button"
-                                    class="btn btn-success me-3 float-start addToWishListBtn">{{ __('Add To Wish List') }}
-                                    <i class="bi bi-balloon-heart"></i>
-                                </button>
+                            <input type="hidden" value="{{ $product->id }}" class="product_id">
+                            <div class="col-md-5  justify-content-center">
                                 @if ($product->status == '1')
-                                    <button type="button"
-                                        class="btn btn-primary me-3 float-start addToCartBtn">{{ __('Add To Cart') }}
+                                    <button type="button" class="btn btn-danger rounded-pill addToCartBtn">{{ __('Add To Cart') }}
                                         <i class="bi bi-cart"></i>
                                     </button>
                                 @endif
                             </div>
+
+                            <div class="col-md-5  justify-content-center">
+                                <button type="button"
+                                    class="btn btn-success rounded-pill addToWishListBtn">{{ __('Add To Wish List') }}
+                                    <i class="bi bi-balloon-heart"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <h3>{{ __('Buyer') }}: {{ $product->user->first_name }} </h3>
+                        {{-- TT --}}
+                        <hr>
+                        <div class="row mt-5">
+                            <div class="col-md-6">
+                                <h3 class="float-start">{{ __('Buyer') }}: {{ $product->user->first_name }} </h3>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-warning float-end rounded-pill"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    {{ __('Write a Review') }} <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-warning float-end rounded-pill" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            {{ __('Write a Review') }} <i class="fa-solid fa-pen"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -213,7 +220,7 @@
                 </div>
             @else
                 <div class="col-md-5">
-                    <img src="{{ asset('images/No-video.png') }}" alt="" width="" height="315">
+                    <img src="{{ asset('images/No-video.png') }}" class="img-fluid d-block mx-auto h-50" width="" height="">
                 </div>
             @endif
             <div class="col-md-7">
