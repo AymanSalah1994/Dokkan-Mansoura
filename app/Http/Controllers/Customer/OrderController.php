@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\MailController;
 use App\Models\CartItem;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -40,6 +41,9 @@ class OrderController extends Controller
                 $item->status = "1";
                 $item->save();
             }
+            $mail = new MailController() ;
+            $mail->index() ;
+            // This To Call For Sending Email 
             return redirect()->route('orders.all')->with('status', 'Order and its Items are Updated!');
         } else {
             return redirect()->route('orders.all')->with('status', 'SomeThing Wrong , Stop inspecting');

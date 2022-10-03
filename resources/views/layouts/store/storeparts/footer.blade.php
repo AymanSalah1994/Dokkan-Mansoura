@@ -12,14 +12,14 @@
                 </ul>
             </div>
 
-            <div class="col-2">
+            {{-- <div class="col-2">
                 <h5>{{ __('Useful Links') }}</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="{{ route('store.index') }}"
                             class="nav-link p-0 text-white">{{ __('Home') }}</a></li>
                     <li class="nav-item mb-2"><a href="{{ route('footer.faqs') }}"
                             class="nav-link p-0 text-white">{{ __('FAQs') }}</a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item mb-2"><a href="{{ route('footer.features') }}"
                             class="nav-link p-0 text-white">{{__('Features')}}</a>
                     </li>
@@ -30,8 +30,8 @@
                     <li class="nav-item mb-2"><a href="{{ route('footer.about') }}"
                             class="nav-link p-0 text-white">{{__('About')}}</a>
                     </li> --}}
-                </ul>
-            </div>
+                {{-- </ul>
+            </div> --}}
 
             <div class="col-2">
                 <h5>{{ __('Merchants') }}</h5>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="d-flex justify-content-between py-4 my-4 border-top">
-            <p>© 2021 Dokkan ELMansoura . {{ __('All rights reserved') }}.</p>
+            <p>© @php echo date("Y"); @endphp Dokkan ELMansoura . {{ __('All rights reserved') }}.</p>
         </div>
     </footer>
 </div>

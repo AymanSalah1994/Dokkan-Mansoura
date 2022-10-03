@@ -6,125 +6,130 @@
 @endsection
 @section('content')
     @include('layouts.dividers.divider-small')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h3>{{ __('User Details') }}</h3>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="">{{ __('First Name') }}</label>
-                                <input class="form-control" type="text" placeholder="{{ request()->user()->first_name }}"
-                                    readonly>
+    @if ($cartItems->count() > 0)
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>{{ __('User Details') }}</h3>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">{{ __('First Name') }}</label>
+                                    <input class="form-control" type="text"
+                                        placeholder="{{ request()->user()->first_name }}" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">{{ __('Last Name') }}</label>
+                                    <input class="form-control" type="text"
+                                        placeholder="{{ request()->user()->last_name }}" readonly>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="">{{ __('Last Name') }}</label>
-                                <input class="form-control" type="text" placeholder="{{ request()->user()->last_name }}"
-                                    readonly>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">{{ __('City') }}</label>
+                                    <input class="form-control" type="text" placeholder="{{ request()->user()->city }}"
+                                        readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">{{ __('Phone') }}</label>
+                                    <input class="form-control" type="text" placeholder="{{ request()->user()->phone }}"
+                                        readonly>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="">{{ __('City') }}</label>
-                                <input class="form-control" type="text" placeholder="{{ request()->user()->city }}"
-                                    readonly>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">{{ __('Address') }}</label>
+                                    <input class="form-control" type="text"
+                                        placeholder="{{ request()->user()->address }}" readonly>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="">{{ __('Phone') }}</label>
-                                <input class="form-control" type="text" placeholder="{{ request()->user()->phone }}"
-                                    readonly>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">{{ __('Email') }}</label>
+                                    <input class="form-control" type="Email" placeholder="{{ request()->user()->email }}"
+                                        readonly>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="">{{ __('Address') }}</label>
-                                <input class="form-control" type="text" placeholder="{{ request()->user()->address }}"
-                                    readonly>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="">{{ __('Email') }}</label>
-                                <input class="form-control" type="Email" placeholder="{{ request()->user()->email }}"
-                                    readonly>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="{{ route('profile.view') }}"
-                                    class="btn btn-primary">{{ __('Edit Your Profile') }}</a>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{{ route('profile.view') }}"
+                                        class="btn btn-primary">{{ __('Edit Your Profile') }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-7">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>{{ __('Order Details') }}</h3>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <th>{{ __('Product Name') }}</th>
-                                <th>{{ __('Quantity') }}</th>
-                                <th>{{ __('Price') }}</th>
-                            </thead>
-                            @php
-                                $total = 0;
-                                $checking_order = '';
-                            @endphp
-                            @foreach ($cartItems as $item)
-                                <tr>
-                                    <td>{{ $item->product->name }}</td>
-                                    <td>{{ $item->quantity }}</td>
-                                    <td>{{  $item->cart_total_price }}</td>
-                                    {{-- <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td> --}}
-                                </tr>
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>{{ __('Order Details') }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <th>{{ __('Product Name') }}</th>
+                                    <th>{{ __('Quantity') }}</th>
+                                    <th>{{ __('Price') }}</th>
+                                </thead>
                                 @php
-                                    $total += $item->cart_total_price;
-                                    $checking_order = $item->order_id;
+                                    $total = 0;
+                                    $checking_order = '';
                                 @endphp
-                            @endforeach
-                        </table>
-                    </div>
-                    <div class="card-footer">
-                        <span>{{ __('Total') }} : {{ $total }}</span>
-                    </div>
-                    <div class="card-footer">
-                        <div class="row">
-                            @if (request()->user()->phone)
-                                <form action="{{ route('order.confirm') }}" class="row" onsubmit="myButton.disabled = true; return true;" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="checking_order" value="{{ $checking_order }}">
-                                    <button type="submit" name="myButton"
-                                        class="btn btn-success rounded-pill float-end">{{ __('Confirm (Pay on Delivery)') }}</button>
-                                </form>
-                            @else
-                                <div class="card bg-danger">
-                                    <div class="card-header">
-                                        {{ __('Note :') }}
-                                    </div>
-                                    <div class="card-body">
-                                        {{ __('Please Add a Phone Number To Proceed') }}
-                                    </div>
-                                </div>
-                            @endif
+                                @foreach ($cartItems as $item)
+                                    <tr>
+                                        <td>{{ $item->product->name }}</td>
+                                        <td>{{ $item->quantity }}</td>
+                                        <td>{{ $item->cart_total_price }}</td>
+                                        {{-- <td>{{ (int) $item->quantity * (int) $item->product->selling_price }}</td> --}}
+                                    </tr>
+                                    @php
+                                        $total += $item->cart_total_price;
+                                        $checking_order = $item->order_id;
+                                    @endphp
+                                @endforeach
+                            </table>
                         </div>
-                        <br>
-                        <div class="row">
-                            <button class="btn btn-success rounded-pill float-end"
-                                disabled>{{ __('Online (Not Working Currently)') }}</button>
+                        <div class="card-footer">
+                            <span>{{ __('Total') }} : {{ $total }}</span>
                         </div>
-                        {{-- Make it a Button for Form , Form to change order status --}}
+                        <div class="card-footer">
+                            <div class="row">
+                                @if (request()->user()->phone)
+                                    <form action="{{ route('order.confirm') }}" class="row"
+                                        onsubmit="myButton.disabled = true; return true;" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="checking_order" value="{{ $checking_order }}">
+                                        <button type="submit" name="myButton"
+                                            class="btn btn-success rounded-pill float-end">{{ __('Confirm (Pay on Delivery)') }}</button>
+                                    </form>
+                                @else
+                                    <div class="card bg-danger">
+                                        <div class="card-header">
+                                            {{ __('Note :') }}
+                                        </div>
+                                        <div class="card-body">
+                                            {{ __('Please Add a Phone Number To Proceed') }}
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                            <br>
+                            <div class="row">
+                                <button class="btn btn-success rounded-pill float-end"
+                                    disabled>{{ __('Online (Not Working Currently)') }}</button>
+                            </div>
+                            {{-- Make it a Button for Form , Form to change order status --}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @else
+    <h1>You Don't Have BB</h1>
+    @endif
     <br>
 @endsection
 

@@ -1,12 +1,12 @@
 <div class="container-fluid">
     <br>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7 gy-3">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class=""
                         aria-label="Slide 2"></button>
                 </div>
                 <div class="carousel-inner">
@@ -29,28 +29,32 @@
                 </button>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-1 gy-3"></div>
+        <div class="col-md-4 gy-3">
             <div class="card">
+                <div class="card-header">
+                    <h4>Why Choose us ?</h4>
+                </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <i class="bi bi-check-circle"></i>
+                            <i class="bi bi-check-circle-fill" style="color:green"></i>
                             {{ __('Fast Delivery') }}
                         </li>
                         <li class="list-group-item">
-                            <i class="bi bi-check-circle"></i>
+                            <i class="bi bi-check-circle-fill" style="color:green"></i>
                             {{ __('Trusted Places') }}
                         </li>
                         <li class="list-group-item">
-                            <i class="bi bi-check-circle"></i>
+                            <i class="bi bi-check-circle-fill" style="color:green"></i>
                             {{ __('Online With Low Cost') }}
                         </li>
                         <li class="list-group-item">
-                            <i class="bi bi-check-circle"></i>
+                            <i class="bi bi-check-circle-fill" style="color:green"></i>
                             {{ __('Simple Site , No Links EveryWhere') }}
                         </li>
                         <li class="list-group-item">
-                            <i class="bi bi-check-circle"></i>
+                            <i class="bi bi-check-circle-fill" style="color:green"></i>
                             {{ __('Real Photos . No Fraud') }}
                         </li>
                     </ul>

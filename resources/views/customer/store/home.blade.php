@@ -7,7 +7,9 @@
 @section('content')
     <div class="py-5">
         <div class="container">
-            <h2>{{__('Featured Products')}}</h2>
+            <h2 class="">
+                {{ __('Featured Products') }}
+            </h2>
             <br>
             <div class="row">
                 <div class="owl-carousel owl-theme">
@@ -23,13 +25,47 @@
 
     <div class="py-5">
         <div class="container">
-            <h2>{{__('Featured Categories')}}</h2>
+            <h2 class="">
+                {{ __('New Products') }}
+            </h2>
+            <br>
+            <div class="row">
+                <div class="owl-carousel owl-theme">
+                    @foreach ($new_products as $product)
+                        <div class="item row">
+                            @include('layouts.store.storeparts.new-product-card')
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-5">
+        <div class="container">
+            <h2>{{ __('Featured Categories') }}</h2>
             <br>
             <div class="row">
                 <div class="owl-carousel owl-theme">
                     @foreach ($featured_categories as $category)
                         <div class="item">
                             @include('layouts.store.storeparts.featured-category-card')
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-5">
+        <div class="container">
+            <h2 class="text-center">{{ __('Our Partners') }}</h2>
+            <br>
+            <div class="row">
+                <div class="owl-carousel owl-theme">
+                    @foreach ($vendors as $vendor)
+                        <div class="item">
+                            @include('layouts.store.storeparts.vendors-marquee')
                         </div>
                     @endforeach
                 </div>
@@ -45,6 +81,7 @@
             margin: 30,
             dots: true,
             nav: false,
+            theme: 'green',
             responsiveClass: true,
             responsive: {
                 0: {

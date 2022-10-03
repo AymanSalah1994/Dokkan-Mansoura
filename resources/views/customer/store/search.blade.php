@@ -15,7 +15,7 @@
                                     value="{{ request('search_word') }}">
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-                                <button type="submit" name="myButton" class="btn btn-primary wrn-btn">{{ __('Search') }}</button>
+                                <button type="submit"  class="btn btn-primary wrn-btn">{{ __('Search') }}</button>
                             </div>
                         </div>
                     </div>

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('store_assets/css/owl.carousel.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('store_assets/css/owl.theme.default.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('store_assets/css/owl.theme.green.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('store_assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('store_assets/css/custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('store_assets/css/owly.css') }}" />
@@ -30,4 +31,7 @@
     {{-- Log in  --}}
     <link rel="stylesheet" href="{{asset('store_assets/css/login.css')}}">
     {{-- Log in  --}}
+    <link rel="stylesheet" href="{{asset('store_assets/css/funda-nav.css')}}">
+    <link rel="stylesheet" href="{{asset('store_assets/css/marquee.css')}}">
+
 </head>

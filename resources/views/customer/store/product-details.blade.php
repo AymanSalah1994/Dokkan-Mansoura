@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
+    {{-- <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('store.index') }}">Home</a></li>
@@ -74,7 +74,20 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
             </ol>
         </nav>
+    </div> --}}
+    <div class="py-3 px-5 mb-2 shadow-sm  border-top">
+        <ol class="breadcrumb">
+            <li><a href="{{ route('store.index') }}">Home</a></li>
+            <li>
+                <a href="{{ route('category.products', $product->category->slug) }}">
+                    {{ $product->category->name }}
+                </a>
+            </li>
+            <li class="active">{{ $product->name }}</li>
+        </ol>
     </div>
+
+
 
     <div class="container">
         <div class="card shadow product_data">

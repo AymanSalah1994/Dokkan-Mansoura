@@ -13,9 +13,11 @@ class StoreController extends Controller
 {
     public function index()
     {
+        $vendors = User::where('role_as','2')->take(5)->get() ;
+        $new_products = Product::orderBy('created_at','DESC')->take(8)->get() ;
         $featured_products = Product::where('trending', '1')->take(5)->get();
         $featured_categories = Category::where('popular', '1')->take(5)->get();
-        return view('customer.store.home', compact(['featured_products', 'featured_categories']));
+        return view('customer.store.home', compact(['featured_products', 'featured_categories','new_products','vendors']));
     }
 
     public function categories()

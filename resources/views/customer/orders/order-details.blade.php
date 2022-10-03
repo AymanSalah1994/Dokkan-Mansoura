@@ -120,7 +120,7 @@
             </div>
         </div>
     @else
-        {{ Redirect::to('/') }}
+       <h1>You Din't </h1>
     @endif
     <br>
 @endsection
