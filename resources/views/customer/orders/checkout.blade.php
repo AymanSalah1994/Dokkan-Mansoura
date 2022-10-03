@@ -120,7 +120,7 @@
                             <div class="row">
                                 <form action="" class="row">
                                     <button class="btn btn-success rounded-pill"
-                                    disabled>{{ __('Online (Not Working Currently)') }}</button>
+                                        disabled>{{ __('Online (Not Working Currently)') }}</button>
                                 </form>
                             </div>
                             {{-- Make it a Button for Form , Form to change order status --}}
@@ -130,7 +130,7 @@
             </div>
         </div>
     @else
-    <h1>You Don't Have BB</h1>
+        <h1>You Don't Have Running Orders!</h1>
     @endif
     <br>
 @endsection
