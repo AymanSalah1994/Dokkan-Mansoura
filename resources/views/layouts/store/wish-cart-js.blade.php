@@ -52,7 +52,7 @@
                 error: function(request, status, error) {
                     var reqError = JSON.parse(request.responseText);
                     // swal("Soemthing Wrongyy , 10 Items are max")
-                    $.notify("Error !", "error");
+                    $.notify("Maximum Number 10", "error");
                 }
             });
         });

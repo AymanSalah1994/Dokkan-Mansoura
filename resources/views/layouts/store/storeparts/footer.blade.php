@@ -3,18 +3,15 @@
     <footer class="py-5">
         <div class="row">
             <div class="col-2">
-                <h5>Social Media</h5>
+                <h5>Useful Links</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Facebook</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">YouTube</a></li>
+                    <li class="nav-item mb-2"><a href="{{ route('footer.merchant.apply') }}"
+                        class="nav-link p-0 text-white">{{ __('How to Apply as Merchant') }}</a></li>
                 </ul>
             </div>
             <div class="col-2">
-                <h5>{{ __('Merchants') }}</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="{{ route('footer.merchant.apply') }}"
-                            class="nav-link p-0 text-white">{{ __('How to Apply') }}</a></li>
-                </ul>
             </div>
 
             <div class="col-4 offset-1">

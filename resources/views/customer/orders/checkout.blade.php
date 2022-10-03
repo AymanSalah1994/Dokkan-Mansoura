@@ -103,7 +103,7 @@
                                         @csrf
                                         <input type="hidden" name="checking_order" value="{{ $checking_order }}">
                                         <button type="submit" name="myButton"
-                                            class="btn btn-success rounded-pill float-end">{{ __('Confirm (Pay on Delivery)') }}</button>
+                                            class="btn btn-success rounded-pill">{{ __('Confirm (Pay on Delivery)') }}</button>
                                     </form>
                                 @else
                                     <div class="card bg-danger">
@@ -118,8 +118,10 @@
                             </div>
                             <br>
                             <div class="row">
-                                <button class="btn btn-success rounded-pill float-end"
+                                <form action="" class="row">
+                                    <button class="btn btn-success rounded-pill"
                                     disabled>{{ __('Online (Not Working Currently)') }}</button>
+                                </form>
                             </div>
                             {{-- Make it a Button for Form , Form to change order status --}}
                         </div>

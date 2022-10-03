@@ -41,8 +41,8 @@
                                 <label for="">Quantity</label>
                                 <div class="input-group text-center mb-3">
                                     <span class="input-group-text updateCartItem decrement-btn">-</span>
-                                    <input type="text" name="" value="{{ $cartItem->quantity }}"
-                                        class="form-control quantity-input">
+                                    <input type="number" name="" value="{{ $cartItem->quantity }}"
+                                        class="form-control text-center quantity-input">
                                     <span class="input-group-text updateCartItem increment-btn">+</span>
                                 </div>
                             </div>

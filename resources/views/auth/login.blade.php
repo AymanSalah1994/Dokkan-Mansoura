@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="bg-white p-4 h-100">
+                <div class="bg-white h-100">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="p-3 d-flex justify-content-center flex-column align-items-center"> <span

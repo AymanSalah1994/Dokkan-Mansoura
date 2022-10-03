@@ -165,17 +165,17 @@
                         @endif
                         {{-- FF --}}
                         <hr>
-                        <div class="row">
-                            <div class="col-md-2  justify-content-center">
+                        <div class="row ">
+                            <div class="col-md-2  gy-3 d-flex justify-content-center">
                                 <div class="input-group text-center mb-3">
                                     <span class="input-group-text decrement-btn">-</span>
-                                    <input type="text" name="" value="1"
-                                        class="form-control quantity-input">
+                                    <input type="number" name="" value="1"
+                                        class="form-control quantity-input text-center">
                                     <span class="input-group-text increment-btn">+</span>
                                 </div>
                             </div>
                             <input type="hidden" value="{{ $product->id }}" class="product_id">
-                            <div class="col-md-5  justify-content-center">
+                            <div class="col-md-5  gy-3 d-flex justify-content-center">
                                 @if ($product->status == '1')
                                     <button type="button" class="btn btn-danger rounded-pill addToCartBtn">{{ __('Add To Cart') }}
                                         <i class="bi bi-cart"></i>
@@ -183,7 +183,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-md-5  justify-content-center">
+                            <div class="col-md-5 gy-3 d-flex justify-content-center">
                                 <button type="button"
                                     class="btn btn-success rounded-pill addToWishListBtn">{{ __('Add To Wish List') }}
                                     <i class="bi bi-balloon-heart"></i>
@@ -224,7 +224,7 @@
                 </div>
             @endif
             <div class="col-md-7">
-                <h4>-----{{ __('Reviews') }}-------</h4>
+                <h4 class="text-center">-----{{ __('Reviews') }}-------</h4>
                 @foreach ($reviews as $review)
                     <div class="container">
                         <div class="card shadow">

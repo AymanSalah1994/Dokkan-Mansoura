@@ -8,7 +8,7 @@
     @yield('slider')
     <div class="content">
         @yield('content')
-        <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <button onclick="topFunction()" id="myTOPBtn" title="Go to top">
             <i class="fa-solid fa-arrow-up"></i>
             {{ __('Top') }}
         </button>
