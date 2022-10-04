@@ -230,31 +230,43 @@
                 </div>
             @else
                 <div class="col-md-5">
-                    <img src="{{ asset('images/No-video.png') }}" class="img-fluid d-block mx-auto h-50" width=""
-                        height="">
+                    <img src="{{ asset('images/No-Video.jpg') }}" class="" width=""
+                        height="" style="width: 100%;height: 15vw;object-fit: cover;">
                 </div>
             @endif
             <div class="col-md-7">
                 <h4 class="text-center">-----{{ __('Reviews') }}-------</h4>
-                @foreach ($reviews as $review)
-                    <div class="container">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $review->user->first_name }}</h5>
-                                <div class="rating">
-                                    <i class="fa fa-star {{ $review->rating_stars >= 1 ? 'checked' : '' }}"></i>
-                                    <i class="fa fa-star {{ $review->rating_stars >= 2 ? 'checked' : '' }}"></i>
-                                    <i class="fa fa-star {{ $review->rating_stars >= 3 ? 'checked' : '' }}"></i>
-                                    <i class="fa fa-star {{ $review->rating_stars >= 4 ? 'checked' : '' }}"></i>
-                                    <i class="fa fa-star {{ $review->rating_stars >= 5 ? 'checked' : '' }}"></i>
+                @if ($reviews->count() > 0)
+                    @foreach ($reviews as $review)
+                        <div class="container">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $review->user->first_name }}</h5>
+                                    <div class="rating">
+                                        <i class="fa fa-star {{ $review->rating_stars >= 1 ? 'checked' : '' }}"></i>
+                                        <i class="fa fa-star {{ $review->rating_stars >= 2 ? 'checked' : '' }}"></i>
+                                        <i class="fa fa-star {{ $review->rating_stars >= 3 ? 'checked' : '' }}"></i>
+                                        <i class="fa fa-star {{ $review->rating_stars >= 4 ? 'checked' : '' }}"></i>
+                                        <i class="fa fa-star {{ $review->rating_stars >= 5 ? 'checked' : '' }}"></i>
+                                    </div>
+                                    <p class="card-text">{{ $review->rating_text }}</p>
+                                    <p class="card-text"><small class="text-muted">{{ $review->updated_at }}</small></p>
                                 </div>
-                                <p class="card-text">{{ $review->rating_text }}</p>
-                                <p class="card-text"><small class="text-muted">{{ $review->updated_at }}</small></p>
                             </div>
+                            <br>
                         </div>
-                        <br>
+                    @endforeach
+                @else
+                <div class="container">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">{{__('No Reviews Yet')}}</h5>
+                            <p class="card-text"></p>
+                        </div>
                     </div>
-                @endforeach
+                    <br>
+                </div>
+                @endif
             </div>
         </div>
     </div>

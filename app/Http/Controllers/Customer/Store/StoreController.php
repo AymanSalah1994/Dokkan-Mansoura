@@ -46,7 +46,7 @@ class StoreController extends Controller
             $user_review = false;
         }
 
-        $relatedProducts = Product::inRandomOrder()->where('category_id', $product->category_id)->orWhere('user_id', $product->user_id)->where('id', '!=', $product->id)->get();
+        $relatedProducts = Product::inRandomOrder()->where('category_id', $product->category_id)->orWhere('user_id', $product->user_id)->where('id', '!=', $product->id)->take(5)->get();
         return view('customer.store.product-details', compact(['product', 'average_rating', 'user_review', 'reviews', 'relatedProducts']));
     }
 

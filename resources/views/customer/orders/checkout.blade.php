@@ -96,6 +96,9 @@
                             <span>{{ __('Total') }} : {{ $total }}</span>
                         </div>
                         <div class="card-footer">
+                            <span>{{ __('Shipping') }} : {{__('You Will be informed By the Shipping Fees')}}</span>
+                        </div>
+                        <div class="card-footer">
                             <div class="row">
                                 @if (request()->user()->phone)
                                     <form action="{{ route('order.confirm') }}" class="row"

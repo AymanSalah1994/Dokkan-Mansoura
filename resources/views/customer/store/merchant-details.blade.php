@@ -10,9 +10,15 @@
         <div class="card shadow merchant_data">
             <div class="card-body">
                 <div class="row">
+                    @if ($merchant->profile_picture)
+                        <div class="col-md-4">
+                            <img src="{{ Storage::url($merchant->profile_picture) }}" alt="" style="width: 100%;height: 15vw;object-fit: cover;">
+                        </div>
+                    @else
                     <div class="col-md-4">
-                        <img src="{{ Storage::url($merchant->profile_picture) }}" alt="">
+                        <img src="{{ asset('images/thumb.jpg') }}" alt="" style="width: 100%;height: 15vw;object-fit: cover;">
                     </div>
+                    @endif
                     <div class="col-md-8">
                         <h2 class="mb-0">{{ $merchant->first_name }}</h2>
                         <br>

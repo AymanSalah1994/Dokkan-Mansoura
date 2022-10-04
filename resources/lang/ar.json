@@ -142,8 +142,14 @@
     "Refundable" : "قابل للاسترجاع" ,
     "Not Refundable" :"غير قابل للاسترجاع" ,
     "Search by Product Name" :"ابحث باسم المنتج" ,
-    "Related Products" :"منتجات ذات صلة"
-
-
-
+    "Related Products" :"منتجات ذات صلة" ,
+    "No Reviews Yet" :"لا يوجد تقييمات" ,
+    "Shipping" : "الشحن" ,
+    "You Will be informed By the Shipping Fees" :"عند التواصل معك سيتم ابلاغك بمبلغ الشحن الكلي" ,
+    "Thanks For Visiting this Page" : "شكرا لزيارتكم لهذه الصفحة" ,
+    "Just Few Things Needed" : "المطلوب من التاجر أمور بسيطة" ,
+    "You Own products , No affiliates": "انت مالك البضاعة , لا تسويق لبضاعة الغير أو بضاعة من متجر اخر" ,
+    "Reasonable Prices , and Quality!" : "!أسعار البضائع معقولة والجودة كذلك " ,
+    "Provide Real Pictures" :"كل صور المنتجات صور على الطبيعة" ,
+    "Anything opposite is Disallowed" :"أي شيء مخالف لما ذكر يعتبر غير مسموح به"
 }
