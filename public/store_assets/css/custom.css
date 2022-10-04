@@ -66,3 +66,6 @@ body {
     }
 }
 /* Bread Crumb END */
+.navbar-brand {
+    font-weight: bold;
+}

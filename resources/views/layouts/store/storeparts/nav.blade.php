@@ -11,7 +11,7 @@
                     <div class="col-md-5 my-auto">
                         <form role="search" id="search-form-nav" action="{{ route('store.search') }}">
                             <div class="input-group">
-                                <input type="search" placeholder="Search for product" class="form-control"
+                                <input type="search" placeholder="{{__('Search for product')}}" class="form-control"
                                     name="search_word">
                                 <button class="btn bg-white" type="submit">
                                     <i class="fa fa-search"></i>

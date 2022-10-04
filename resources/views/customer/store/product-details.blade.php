@@ -142,10 +142,10 @@
                         <br>
                         <hr>
                         <label for="" class="me-5">{{ __('Original Price') }} :
-                            <s>{{ $product->original_price }}</s>
+                            <s>{{ $product->original_price }} {{ __('EGP') }}</s>
                         </label>
                         <label for="" class="fw-bold">{{ __('Selling Price') }}
-                            :{{ $product->selling_price }}</label>
+                            :{{ $product->selling_price }} {{ __('EGP') }}</label>
                         <div class="rating">
                             <span> {{ __('Ratings') }} : {{ $product->reviews->count() }}</span>
                             <i class="fa fa-star {{ $average_rating >= 1 ? 'checked' : '' }}"></i>
@@ -163,6 +163,11 @@
                         @else
                             <label for="" class="badge bg-danger">{{ __('Out of Stock') }}</label>
                         @endif
+                        @if ($product->refundable == '1')
+                            <label for="" class="badge bg-info">{{ __('Refundable') }}</label>
+                        @else
+                            <label for="" class="badge bg-danger">{{ __('Not Refundable') }}</label>
+                        @endif
                         {{-- FF --}}
                         <hr>
                         <div class="row ">
@@ -177,7 +182,8 @@
                             <input type="hidden" value="{{ $product->id }}" class="product_id">
                             <div class="col-md-5  gy-3 d-flex justify-content-center">
                                 @if ($product->status == '1')
-                                    <button type="button" class="btn btn-danger rounded-pill addToCartBtn">{{ __('Add To Cart') }}
+                                    <button type="button"
+                                        class="btn btn-danger rounded-pill addToCartBtn">{{ __('Add To Cart') }}
                                         <i class="bi bi-cart"></i>
                                     </button>
                                 @endif
@@ -195,7 +201,7 @@
                         <div class="row mt-5">
                             <div class="col-md-6">
                                 <h3 class="float-start">{{ __('Buyer') }}:
-                                    <a href="{{route('merchant.details',$product->user->slug)}}">
+                                    <a href="{{ route('merchant.details', $product->user->slug) }}">
                                         {{ $product->user->first_name }}
                                     </a>
                                 </h3>
@@ -224,7 +230,8 @@
                 </div>
             @else
                 <div class="col-md-5">
-                    <img src="{{ asset('images/No-video.png') }}" class="img-fluid d-block mx-auto h-50" width="" height="">
+                    <img src="{{ asset('images/No-video.png') }}" class="img-fluid d-block mx-auto h-50" width=""
+                        height="">
                 </div>
             @endif
             <div class="col-md-7">

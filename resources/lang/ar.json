@@ -59,7 +59,7 @@
     "Quantity" : "الكمية" ,
     "Price" : "السعر"  ,
     "Original Price" : "السعر الأصلي" ,
-    "Ratings" : "تقييمات" ,
+    "Ratings" : "عدد التقييمات" ,
     "Add To Cart" : "اضافة المنتج الى السلة"  ,
     "Add To Wish List" : "اضافة المنتج الى المفضلات" ,
     "Write a Review" : "أكتب تقييم عن المنتج" ,
@@ -137,7 +137,10 @@
     "Order is Cancelled" :"تم الغاء الطلب" ,
     "Order is Returned to Cart" : "تم ارجاع العناصر الى السلة" ,
     "Order is Returned" :"تم الارجاع"  ,
-    "Profile Updated Successfully" :"تم تحديث البيانات"
+    "Profile Updated Successfully" :"تم تحديث البيانات" ,
+    "Search for product" : "ابحث عن منتج" ,
+    "Refundable" : "قابل للاسترجاع" ,
+    "Not Refundable" :"غير قابل للاسترجاع"
 
 
 

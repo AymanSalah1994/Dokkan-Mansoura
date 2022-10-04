@@ -96,7 +96,7 @@
                                         </p>
                                         <p class="card-text">
                                             <small class="text-muted">
-                                                {{ __('Price') }} : {{ $product->selling_price }}
+                                                {{ __('Price') }} : {{ $product->selling_price }} {{__('EGP')}}
                                             </small>
                                         </p>
                                         <p class="card-text">

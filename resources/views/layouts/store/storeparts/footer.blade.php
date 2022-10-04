@@ -1,5 +1,5 @@
 <hr>
-<div class="container-fluid bg-indigo-600 text-white" style="background-color: rgba(8, 8, 8, 0.818);">
+<div class="container-fluid bg-indigo-600 text-white" style="background-color: #5f96ee;;">
     <footer class="py-5">
         <div class="row">
             <div class="col-2">
