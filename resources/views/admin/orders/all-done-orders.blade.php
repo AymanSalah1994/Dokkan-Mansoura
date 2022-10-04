@@ -37,7 +37,7 @@
                                 <td>Done</td>
                                 <td>
                                     <a href="{{ route('admin.refund.order.details', $order->id) }}"
-                                        class="btn btn-danger">REfund</a>
+                                        class="btn btn-danger">Refund</a>
                                 </td>
                             </tr>
                         @endforeach

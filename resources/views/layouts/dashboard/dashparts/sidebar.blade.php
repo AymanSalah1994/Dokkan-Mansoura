@@ -37,7 +37,9 @@
                     <li class="nav-item {{ Request::is('dashboard/checked-orders') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.orders.checked') }}">
                             <i class="material-icons">add_shopping_cart</i>
-                            <p>Checked Orders</p>
+                            <p>Checked Orders
+                                <span class="badge badge-pill bg-danger checked_count_admin" style="font-size: 1.1em;"></span>
+                            </p>
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('dashboard/in-preparation-orders') ? 'active' : '' }}">

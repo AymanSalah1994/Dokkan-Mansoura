@@ -91,4 +91,11 @@ class OrderController extends Controller
             return redirect()->route('admin.order.view', $order->id)->with('status', 'item Removed');
         }
     }
+
+    public function checkedOrdersCounter()
+    {
+        $checkedOrdersCount = Order::where('status', '1')->count();
+        return response()->json(['checkedOrdersCount' => $checkedOrdersCount]);
+    }
+
 }

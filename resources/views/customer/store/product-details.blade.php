@@ -223,7 +223,7 @@
         <div class="row">
             @if ($product->youtube_vid)
                 <div class="col-md-5">
-                    <iframe width="100%" height="315" src="{{ Storage::url($prodcut->youtube_vid) }}"
+                    <iframe width="100%" height="315" src="{{ $product->youtube_vid }}"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>

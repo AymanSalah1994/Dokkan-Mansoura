@@ -14,6 +14,7 @@
     </div>
     @include('layouts.dashboard.dashparts.fixed-plugin')
     @include('layouts.dashboard.dashparts.js-dash-files')
+    @include('layouts.dashboard.checked-orders-counter-js')
     @yield('scripts')
 </body>
 

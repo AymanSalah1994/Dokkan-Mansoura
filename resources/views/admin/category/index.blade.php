@@ -42,7 +42,6 @@
                         <th>Action</th>
                         <th>Action</th>
                         <th>Image</th>
-
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
@@ -62,7 +61,7 @@
                                     </form>
                                 </td>
                                 <td><img src="{{ Storage::url($category->category_picture) }}"
-                                        style="width: 75%;
+                                        style="width: 100%;
                                     height: 15vw;
                                     object-fit: cover;">
                                 </td>

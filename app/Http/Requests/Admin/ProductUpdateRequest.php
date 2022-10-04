@@ -27,6 +27,7 @@ class ProductUpdateRequest extends FormRequest
             'status' => 'nullable',
             'trending' => 'nullable',
             'refundable' => 'nullable',
+            'youtube_vid' =>'nullable|url' , 
             'keywords' => 'nullable|string|max:255',
             'product_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
             'secondary_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',

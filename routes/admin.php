@@ -60,4 +60,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
 
 
     Route::post('/dashboard/delete-ifnot-found', [OrderController::class, 'deleteItemIfNotFound'])->name('admin.order.delete.not.found');
+
+    Route::get('/dashboard/checked-orders-counter', [OrderController::class, 'checkedOrdersCounter'])->name('admin.panel.checked.orders.counter');
 });

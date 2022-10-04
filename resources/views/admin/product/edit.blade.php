@@ -76,7 +76,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="bmd-label-floating">YouTube URL :</label>
-                            <input type="text" class="form-control" name="" value="">
+                            <input type="text" class="form-control" name="youtube_vid" value="{{ old('youtube_vid', $theProduct->youtube_vid) }}">
                             @error('name')
                                 <span style="color: red">{{ $message }}</span>
                             @enderror

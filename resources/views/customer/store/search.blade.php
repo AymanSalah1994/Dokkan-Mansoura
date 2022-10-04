@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-12 p-0">
                                 <input type="text" class="form-control search-slt" name="search_word"
-                                    value="{{ request('search_word') }}">
+                                    value="{{ request('search_word') }}" placeholder="{{__('Search by Product Name')}}">
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 p-0">
                                 <button type="submit"  class="btn btn-primary wrn-btn">{{ __('Search') }}</button>
