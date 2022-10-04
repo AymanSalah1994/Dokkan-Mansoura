@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard/refund-order-details/{id}', [RefundOrderController::class, 'refundOrderDetails'])->name('admin.refund.order.details');
     Route::post('/dashboard/refund-order-item/', [RefundOrderController::class, 'refundItem'])->name('admin.refund.order.item');
     Route::post('/dashboard/refund-whole-order/', [RefundOrderController::class, 'refundOrder'])->name('admin.refund.whole.order');
+    Route::post('/dashboard/return-to-prepared/', [RefundOrderController::class, 'returnToPrepared'])->name('admin.return.to.prepared');
     // REFUNDING - END
 
     // USERS - START  :

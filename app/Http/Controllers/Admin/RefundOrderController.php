@@ -27,6 +27,17 @@ class RefundOrderController extends Controller
         return redirect()->route('admin.orders.refunded')->with('status', 'DOOOONEEE!');
     }
 
+    public function returnToPrepared(Request $request) {
+        $order = Order::find($request->order_id);
+        $order->status = '2';
+        $order->save();
+        foreach ($order->cartItems as $item) {
+            $item->status = '2';
+            $item->save();
+        }
+        return redirect()->route('admin.orders.prepared')->with('status', 'DONE');
+    }
+
     public function refundItem(Request $request)
     {
         $order = Order::find($request->order_id);

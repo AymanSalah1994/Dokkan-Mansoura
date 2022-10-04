@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="row">
+                <div class="row gy-5">
                     <div class="card">
                         <div class="card-body">
                             <form action="{{ route('admin.refund.whole.order', $order->id) }}" onsubmit="myButton.disabled = true; return true;" method="post" style="">
@@ -85,6 +85,22 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row gy-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{ route('admin.return.to.prepared', $order->id) }}" onsubmit="myButton.disabled = true; return true;" method="post" style="">
+                                @csrf
+                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                <button type="submit" name="myButton" class="btn btn-success">Return To Prepared</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
             </div>
         </div>
     </div>

@@ -258,6 +258,25 @@
             </div>
         </div>
     </div>
+
+
+    <div class="container">
+        <h2 class="">
+            {{ __('Related Products') }}
+        </h2>
+        <br>
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                @foreach ($relatedProducts as $Rproduct)
+                    @if ($product->id != $Rproduct->id)
+                        <div class="item row">
+                            @include('layouts.store.storeparts.related-product-card')
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -271,4 +290,31 @@
             $.notify("{{ __($message2) }}", "success");
         </script>
     @endif
+
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 30,
+            dots: true,
+            nav: false,
+            theme: 'green',
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 2,
+                    margin: 10,
+                    stagePadding: 20,
+                },
+                600: {
+                    items: 3,
+                    margin: 20,
+                    stagePadding: 50,
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+    </script>
 @endsection

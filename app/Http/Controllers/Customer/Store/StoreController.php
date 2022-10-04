@@ -13,11 +13,11 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $vendors = User::where('role_as','2')->take(5)->get() ;
-        $new_products = Product::orderBy('created_at','DESC')->take(8)->get() ;
+        $vendors = User::where('role_as', '2')->take(5)->get();
+        $new_products = Product::orderBy('created_at', 'DESC')->take(8)->get();
         $featured_products = Product::where('trending', '1')->take(5)->get();
         $featured_categories = Category::where('popular', '1')->take(5)->get();
-        return view('customer.store.home', compact(['featured_products', 'featured_categories','new_products','vendors']));
+        return view('customer.store.home', compact(['featured_products', 'featured_categories', 'new_products', 'vendors']));
     }
 
     public function categories()
@@ -45,7 +45,9 @@ class StoreController extends Controller
         } else {
             $user_review = false;
         }
-        return view('customer.store.product-details', compact(['product', 'average_rating', 'user_review', 'reviews']));
+
+        $relatedProducts = Product::inRandomOrder()->where('category_id', $product->category_id)->orWhere('user_id', $product->user_id)->where('id', '!=', $product->id)->get();
+        return view('customer.store.product-details', compact(['product', 'average_rating', 'user_review', 'reviews', 'relatedProducts']));
     }
 
     public function allMerchants()
