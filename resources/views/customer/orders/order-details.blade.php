@@ -82,9 +82,9 @@
                     </div>
                 </div>
                 <br>
-                <div class="col-md-5">
+                <div class="col-md-5 gy-5">
                     @if ($order->status == '1')
-                        <div class="row">
+                        <div class="row gy-5">
                             <form action="{{ route('return.order.to.cart') }}"
                                 onsubmit="myButton.disabled = true; return true;" method="post"
                                 class="form-inline float-start">

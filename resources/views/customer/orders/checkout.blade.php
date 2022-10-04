@@ -130,7 +130,18 @@
             </div>
         </div>
     @else
-        <h1>You Don't Have Running Orders!</h1>
+        <div class="container py-5">
+            <div class="card shadow mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8">
+                            <h1>You Don't Have Running Orders!</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
     <br>
 @endsection

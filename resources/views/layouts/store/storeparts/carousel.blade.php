@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <br>
     <div class="row">
-        <div class="col-md-7 gy-3">
+        <div class="col-md-8 gy-3">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -29,7 +29,6 @@
                 </button>
             </div>
         </div>
-        <div class="col-md-1 gy-3"></div>
         <div class="col-md-4 gy-3">
             <div class="card">
                 <div class="card-header">
