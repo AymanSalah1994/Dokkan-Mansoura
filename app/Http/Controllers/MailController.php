@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function index()
+    public function index($email)
     {
         $mailData = [
-            'title' => 'Mail from ItSolutionStuff.com',
-            'body' => 'This is for testing email using smtp.'
+            'title' => 'Mail from Dokkan ElMansoura',
+            'body' => 'The Order is Checked and we will Contact you Soon'
         ];
-        Mail::to('ayman.1551.salah@gmail.com')->send(new DokkanMail($mailData));
+        Mail::to($email)->send(new DokkanMail($mailData));
         // dd("Email is sent successfully.");
     }
 }

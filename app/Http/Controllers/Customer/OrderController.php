@@ -41,8 +41,8 @@ class OrderController extends Controller
                 $item->status = "1";
                 $item->save();
             }
-            $mail = new MailController() ;
-            $mail->index() ;
+            $mail = new MailController();
+            $mail->index($user->email);
             // This To Call For Sending Email
             return redirect()->route('orders.all')->with('status', trans('Order and its Items are Updated!'));
         } else {

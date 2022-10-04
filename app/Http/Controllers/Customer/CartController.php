@@ -107,7 +107,7 @@ class CartController extends Controller
     {
         $user = Auth::user();
         Order::where('user_id', $user->id)->where('status', '0')->delete();
-        return redirect()->route('cart.view')->with('status', 'Cart Cleared !');
+        return redirect()->route('cart.view')->with('status', trans('Cart Cleared !'));
     }
 
 

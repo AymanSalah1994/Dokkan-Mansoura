@@ -35,7 +35,9 @@
                                     width="25%" alt="">
                             </div>
                             <div class="col-md-4">
-                                <h3>{{ $cartItem->product->name }}</h3>
+                                <a href="{{route('product.details',$cartItem->product->slug)}}">
+                                    <h3>{{ $cartItem->product->name }}</h3>
+                                </a>
                             </div>
                             <div class="col-md-2">
                                 <label for="">Quantity</label>

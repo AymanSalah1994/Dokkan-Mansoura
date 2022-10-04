@@ -29,7 +29,7 @@ class DokkanMail extends Mailable
     public function build()
     {
         $mailData = $this->mailData  ;
-        return $this->subject('Mail from Dokkana.com')
+        return $this->subject('Mail from Dokkan ElMansoura')
             ->view('emails.demoMail' , compact('mailData'));
     }
 }

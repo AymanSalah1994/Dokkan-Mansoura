@@ -131,13 +131,14 @@
     "Number Of Products" :"عدد المنتجات" ,
     "You already have an Order in Progresess, You Can Return the Old Order to Cart and Check out again" :"لديك بالفعل طلب , يمكنك اعادة الطلب القديم للسلة وتاكيد الطلب مرة أخرى" ,
 
-
+    "Cart Cleared !" : "تم مسح المنتجات من السلة" ,
     "Order and its Items are Updated!" :  "تم تحديث الطلب" ,
     "Something Wrong" :"حدث خطأ" ,
     "Order is Cancelled" :"تم الغاء الطلب" ,
     "Order is Returned to Cart" : "تم ارجاع العناصر الى السلة" ,
-    "Order is Returned" :"تم الرجاع"  ,
+    "Order is Returned" :"تم الارجاع"  ,
     "Profile Updated Successfully" :"تم تحديث البيانات"
+
 
 
 }
