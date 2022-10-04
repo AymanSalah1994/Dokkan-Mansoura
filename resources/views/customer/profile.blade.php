@@ -6,7 +6,7 @@
 @section('content')
     <div class="py-3 px-5 mb-2 shadow-sm border-top" style="">
         <nav aria-label="breadcrumb">
-            <h4>This is Your Profile !</h4>
+            <h4>{{__('Profile')}}</h4>
         </nav>
     </div>
     <div class="container">

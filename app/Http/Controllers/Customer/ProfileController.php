@@ -22,7 +22,7 @@ class ProfileController extends Controller
         $user_id = $request->user()->id;
         $user = User::find($user_id);
         $user->update($request_data);
-        return redirect()->route('profile.view')->with('status', 'Profile Updated Successfully');
+        return redirect()->route('profile.view')->with('status', trans('Profile Updated Successfully'));
     }
     public function deleteProfile()
     {

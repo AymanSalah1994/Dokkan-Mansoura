@@ -50,7 +50,7 @@ class StoreController extends Controller
 
     public function allMerchants()
     {
-        $all_merchants = User::where('role_as', '2')->paginate(8);
+        $all_merchants = User::where('role_as', '2')->with('products')->paginate(8);
         return view('customer.store.all-merchants', compact('all_merchants'));
     }
 

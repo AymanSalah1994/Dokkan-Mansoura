@@ -194,7 +194,11 @@
                         <hr>
                         <div class="row mt-5">
                             <div class="col-md-6">
-                                <h3 class="float-start">{{ __('Buyer') }}: {{ $product->user->first_name }} </h3>
+                                <h3 class="float-start">{{ __('Buyer') }}:
+                                    <a href="{{route('merchant.details',$product->user->slug)}}">
+                                        {{ $product->user->first_name }}
+                                    </a>
+                                </h3>
                             </div>
                             <div class="col-md-6">
                                 <button type="button" class="btn btn-warning float-end rounded-pill"

@@ -25,7 +25,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('cart.view') }}">
                                         <i class="fa fa-shopping-cart"></i>
-                                        Cart <span class="badge badge-pill bg-danger cart_counter"></span>
+                                        {{__('Cart')}} <span class="badge badge-pill bg-danger cart_counter"></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -42,22 +42,20 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="{{ route('profile.view') }}"><i
-                                                    class="fa fa-user"></i> Profile</a>
+                                                    class="fa fa-user"></i>{{__('Profile')}}</a>
                                         </li>
                                         <li><a class="dropdown-item" href="{{ route('orders.all') }}"><i
-                                                    class="fa fa-list"></i> My Orders</a>
+                                                    class="fa fa-list"></i>{{__('My Orders')}}</a>
                                         </li>
                                         <li><a class="dropdown-item" href="{{ route('wish.list.view') }}"><i
-                                                    class="fa fa-heart"></i> My
-                                                Wishlist</a></li>
+                                                    class="fa fa-heart"></i> {{__('My Wishlist')}}</a></li>
                                         <li><a class="dropdown-item" href="{{ route('cart.view') }}"><i
-                                                    class="fa fa-shopping-cart"></i> My
-                                                Cart</a></li>
+                                                    class="fa fa-shopping-cart"></i>{{__('My Cart')}}</a></li>
                                         <li><a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                                 <i class="fa fa-sign-out"></i>
-                                                Logout
+                                                {{__('Logout')}}
                                             </a></li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">
@@ -100,7 +98,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('store.index') }}">Home</a>
+                            <a class="nav-link" href="{{ route('store.index') }}">{{__('Home')}}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('store.search') }}">{{ __('All Products') }}</a>

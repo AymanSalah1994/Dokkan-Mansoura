@@ -32,7 +32,7 @@
         <div class="col-md-4 gy-3">
             <div class="card">
                 <div class="card-header">
-                    <h4>Why Choose us ?</h4>
+                    <h4>{{__('Why Choose us ?')}}</h4>
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">

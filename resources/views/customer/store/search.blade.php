@@ -29,11 +29,11 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="row">
-                        <input type="number" class="form-control search-slt" placeholder="maximum" name="maximum_price"
+                        <input type="number" class="form-control search-slt" placeholder="{{__('maximum')}}" name="maximum_price"
                             value="{{ request('maximum_price') }}">
                     </div>
                     <div class="row">
-                        <input type="number" class="form-control search-slt" placeholder="minimum" name="minimum_price"
+                        <input type="number" class="form-control search-slt" placeholder="{{__('minimum')}}" name="minimum_price"
                             value="{{ request('minimum_price') }}">
                     </div>
                     <div class="row">
@@ -42,7 +42,7 @@
                             <option value="LtoH" {{ request('order_by') == 'LtoH' ? 'selected' : '' }}>
                                 {{ __('Lowest to Highest') }}</option>
                             <option value="HtoL" {{ request('order_by') == 'HtoL' ? 'selected' : '' }}>
-                                {{ __(' Highest To lowest') }}</option>
+                                {{ __('Highest To lowest') }}</option>
                         </select>
                     </div>
                     <div class="row">

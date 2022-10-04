@@ -31,7 +31,7 @@ class OrderController extends Controller
         $order_id = $request->checking_order;
         $order = Order::find($order_id);
         if ($user->orders->where('status', '1')->first()) {
-            return redirect()->route('orders.all')->with('status', 'You already have an Order in Progresess, You Can Return the Old Order to Cart and Check out again');
+            return redirect()->route('orders.all')->with('status', trans('You already have an Order in Progresess, You Can Return the Old Order to Cart and Check out again'));
         }
         if ($order) {
             $order->status = "1";
@@ -43,10 +43,10 @@ class OrderController extends Controller
             }
             $mail = new MailController() ;
             $mail->index() ;
-            // This To Call For Sending Email 
-            return redirect()->route('orders.all')->with('status', 'Order and its Items are Updated!');
+            // This To Call For Sending Email
+            return redirect()->route('orders.all')->with('status', trans('Order and its Items are Updated!'));
         } else {
-            return redirect()->route('orders.all')->with('status', 'SomeThing Wrong , Stop inspecting');
+            return redirect()->route('orders.all')->with('status', trans('Something Wrong'));
         }
     }
 
@@ -77,7 +77,7 @@ class OrderController extends Controller
         }
         $order->status  = '3';
         $order->save();
-        return redirect()->route('orders.all')->with('status', 'Order is Cancelled');
+        return redirect()->route('orders.all')->with('status', trans('Order is Cancelled'));
     }
 
     public function returnOrderToCart(Request $request)
@@ -101,7 +101,7 @@ class OrderController extends Controller
             }
             $returned_order->delete();
             self::updateTotalOrder($active_order->id);
-            return redirect()->route('orders.all')->with('status', 'Order is Returned to Cart');
+            return redirect()->route('orders.all')->with('status', trans('Order is Returned to Cart'));
         } else {
             $returned_items  = $returned_order->cartItems;
             foreach ($returned_items as $item) {
@@ -111,7 +111,7 @@ class OrderController extends Controller
             $returned_order->status = '0';
             $returned_order->save();
             self::updateTotalOrder($returned_order->id);
-            return redirect()->route('orders.all')->with('status', 'Order is Returned');
+            return redirect()->route('orders.all')->with('status', trans('Order is Returned'));
         }
     }
 

@@ -9,11 +9,11 @@
                     <div class="card-header">{{ __('Reset Password') }}</div>
 
                     <div class="card-body">
-                        @if (session('status'))
+                        {{-- @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
-                        @endif
+                        @endif --}}
 
                         <form method="POST" action="{{ route('password.email') }}">
                             @csrf
@@ -48,4 +48,12 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    @if ($status = session('status'))
+        <script>
+            $.notify('An Email Was Sent to you', "success");
+            // $.notify('{{ $status }}', "success");
+        </script>
+    @endif
 @endsection

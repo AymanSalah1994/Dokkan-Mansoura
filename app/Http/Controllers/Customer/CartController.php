@@ -59,7 +59,7 @@ class CartController extends Controller
                 $wishListItem->product_id = $request->product_id;
                 $wishListItem->save();
                 return response()->json([
-                    'status' => trans('Item is Added!')
+                    'status' => trans('Item is Added !')
                 ]);
             }
         } else {
