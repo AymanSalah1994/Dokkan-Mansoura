@@ -94,6 +94,11 @@
                         </div>
                     </div>
                     <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">refundable</label>
+                            <input type="checkbox" class="form-control" name="refundable"
+                            {{ $product->refundable == '1' ? 'checked' : '' }}>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">

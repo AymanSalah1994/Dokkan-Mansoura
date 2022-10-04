@@ -26,6 +26,7 @@ return new class extends Migration
             $table->tinyInteger('trending')->default('0')->nullable();
             $table->mediumText('keywords')->nullable();
             $table->string('youtube_vid')->nullable();
+            $table->tinyInteger('refundable')->default('1')->nullable() ;
             $table->timestamps();
         });
     }

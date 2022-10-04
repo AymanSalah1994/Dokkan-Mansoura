@@ -97,21 +97,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label class="bmd-label-floating">Status</label>
                             <input type="checkbox" class="form-control" name="status"
                                 {{ $theProduct->status == '1' ? 'checked' : '' }}>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label class="bmd-label-floating">trending</label>
                             <input type="checkbox" class="form-control" name="trending"
                                 {{ $theProduct->trending == '1' ? 'checked' : '' }}>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Refundable</label>
+                            <input type="checkbox" class="form-control" name="refundable"
+                            {{ $theProduct->refundable == '1' ? 'checked' : '' }}>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
                         <div class="form-group">
                             <select name="category_id" class="form-select form-control">
                                 <option value="">Select Category</option>

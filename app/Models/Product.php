@@ -17,7 +17,7 @@ class Product extends Model
         'name', 'small_description', 'description', 'original_price',
         'selling_price', 'quantity',  'status', 'trending', 'keywords',
         'product_picture', 'secondary_picture', 'category_id', 'user_id', 'slug',
-        'youtube_vid'
+        'youtube_vid', 'refundable'
     ];
 
     public function getRouteKeyName()

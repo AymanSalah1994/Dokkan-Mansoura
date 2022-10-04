@@ -23,6 +23,7 @@ class ProductRequest extends FormRequest
             'quantity' => 'nullable|numeric',
             'status' => 'nullable',
             'trending' => 'nullable',
+            'refundable' => 'nullable',
             'keywords' => 'nullable|string|max:255',
             'product_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
             'secondary_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
@@ -45,6 +46,7 @@ class ProductRequest extends FormRequest
         }
         $allRequestData['status'] = ($this->status == 'on' ? '1' : '0');
         $allRequestData['trending'] = ($this->trending == 'on' ? '1' : '0');
+        $allRequestData['refundable'] = ($this->refundable == 'on' ? '1' : '0');
         $allRequestData['user_id'] = $this->user()->id;
         return $allRequestData;
     }

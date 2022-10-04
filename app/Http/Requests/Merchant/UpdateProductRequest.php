@@ -25,6 +25,7 @@ class UpdateProductRequest extends FormRequest
             'selling_price' => 'required|numeric',
             'quantity' => 'nullable|numeric',
             'status' => 'nullable',
+            'refundable' => 'nullable',
             'keywords' => 'nullable|string|max:255',
             'product_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
             'secondary_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
@@ -53,6 +54,7 @@ class UpdateProductRequest extends FormRequest
             $allRequestData['secondary_picture'] = $fileName;
         }
         $allRequestData['status'] = ($this->status == 'on' ? '1' : '0');
+        $allRequestData['refundable'] = ($this->refundable == 'on' ? '1' : '0');
         $product->update($allRequestData);
     }
 }

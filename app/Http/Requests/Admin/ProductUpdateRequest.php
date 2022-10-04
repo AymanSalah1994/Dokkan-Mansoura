@@ -26,6 +26,7 @@ class ProductUpdateRequest extends FormRequest
             'quantity' => 'nullable|numeric',
             'status' => 'nullable',
             'trending' => 'nullable',
+            'refundable' => 'nullable',
             'keywords' => 'nullable|string|max:255',
             'product_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
             'secondary_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
@@ -55,6 +56,7 @@ class ProductUpdateRequest extends FormRequest
         }
         $allRequestData['status'] = ($this->status == 'on' ? '1' : '0');
         $allRequestData['trending'] = ($this->trending == 'on' ? '1' : '0');
+        $allRequestData['refundable'] = ($this->refundable == 'on' ? '1' : '0');
         return $allRequestData;
         // Save Data Here Then Send Product to Below MEthod
     }

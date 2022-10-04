@@ -100,12 +100,12 @@
                             <input type="checkbox" class="form-control" name="status">
                         </div>
                     </div>
-                    {{-- <div class="col-md-4">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label class="bmd-label-floating">trending</label>
-                            <input type="checkbox" class="form-control" name="trending">
+                            <label class="bmd-label-floating">refundable</label>
+                            <input type="checkbox" class="form-control" name="refundable">
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <select name="category_id" class="form-select form-control">

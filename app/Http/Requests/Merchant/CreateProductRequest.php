@@ -23,6 +23,7 @@ class CreateProductRequest extends FormRequest
             'selling_price' => 'required|numeric',
             'quantity' => 'nullable|numeric',
             'status' => 'nullable',
+            'refundable' => 'nullable',
             'keywords' => 'nullable|string|max:255',
             'product_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
             'secondary_picture' => 'nullable|mimes:png,jpeg,bmp,jpg',
@@ -44,6 +45,7 @@ class CreateProductRequest extends FormRequest
             $allRequestData['secondary_picture'] = $fileName;
         }
         $allRequestData['status'] = ($this->status == 'on' ? '1' : '0');
+        $allRequestData['refundable'] = ($this->refundable == 'on' ? '1' : '0');
         $allRequestData['user_id'] = $this->user()->id;
         Product::create($allRequestData);
     }
