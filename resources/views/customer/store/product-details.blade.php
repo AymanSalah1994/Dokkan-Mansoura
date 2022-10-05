@@ -147,7 +147,7 @@
                         <label for="" class="fw-bold">{{ __('Selling Price') }}
                             :{{ $product->selling_price }} {{ __('EGP') }}</label>
                         <div class="rating">
-                            <span> {{ __('Ratings') }} : {{ $product->reviews->count() }}</span>
+                            <span> {{ __('Ratings') }}:( {{ $product->reviews->count() }} )</span>
                             <i class="fa fa-star {{ $average_rating >= 1 ? 'checked' : '' }}"></i>
                             <i class="fa fa-star {{ $average_rating >= 2 ? 'checked' : '' }}"></i>
                             <i class="fa fa-star {{ $average_rating >= 3 ? 'checked' : '' }}"></i>

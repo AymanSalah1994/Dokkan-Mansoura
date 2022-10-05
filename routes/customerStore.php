@@ -39,8 +39,6 @@ Route::group(['middleware' => ['auth', 'isCustomer']], function () {
 });
 
 
-
-
 // GENERAL ROUTES : StoreController
 Route::get('/', [StoreController::class, 'index'])->name('store.index');
 Route::get('/store/categories', [StoreController::class, 'categories'])->name('store.categories');
@@ -53,7 +51,6 @@ Route::get('/store/merchant/{slug}/products', [StoreController::class, 'merchant
 
 // GENERAL ROUTES :
 Route::get('/store/search', [SearchController::class, 'index'])->name('store.search');
-
 Route::post('/add-to-cart', [CartController::class, 'addCartItem'])->name('cart.add');
 Route::post('/add-to-wish-list', [CartController::class, 'addWishListItem'])->name('wish-list.add');
 Route::post('/store/review/submit', [ReviewController::class, 'submitReview'])->name('review.submit');

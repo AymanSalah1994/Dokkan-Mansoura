@@ -7,7 +7,7 @@
 @if ($currentCartItems->count() == 0)
     @section('content')
         @include('layouts.dividers.divider-small')
-        <div class="container">
+        <div class="container py-5">
             <div class="card shadow product_data mb-3">
                 <div class="card-body">
                     <div class="row align-items-center justify-content-center">

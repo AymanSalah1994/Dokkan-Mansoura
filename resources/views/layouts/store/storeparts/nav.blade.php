@@ -6,12 +6,12 @@
                         <a class="navbar-brand" href="{{ route('store.index') }}">
                             <img src="{{ asset('images/logo.png') }}" width="45" height="45" alt="">
                         </a>
-                        <a class="navbar-brand" href="{{ route('store.index') }}">{{ __('Dokkan ELMansoura') }}</a>
+                        <a class="navbar-brand text-white" href="{{ route('store.index') }}">{{ __('Dokkan ELMansoura') }}</a>
                     </div>
                     <div class="col-md-5 my-auto">
                         <form role="search" id="search-form-nav" action="{{ route('store.search') }}">
                             <div class="input-group">
-                                <input type="search" placeholder="{{__('Search for product')}}" class="form-control"
+                                <input type="search" placeholder="{{ __('Search for product') }}" class="form-control"
                                     name="search_word">
                                 <button class="btn bg-white" type="submit">
                                     <i class="fa fa-search"></i>
@@ -25,7 +25,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('cart.view') }}">
                                         <i class="fa fa-shopping-cart"></i>
-                                        {{__('Cart')}} <span class="badge badge-pill bg-danger cart_counter"></span>
+                                        {{ __('Cart') }} <span class="badge badge-pill bg-danger cart_counter"></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -42,20 +42,20 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="{{ route('profile.view') }}"><i
-                                                    class="fa fa-user"></i>{{__('Profile')}}</a>
+                                                    class="fa fa-user"></i>{{ __('Profile') }}</a>
                                         </li>
                                         <li><a class="dropdown-item" href="{{ route('orders.all') }}"><i
-                                                    class="fa fa-list"></i>{{__('My Orders')}}</a>
+                                                    class="fa fa-list"></i>{{ __('My Orders') }}</a>
                                         </li>
                                         <li><a class="dropdown-item" href="{{ route('wish.list.view') }}"><i
-                                                    class="fa fa-heart"></i> {{__('My Wishlist')}}</a></li>
+                                                    class="fa fa-heart"></i> {{ __('My Wishlist') }}</a></li>
                                         <li><a class="dropdown-item" href="{{ route('cart.view') }}"><i
-                                                    class="fa fa-shopping-cart"></i>{{__('My Cart')}}</a></li>
+                                                    class="fa fa-shopping-cart"></i>{{ __('My Cart') }}</a></li>
                                         <li><a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                                 <i class="fa fa-sign-out"></i>
-                                                {{__('Logout')}}
+                                                {{ __('Logout') }}
                                             </a></li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">
@@ -98,16 +98,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('store.index') }}">{{__('Home')}}</a>
+                            <a class="nav-link {{ Request::is('/') ? 'bg-info' : '' }}"
+                                href="{{ route('store.index') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('store.search') }}">{{ __('All Products') }}</a>
+                            <a class="nav-link {{ Request::is('store/search') ? 'bg-info' : '' }}"
+                                href="{{ route('store.search') }}">{{ __('All Products') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('store.categories') }}">{{ __('Categories') }}</a>
+                            <a class="nav-link {{ Request::is('store/categories') ? 'bg-info' : '' }}"
+                                href="{{ route('store.categories') }}">{{ __('Categories') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('merchants.all') }}">{{ __('Merchants') }}</a>
+                            <a class="nav-link {{ Request::is('store/merchants/all') ? 'bg-info' : '' }}"
+                                href="{{ route('merchants.all') }}">{{ __('Merchants') }}</a>
                         </li>
                         {{-- <li class="nav-item">
                             <a class="nav-link" href="#">Electronics</a>

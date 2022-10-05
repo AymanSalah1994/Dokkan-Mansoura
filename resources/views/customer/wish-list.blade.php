@@ -5,10 +5,8 @@
 
 @endsection
 @section('content')
-@include('layouts.dividers.divider-small')
     @if ($wishListItems->count() == 0)
-        <div class="divider" style="height: 50px">
-        </div>
+        @include('layouts.dividers.divider-small')
         <div>
             <div class="container py-5">
                 <div class="card shadow product_data mb-3">
@@ -26,7 +24,7 @@
             </div>
         </div>
     @else
-        <div class="container">
+        <div class="container py-5">
             @foreach ($wishListItems as $wish_list_item)
                 <div class="card shadow product_data mb-3">
                     <div class="card-body">

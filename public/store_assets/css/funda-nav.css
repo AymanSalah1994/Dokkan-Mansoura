@@ -1,8 +1,8 @@
 .main-navbar{
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgb(204, 204, 204);
 }
 .main-navbar .top-navbar{
-    background-color: #5f96ee;
+    background-color: #2a2096;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -20,7 +20,7 @@
 }
 .main-navbar .top-navbar .dropdown-menu .dropdown-item{
     padding: 8px 16px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgba(127, 148, 243, 0.926);
     font-size: 14px;
 }
 .main-navbar .top-navbar .dropdown-menu .dropdown-item i{
@@ -31,11 +31,11 @@
 }
 .main-navbar .navbar{
     padding: 0px;
-    background-color: #ddd;
+    background-color: rgb(67, 70, 255);
 }
 .main-navbar .navbar .nav-item .nav-link{
     padding: 8px 20px;
-    color: #000;
+    color: rgb(255, 255, 255);
     font-size: 15px;
 }
 
