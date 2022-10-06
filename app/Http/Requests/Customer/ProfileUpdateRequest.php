@@ -19,7 +19,7 @@ class ProfileUpdateRequest extends FormRequest
             'last_name' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:255',
             'address' => 'nullable|string|max:255',
-            'phone' => 'nullable|string|max:15|unique:users,phone,' . $this->user()->id,
+            'phone' => 'nullable|numeric|min:11|unique:users,phone,' . $this->user()->id,
             'email' => "required|email|unique:users,email," . $this->user()->id,
             // Several Hours To Fix this Bug
             // actually it is working But the user itself did not pass

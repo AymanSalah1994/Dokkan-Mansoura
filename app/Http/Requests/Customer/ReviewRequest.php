@@ -28,7 +28,7 @@ class ReviewRequest extends FormRequest
         $product = Product::where('slug', $this->review_product_id)->first();
         $all_data = $this->validated();
         $user = $this->user(); // $this  Means/refers to the Reuqest Instanciated
-        $verified_purchase  = $user->cartItems()->where('product_id', $product->id)->where('status', '4')->orWhere('status','5')->first();
+        $verified_purchase  = $user->cartItems()->where('product_id', $product->id)->where('status', '4')->first();
         $previous_review = $user->reviews()->where('product_id',  $product->id)->first();
         $final_result  = false;
         if ($verified_purchase) {
