@@ -9,3 +9,4 @@ Auth::routes();
 
 Route::get('/auth/google/redirect', [LoginController::class, 'redirectToGoogle'])->name('redirect.google');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('callback.google');
+// this is 
