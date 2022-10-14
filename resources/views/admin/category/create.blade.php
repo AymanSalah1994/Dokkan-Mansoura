@@ -5,7 +5,8 @@
             <h4>Add new Category</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.categories.store') }}" onsubmit="myButton.disabled = true; return true;" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.categories.store') }}" onsubmit="myButton.disabled = true; return true;"
+                method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
@@ -48,13 +49,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="bmd-label-floating">Status</label>
-                            <input type="checkbox" class="form-control" name="status">
+                            <input type="checkbox" class="form-control" name="status"
+                                {{ old('status') == 'on' ? 'checked' : '' }}>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="bmd-label-floating">Popular</label>
-                            <input type="checkbox" class="form-control" name="popular">
+                            <input type="checkbox" class="form-control" name="popular"
+                                {{ old('popular') == 'on' ? 'checked' : '' }}>
                         </div>
                     </div>
                 </div>

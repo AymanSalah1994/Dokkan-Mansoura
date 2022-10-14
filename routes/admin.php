@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard', [indexController::class, 'index'])->name('admin.dashboard');
-
     // CATEGORY  - START
     Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
     Route::get('/dashboard/add-category', [CategoryController::class, 'create'])->name('admin.categories.create');
