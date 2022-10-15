@@ -1,20 +1,21 @@
 body {
-    background:#fbfbe8;
-    background: radial-gradient(
-        circle,
-        #f8f8e7 0%,
-        #fffff3 0%,
-        #fbfbea 100%
-    );
+    background: #fbfbe8;
+    background: radial-gradient(circle, #f8f8e7 0%, #fffff3 0%, #fbfbea 100%);
 }
-.carousel-control-prev-icon   {background-color: red;}
-.carousel-control-next-icon  {background-color: red;}
+.carousel-control-prev-icon {
+    background-color: red;
+}
+.carousel-control-next-icon {
+    background-color: red;
+}
 
-
-.increment-btn , .decrement-btn{ cursor: pointer; }
+.increment-btn,
+.decrement-btn {
+    cursor: pointer;
+}
 
 /* Bread Crumb STATR */
-.breadcrumb{
+.breadcrumb {
     display: inline-block;
     padding: 0 20px 0 0;
     margin: 0;
@@ -23,7 +24,7 @@ body {
     border-radius: 0;
     position: relative;
 }
-.breadcrumb li{
+.breadcrumb li {
     float: left;
     margin-right: 10px;
     background: #2a2096;
@@ -35,31 +36,41 @@ body {
     position: relative;
     transition: all 0.3s ease 0s;
 }
-.breadcrumb li:last-child{
+.breadcrumb li:last-child {
     padding: 10px 25px;
     margin-right: 0;
     background: #f48b07;
     color: #fff;
     position: relative;
 }
-.breadcrumb li:hover{ background: #f48b07; }
-.breadcrumb li:before{ display: none; }
-.breadcrumb li a{
+.breadcrumb li:hover {
+    background: #f48b07;
+}
+.breadcrumb li:before {
+    display: none;
+}
+.breadcrumb li a {
     display: block;
     padding: 10px 25px;
     font-size: 16px;
     font-weight: bold;
     color: #fff;
 }
-@media only screen and (max-width: 767px){
-    .breadcrumb li{ margin-right: 3px; }
+@media only screen and (max-width: 767px) {
+    .breadcrumb li {
+        margin-right: 3px;
+    }
     .breadcrumb li a,
-    .breadcrumb li:last-child{ padding: 10px; }
+    .breadcrumb li:last-child {
+        padding: 10px;
+    }
 }
-@media only screen and (max-width: 479px){
-    .breadcrumb li{ margin-right: 3px; }
+@media only screen and (max-width: 479px) {
+    .breadcrumb li {
+        margin-right: 3px;
+    }
     .breadcrumb li a,
-    .breadcrumb li:last-child{
+    .breadcrumb li:last-child {
         font-size: 13px;
         font-weight: normal;
         padding: 4px 3px;
@@ -68,4 +79,8 @@ body {
 /* Bread Crumb END */
 .navbar-brand {
     font-weight: bold;
+}
+
+.needed-Field{
+    color: red;
 }

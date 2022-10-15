@@ -5,7 +5,8 @@
             <h3>Create new Product</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('merchant.panel.product.store') }}" onsubmit="myButton.disabled = true; return true;"  method="POST" enctype="multipart/form-data">
+            <form action="{{ route('merchant.panel.product.store') }}" onsubmit="myButton.disabled = true; return true;"
+                method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">

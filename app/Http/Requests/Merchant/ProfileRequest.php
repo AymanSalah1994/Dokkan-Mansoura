@@ -20,7 +20,7 @@ class ProfileRequest extends FormRequest
             'last_name' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:255',
             'address' => 'nullable|string|max:255',
-            'phone' => 'nullable|string|max:15|unique:users,phone,' . $this->user()->id,
+            'phone' => 'nullable|numeric|size:11|unique:users,phone,' . $this->user()->id,
             'email' => "required|email|unique:users,email," . $this->user()->id,
             'bio' => 'nullable|string|max:255',
             'fb_link' => 'nullable|url|max:255',
