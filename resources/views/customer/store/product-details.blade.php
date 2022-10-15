@@ -1,7 +1,6 @@
 @extends('layouts.store.main_page')
 @section('title', $product->name)
 
-
 @section('content')
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -63,18 +62,6 @@
         </div>
     </div>
 
-    {{-- <div class="py-3 px-5 mb-2 shadow-sm bg-warning border-top">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('store.index') }}">Home</a></li>
-                <li class="breadcrumb-item">
-                    <a
-                        href="{{ route('category.products', $product->category->slug) }}">{{ $product->category->name }}</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
-            </ol>
-        </nav>
-    </div> --}}
     <div class="py-3 px-5 mb-2 shadow-sm  border-top">
         <ol class="breadcrumb">
             <li><a href="{{ route('store.index') }}">Home</a></li>
@@ -170,8 +157,8 @@
                         @endif
                         {{-- FF --}}
                         <hr>
-                        <div class="row ">
-                            <div class="col-md-2  gy-3 d-flex justify-content-center">
+                        <div class="row gy-5">
+                            <div class="col-md-2 py-1 d-flex justify-content-center">
                                 <div class="input-group text-center mb-3">
                                     <span class="input-group-text decrement-btn">-</span>
                                     <input type="number" name="" value="1"
@@ -180,7 +167,7 @@
                                 </div>
                             </div>
                             <input type="hidden" value="{{ $product->id }}" class="product_id">
-                            <div class="col-md-5  gy-3 d-flex justify-content-center">
+                            <div class="col-md-5  py-1 d-flex justify-content-center">
                                 @if ($product->status == '1')
                                     <button type="button"
                                         class="btn btn-danger rounded-pill addToCartBtn">{{ __('Add To Cart') }}
@@ -188,15 +175,15 @@
                                     </button>
                                 @endif
                             </div>
-
-                            <div class="col-md-5 gy-3 d-flex justify-content-center">
+                            <div class="col-md-5 py-1 d-flex justify-content-center">
                                 <button type="button"
                                     class="btn btn-success rounded-pill addToWishListBtn">{{ __('Add To Wish List') }}
                                     <i class="bi bi-balloon-heart"></i>
                                 </button>
                             </div>
                         </div>
-                        {{-- TT --}}
+
+
                         <hr>
                         <div class="row mt-5">
                             <div class="col-md-6">
@@ -218,6 +205,7 @@
             </div>
         </div>
     </div>
+
     <br>
     <div class="container">
         <div class="row">
@@ -230,8 +218,8 @@
                 </div>
             @else
                 <div class="col-md-5">
-                    <img src="{{ asset('images/No-Video.jpg') }}" class="" width=""
-                        height="" style="width: 100%;height: 15vw;object-fit: cover;">
+                    <img src="{{ asset('images/No-Video.jpg') }}" class="" width="" height=""
+                        style="width: 100%;height: 15vw;object-fit: cover;">
                 </div>
             @endif
             <div class="col-md-7">
@@ -257,20 +245,19 @@
                         </div>
                     @endforeach
                 @else
-                <div class="container">
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <h5 class="card-title">{{__('No Reviews Yet')}}</h5>
-                            <p class="card-text"></p>
+                    <div class="container">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ __('No Reviews Yet') }}</h5>
+                                <p class="card-text"></p>
+                            </div>
                         </div>
+                        <br>
                     </div>
-                    <br>
-                </div>
                 @endif
             </div>
         </div>
     </div>
-
 
     <div class="container">
         <h2 class="">
@@ -289,6 +276,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('scripts')

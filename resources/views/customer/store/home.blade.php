@@ -9,6 +9,11 @@
         <div class="container">
             <h2 class="">
                 {{ __('Featured Products') }}
+                <span class="float-end">
+                    <a href="{{ route('store.search') }}">
+                        {{ __('All Products') }}
+                    </a>
+                </span>
             </h2>
             <br>
             <div class="row">
@@ -27,6 +32,11 @@
         <div class="container">
             <h2 class="">
                 {{ __('New Products') }}
+                <span class="float-end">
+                    <a href="{{ route('store.search') }}">
+                        {{ __('All Products') }}
+                    </a>
+                </span>
             </h2>
             <br>
             <div class="row">
@@ -43,7 +53,14 @@
 
     <div class="py-5">
         <div class="container">
-            <h2>{{ __('Featured Categories') }}</h2>
+            <h2>
+                {{ __('Featured Categories') }}
+                <span class="float-end">
+                    <a href="{{ route('store.categories') }}">
+                        {{ __('All Categories') }}
+                    </a>
+                </span>
+            </h2>
             <br>
             <div class="row">
                 <div class="owl-carousel owl-theme">
