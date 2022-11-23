@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\RefundOrderController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard', [indexController::class, 'index'])->name('admin.dashboard');
     // CATEGORY  - START
