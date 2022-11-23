@@ -18,7 +18,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::post('/dashboard/update-category/', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::post('dashboard/delete-category/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.delete');
     // CATEGORY  - END
-
+   
     // PRODUCT  - START
     Route::resource('dashboard/products', ProductController::class);
     // PRODUCT  - END
