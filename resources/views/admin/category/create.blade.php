@@ -23,6 +23,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
+                            <i class="bi bi-asterisk" style="color: red"></i>
                             <label>Description</label>
                             <div class="form-group">
                                 <textarea class="form-control" rows="5" name="description">{{ old('description') }}</textarea>

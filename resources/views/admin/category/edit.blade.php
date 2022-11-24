@@ -2,16 +2,18 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h6>Edit Category</h6>
+            <h3 class="text-center">Edit Category</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.categories.update') }}" onsubmit="myButton.disabled = true; return true;" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.categories.update') }}" onsubmit="myButton.disabled = true; return true;"
+                method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="category_" value="{{ $category->id }}">
                 <input type="hidden" name="slug" value="{{ $category->slug }}">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
+                            <i class="bi bi-asterisk" style="color: red"></i>
                             <label class="bmd-label-floating">Name</label>
                             <input type="text" class="form-control" name="name"
                                 value="{{ old('name', $category->name) }}">
@@ -24,6 +26,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
+                            <i class="bi bi-asterisk" style="color: red"></i>
                             <label>Description</label>
                             <div class="form-group">
                                 <textarea class="form-control" rows="5" name="description">{{ old('description', $category->description) }}</textarea>
