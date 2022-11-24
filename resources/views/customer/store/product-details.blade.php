@@ -6,7 +6,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Review</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('review.submit') }}" onsubmit="myButton.disabled = true; return true;"
@@ -54,7 +54,7 @@
                         @endif
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" name="myButton" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
@@ -64,7 +64,7 @@
 
     <div class="py-3 px-5 mb-2 shadow-sm  border-top">
         <ol class="breadcrumb">
-            <li><a href="{{ route('store.index') }}">Home</a></li>
+            <li><a href="{{ route('store.index') }}">{{ __('Home') }}</a></li>
             <li>
                 <a href="{{ route('category.products', $product->category->slug) }}">
                     {{ $product->category->name }}
@@ -105,7 +105,6 @@
                                         <img src="{{ asset('images/240x320.png') }}" class="d-block w-100 h-100"
                                             alt="iamge">
                                     @endif
-
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button"
@@ -155,10 +154,9 @@
                         @else
                             <label for="" class="badge bg-danger">{{ __('Not Refundable') }}</label>
                         @endif
-                        {{-- FF --}}
                         <hr>
-                        <div class="row gy-5">
-                            <div class="col-md-2 py-1 d-flex justify-content-center">
+                        <div class="row justify-content-center gy-3">
+                            <div class="col-md-2 ">
                                 <div class="input-group text-center mb-3">
                                     <span class="input-group-text decrement-btn">-</span>
                                     <input type="number" name="" value="1"
@@ -167,7 +165,8 @@
                                 </div>
                             </div>
                             <input type="hidden" value="{{ $product->id }}" class="product_id">
-                            <div class="col-md-5  py-1 d-flex justify-content-center">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4 ">
                                 @if ($product->status == '1')
                                     <button type="button"
                                         class="btn btn-danger rounded-pill addToCartBtn">{{ __('Add To Cart') }}
@@ -175,15 +174,13 @@
                                     </button>
                                 @endif
                             </div>
-                            <div class="col-md-5 py-1 d-flex justify-content-center">
+                            <div class="col-md-4 col-sm-12">
                                 <button type="button"
                                     class="btn btn-success rounded-pill addToWishListBtn">{{ __('Add To Wish List') }}
                                     <i class="bi bi-balloon-heart"></i>
                                 </button>
                             </div>
                         </div>
-
-
                         <hr>
                         <div class="row mt-5">
                             <div class="col-md-6">
@@ -258,7 +255,7 @@
             </div>
         </div>
     </div>
-
+    <hr>
     <div class="container">
         <h2 class="">
             {{ __('Related Products') }}

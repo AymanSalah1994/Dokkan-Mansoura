@@ -32,4 +32,14 @@ class ProfileUpdateRequest extends FormRequest
         $allRequestedData  = $this->validated();
         return $allRequestedData;
     }
+
+    public function messages()
+    {
+        return [
+            // field.validation_Rule => 'msg '
+            // 'email.email' =>'The Email you Entered is NOT valid!' ,
+            'digits' => 'Please Enter a Valid Numbber' ,
+            '*.required' => 'This :attribute Field Can Not be Empty !'
+        ];
+    }
 }
