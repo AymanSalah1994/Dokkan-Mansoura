@@ -2,7 +2,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h4>Add new Category</h4>
+            <h3 class="text-center">Add new Category</h3>
         </div>
         <div class="card-body">
             <form action="{{ route('admin.categories.store') }}" onsubmit="myButton.disabled = true; return true;"
@@ -11,6 +11,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
+                            <i class="bi bi-asterisk" style="color: red"></i>
                             <label class="bmd-label-floating">Name</label>
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                             @error('name')
