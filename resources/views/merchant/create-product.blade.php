@@ -2,7 +2,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3>Create new Product</h3>
+            <h3 class="text-center">Create new Product</h3>
         </div>
         <div class="card-body">
             <form action="{{ route('merchant.panel.product.store') }}" onsubmit="myButton.disabled = true; return true;"
@@ -11,6 +11,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
+                            <i class="bi bi-asterisk" style="color: red"></i>
                             <label class="bmd-label-floating">Name</label>
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                             @error('name')
@@ -29,6 +30,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
+                            <i class="bi bi-asterisk" style="color: red"></i>
                             <label>Description</label>
                             <div class="form-group">
                                 <textarea class="form-control" rows="5" name="description">{{ old('description') }}</textarea>
@@ -42,6 +44,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
+                            <i class="bi bi-asterisk" style="color: red"></i>
                             <label class="bmd-label-floating">original price</label>
                             <input type="number" class="form-control" name="original_price"
                                 value="{{ old('original_price') }}">
@@ -52,6 +55,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
+                            <i class="bi bi-asterisk" style="color: red"></i>
                             <label class="bmd-label-floating">selling price</label>
                             <input type="number" class="form-control" name="selling_price"
                                 value="{{ old('selling_price') }}">
@@ -109,6 +113,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
+                            <i class="bi bi-asterisk" style="color: red"></i>
                             <select name="category_id" class="form-select form-control">
                                 <option value="">Select Category</option>
                                 @foreach ($categories as $category)

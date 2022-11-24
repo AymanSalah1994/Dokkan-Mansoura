@@ -6,7 +6,7 @@
             <div class="col-md-7">
                 <div class="card px-5">
                     <div class="card-body">
-                        <h4 class="card-title">Search :</h4>
+                        <h4 class="card-title">{{__('Search')}} :</h4>
                         <form action="" class="form-inline" style="width:100%">
                             <input type="search" name="search_word" class="input-group-text" style="width:100%">
                         </form>

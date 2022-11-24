@@ -153,5 +153,6 @@
     "Provide Real Pictures" :"كل صور المنتجات صور على الطبيعة" ,
     "Anything opposite is Disallowed" :"أي شيء مخالف لما ذكر يعتبر غير مسموح به" ,
     "Required Fields" : "حقول مطلوبة" ,
-    "Phone Number should be Numeric and consist of(11 numbers)": "ادخل رقم هاتف صحيح يتكون من 11 رقم"
+    "Phone Number should be Numeric and consist of(11 numbers)": "ادخل رقم هاتف صحيح يتكون من 11 رقم" ,
+    "User Details" : "بيانات المستخدم"
 }

@@ -10,7 +10,7 @@
         @csrf
         <div class="card">
             <div class="card-body">
-                <h3>{{ _('User Details') }}</h3>
+                <h3 class="text-center">{{ __('User Details') }}</h3>
                 <hr>
                 <div class="row">
                     <div class="col-md-6">
@@ -22,7 +22,7 @@
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="">Last Name</label>
+                        <label for="">{{__('Last Name')}}</label>
                         <input class="form-control" type="text" name="last_name"
                             value="{{ old('last_name', request()->user()->last_name) }}">
                         @error('last_name')
@@ -33,12 +33,12 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">City</label>
+                        <label for="">{{__('City')}}</label>
                         <input class="form-control" type="text" name="city"
                             value="{{ old('city', request()->user()->city) }}">
                     </div>
                     <div class="col-md-6">
-                        <label for="">Phone</label>
+                        <label for="">{{__('Phone')}}</label>
                         <input class="form-control" type="text" name="phone"
                             value="{{ old('phone', request()->user()->phone) }}">
                         @error('phone')
@@ -49,7 +49,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="">Address</label>
+                        <label for="">{{__('Address')}}</label>
                         <input class="form-control" type="text" name="address"
                             value="{{ old('address', request()->user()->address) }}">
                         @error('address')
@@ -60,7 +60,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="">Email</label>
+                        <label for="">{{__('Email')}}</label>
                         <input class="form-control" type="Email" name="email"
                             value="{{ old('email', request()->user()->email) }}">
                         @error('email')
@@ -71,7 +71,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="">Bio</label>
+                        <label for="">{{__('Bio')}}</label>
                         <input class="form-control" type="" name="bio"
                             value="{{ old('bio', request()->user()->bio) }}">
                         @error('bio')
@@ -124,12 +124,6 @@
                 @error('profile_picture')
                     <span style="color: red">{{ $message }}</span>
                 @enderror
-
-
-
-
-
-
 
                 <div class="row">
                     <div class="col-md-12">
